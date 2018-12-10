@@ -3,6 +3,7 @@
 namespace Website\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Code\Validator\Cpf;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /**
+         * Validator CPF/CNPJ
+         */
+        \Validator::extend('cpf', function($attribute, $value, $parameters, $validator){
+            return (new Cpf())->isValid($value);
+        });
     }
 
     /**

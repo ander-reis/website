@@ -5,6 +5,7 @@ namespace Website\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Website\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -39,39 +40,45 @@ class LoginController extends Controller
     }
 
     /**
+     * sobreescrevendo credentials
+     *
      * @param Request $request
-     * @return mixed
+     * @return array
      */
-//    protected function credentials(Request $request)
-//    {
-//        $data = $request->only($this->username(), 'password');
-//
-//        $usernameKey = $this->usernameKey();
-//        if($usernameKey != $this->username()) {
-//            $data[$this->usernameKey()] = $data[$this->username()];
-//            unset($data[$this->username()]);
-//        }
-//        return $data;
-//    }
+    protected function credentials(Request $request)
+    {
+        $data = $request->only($this->username(), 'password');
+        $usernameKey = $this->usernameKey();
+
+        $data[$usernameKey] = $data[$this->username()];
+        unset($data[$this->username()]);
+
+        return $data;
+    }
 
     /**
+     * Método responsável por realizar login com multiplos campos
+     *
      * @return string
      */
-//    protected function usernameKey()
-//    {
-//        $email = \Request::get('email'); //email,phone,cpf
-//        $validator = \Validator::make([
-//            'email' => $email
-//        ], ['email' => 'cpf']);
-//        if (!$validator->fails()) {
-//            return 'cpf';
-//        }
-//        if (count($email) == 6) {
-//            return 'matricula';
-//        }
-//        if(count($email) == 14){
-//            return 'cpf';
-//        }
-//        return 'cpf';
-//    }
+    protected function usernameKey()
+    {
+        $username = \Request::get($this->username());
+
+        $validator = \Validator::make([
+            'cpf' => $username
+        ], ['cpf' => 'cpf']);
+
+        return $validator->fails() ? 'matricula' : 'cpf';
+    }
+
+    /**
+     * Método responsável por retornar o tipo de usuário
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'username';
+    }
 }

@@ -11,10 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('website.welcome');
+Route::get('/', 'HomeController@index');
+
+//Auth::routes();
+
+Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login');
+/**
+ * logout
+ */
+Route::name('logout')->post('logout', 'Auth\LoginController@logout');
+
+
+/**
+ * Rota administração usuário
+ */
+Route::group([
+    'namespace' => 'Admin\\',
+    'middleware' => 'auth'
+], function(){
+    /**
+     * home admin
+     */
+    Route::get('/home', 'HomeController@index')->name('home');
 });
-
-Auth::routes();
-
-Route::get('/home', 'Admin\HomeController@index')->name('home');
