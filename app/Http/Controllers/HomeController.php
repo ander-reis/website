@@ -2,12 +2,22 @@
 
 namespace Website\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Website\Models\Noticias;
+use Website\Models\OwlCarousel;
+use Website\Models\Slider;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('website.home');
+        $noticias = Noticias::noticiasRand();
+
+        $destaque = Noticias::destaque();
+
+        $owlItems = OwlCarousel::all();
+
+        $sliders = Slider::slider();
+
+        return view('website.home.index', compact('noticias','destaque', 'owlItems', 'sliders'));
     }
 }
