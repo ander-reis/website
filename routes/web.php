@@ -40,6 +40,11 @@ Route::name('convencao.show')->get('/convencao-e-acordo/{convencoes_entidade}/co
 Route::name('clausulas.show')->get('/convencao-e-acordo/{convencoes_entidade}/convencao/{convencao}/clausula/{convencao_clausula}', 'ClausulasController@show');
 
 /**
+ * páginas principais
+ */
+Route::name('paginas-principais')->get('/{url_pagina}', 'PaginasPrincipaisController@show', ['only' => ['show']]);
+
+/**
  * Rota administração usuário
  */
 Route::group([

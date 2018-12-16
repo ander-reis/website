@@ -14,10 +14,11 @@
                 <ul class="navbar-nav mr-auto">
                     @foreach($menuItems as $menuItem)
                         @if($menuItem['child'] == null)
-                                <li class="nav-item mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">
-                                    <a class="nav-link"
-                                       href="{{ $menuItem['link'] }}">{{ $menuItem['label'] }}</a>
-                                </li>
+                            <li class="nav-item mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">
+                                <a class="nav-link"
+                                   href="{{ URL::route('home') }}/{{ $menuItem['link'] }}">{{ $menuItem['label'] }}
+                                </a>
+                            </li>
                         @else
                             <li class="nav-item dropdown mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
