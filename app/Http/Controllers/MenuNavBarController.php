@@ -4,7 +4,6 @@ namespace Website\Http\Controllers;
 
 use Illuminate\View\View;
 use Website\Models\MenuItems;
-use Website\Models\PaginasPrincipais;
 
 class MenuNavBarController extends Controller
 {
