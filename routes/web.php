@@ -49,10 +49,18 @@ Route::name('paginas-principais')->get('/{url_pagina}', 'PaginasPrincipaisContro
  */
 Route::group([
     'namespace' => 'Admin\\',
+    'prefix' => 'admin',
+    'as' => 'admin.',
     'middleware' => 'auth'
 ], function(){
+
     /**
-     * home admin
+     * dados pessoais
      */
-    Route::get('/home', 'HomeController@index')->name('home-admin');
+    Route::resource('dados-pessoais', 'DadosPessoaisController', ['only' => 'index']);
+
+    /**
+     * escolas
+     */
+    Route::resource('escolas', 'EscolasController');
 });

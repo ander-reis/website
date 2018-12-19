@@ -14,4 +14,8 @@ return [
 
     'failed'   => 'Credenciais informadas não correspondem com nossos registros.',
     'throttle' => 'Você realizou muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
+    'forgot_password' => 'Esqueceu a senha?',
+    'remember_me' => 'Lembrar-me',
+    'password' => 'Senha',
+    'username' => 'CPF ou Matrícula',
 ];

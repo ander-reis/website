@@ -21,9 +21,9 @@
                         <div class="mx-auto w-100">
                             <div class="row text-center">
                                 <div class="col-12 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                                    <a href="#" class="text-link-header">
+                                    <a href="{{ route('admin.dados-pessoais.index') }}" class="text-link-header">
                                         <img id="cadastro-icon" class="icon-home" src="{{ asset('images/site/icon/cadastro-icon.png') }}" alt="Cadastro">
-                                        <a href="#">Cadastro</a>
+                                        Cadastro
                                     </a>
                                 </div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">

@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -81,4 +81,18 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    /**
+     * Get the post register / login redirect path.
+     *
+     * @return string
+     */
+//    public function redirectPath()
+//    {
+//        if (method_exists($this, 'redirectTo')) {
+//            return $this->redirectTo();
+//        }
+//
+//        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin/home';
+//    }
 }
