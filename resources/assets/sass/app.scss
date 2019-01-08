@@ -195,6 +195,18 @@ ul.timeline > li:before {
   transition-delay: initial;
 }
 
+/** maxlength **/
+.input-group-addon{
+  width: 40px;
+  background-color: #6c757d;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 1px;
+  padding-top: 4px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 
 @media (max-width: 767px) {
   #social-header{

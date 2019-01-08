@@ -4,6 +4,8 @@ namespace Website\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\DadosPessoaisUpdateRequest;
+use Website\Models\User;
 
 class DadosPessoaisController extends Controller
 {
@@ -14,8 +16,9 @@ class DadosPessoaisController extends Controller
      */
     public function index()
     {
+        $user = User::findOrFail(\Auth::user()->id);
 //        dd(\Auth::user());
-        return view('admin.dados-pessoais.index');
+        return view('admin.dados-pessoais.index', compact('user'));
     }
 
     /**
@@ -68,9 +71,16 @@ class DadosPessoaisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $dados_pessoai)
     {
-        //
+//        $user = User::findOrFail(\Auth::user()->id);
+//        $user->name = $request->get('name');
+//        $user->save();
+
+
+        $dados_pessoai->update($request->all());
+
+        return redirect()->route('admin.dados-pessoais.index');
     }
 
     /**

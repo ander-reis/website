@@ -91,6 +91,10 @@
 </div>{{--#app--}}
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script type="text/javascript">
+    $("input[maxlength]").maxlength();
+</script>
 </body>
 </html>
 

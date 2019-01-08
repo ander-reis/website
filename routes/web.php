@@ -57,7 +57,7 @@ Route::group([
     /**
      * dados pessoais
      */
-    Route::resource('dados-pessoais', 'DadosPessoaisController', ['only' => 'index']);
+    Route::resource('dados-pessoais', 'DadosPessoaisController', ['only' => ['index', 'update']]);
 
     /**
      * escolas
