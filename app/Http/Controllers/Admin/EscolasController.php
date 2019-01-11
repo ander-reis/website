@@ -4,6 +4,8 @@ namespace Website\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\EscolaDeleteRequest;
+use Website\Models\Escolas;
 
 class EscolasController extends Controller
 {
@@ -14,7 +16,10 @@ class EscolasController extends Controller
      */
     public function index()
     {
-        return view('admin.escolas.index');
+        $userId = \Auth::user()->id;
+        $escolas = Escolas::where('user_id', $userId)->get();
+
+        return view('admin.escolas.index', compact('escolas'));
     }
 
     /**
@@ -24,7 +29,7 @@ class EscolasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.escolas.create');
     }
 
     /**
@@ -44,9 +49,9 @@ class EscolasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Escolas $escola)
     {
-        //
+        //return view('admin.escolas.show', compact('escola'));
     }
 
     /**
@@ -55,9 +60,9 @@ class EscolasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Escolas $escola)
     {
-        //
+        return view('admin.escolas.edit', compact('escola'));
     }
 
     /**
@@ -78,8 +83,15 @@ class EscolasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(EscolaDeleteRequest $request, $id)
     {
-        //
+        try {
+            $id_escola = $request->only(array_keys($request->all()))['id_escola'];
+            Escolas::destroy($id_escola);
+            return redirect()->route('admin.escolas.index')->with('message', 'Escola excluído com sucesso');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.escolas.index')->with('error-message', 'Não foi possível excluir os dados');
+        }
+
     }
 }

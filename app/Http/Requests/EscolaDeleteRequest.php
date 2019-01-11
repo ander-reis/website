@@ -4,7 +4,7 @@ namespace Website\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DadosPessoaisUpdateRequest extends FormRequest
+class EscolaDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class DadosPessoaisUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:80',
-            'email' => 'required|email',
-            'ds_data_nascimento' => 'date_format:Y-m-d',
+            'id_escola'
         ];
     }
 }

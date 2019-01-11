@@ -7,3 +7,5 @@
 
 require('./bootstrap');
 require('./bootstrap-maxlength');
+require('./modals');
+require('../../../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js');

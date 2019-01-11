@@ -82,11 +82,13 @@
     </nav>
 
     <div class="container mb-3">
-        {{--@component('admin.components._alert_success')--}}
-            {{--{{Session::get('message')}}--}}
-        {{--@endcomponent--}}
+
+        @component('admin.components._alert_success')
+            {{Session::get('message')}}
+        @endcomponent
 
         @yield('content')
+
     </div>
 </div>{{--#app--}}
 <!-- Scripts -->
@@ -94,7 +96,12 @@
 
 <script type="text/javascript">
     $("input[maxlength]").maxlength();
+    setTimeout(function() {
+        $("#successMessage").hide('slow')
+    }, 5000);
 </script>
+
+@stack('mask-script')
 </body>
 </html>
 

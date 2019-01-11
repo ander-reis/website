@@ -8,11 +8,11 @@
                 {{Session::get('error-message')}}
             @endcomponent
 
-            {{ Form::model($user, ['route' => ['admin.dados-pessoais.update', \Auth::user()->id], 'method' => 'PUT' ]) }}
+            {{ Form::model($escola, ['route' => ['admin.escolas.update', $escola], 'method' => 'PUT']) }}
 
-            @include('admin.dados-pessoais._form')
+            @include('admin.escolas._form')
 
-            <button type="submit" class="btn btn-primary btn-lg">Editar</button>
+            <button type="submit" class="btn btn-primary">Editar</button>
 
             {{ Form::close() }}
         </div>
