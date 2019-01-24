@@ -8,9 +8,9 @@
                 {{Session::get('error-message')}}
             @endcomponent
 
-            {{ Form::model($user, ['route' => ['admin.dados-pessoais.update', \Auth::user()->id], 'method' => 'PUT' ]) }}
+            {{ Form::model($user, ['route' => ['admin.dados-pessoal.update', \Auth::user()->Codigo_Professor], 'method' => 'PUT' ]) }}
 
-            @include('admin.dados-pessoais._form')
+            @include('admin.dados-pessoal._form')
 
             <button type="submit" class="btn btn-primary btn-lg">Editar</button>
 

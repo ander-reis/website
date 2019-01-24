@@ -48,6 +48,7 @@ class LoginController extends Controller
     protected function credentials(Request $request)
     {
         $data = $request->only($this->username(), 'password');
+
         $usernameKey = $this->usernameKey();
 
         $data[$usernameKey] = $data[$this->username()];
@@ -69,7 +70,21 @@ class LoginController extends Controller
             'cpf' => $username
         ], ['cpf' => 'cpf']);
 
-        return $validator->fails() ? 'matricula' : 'cpf';
+        return $validator->fails() ? 'Codigo_Professor' : 'CPF';
+    }
+
+    /**
+     * Valida request user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
     }
 
     /**
@@ -81,18 +96,4 @@ class LoginController extends Controller
     {
         return 'username';
     }
-
-    /**
-     * Get the post register / login redirect path.
-     *
-     * @return string
-     */
-//    public function redirectPath()
-//    {
-//        if (method_exists($this, 'redirectTo')) {
-//            return $this->redirectTo();
-//        }
-//
-//        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin/home';
-//    }
 }

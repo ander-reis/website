@@ -13,6 +13,11 @@
 
 Route::name('home')->get('/', 'HomeController@index');
 
+/**
+ * teste SQL Server
+ */
+Route::get('/teste', 'TesteSQLController@index');
+
 //Auth::routes();
 
 Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
@@ -55,12 +60,22 @@ Route::group([
 ], function(){
 
     /**
-     * dados pessoais
+     * dados pessoal
      */
-    Route::resource('dados-pessoais', 'DadosPessoaisController', ['only' => ['index', 'update']]);
+    Route::resource('dados-pessoal', 'DadosPessoalController', ['only' => ['index', 'update']]);
 
     /**
      * escolas
      */
-    Route::resource('escolas', 'EscolasController');
+    Route::resource('escolas', 'EscolasController', ['except' => ['show']]);
+
+    /**
+     * historico
+     */
+    Route::resource('historico', 'HistoricoController');
+
+    /**
+     * busca cep
+     */
+    Route::name('buscar-cep')->get('/cep', 'DadosPessoalController@buscarCep');
 });

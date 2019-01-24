@@ -67,13 +67,24 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'sqlsrv' => [
+        'sqlsrv-sinpro' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST_SQLSRV_SINPRO', 'localhost'),
+            'port' => env('DB_PORT_SQLSRV_SINPRO', '1433'),
+            'database' => env('DB_DATABASE_SQLSRV_SINPRO', 'forge'),
+            'username' => env('DB_USERNAME_SQLSRV_SINPRO', 'forge'),
+            'password' => env('DB_PASSWORD_SQLSRV_SINPRO', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+        ],
+
+        'sqlsrv-website' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_SQLSRV_WEBSITE', 'localhost'),
+            'port' => env('DB_PORT_SQLSRV_WEBSITE', '1433'),
+            'database' => env('DB_DATABASE_SQLSRV_WEBSITE', 'forge'),
+            'username' => env('DB_USERNAME_SQLSRV_WEBSITE', 'forge'),
+            'password' => env('DB_PASSWORD_SQLSRV_WEBSITE', ''),
             'charset' => 'utf8',
             'prefix' => '',
         ],
