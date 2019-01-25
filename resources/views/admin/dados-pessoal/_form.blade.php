@@ -18,12 +18,10 @@
 
 @push('mask-script')
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#ds_cep').mask('00000-000');
-
-            $('#buscar-cep').click(function(e){
-                 e.preventDefault();
-
+            $('#buscar-cep').click(function (e) {
+                e.preventDefault();
                 $.ajax({
                     url: "{{ url('/admin/cep') }}",
                     method: 'get',
@@ -31,14 +29,14 @@
                     data: {
                         cep: $('#cep').val(),
                     },
-                    success: function(result){
-
-                        $('#Endereco').val(result[0].Logradouro);
-
-                        console.log(result[0].Logradouro);
-                    }});
+                    success: function (result) {
+                        $('#Endereco').val(result.Logradouro);
+                        $('#Bairro').val(result.Bairro);
+                        $('#Cidade').val(result.Cidade);
+                        $('#UF').val(result.UF);
+                    }
+                });
             });
         });
-
     </script>
 @endpush

@@ -96,6 +96,6 @@ class DadosPessoalController extends Controller
         $cep = $request->only(array_keys($request->all()));
         $data = CepSP::where('Cep', '=', $cep['cep'])->get();
 
-        return response()->json($data);
+        return response()->json($data[0]);
     }
 }
