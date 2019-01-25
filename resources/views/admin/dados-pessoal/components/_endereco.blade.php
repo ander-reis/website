@@ -14,7 +14,7 @@
     <div class="col-md-7">
         @component('admin.form-components._form_group',['field' => 'Endereco'])
             {{ Form::label('Endereco', 'Endereço', ['class' => 'control-label']) }}
-            {{ Form::text('Endereco', null, ['class' => 'form-control', 'disabled']) }}
+            {{ Form::text('Endereco', null, ['class' => 'form-control', 'readonly']) }}
         @endcomponent
     </div>
     <div class="col-md-2">
@@ -34,19 +34,19 @@
     <div class="col-md-3">
         @component('admin.form-components._form_group',['field' => 'Bairro'])
             {{ Form::label('Bairro', 'Bairro', ['class' => 'control-label']) }}
-            {{ Form::text('Bairro', null, ['class' => 'form-control', 'disabled']) }}
+            {{ Form::text('Bairro', null, ['class' => 'form-control', 'readonly']) }}
         @endcomponent
     </div>
     <div class="col-md-3">
         @component('admin.form-components._form_group',['field' => 'Cidade'])
             {{ Form::label('Cidade', 'Cidade', ['class' => 'control-label']) }}
-            {{ Form::text('Cidade', null, ['class' => 'form-control', 'disabled']) }}
+            {{ Form::text('Cidade', null, ['class' => 'form-control', 'readonly']) }}
         @endcomponent
     </div>
     <div class="col-md-2">
         @component('admin.form-components._form_group',['field' => 'Estado'])
             {{ Form::label('Estado', 'Estado', ['class' => 'control-label']) }}
-            {{ Form::text('Estado', null, ['class' => 'form-control', 'disabled']) }}
+            {{ Form::text('Estado', null, ['class' => 'form-control', 'readonly']) }}
         @endcomponent
     </div>
 </div>

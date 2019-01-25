@@ -83,7 +83,8 @@ class DadosPessoalController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            //dd($data);
+            dd($data);
+
             $dados_pessoal->update($data);
             return redirect()->route('admin.dados-pessoal.index')->with('message', 'Dados atualizados com sucesso');
         } catch (\Exception $e) {

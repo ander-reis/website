@@ -3,6 +3,7 @@
 namespace Website\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Website\Models\User;
 
 class DadosPessoaisUpdateRequest extends FormRequest
 {
@@ -13,7 +14,11 @@ class DadosPessoaisUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $userId = $this->route('dados_pessoal')->Codigo_Professor;
+        $result = User::where('Cadastro_Professores', \Auth::user()->Codigo_Professor)
+            ->where('Codigo_Professor', '=', $userId);
+
+        return $result != null;
     }
 
     /**
@@ -25,15 +30,13 @@ class DadosPessoaisUpdateRequest extends FormRequest
     {
         $this->sanitize();
 
-        return [
-            'Nome' => 'required|max:80',
-            'Email' => 'required|email',
-            'ds_data_nascimento' => 'date_format:Y-m-d',
 
-            'Nome',
-            'CPF',
-            'Email',
-            'Materia',
+
+        return [
+            'Nome' => 'required|max:100',
+            'CPF' => 'max:14',
+            'Email' => 'required|max:120',
+            'Materia' => 'required',
             'Pre',
             '1_4Serie',
             '5_8Serie',
@@ -65,7 +68,7 @@ class DadosPessoaisUpdateRequest extends FormRequest
     public function sanitize()
     {
         $input = $this->all();
-        $input['name'] = trim(filter_var($input['name'], FILTER_SANITIZE_STRING));
+        $input['Nome'] = trim(filter_var($input['Nome'], FILTER_SANITIZE_STRING));
         $this->replace($input);
     }
 }

@@ -29,7 +29,7 @@
     <div class="col-md-3">
         @component('admin.form-components._form_group',['field' => 'CPF'])
             {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
-            {{ Form::text('CPF', null, ['class' => 'form-control', 'disabled']) }}
+            {{ Form::text('CPF', null, ['class' => 'form-control', 'readonly']) }}
         @endcomponent
     </div>
     <div class="col-md-4">
@@ -92,9 +92,9 @@
 
 <div class="row my-3">
     <div class="col-md-12">
-        @component('admin.form-components._form_group',['field' => 'disciplina'])
-            {{ Form::label('disciplina', 'Disciplina', ['class' => 'control-label']) }}
-            {{ Form::select('disciplina', $materia, null, ['class' => 'form-control']) }}
+        @component('admin.form-components._form_group',['field' => 'Materia'])
+            {{ Form::label('Materia', 'Disciplina', ['class' => 'control-label']) }}
+            {{ Form::select('Materia', $materia, null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
 </div>

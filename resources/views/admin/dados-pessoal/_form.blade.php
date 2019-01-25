@@ -19,7 +19,7 @@
 @push('mask-script')
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#ds_cep').mask('00000-000');
+            $('#cep').mask('00000-000');
             $('#buscar-cep').click(function (e) {
                 e.preventDefault();
                 $.ajax({
