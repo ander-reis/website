@@ -85,4 +85,7 @@ class User extends Authenticatable
     {
         return $this->password;
     }
+
+
+
 }
