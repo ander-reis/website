@@ -24,9 +24,9 @@ class User extends Authenticatable
 //    protected $connection = 'sqlsrv-website';
 
     /**
-     * Conexão teste
+     * Conexão teste Postgre
      */
-//    protected $table = 'tb_sinpro_users_website';
+    protected $connection = 'pgsql';
     protected $table = 'Cadastro_Professores';
     protected $primaryKey = 'Codigo_Professor';
     protected $rememberTokenName = null;
@@ -41,6 +41,7 @@ class User extends Authenticatable
         'Nome',
         'CPF',
         'Email',
+        'Data_Aniversario',
         'Materia',
         'Pre',
         '1_4Serie',
@@ -75,6 +76,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    /**
+     * reconfigura timestamp
+     */
+    const CREATED_AT = 'Data_Inicio';
+    const UPDATED_AT = 'Data_Modificacao';
 
     /**
      * Retorna senha

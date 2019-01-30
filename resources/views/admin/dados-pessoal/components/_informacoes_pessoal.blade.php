@@ -29,7 +29,7 @@
     <div class="col-md-3">
         @component('admin.form-components._form_group',['field' => 'CPF'])
             {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
-            {{ Form::text('CPF', null, ['class' => 'form-control', 'readonly']) }}
+            {{ Form::text('CPF', null, ['class' => 'form-control', 'disabled']) }}
         @endcomponent
     </div>
     <div class="col-md-4">
@@ -50,41 +50,41 @@
 <div class="row">
     <div class="col-md-3">
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('pre', null, ($user->Pre) ? true : false, ['class' => 'custom-control-input', 'id' => 'Pre']) }}
+            {{ Form::checkbox('Pre', '1', ($user->Pre) ? true : false, ['class' => 'custom-control-input', 'id' => 'Pre']) }}
             {{ Form::label('Pre', 'Pré', ['class' => 'custom-control-label']) }}
         </div>
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('primeira_quarta_serie', null, ($user->primeira_quarta_serie) ? true : false, ['class' => 'custom-control-input', 'id' => 'primeira_quarta_serie']) }}
+            {{ Form::checkbox('primeira_quarta_serie', '1', ($user->primeira_quarta_serie) ? true : false, ['class' => 'custom-control-input', 'id' => 'primeira_quarta_serie']) }}
             {{ Form::label('primeira_quarta_serie', '1º à 5ª', ['class' => 'custom-control-label']) }}
         </div>
     </div>
     <div class="col-md-3">
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('quinta_oitava_serie', null, ($user->quinta_oitava_serie) ? true : false, ['class' => 'custom-control-input', 'id' => 'quinta_oitava_serie']) }}
+            {{ Form::checkbox('quinta_oitava_serie', '1', ($user->quinta_oitava_serie) ? true : false, ['class' => 'custom-control-input', 'id' => 'quinta_oitava_serie']) }}
             {{ Form::label('quinta_oitava_serie', '6ª à 9ª', ['class' => 'custom-control-label']) }}
         </div>
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('Ens_Medio', 'checked', ($user->Ens_Medio) ? true : false, ['class' => 'custom-control-input', 'id' => 'Ens_Medio']) }}
+            {{ Form::checkbox('Ens_Medio', '1', ($user->Ens_Medio) ? true : false, ['class' => 'custom-control-input', 'id' => 'Ens_Medio']) }}
             {{ Form::label('Ens_Medio', 'Ensino Médio', ['class' => 'custom-control-label']) }}
         </div>
     </div>
     <div class="col-md-3">
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('Ens_Superior', 'checked', ($user->Ens_Superior) ? true : false, ['class' => 'custom-control-input', 'id' => 'Ens_Superior']) }}
+            {{ Form::checkbox('Ens_Superior', '1', ($user->Ens_Superior) ? true : false, ['class' => 'custom-control-input', 'id' => 'Ens_Superior']) }}
             {{ Form::label('Ens_Superior', 'Ensino Superior', ['class' => 'custom-control-label']) }}
         </div>
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('Tecnico', 'checked', ($user->Tecnico) ? true : false, ['class' => 'custom-control-input', 'id' => 'Tecnico']) }}
+            {{ Form::checkbox('Tecnico', '1', ($user->Tecnico) ? true : false, ['class' => 'custom-control-input', 'id' => 'Tecnico']) }}
             {{ Form::label('Tecnico', 'Ensino Técnico', ['class' => 'custom-control-label']) }}
         </div>
     </div>
     <div class="col-md-3">
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('Curso_Livre', 'checked', ($user->Curso_Livre) ? true : false, ['class' => 'custom-control-input', 'id' => 'Curso_Livre']) }}
+            {{ Form::checkbox('Curso_Livre', '1', ($user->Curso_Livre) ? true : false, ['class' => 'custom-control-input', 'id' => 'Curso_Livre']) }}
             {{ Form::label('Curso_Livre', 'Curso Livre', ['class' => 'custom-control-label']) }}
         </div>
         <div class="custom-control custom-checkbox">
-            {{ Form::checkbox('Supletivo', 'checked', ($user->Supletivo) ? true : false, ['class' => 'custom-control-input', 'id' => 'Supletivo']) }}
+            {{ Form::checkbox('Supletivo', '1', ($user->Supletivo) ? true : false, ['class' => 'custom-control-input', 'id' => 'Supletivo']) }}
             {{ Form::label('Supletivo', 'Supletivo', ['class' => 'custom-control-label']) }}
         </div>
     </div>

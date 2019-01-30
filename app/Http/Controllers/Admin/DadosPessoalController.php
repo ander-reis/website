@@ -2,7 +2,6 @@
 
 namespace Website\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\CepRequest;
 use Website\Http\Requests\DadosPessoaisUpdateRequest;
@@ -55,7 +54,7 @@ class DadosPessoalController extends Controller
                 'DDD_Telefone_Celular',
                 'Telefone_Celular',
             ])
-            ->where('Codigo_Professor', '=', \Auth::user()->Codigo_Professor)
+            ->where('CPF', '=', \Auth::user()->CPF)
             ->get();
 
         $user = $user[0];
@@ -83,12 +82,23 @@ class DadosPessoalController extends Controller
     {
         try {
             $data = $request->only(array_keys($request->all()));
-            dd($data);
+
+            (!isset($data['Pre'])) ? $data['Pre'] = '0' : null;
+            (!isset($data['primeira_quarta_serie'])) ? $data['1_4Serie'] = '0' : $data['1_4Serie'] = '1';
+            (!isset($data['quinta_oitava_serie'])) ? $data['5_8Serie'] = '0' : $data['5_8Serie'] = '1';
+            (!isset($data['Ens_Medio'])) ? $data['Ens_Medio'] = '0' : null;
+            (!isset($data['Ens_Superior'])) ? $data['Ens_Superior'] = '0' : null;
+            (!isset($data['Tecnico'])) ? $data['Tecnico'] = '0' : null;
+            (!isset($data['Curso_Livre'])) ? $data['Curso_Livre'] = '0' : null;
+            (!isset($data['Supletivo'])) ? $data['Supletivo'] = '0' : null;
+            unset($data['primeira_quarta_serie']);
+            unset($data['quinta_oitava_serie']);
 
             $dados_pessoal->update($data);
+
             return redirect()->route('admin.dados-pessoal.index')->with('message', 'Dados atualizados com sucesso');
         } catch (\Exception $e) {
-            return redirect()->route('admin.dados-pessoal.index')->with('error-message', 'Não foi possível atualizar os dados');
+            return redirect()->route('admin.dados-pessoal.index')->with('error-message', 'Não foi possível atualizar os dados' . $e->getMessage());
         }
     }
 

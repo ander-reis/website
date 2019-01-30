@@ -3,7 +3,6 @@
 namespace Website\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Website\Models\User;
 
 class DadosPessoaisUpdateRequest extends FormRequest
 {
@@ -15,10 +14,9 @@ class DadosPessoaisUpdateRequest extends FormRequest
     public function authorize()
     {
         $userId = $this->route('dados_pessoal')->Codigo_Professor;
-        $result = User::where('Cadastro_Professores', \Auth::user()->Codigo_Professor)
-            ->where('Codigo_Professor', '=', $userId);
+        $id = \Auth()->user()->Codigo_Professor;
 
-        return $result != null;
+        return ($userId === $id) ? true : false;
     }
 
     /**
@@ -30,35 +28,33 @@ class DadosPessoaisUpdateRequest extends FormRequest
     {
         $this->sanitize();
 
-
-
         return [
             'Nome' => 'required|max:100',
-            'CPF' => 'max:14',
             'Email' => 'required|max:120',
+            'Data_Aniversario' => 'required|date_format:Y-m-d',
             'Materia' => 'required',
             'Pre',
-            '1_4Serie',
-            '5_8Serie',
+            'primeira_quarta_serie',
+            'quinta_oitava_serie',
             'Ens_Medio',
             'Ens_Superior',
             '2_3Grau',
             'Tecnico',
             'Supletivo',
             'Curso_Livre',
-            'CEP',
-            'Endereco',
-            'Numero',
-            'Complemento',
-            'Bairro',
-            'Cidade',
-            'Estado',
-            'DDD_Telefone_Residencial',
-            'Telefone_Residencial',
-            'DDD_Telefone_Comercial',
-            'Telefone_Comercial',
-            'DDD_Telefone_Celular',
-            'Telefone_Celular',
+            'CEP' => 'required|max:9',
+            'Endereco' => 'required|max:63',
+            'Numero' => 'required|max:6',
+            'Complemento' => 'max:50',
+            'Bairro' => 'required|max:50',
+            'Cidade' => 'required|max:32',
+            'Estado' => 'required|max:2',
+            'DDD_Telefone_Residencial' => 'max:2',
+            'Telefone_Residencial' => 'max:20',
+            'DDD_Telefone_Comercial' => 'max:2',
+            'Telefone_Comercial' => 'max:9',
+            'DDD_Telefone_Celular' => 'required|max:2',
+            'Telefone_Celular' => 'required|max:15',
         ];
     }
 

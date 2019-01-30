@@ -8,7 +8,7 @@
     <div class="col-md-2">
         @component('admin.form-components._form_group',['field' => 'Telefone_Residencial'])
             {{ Form::label('Telefone_Residencial', 'Tel. Residencial', ['class' => 'control-label']) }}
-            {{ Form::text('Telefone_Residencial', null, ['class' => 'form-control', 'maxlength' => 9]) }}
+            {{ Form::text('Telefone_Residencial', null, ['class' => 'form-control', 'maxlength' => 20]) }}
         @endcomponent
     </div>
 
@@ -21,7 +21,7 @@
     <div class="col-md-2">
         @component('admin.form-components._form_group',['field' => 'Telefone_Comercial'])
             {{ Form::label('Telefone_Comercial', 'Tel. Comercial', ['class' => 'control-label']) }}
-            {{ Form::text('Telefone_Comercial', null, ['class' => 'form-control', 'maxlength' => 10]) }}
+            {{ Form::text('Telefone_Comercial', null, ['class' => 'form-control', 'maxlength' => 9]) }}
         @endcomponent
     </div>
 

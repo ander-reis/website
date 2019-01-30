@@ -75,7 +75,7 @@ Route::group([
     Route::resource('historico', 'HistoricoController');
 
     /**
-     * busca cep
+     * buscar cep
      */
     Route::name('buscar-cep')->get('/cep', 'DadosPessoalController@buscarCep');
 });
