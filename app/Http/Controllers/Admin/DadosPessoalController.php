@@ -20,6 +20,7 @@ class DadosPessoalController extends Controller
     {
         /**
          * consulta user
+         *
          */
         $user = \DB::table('Cadastro_Professores')
             ->select([
