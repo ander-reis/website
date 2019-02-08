@@ -52,7 +52,7 @@ class Noticias extends Model
      */
     public static function ultimasNoticias()
     {
-        return Noticias::where('fl_oculta', '1')->where('fl_exibir_destaque', 0)->orderBy('id', 'desc')->take(5)->get();
+        return Noticias::where('fl_oculta', '1')->where('fl_exibir_destaque', 0)->orderBy('id_noticia', 'desc')->take(5)->get();
     }
 
     /**
@@ -62,7 +62,7 @@ class Noticias extends Model
      */
     public static function destaque()
     {
-        return Noticias::where('fl_oculta', 1)->where('fl_exibir_destaque', 1)->orderBy('id', 'desc')->first();
+        return Noticias::where('fl_oculta', 1)->where('fl_exibir_destaque', 1)->orderBy('id_noticia', 'desc')->first();
     }
 
     /**

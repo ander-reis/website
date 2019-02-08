@@ -12,28 +12,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    @foreach($menuItems as $menuItem)
-                        @if($menuItem['child'] == null)
-                            <li class="nav-item mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">
-                                <a class="nav-link"
-                                   href="{{ URL::route('home') }}/{{ $menuItem['link'] }}">{{ $menuItem['label'] }}
-                                </a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ $menuItem['label'] }}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach($menuItem['child'] as $item)
-                                        <a class="dropdown-item"
-                                           href="{{ URL::route('home') }}/{{ $item['link'] }}">{{ $item['label'] }}</a>
-                                    @endforeach
-                                </div>
-                            </li>
-                        @endif
-                    @endforeach
+{{--                    @foreach($menuItems as $menuItem)--}}
+{{--                        @if($menuItem['child'] == null)--}}
+                            {{--<li class="nav-item mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">--}}
+                                {{--<a class="nav-link"--}}
+{{--                                   href="{{ URL::route('home') }}/{{ $menuItem['link'] }}">{{ $menuItem['label'] }}--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        {{--@else--}}
+                            {{--<li class="nav-item dropdown mx-3 @isset($menuItem['class_active']){{ active($menuItem['class_active']) }} @endisset">--}}
+                                {{--<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
+                                   {{--data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    {{ $menuItem['label'] }}--}}
+                                {{--</a>--}}
+                                {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+                                    {{--@foreach($menuItem['child'] as $item)--}}
+                                        {{--<a class="dropdown-item"--}}
+{{--                                           href="{{ URL::route('home') }}/{{ $item['link'] }}">{{ $item['label'] }}</a>--}}
+                                    {{--@endforeach--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--@endif--}}
+                    {{--@endforeach--}}
                 </ul>
             </div>
         </nav>

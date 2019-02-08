@@ -15,7 +15,7 @@ class MenuNavBarController extends Controller
      */
     public function compose(View $view)
     {
-        $menuItems = MenuItems::get();
-        $view->with('menuItems', $menuItems);
+//        $menuItems = MenuItems::get();
+//        $view->with('menuItems', $menuItems);
     }
 }

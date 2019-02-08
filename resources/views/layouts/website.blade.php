@@ -22,7 +22,7 @@
 
     @component('website.components._header')@endcomponent
 
-    @component('website.components._navbar', ['menuItems' => $menuItems])@endcomponent
+{{--    @component('website.components._navbar', ['menuItems' => $menuItems])@endcomponent--}}
 
     <main class="container py-4">
         @yield('content')
