@@ -4,7 +4,7 @@
             @component('website.components._slider', ['sliders' => $sliders])@endcomponent
         </div>
         <div class="col-lg-6 mt-lg-0 mt-md-3 mt-sm-3 mt-3 text-justify">
-            <h6>DESTAQUE</h6>
+            <h6>DESTAQUE1</h6>
             <h2>{!! $destaque->ds_resumo !!}</h2>
             <a href="{{ route('noticias.show', ['noticia' => $destaque->id]) }}" class="text-link-home">
                 {!! $destaque->ds_texto_home_destaque_col !!}
