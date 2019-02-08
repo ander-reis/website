@@ -86,6 +86,17 @@ class Noticias extends Model
     }
 
     /**
+     * Mutators formata limit ds_texto para 10
+     *
+     * @return string
+     */
+    public function getDsTextoHomeDestaqueRowAttribute()
+    {
+        return Str::words(strip_tags($this->ds_texto), 10, '...');
+    }
+
+
+    /**
      * Mutators formata ds_resumo para 6 palavras
      *
      * @return string

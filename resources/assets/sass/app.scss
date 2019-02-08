@@ -233,3 +233,9 @@ ul.timeline > li:before {
     min-width: 320px;
   }
 }
+
+@media (max-width: 1024px) {
+  .img-fluid {
+    margin: 0 auto;
+  }
+}
