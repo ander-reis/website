@@ -43,18 +43,4 @@
         </div>
 
     </div>
-
-    {{--<div class="row my-3 my-md-5">--}}
-    {{--@foreach($noticias1 as $noticia)--}}
-    {{--<div class="col-lg-6 col-12">--}}
-    {{--<h6>NOTÍCIAS</h6>--}}
-    {{--<h5>{{ $noticia->ds_resumo }}</h5>--}}
-    {{--<p>--}}
-    {{--<a href="{{ route('noticias.show', ['noticia' => $noticia->id]) }}" class="text-link-home">--}}
-    {{--{!! $noticia->ds_texto_formatted !!}--}}
-    {{--</a>--}}
-    {{--</p>--}}
-    {{--</div>--}}
-    {{--@endforeach--}}
-    {{--</div>--}}
 </section>
