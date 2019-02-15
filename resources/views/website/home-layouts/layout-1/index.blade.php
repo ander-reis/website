@@ -7,4 +7,6 @@
 {{--    @component('website.components.layout-1._slider', ['sliders' => $sliders])@endcomponent--}}
 
 
+
+
 @endsection
