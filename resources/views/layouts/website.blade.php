@@ -20,40 +20,25 @@
 <body>
 <div id="app">
 
-    @component('website.components._header')@endcomponent
+    {{--@component('website.components._header')@endcomponent--}}
+    @component('website.components.layout-1._navbar')@endcomponent
 
 {{--    @component('website.components._navbar', ['menuItems' => $menuItems])@endcomponent--}}
+{{--    @component('website.components.layout-1._navbar')@endcomponent--}}
 
-    <main class="container py-4">
+    <div class="clearfix"></div>
+
+    <main id="container" class="container py-4">
         @yield('content')
     </main>
 
     <div id="push"></div>
 </div>
 
-@component('website.components._footer')@endcomponent
+{{--@component('website.components._footer')@endcomponent--}}
+@component('website.components.layout-1._footer')@endcomponent
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script>
-    $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 5,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        });
-    });
-</script>
 </body>
 </html>

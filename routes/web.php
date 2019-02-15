@@ -11,17 +11,18 @@
 |
 */
 
+/**
+ * rota home
+ */
 Route::name('home')->get('/', 'HomeController@index');
 
 /**
- * teste SQL Server
+ * rotas auth: login, logout, register, remember password
  */
-Route::get('/teste', 'TesteSQLController@index');
-
 //Auth::routes();
-
 Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login');
+
 /**
  * logout
  */

@@ -18,6 +18,6 @@ class HomeController extends Controller
 
         $sliders = Slider::slider();
 
-        return view('website.home.index', compact('noticias','destaque', 'owlItems', 'sliders'));
+        return view('website.home-layouts.layout-1.index');
     }
 }

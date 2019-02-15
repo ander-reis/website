@@ -46,7 +46,6 @@ body {
 .has-error .form-control{
   border-color: #a94442;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-
 }
 
 .has-error .control-label{
@@ -239,3 +238,114 @@ ul.timeline > li:before {
     margin: 0 auto;
   }
 }
+
+/**
+  * LAYOUT
+ **/
+.bg-footer-layout{
+  background-color: #F2F5F7;
+}
+.text-link-footer-layout {
+  color: #0f253c;
+  text-decoration: none;
+}
+
+.text-link-footer-layout:hover{
+  color: #e30742;
+  text-decoration: none;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+  transition-delay: initial;
+}
+
+.nav-link:hover{
+  color: #1d68a7 !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus{
+  color: #1d68a7;
+  text-decoration: none;
+  background-color: #c6c8ca;
+}
+#nav-bar{
+  font-family: 'Raggedways';
+}
+
+/** font **/
+@font-face {
+  font-family: 'BodegaScript';
+  font-style: normal;
+  font-weight: normal;
+  src: local('BodegaScript'), url('../../../public/fonts/Bodega Script/TTF/Bodega Script.ttf');
+}
+
+@font-face {
+  font-family: 'Monotype';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Monotype'), url('../../../public/fonts/Monotype/mtcorsva.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'MrAcordion';
+  font-style: normal;
+  font-weight: normal;
+  src: local('MrAcordion'), url('../../../public/fonts/MrAcordion/Mr-Accordion-Regular.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Tusj';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Tusj'), url('../../../public/fonts/Tusj/FFF Tusj.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Raggedways';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Raggedways'), url('../../../public/fonts/Raggedways/Raggedways Regular.otf') format('woff');
+}
+
+
+
+#input-search{
+  top: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 10001;
+}
+
+@media (max-width: 992px) {
+  #box-search-one{
+    display: none;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  #input-search .input-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  #input-search .input-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1023px){
+  #input-search .input-group{
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+
+
+/* aplica somente até de 320px */
+//@media screen and (max-width: 320px) and (orientation: portrait) {
+//  body { width: 320px !important; }
+//}
