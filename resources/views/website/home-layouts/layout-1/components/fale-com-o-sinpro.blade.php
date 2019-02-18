@@ -16,7 +16,7 @@
     <div class="col-12 col-sm-6 col-lg-3">
         <img src="{{ asset('images/layout-1/fale-com-o-sinpro/fale_conosco.jpg') }}" class="img-fluid" alt="">
         <div class="mt-2">
-            <h6 class="text-cinza">Sindicalize-se</h6>
+            <h6 class="text-cinza">Fale Conosco</h6>
             <p>
                 Precisa tirar alguma dúvida? Fale conosco.
             </p>
@@ -26,7 +26,7 @@
     <div class="col-12 col-sm-6 col-lg-3">
         <img src="{{ asset('images/layout-1/fale-com-o-sinpro/boletim.jpg') }}" class="img-fluid" alt="">
         <div class="mt-2">
-            <h6 class="text-cinza">Sindicalize-se</h6>
+            <h6 class="text-cinza">Boletim Eletrônico</h6>
             <p>
                 Cadastre-se e fique por dentro de tudo o que acontece no SinproSP.
             </p>
@@ -36,7 +36,7 @@
     <div class="col-12 col-sm-6 col-lg-3">
         <img src="{{ asset('images/layout-1/fale-com-o-sinpro/cadastro.jpg') }}" class="img-fluid" alt="">
         <div class="mt-2">
-            <h6 class="text-cinza">Sindicalize-se</h6>
+            <h6 class="text-cinza">Cadastro</h6>
             <p>
                 Mantenha seus dados sempre atualizados.
             </p>
