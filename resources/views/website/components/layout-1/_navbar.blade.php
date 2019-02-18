@@ -7,7 +7,7 @@
         </button>
 
         <div class="col-7 col-lg-2 text-center text-lg-left">
-            <img src="{{ asset('images/site/footer/logo_footer.png') }}" alt="SinproSP">
+            <img src="{{ asset('images/layout-1/navbar/sinprosp_branco.png') }}" alt="SinproSP">
         </div> <!-- logo -->
 
         <div class="col-2 d-lg-none text-right">

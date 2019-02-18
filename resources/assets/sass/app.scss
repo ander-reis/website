@@ -19,10 +19,8 @@ $fa-font-path: "~font-awesome/fonts";
 /** reset **/
 html,
 body {
-
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
-
   //font-family: "RegencyScriptFLF Regular", Arial, sans-serif;
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -31,7 +29,6 @@ body {
   -webkit-text-size-adjust: none;
   background-color: #ffffff;
 }
-
 
 /** font **/
 @font-face {
@@ -240,8 +237,41 @@ ul.timeline > li:before {
 }
 
 /**
-  * LAYOUT
+  ********************************************** LAYOUT *******************************************
  **/
+
+/** navbar **/
+.nav-link:hover{
+  color: #1d68a7 !important;
+}
+.dropdown-item:hover, .dropdown-item:focus{
+  color: #1d68a7;
+  text-decoration: none;
+  background-color: #c6c8ca;
+}
+
+/** input search **/
+#input-search{
+  top: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 10001;
+}
+
+/** slider **/
+.bg-slider{
+  background-color: #e6e6e6
+}
+.carousel-caption{
+  color:red !important;
+  position:relative !important;
+  padding-bottom: 0px !important;
+  right:0 !important;
+  left:0 !important;
+  text-align: left !important;
+}
+
+/** footer **/
 .bg-footer-layout{
   background-color: #F2F5F7;
 }
@@ -249,7 +279,6 @@ ul.timeline > li:before {
   color: #0f253c;
   text-decoration: none;
 }
-
 .text-link-footer-layout:hover{
   color: #e30742;
   text-decoration: none;
@@ -258,88 +287,70 @@ ul.timeline > li:before {
   transition-delay: initial;
 }
 
-.nav-link:hover{
-  color: #1d68a7 !important;
-}
 
-.dropdown-item:hover, .dropdown-item:focus{
-  color: #1d68a7;
-  text-decoration: none;
-  background-color: #c6c8ca;
-}
-#nav-bar{
-  font-family: 'Raggedways';
-}
+//#nav-bar{
+//  font-family: 'Raggedways';
+//}
 
 /** font **/
-@font-face {
-  font-family: 'BodegaScript';
-  font-style: normal;
-  font-weight: normal;
-  src: local('BodegaScript'), url('../../../public/fonts/Bodega Script/TTF/Bodega Script.ttf');
-}
+//@font-face {
+//  font-family: 'BodegaScript';
+//  font-style: normal;
+//  font-weight: normal;
+//  src: local('BodegaScript'), url('../../../public/fonts/Bodega Script/TTF/Bodega Script.ttf');
+//}
+//
+//@font-face {
+//  font-family: 'Monotype';
+//  font-style: normal;
+//  font-weight: normal;
+//  src: local('Monotype'), url('../../../public/fonts/Monotype/mtcorsva.ttf') format('woff');
+//}
+//
+//@font-face {
+//  font-family: 'MrAcordion';
+//  font-style: normal;
+//  font-weight: normal;
+//  src: local('MrAcordion'), url('../../../public/fonts/MrAcordion/Mr-Accordion-Regular.ttf') format('woff');
+//}
+//
+//@font-face {
+//  font-family: 'Tusj';
+//  font-style: normal;
+//  font-weight: normal;
+//  src: local('Tusj'), url('../../../public/fonts/Tusj/FFF Tusj.ttf') format('woff');
+//}
+//
+//@font-face {
+//  font-family: 'Raggedways';
+//  font-style: normal;
+//  font-weight: normal;
+//  src: local('Raggedways'), url('../../../public/fonts/Raggedways/Raggedways Regular.otf') format('woff');
+//}
 
-@font-face {
-  font-family: 'Monotype';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Monotype'), url('../../../public/fonts/Monotype/mtcorsva.ttf') format('woff');
-}
-
-@font-face {
-  font-family: 'MrAcordion';
-  font-style: normal;
-  font-weight: normal;
-  src: local('MrAcordion'), url('../../../public/fonts/MrAcordion/Mr-Accordion-Regular.ttf') format('woff');
-}
-
-@font-face {
-  font-family: 'Tusj';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Tusj'), url('../../../public/fonts/Tusj/FFF Tusj.ttf') format('woff');
-}
-
-@font-face {
-  font-family: 'Raggedways';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Raggedways'), url('../../../public/fonts/Raggedways/Raggedways Regular.otf') format('woff');
-}
 
 
-
-#input-search{
-  top: 0;
-  width: 100%;
-  position: absolute;
-  z-index: 10001;
-}
-
+/** media queries **/
 @media (max-width: 992px) {
   #box-search-one{
     display: none;
   }
 }
-
-
-@media (min-width: 1024px) {
-  #input-search .input-group{
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-}
-
 @media (max-width: 992px) {
   #input-search .input-group{
     padding-top: 10px;
     padding-bottom: 10px;
   }
 }
-
 @media (min-width: 993px) and (max-width: 1023px){
   #input-search .input-group{
     padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+@media (min-width: 1024px) {
+  #input-search .input-group{
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 }
