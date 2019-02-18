@@ -25,10 +25,10 @@
                             SinproSP
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Quem Somos</a>
-                            <a class="dropdown-item" style="color:white" href="#">Diretoria</a>
-                            <a class="dropdown-item" style="color:white" href="#">Estatuto</a>
-                            <a class="dropdown-item" style="color:white" href="#">Localização</a>
+                            <a class="dropdown-item text-white" href="#">Quem Somos</a>
+                            <a class="dropdown-item text-white" href="#">Diretoria</a>
+                            <a class="dropdown-item text-white" href="#">Estatuto</a>
+                            <a class="dropdown-item text-white" href="#">Localização</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -40,11 +40,11 @@
                             À Definir
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Ranking de Salários</a>
-                            <a class="dropdown-item" style="color:white" href="#">Convenções e Acordos</a>
-                            <a class="dropdown-item" style="color:white" href="#">Relação de Escolas</a>
-                            <a class="dropdown-item" style="color:white" href="#">Direitos do Professor</a>
-                            <a class="dropdown-item" style="color:white" href="#">Cálculos Salarias e Piso</a>
+                            <a class="dropdown-item text-white" href="#">Ranking de Salários</a>
+                            <a class="dropdown-item text-white" href="#">Convenções e Acordos</a>
+                            <a class="dropdown-item text-white" href="#">Relação de Escolas</a>
+                            <a class="dropdown-item text-white" href="#">Direitos do Professor</a>
+                            <a class="dropdown-item text-white" href="#">Cálculos Salarias e Piso</a>
                         </div>
                     </li>
 
@@ -54,10 +54,10 @@
                             Fale com o SinproSP
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Sindicalize-se</a>
-                            <a class="dropdown-item" style="color:white" href="#">Fale Conosco</a>
-                            <a class="dropdown-item" style="color:white" href="#">Boletim Eletrônico</a>
-                            <a class="dropdown-item" style="color:white" href="#">Cadastro</a>
+                            <a class="dropdown-item text-white" href="#">Sindicalize-se</a>
+                            <a class="dropdown-item text-white" href="#">Fale Conosco</a>
+                            <a class="dropdown-item text-white" href="#">Boletim Eletrônico</a>
+                            <a class="dropdown-item text-white" href="#">Cadastro</a>
                         </div>
                     </li>
 
@@ -67,15 +67,15 @@
                             Serviços
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Atendimento Jurídico</a>
-                            <a class="dropdown-item" style="color:white" href="#">Atendimento Previdenciário</a>
-                            <a class="dropdown-item" style="color:white" href="#">Atendimento Médico</a>
-                            <a class="dropdown-item" style="color:white" href="#">Atendimento Fonoaudiólogo</a>
-                            <a class="dropdown-item" style="color:white" href="#">Colônia de Férias</a>
-                            <a class="dropdown-item" style="color:white" href="#">Plano de Saúde</a>
-                            <a class="dropdown-item" style="color:white" href="#">Convênios</a>
-                            <a class="dropdown-item" style="color:white" href="#">Banco de Currículo</a>
-                            <a class="dropdown-item" style="color:white" href="#">Homologação</a>
+                            <a class="dropdown-item text-white" href="#">Atendimento Jurídico</a>
+                            <a class="dropdown-item text-white" href="#">Atendimento Previdenciário</a>
+                            <a class="dropdown-item text-white" href="#">Atendimento Médico</a>
+                            <a class="dropdown-item text-white" href="#">Atendimento Fonoaudiólogo</a>
+                            <a class="dropdown-item text-white" href="#">Colônia de Férias</a>
+                            <a class="dropdown-item text-white" href="#">Plano de Saúde</a>
+                            <a class="dropdown-item text-white" href="#">Convênios</a>
+                            <a class="dropdown-item text-white" href="#">Banco de Currículo</a>
+                            <a class="dropdown-item text-white" href="#">Homologação</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -84,13 +84,13 @@
                             Convenções e Acordos
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Educação Básica</a>
-                            <a class="dropdown-item" style="color:white" href="#">Educação Superior</a>
-                            <a class="dropdown-item" style="color:white" href="#">Senai</a>
-                            <a class="dropdown-item" style="color:white" href="#">Sesi</a>
-                            <a class="dropdown-item" style="color:white" href="#">Senai Superior</a>
-                            <a class="dropdown-item" style="color:white" href="#">Senac</a>
-                            <a class="dropdown-item" style="color:white" href="#">Outros</a>
+                            <a class="dropdown-item text-white" href="#">Educação Básica</a>
+                            <a class="dropdown-item text-white" href="#">Educação Superior</a>
+                            <a class="dropdown-item text-white" href="#">Senai</a>
+                            <a class="dropdown-item text-white" href="#">Sesi</a>
+                            <a class="dropdown-item text-white" href="#">Senai Superior</a>
+                            <a class="dropdown-item text-white" href="#">Senac</a>
+                            <a class="dropdown-item text-white" href="#">Outros</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -99,12 +99,12 @@
                             Acervo
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" style="color:white" href="#">Boletim Digital</a>
-                            <a class="dropdown-item" style="color:white" href="#">Publicações Especiais</a>
-                            <a class="dropdown-item" style="color:white" href="#">Áudio</a>
-                            <a class="dropdown-item" style="color:white" href="#">Vídeos</a>
-                            <a class="dropdown-item" style="color:white" href="#">Matérias Especiais</a>
-                            <a class="dropdown-item" style="color:white" href="#">Anteriores à 2011</a>
+                            <a class="dropdown-item text-white" href="#">Boletim Digital</a>
+                            <a class="dropdown-item text-white" href="#">Publicações Especiais</a>
+                            <a class="dropdown-item text-white" href="#">Áudio</a>
+                            <a class="dropdown-item text-white" href="#">Vídeos</a>
+                            <a class="dropdown-item text-white" href="#">Matérias Especiais</a>
+                            <a class="dropdown-item text-white" href="#">Anteriores à 2011</a>
                         </div>
                     </li>
                 </ul>

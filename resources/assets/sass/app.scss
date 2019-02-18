@@ -30,6 +30,17 @@ body {
   background-color: #ffffff;
 }
 
+.text-cinza {
+  color: $cinza;
+}
+
+.line-section{
+  border-width: 2px;
+  border-style: solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 /** font **/
 @font-face {
   font-family: 'RegencyScriptFLF Regular';
@@ -50,23 +61,6 @@ body {
 }
 
 /** header **/
-.icon-home{
-  width: 25px;
-  height: 25px;
-}
-.text-link-header {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.text-link-header:hover{
-  color: #e30742;
-  text-decoration: none;
-  transition-duration: 500ms;
-  transition-timing-function: ease-in;
-  transition-delay: initial;
-}
-
 .breadcrumb {
   background-color: #ffffff;
 }
@@ -98,35 +92,6 @@ body {
   transition-delay: initial;
 }
 
-/** section1 **/
-#section1 h6 {
-  color: #565098;
-}
-
-/** section2 **/
-#section2 div {
-  margin: -5px 0px;
-}
-
-#section2 a {
-  text-decoration: none;
-  color: #000000;
-  font-size: 18px;
-}
-
-.owl-stage-outer {
-  height: 100px;
-  margin: 10px;
-  text-align: center;
-  padding: 40px 0;
-  background-color: #b5d622;
-  color: #000000;
-}
-
-/** section3 **/
-#section3 {
-  font-size: 12px;
-}
 
 /** timeline clausulas **/
 ul.timeline {
@@ -179,6 +144,10 @@ ul.timeline > li:before {
 
 
 /** footer **/
+.icon-home{
+  width: 25px;
+  height: 25px;
+}
 .text-link-footer {
   color: #ffffff;
   text-decoration: none;
@@ -241,11 +210,7 @@ ul.timeline > li:before {
  **/
 
 /** navbar **/
-.nav-link:hover{
-  color: #1d68a7 !important;
-}
 .dropdown-item:hover, .dropdown-item:focus{
-  color: #1d68a7;
   text-decoration: none;
   background-color: #c6c8ca;
 }
@@ -285,6 +250,19 @@ ul.timeline > li:before {
   transition-duration: 500ms;
   transition-timing-function: ease-in;
   transition-delay: initial;
+}
+
+/** owl slider **/
+.owl-stage-outer {
+  height: 100px;
+  margin: 10px;
+  text-align: center;
+  padding: 40px 0;
+  background-color: #534D95;
+  color: $light;
+}
+.owl-stage-outer a{
+  color: $light;
 }
 
 
@@ -335,11 +313,12 @@ ul.timeline > li:before {
   #box-search-one{
     display: none;
   }
-}
-@media (max-width: 992px) {
   #input-search .input-group{
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+  .text-center-person {
+    text-align: center !important;
   }
 }
 @media (min-width: 993px) and (max-width: 1023px){
