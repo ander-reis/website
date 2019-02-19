@@ -20,7 +20,7 @@
 <body>
 <div id="app">
 
-@component('website.components.layout-1._navbar')@endcomponent
+@component('website.components._navbar')@endcomponent
 
     <main id="container" class="container py-4">
         @yield('content')
@@ -29,7 +29,7 @@
     <div id="push"></div>
 </div>
 
-@component('website.components.layout-1._footer')@endcomponent
+@component('website.components._footer')@endcomponent
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

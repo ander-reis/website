@@ -4,7 +4,7 @@
 
     {{--listar noticias--}}
     @if(isset($noticias))
-        @component('website.noticias._listar-noticias', ['noticias' => $noticias])@endcomponent
+        @component('website.noticias._listar-noticias-2', ['noticias' => $noticias])@endcomponent
     @endif
 
     {{--noticia--}}

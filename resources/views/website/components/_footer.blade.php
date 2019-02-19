@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-md-3 mb-4">
                 <img src="{{ asset('images/layout-1/footer/logo_sinprosp.png') }}" alt="SinproSP">
-                <p>Sindicato dos Professores de São Paulo</p>
+                <p class="text-footer">Sindicato dos Professores de São Paulo</p>
                 <div>Tel: (11) 5080-5988</div>
             </div>
             <div class="col-md-3 mt-3">
