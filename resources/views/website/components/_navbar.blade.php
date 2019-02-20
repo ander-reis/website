@@ -31,8 +31,8 @@
                             <a class="dropdown-item text-white" href="#">Localização</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Notícias</a>
+                    <li class="nav-item {{ active('noticias.*') }}">
+                        <a class="nav-link" href="{{ route('noticias.index') }}">Notícias</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
