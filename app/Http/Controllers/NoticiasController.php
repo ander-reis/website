@@ -13,7 +13,7 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = Noticias::where('fl_oculta', 1)->paginate();
+        $noticias = Noticias::where('fl_oculta', 1)->paginate(12);
 
         return view('website.noticias.index', compact('noticias'));
     }

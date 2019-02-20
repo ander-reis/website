@@ -1,0 +1,176 @@
+[33mcommit 79f3fe86a0d38d9097826fbd68485759113b6244[m
+Author: Ronaldo Araujo <ronaldo@sinprosp.org.br>
+Date:   Wed Feb 20 09:18:45 2019 -0300
+
+    menu em degrade
+
+[33mcommit 11dbfc1f7fdd992ee2fde7b15d31fb9a2f19bd78[m
+Author: Ronaldo Araujo <ronaldo@sinprosp.org.br>
+Date:   Tue Feb 19 16:11:02 2019 -0300
+
+    teste no slider
+
+[33mcommit 93a34b755f97fcb526aca3da3236a7322954ab6e[m
+Author: Ronaldo Araujo <ronaldo@sinprosp.org.br>
+Date:   Tue Feb 19 15:27:36 2019 -0300
+
+    Noticias
+
+[33mcommit 2e2fe4e456665837f3f136c8ee4a838d90f676e4[m
+Author: Ronaldo Araujo <ronaldo@sinprosp.org.br>
+Date:   Mon Feb 18 19:27:26 2019 -0300
+
+    Correcao dos textos do site
+
+[33mcommit 292711fd5100135997ae3262a77cb68a44dc8562[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Mon Feb 18 16:32:28 2019 -0300
+
+    criação layout-1
+
+[33mcommit 2062449a0d5c3619e81f151ddb2b672cac7ac38c[m
+Merge: 11e7296 ce368ef
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Mon Feb 18 07:38:39 2019 -0300
+
+    Merge remote-tracking branch 'github/master'
+
+[33mcommit ce368ef7f728950fec9094393f4fabf87ac368f4[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Sun Feb 17 22:59:39 2019 -0300
+
+    alterações casa
+
+[33mcommit 11e72966fa70116cb9080ae0385768c148e955a3[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 15 16:39:07 2019 -0200
+
+    Commit Teste
+
+[33mcommit 9cad9db5e424b4223781ed060d382fbc89be8dc1[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 15 16:36:11 2019 -0200
+
+    Alterações para novo layout. Terceiro commit
+
+[33mcommit a7205d5bd1f921784f349ece2f601de68cf97bac[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 15 16:33:11 2019 -0200
+
+    Alterações para novo layout. Segundo commit
+
+[33mcommit 5e81eaa85be161b137a606910e9d8067ff654c10[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 15 16:30:20 2019 -0200
+
+    Alterações para novo layout.
+
+[33mcommit aa2afd277eed21fe607199de36defa3d416b564f[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 8 16:23:55 2019 -0200
+
+    Alterações frontend.
+    Alterado colunas do section 1 da home page.
+
+[33mcommit ceb522ba8e41bddde33056bcfff5f75859d8b3df[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 8 16:22:30 2019 -0200
+
+    Alterações frontend.
+    Alterado colunas do section 1 da home page.
+
+[33mcommit f0a73bea5de01f12cf781010278bc93595bf3f1d[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 8 14:49:54 2019 -0200
+
+    commit anderson
+
+[33mcommit 9a39e332bc9de95a3a4aee950e2e6bcd0318c43b[m
+Author: Ronaldo Araujo <ronaldo@sinprosp.org.br>
+Date:   Fri Feb 8 14:10:49 2019 -0200
+
+    Teste de Commit
+
+[33mcommit 9cffa1c084b153086800af27cb8526664426bcc8[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Feb 8 13:29:16 2019 -0200
+
+    commit alterações site
+
+[33mcommit b6502a427da20326e75fb52b664a3abb8442c12f[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Wed Jan 30 09:46:06 2019 -0200
+
+    refatorção database
+
+[33mcommit c423b923df5ec7089168ef35d1eac8d2139db5a7[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Fri Jan 25 16:51:13 2019 -0200
+
+    cep edit
+
+[33mcommit 609393a9d1e1a1689c16d22a4cd66c4ac47e6850[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Fri Jan 25 14:56:20 2019 -0200
+
+    cep ajax
+
+[33mcommit 2a7185e89cc05699c3b3e3380b35139b763ed5a4[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Jan 25 14:34:58 2019 -0200
+
+    user website
+
+[33mcommit d65f256e5e96f634c335682978404ed6a85a7f83[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Thu Jan 24 16:25:09 2019 -0200
+
+    página dados pessoal
+
+[33mcommit 8451920775445b4172e41ecaeed405e36064a5c6[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Jan 11 16:52:30 2019 -0200
+
+    webiste dados pessoais e escolas
+
+[33mcommit c965a095eb24390723ce4487df6a96048bc561e1[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Tue Jan 8 17:54:38 2019 -0200
+
+    alterações casa
+
+[33mcommit ce7818aa6cca38d38f10feae7826b5ebffa69b81[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Wed Dec 19 15:43:36 2018 -0200
+
+    criação admin website
+
+[33mcommit a2471807bca98a525909011d5210f9d089d94ce4[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Mon Dec 17 16:48:53 2018 -0200
+
+    alterações
+
+[33mcommit 88583a99ff09217f80df01bb4cfcbf3c1b2e3af3[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Sun Dec 16 18:35:09 2018 -0200
+
+    paginas principais
+
+[33mcommit 2e2430f04eca4d1bb075ff8b1de66117ce0d6776[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Fri Dec 14 16:48:34 2018 -0200
+
+    convençoes e acordo
+
+[33mcommit f7f8352ae4d61175015a575549cba47814775a5d[m
+Author: Anderson <anderson@sinprosp.org.br>
+Date:   Mon Dec 10 16:18:41 2018 -0200
+
+    Alterações login
+
+[33mcommit cdfd2d2f3925ae1827c916e0804821d40d0c53e5[m
+Author: Desktop Casa <ander-reis@hotmail.com>
+Date:   Sun Dec 9 18:52:17 2018 -0200
+
+    Initial commit
