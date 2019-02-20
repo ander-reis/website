@@ -15,7 +15,7 @@
             <div class="col-12 col-sm-4 col-lg-4">
                 <img src="{{ asset('images/layout-1/eventos/70anos.jpg') }}" class="img-fluid" alt="">
                 <p class="mt-2">
-                    Se tornando sócio, vc ajuda a fortalecer a representatividade do SinproSP
+                    Vídeo da Unesco marca os 70 anos da Declaração Universal dos Direitos do Homem
                 </p>
             </div>
 

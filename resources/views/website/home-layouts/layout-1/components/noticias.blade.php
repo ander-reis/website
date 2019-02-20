@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">Encontros de mobilização dias 16 e 23/02 preparam assembleia com
+                    <h2 class="text-dark font-weight-bold">Encontros de mobilização dias 16 e 23/02 preparam assembleia com
                         falta abonada</h3>
                     <p class="text-justify">
                         Dias 16 e 23 estão previstos encontros de mobilização para organizar a categoria para a
@@ -18,8 +18,8 @@
                 </div>
 
                 <div class="row">
-                    <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">O que você deve saber sobre redução de carga horária no início do
+                    <h6 class="text-danger">DIREITOS DO PROFESSOR</h6>
+                    <h4 class="text-dark">O que você deve saber sobre redução de carga horária no início do
                         ano
                         letivo</h3>
                     <p class="text-justify">
@@ -32,7 +32,7 @@
 
                 <div class="row">
                     <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">Confira como foi a rodada de negociação com o Sieeesp, dia 12/02</h3>
+                    <h4 class="text-dark">Confira como foi a rodada de negociação com o Sieeesp, dia 12/02</h3>
                     <p class="text-justify">
                         A comissão que representa professores e trabalhadores não docentes das escolas de
                         educação básica insistiu na defesa da pauta de reivindicações, que prevê reajuste,
@@ -56,7 +56,7 @@
         <div class="mt-2">
             <h6 class="text-cinza">SOBRE SAI DE BAIXO</h6>
             <p>
-                Por que um programa de m... fazia tanto sucesso?, brinca Luis Gustavo
+                Por que um programa de m... fazia sucesso?, brinca Luis Gustavo
             </p>
         </div>
     </div>
