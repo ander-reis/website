@@ -38,7 +38,7 @@
                 <img class="d-block w-100" src="{{ asset('images/layout-1/slider/slider_1.jpeg') }}" alt="Campanha Salarial 2019">
                 <div class="carousel-caption">
                     <h5 class="mt-3">Campanha Salarial 2019</h5>
-                    <p>Venha participar. Faça sua parte e participe<br /> &nbsp;</p>
+                    <p>Venha participar. Faça sua parte</p>
                 </div>
             </div>
             <div class="carousel-item">
