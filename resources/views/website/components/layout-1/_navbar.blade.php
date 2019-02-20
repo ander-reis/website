@@ -1,5 +1,6 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bk6"> 
+        <!-- navbar-dark bg-dark  -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +25,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             SinproSP
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu nav-bk6" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Quem Somos</a>
                             <a class="dropdown-item text-white" href="#">Diretoria</a>
                             <a class="dropdown-item text-white" href="#">Estatuto</a>
@@ -39,7 +40,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             À Definir
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu nav-bk6" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Ranking de Salários</a>
                             <a class="dropdown-item text-white" href="#">Convenções e Acordos</a>
                             <a class="dropdown-item text-white" href="#">Relação de Escolas</a>
