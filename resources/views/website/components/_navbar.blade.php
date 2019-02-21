@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark nav-bk7">
+    <nav class="navbar navbar-expand-lg navbar-dark nav-degrade">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             SinproSP
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-bk7" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Quem Somos</a>
                             <a class="dropdown-item text-white" href="#">Diretoria</a>
                             <a class="dropdown-item text-white" href="#">Estatuto</a>
@@ -39,7 +39,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             À Definir
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-bk7" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Ranking de Salários</a>
                             <a class="dropdown-item text-white" href="#">Convenções e Acordos</a>
                             <a class="dropdown-item text-white" href="#">Relação de Escolas</a>
@@ -53,7 +53,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Fale com o SinproSP
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Sindicalize-se</a>
                             <a class="dropdown-item text-white" href="#">Fale Conosco</a>
                             <a class="dropdown-item text-white" href="#">Boletim Eletrônico</a>
@@ -66,7 +66,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Serviços
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Atendimento Jurídico</a>
                             <a class="dropdown-item text-white" href="#">Atendimento Previdenciário</a>
                             <a class="dropdown-item text-white" href="#">Atendimento Médico</a>
@@ -83,7 +83,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Convenções e Acordos
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Educação Básica</a>
                             <a class="dropdown-item text-white" href="#">Educação Superior</a>
                             <a class="dropdown-item text-white" href="#">Senai</a>
@@ -98,7 +98,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Acervo
                         </a>
-                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Boletim Digital</a>
                             <a class="dropdown-item text-white" href="#">Publicações Especiais</a>
                             <a class="dropdown-item text-white" href="#">Áudio</a>
