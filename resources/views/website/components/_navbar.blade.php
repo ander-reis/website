@@ -11,9 +11,9 @@
         </div> <!-- logo -->
 
         <div class="col-2 d-lg-none text-right">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" id="search-two">
+            <a href="#" id="search-two" class="btn btn-outline-light my-2 my-sm-0 search-toggle">
                 <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
+            </a>
         </div> <!-- search -->
 
         <div class="col-lg-9">
@@ -112,17 +112,17 @@
         </div> <!-- menu desktop -->
 
         <div id="box-search-one" class="col-1 col-lg-1 text-right">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="button" id="search-one">
+            <a href="#" id="search-one" class="btn btn-outline-light my-2 my-sm-0 search-toggle">
                 <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
+            </a>
         </div> <!-- search -->
     </nav>
 
-    <div id="input-search" class="bg-dark" style="display: none">
+    <div class="bg-dark search-bar">
         <div class="container">
             <div class="col-12">
                 <form>
-                    <div class="input-group">
+                    <div class="input-group mt-2">
                         <input type="text" class="form-control" placeholder="Faça sua pesquisa" aria-label="Busca" aria-describedby="button-find-search">
                         <div class="input-group-append">
                             <button class="btn btn-outline-light" type="button" id="button-find-search">Enviar</button>
