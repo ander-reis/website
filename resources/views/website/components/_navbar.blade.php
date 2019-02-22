@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark nav-degrade">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             SinproSP
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Quem Somos</a>
                             <a class="dropdown-item text-white" href="#">Diretoria</a>
                             <a class="dropdown-item text-white" href="#">Estatuto</a>
@@ -41,7 +41,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             À Definir
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Ranking de Salários</a>
                             <a class="dropdown-item text-white" href="#">Convenções e Acordos</a>
                             <a class="dropdown-item text-white" href="#">Relação de Escolas</a>
@@ -55,7 +55,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Fale com o SinproSP
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Sindicalize-se</a>
                             <a class="dropdown-item text-white" href="#">Fale Conosco</a>
                             <a class="dropdown-item text-white" href="#">Boletim Eletrônico</a>
@@ -68,7 +68,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Serviços
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Atendimento Jurídico</a>
                             <a class="dropdown-item text-white" href="#">Atendimento Previdenciário</a>
                             <a class="dropdown-item text-white" href="#">Atendimento Médico</a>
@@ -86,12 +86,13 @@
                             Convenções e Acordos
                         </a>
                         <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 2) }}">Educação Básica</a>
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 1) }}">Educação Superior</a>
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 4) }}">Senai</a>
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 3) }}">Sesi</a>
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 5) }}">Senai Superior</a>
-                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 6) }}">Senac</a>
+                            <a class="dropdown-item text-white" href="#">Educação Básica</a>
+                            <a class="dropdown-item text-white" href="#">Educação Superior</a>
+                            <a class="dropdown-item text-white" href="#">Senai</a>
+                            <a class="dropdown-item text-white" href="#">Sesi</a>
+                            <a class="dropdown-item text-white" href="#">Senai Superior</a>
+                            <a class="dropdown-item text-white" href="#">Senac</a>
+                            <a class="dropdown-item text-white" href="#">Outros</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -99,7 +100,7 @@
                            aria-haspopup="true" aria-expanded="false">
                             Acervo
                         </a>
-                        <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item text-white" href="#">Boletim Digital</a>
                             <a class="dropdown-item text-white" href="#">Publicações Especiais</a>
                             <a class="dropdown-item text-white" href="#">Áudio</a>
