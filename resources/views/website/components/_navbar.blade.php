@@ -86,13 +86,12 @@
                             Convenções e Acordos
                         </a>
                         <div class="dropdown-menu navbar-dark nav-degrade" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-white" href="#">Educação Básica</a>
-                            <a class="dropdown-item text-white" href="#">Educação Superior</a>
-                            <a class="dropdown-item text-white" href="#">Senai</a>
-                            <a class="dropdown-item text-white" href="#">Sesi</a>
-                            <a class="dropdown-item text-white" href="#">Senai Superior</a>
-                            <a class="dropdown-item text-white" href="#">Senac</a>
-                            <a class="dropdown-item text-white" href="#">Outros</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 2) }}">Educação Básica</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 1) }}">Educação Superior</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 4) }}">Senai</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 3) }}">Sesi</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 5) }}">Senai Superior</a>
+                            <a class="dropdown-item text-white" href="{{ route('convencao.index', 6) }}">Senac</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
