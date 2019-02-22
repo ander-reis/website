@@ -220,6 +220,12 @@ ul.timeline > li:before {
   background-color: #c6c8ca;
 }
 
+.nav-degrade{
+  background: #2C5364;
+  background: -webkit-linear-gradient(to right, #203A43, #2C5364);
+  background: linear-gradient(to right, #203A43, #2C5364);
+}
+
 /** back to top **/
 #return-to-top {
   position: fixed;
@@ -411,9 +417,3 @@ ul.timeline > li:before {
 //@media screen and (max-width: 320px) and (orientation: portrait) {
 //  body { width: 320px !important; }
 //}
-
-  .nav-degrade{
-    background: #2C5364;  
-    background: -webkit-linear-gradient(to right, #203A43, #2C5364);  
-    background: linear-gradient(to right, #203A43, #2C5364); 
-    }
