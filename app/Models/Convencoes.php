@@ -17,6 +17,8 @@ class Convencoes extends Model
      */
     protected $table = 'tb_sinpro_convencoes';
 
+    protected $primaryKey = 'id_convencao';
+
     /**
      * Relacionamento convencoes para clausulas, muitos para muitos
      *

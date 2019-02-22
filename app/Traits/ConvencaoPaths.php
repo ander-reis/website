@@ -17,7 +17,7 @@ trait ConvencaoPaths
      */
     public function getConvencaoFolderStorageAttribute()
     {
-        return "convencao/{$this->id}";
+        return "convencao/{$this->id_convencao}";
     }
 
     /**
@@ -47,7 +47,7 @@ trait ConvencaoPaths
      */
     public function getConvencaoAssetAttribute()
     {
-        return route('admin.convencao.asset', ['id' => $this->id]);
+        return route('admin.convencao.asset', ['id' => $this->id_convencao]);
     }
 
     /**
@@ -57,6 +57,6 @@ trait ConvencaoPaths
      */
     public function getConvencaoWebAssetAttribute()
     {
-        return route('convencao.asset', ['id' => $this->id]);
+        return route('convencao.asset', ['id' => $this->id_convencao]);
     }
 }

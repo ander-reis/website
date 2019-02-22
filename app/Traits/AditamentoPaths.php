@@ -16,7 +16,7 @@ trait AditamentoPaths
      */
     public function getAditamentoFolderStorageAttribute()
     {
-        return "aditamento/{$this->id}";
+        return "aditamento/{$this->id_convencao}";
     }
 
     /**
@@ -46,7 +46,7 @@ trait AditamentoPaths
      */
     public function getAditamentoAssetAttribute()
     {
-        return route('admin.aditamento.asset', ['id' => $this->id]);
+        return route('admin.aditamento.asset', ['id' => $this->id_convencao]);
     }
 
     /**
@@ -56,6 +56,6 @@ trait AditamentoPaths
      */
     public function getAditamentoWebAssetAttribute()
     {
-        return route('aditamento.asset', ['id' => $this->id]);
+        return route('aditamento.asset', ['id' => $this->id_convencao]);
     }
 }
