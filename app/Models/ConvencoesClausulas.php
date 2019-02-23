@@ -14,6 +14,8 @@ class ConvencoesClausulas extends Model
      */
     protected $table = 'tb_sinpro_convencoes_clausulas';
 
+    protected $primaryKey = 'id_clausula';
+
     /**
      * Accessor formata ds_titulo para 6 palavras
      *

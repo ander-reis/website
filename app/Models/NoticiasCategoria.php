@@ -12,4 +12,6 @@ class NoticiasCategoria extends Model
      * @var $table string
      */
     protected $table = 'tb_sinpro_noticias_categorias';
+
+    protected $primaryKey = 'id_categoria';
 }

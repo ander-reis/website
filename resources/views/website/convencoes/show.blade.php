@@ -19,7 +19,7 @@
         </p>
     @endif
 
-    @isset($clausulas->first()->id)
+    @isset($clausulas->first()->id_clausula)
         <table class="table">
             <thead>
             <tr>
@@ -34,8 +34,8 @@
                     <td>
                         <a href="{{ route('clausulas.show', [
                             'convencoes_entidade' => $convencao->fl_entidade,
-                            'convencao' => $convencao->id,
-                            'convencao_clausula' => $clausula->id]) }}" class="text-link">{{ $clausula->ds_titulo }}</a>
+                            'convencao' => $convencao->id_convencao,
+                            'convencao_clausula' => $clausula->id_clausula]) }}" class="text-link">{{ $clausula->ds_titulo }}</a>
                     </td>
                 </tr>
             @endforeach

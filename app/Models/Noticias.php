@@ -14,6 +14,8 @@ class Noticias extends Model
      */
     protected $table = 'tb_sinpro_noticias';
 
+    protected $primaryKey = 'id_noticia';
+
     /**
      * Relacionamento noticias para categorias, um para um
      *

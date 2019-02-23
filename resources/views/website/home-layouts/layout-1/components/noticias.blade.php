@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">Encontros de mobilização dias 16 e 23/02 preparam assembleia com
+                    <h2 class="text-dark font-weight-bold">Encontros de mobilização dias 16 e 23/02 preparam assembleia com
                         falta abonada</h3>
                     <p class="text-justify">
                         Dias 16 e 23 estão previstos encontros de mobilização para organizar a categoria para a
@@ -18,8 +18,8 @@
                 </div>
 
                 <div class="row">
-                    <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">O que você deve saber sobre redução de carga horária no início do
+                    <h6 class="text-danger">DIREITOS DO PROFESSOR</h6>
+                    <h4 class="text-dark">O que você deve saber sobre redução de carga horária no início do
                         ano
                         letivo</h3>
                     <p class="text-justify">
@@ -32,7 +32,7 @@
 
                 <div class="row">
                     <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-                    <h3 class="text-dark">Confira como foi a rodada de negociação com o Sieeesp, dia 12/02</h3>
+                    <h4 class="text-dark">Confira como foi a rodada de negociação com o Sieeesp, dia 12/02</h3>
                     <p class="text-justify">
                         A comissão que representa professores e trabalhadores não docentes das escolas de
                         educação básica insistiu na defesa da pauta de reivindicações, que prevê reajuste,
@@ -49,77 +49,52 @@
 </div>
 
 <div class="row">
+
     <div class="col-12 col-sm-6 col-lg-3 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
         <h6 class="text-danger">DENÚNCIA</h6>
-        <div class="text-left">
-            <img src="{{ asset('images/layout-1/noticias/luis-gustavo.jpg') }}" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="text-left">
-                    <h6 class="text-danger mt-2">SOBRE SAI DE BAIXO</h6>
-                    <p>
-                        Por que um programa de m... fazia tanto sucesso?, brinca Luis Gustavo
-                    </p>
-                </div>
-
-            </div>
+        <img src="{{ asset('images/layout-1/noticias/luis-gustavo.jpg') }}" class="img-fluid" alt="">
+        <div class="mt-2">
+            <h6 class="text-cinza">SOBRE SAI DE BAIXO</h6>
+            <p>
+                Por que um programa de m... fazia sucesso?, brinca Luis Gustavo
+            </p>
         </div>
     </div>
 
     <div class="col-12 col-sm-6 col-lg-3 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
         <h6 class="text-danger">CAMPANHA SALARIAL</h6>
-        <div class="text-left">
-            <img src="{{ asset('images/layout-1/noticias/romero.jpg') }}" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="text-left">
-                    <h6 class="text-danger mt-2">NEGOCIAÇÃO ABERTA</h6>
-                    <p>
-                        Corinthians e Romero discutem salário em dólar
-                    </p>
-                </div>
-
-            </div>
+        <img src="{{ asset('images/layout-1/noticias/romero.jpg') }}" class="img-fluid" alt="">
+        <div class="mt-2">
+            <h6 class="text-cinza">NEGOCIAÇÃO ABERTA</h6>
+            <p>
+                Corinthians e Romero discutem salário em dólar
+            </p>
         </div>
     </div>
 
     <div class="col-12 col-sm-6 col-lg-3 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
         <h6 class="text-danger">DENÚNCIA</h6>
-        <div class="text-left">
-            <img src="{{ asset('images/layout-1/noticias/jose-simao.jpg') }}" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="text-left">
-                    <h6 class="text-danger mt-2">O ADEUS AO JORNALISTA</h6>
-                    <p>
-                        'Vou sentir uma falta horrível, diz José Simão sobre Boechat'
-                    </p>
-                </div>
-            </div>
+        <img src="{{ asset('images/layout-1/noticias/jose-simao.jpg') }}" class="img-fluid" alt="">
+        <div class="mt-2">
+            <h6 class="text-cinza">O ADEUS AO JORNALISTA</h6>
+            <p>
+                'Vou sentir uma falta horrível, diz José Simão sobre Boechat'
+            </p>
         </div>
     </div>
 
     <div class="col-12 col-sm-6 col-lg-3 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
         <h6 class="text-danger">CURIOSIDADE</h6>
-        <div class="text-left">
-            <img src="{{ asset('images/layout-1/noticias/tito-e-os-passaros.jpg') }}" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="text-left">
-                    <h6 class="text-danger mt-1">TITO E OS PÁSSAROS</h6>
-                    <p>
-                        Animação faz alerta sobre a cultura do medo
-                    </p>
-                </div>
-            </div>
+        <img src="{{ asset('images/layout-1/noticias/tito-e-os-passaros.jpg') }}" class="img-fluid" alt="">
+        <div class="mt-2">
+            <h6 class="text-cinza">TITO E OS PÁSSAROS</h6>
+            <p>
+                Animação faz alerta sobre a cultura do medo
+            </p>
         </div>
     </div>
 
-    <div class="col-lg-12 border border-light text-center">
+    <div class="col-12 border border-light text-center">
         <a href="#">Veja outras notícias</a>
     </div>
 </div>
