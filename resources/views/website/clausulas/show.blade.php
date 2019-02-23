@@ -5,13 +5,29 @@
     {{ Breadcrumbs::render('clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
 
     <div class="row">
-        {{--{{dd($convencao_clausula)}}--}}
-
         <div class="col-md-8">
             <h1>{{ $convencao_clausula->ds_titulo }}</h1>
             <p>{{ $convencao_clausula->ds_texto }}</p>
 
-            {{ $paginate->links() }}
+            <div class="text-center">
+                @isset($previous)
+                    <a href="{{ route('clausulas.show', [
+                                        'convencoes_entidade' => $convencoes_entidade,
+                                        'convencao' => $convencao,
+                                        'convencao_clausula' => $previous->id_clausula]) }}"
+                       class="btn btn-outline-secondary">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        &nbsp;Cláusula {{ $previous->num_clausula }}</a>
+                @endisset
+                @isset($next)
+                    <a href="{{ route('clausulas.show', [
+                                        'convencoes_entidade' => $convencoes_entidade,
+                                        'convencao' => $convencao,
+                                        'convencao_clausula' => $next->id_clausula]) }}"
+                       class="btn btn-outline-secondary">
+                        Cláusula {{ $next->num_clausula }}&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                @endisset
+            </div>
         </div>
 
         <div class="col-md-4">

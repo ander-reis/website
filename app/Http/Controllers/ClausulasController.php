@@ -22,8 +22,12 @@ class ClausulasController extends Controller
 
         $clausulas = $convencao->clausulas()->where('fl_ativo', 1)->orderBy('num_clausula')->get();
 
-        $paginate = $convencao->clausulas()->where('fl_ativo', 1)->orderBy('num_clausula')->paginate(1);
+        /**
+         * previos e next pagina clausula
+         */
+        $previous = $clausulas->where('num_clausula', '<', $convencao_clausula->num_clausula)->last();
+        $next = $clausulas->where('num_clausula', '>', $convencao_clausula->num_clausula)->first();
 
-        return view('website.clausulas.show', compact('convencoes_entidade', 'convencao', 'convencao_clausula', 'clausulas', 'paginate'));
+        return view('website.clausulas.show', compact('convencoes_entidade', 'convencao', 'convencao_clausula', 'clausulas', 'previous', 'next'));
     }
 }
