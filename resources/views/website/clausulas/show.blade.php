@@ -9,7 +9,7 @@
             <h1>{{ $convencao_clausula->ds_titulo }}</h1>
             <p>{{ $convencao_clausula->ds_texto }}</p>
 
-            <div class="text-center">
+            <div class="text-center mt-3 mb-3">
                 @isset($previous)
                     <a href="{{ route('clausulas.show', [
                                         'convencoes_entidade' => $convencoes_entidade,
