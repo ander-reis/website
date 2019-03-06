@@ -4,10 +4,11 @@ namespace Website\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Yadahan\AuthenticationLog\AuthenticationLogable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, AuthenticationLogable;
 
     /**
      * Conexão database SINPRO

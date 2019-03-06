@@ -20,13 +20,13 @@ Route::name('home')->get('/', 'HomeController@index');
  * rotas auth: login, logout, register, remember password
  */
 //Auth::routes();
-Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login');
+Route::name('login')->get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login');
 
 /**
  * logout
  */
-Route::name('logout')->post('logout', 'Auth\LoginController@logout');
+Route::name('logout')->post('/logout', 'Auth\LoginController@logout');
 
 /**
  * rota noticias
