@@ -32,7 +32,7 @@
                 <tr>
                     <td class="text-center">{{ $clausula->num_clausula }}</td>
                     <td>
-                        <a href="{{ route('clausulas.show', [
+                        <a href="{{ route('convencao.clausulas.show', [
                             'convencoes_entidade' => $convencao->fl_entidade,
                             'convencao' => $convencao->id_convencao,
                             'convencao_clausula' => $clausula->id_clausula]) }}" class="text-link">{{ $clausula->ds_titulo }}</a>

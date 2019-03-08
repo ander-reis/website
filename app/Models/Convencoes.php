@@ -8,7 +8,7 @@ use Website\Traits\ConvencaoPaths;
 
 class Convencoes extends Model
 {
-    use ConvencaoPaths, AditamentoPaths;
+    use ConvencaoPaths;
 
     /**
      * Table
