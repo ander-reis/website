@@ -95,6 +95,6 @@
     </div>
 
     <div class="col-12 border border-light text-center">
-        <a href="#">Veja outras notícias</a>
+        <a href="noticias">Veja outras notícias</a>
     </div>
 </div>
