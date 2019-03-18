@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{ Breadcrumbs::render('clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
+    {{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
 
     <div class="row">
         <div class="col-md-8">
@@ -11,7 +11,7 @@
 
             <div class="text-center mt-3 mb-3">
                 @isset($previous)
-                    <a href="{{ route('clausulas.show', [
+                    <a href="{{ route('convencao.clausulas.show', [
                                         'convencoes_entidade' => $convencoes_entidade,
                                         'convencao' => $convencao,
                                         'convencao_clausula' => $previous->id_clausula]) }}"
@@ -20,7 +20,7 @@
                         &nbsp;Cláusula {{ $previous->num_clausula }}</a>
                 @endisset
                 @isset($next)
-                    <a href="{{ route('clausulas.show', [
+                    <a href="{{ route('convencao.clausulas.show', [
                                         'convencoes_entidade' => $convencoes_entidade,
                                         'convencao' => $convencao,
                                         'convencao_clausula' => $next->id_clausula]) }}"
@@ -41,7 +41,7 @@
                     @foreach($clausulas as $clausula)
                         <li>
                             <p>Cláusula {{ $clausula->num_clausula }}</p>
-                            <a href="{{ route('clausulas.show', [
+                            <a href="{{ route('convencao.clausulas.show', [
                                         'convencoes_entidade' => $convencoes_entidade,
                                         'convencao' => $convencao,
                                         'convencao_clausula' => $clausula->id_clausula]) }}"

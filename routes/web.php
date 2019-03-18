@@ -20,13 +20,13 @@ Route::name('home')->get('/', 'HomeController@index');
  * rotas auth: login, logout, register, remember password
  */
 //Auth::routes();
-Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login');
+Route::name('login')->get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login');
 
 /**
  * logout
  */
-Route::name('logout')->post('logout', 'Auth\LoginController@logout');
+Route::name('logout')->post('/logout', 'Auth\LoginController@logout');
 
 /**
  * rota noticias
@@ -41,9 +41,11 @@ Route::name('aditamento.asset')->get('/pdf-aditamento/{convencao}', 'ConvencoesC
 /***
  * Convençoes e acordo
  */
-Route::name('convencao.index')->get('/convencao-e-acordo/{convencoes_entidade}', 'ConvencoesController@index');
-Route::name('convencao.show')->get('/convencao-e-acordo/{convencoes_entidade}/convencao/{convencao}', 'ConvencoesController@show');
-Route::name('clausulas.show')->get('/convencao-e-acordo/{convencoes_entidade}/convencao/{convencao}/clausula/{convencao_clausula}', 'ClausulasController@show');
+Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.'], function(){
+    Route::name('index')->get('{convencoes_entidade}', 'ConvencoesController@index');
+    Route::name('show')->get('{convencoes_entidade}/convencao/{convencao}', 'ConvencoesController@show');
+    Route::name('clausulas.show')->get('{convencoes_entidade}/convencao/{convencao}/clausula/{convencao_clausula}', 'ClausulasController@show');
+});
 
 /**
  * páginas principais

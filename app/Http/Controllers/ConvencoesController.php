@@ -4,6 +4,7 @@ namespace Website\Http\Controllers;
 
 use Website\Models\Convencoes;
 use Website\Models\ConvencoesEntidade;
+use Illuminate\Support\Facades\Artisan;
 
 class ConvencoesController extends Controller
 {
@@ -56,6 +57,7 @@ class ConvencoesController extends Controller
      */
     public function convencaoWebAsset(Convencoes $convencao)
     {
+        Artisan::call('cache:clear');
         return response()->file($convencao->convencao_path);
     }
 
@@ -67,6 +69,7 @@ class ConvencoesController extends Controller
      */
     public function aditamentoWebAsset(Convencoes $convencao)
     {
+        Artisan::call('cache:clear');
         return response()->file($convencao->aditamento_path);
     }
 }

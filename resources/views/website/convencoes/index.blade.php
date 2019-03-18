@@ -5,6 +5,9 @@
     {{ Breadcrumbs::render('convencao.index', $convencao_entidade) }}
 
     <div class="row">
+
+        @component('website.components._data_exists', ['collection' => $convencoes->isEmpty()])@endcomponent
+
         @foreach($convencoes as $key => $convencao)
             <div class="col-sm-12 mb-3">
                 <div class="card">
