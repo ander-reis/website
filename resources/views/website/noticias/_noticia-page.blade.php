@@ -3,8 +3,8 @@
 <div class="row">
     <div class="col-md-9 mb-3 mb-md-5">
         <h1>{!! $noticia->ds_resumo !!}</h1>
-    </div>
-</div>
+
+{{--</div>--}}
 
 <div class="row mb-5">
     <div class="col-md-12">
@@ -12,11 +12,13 @@
     </div>
 </div>
 
-<div class="row justify-content-md-center">
 
-    <div class="col-md-9 mb-3 mb-md-5">
+{{--<div class="row justify-content-md-center">--}}
+    {{--<div class="col-md-3 mb-3 mb-md-5">--}}
         {!! $noticia->ds_texto !!}
+    {{--</div>--}}
     </div>
-
+<div class="col-md-3">
     @component('website.components._column-right')@endcomponent
+</div>
 </div>
