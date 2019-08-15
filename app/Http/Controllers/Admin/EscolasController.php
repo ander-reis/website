@@ -96,6 +96,5 @@ class EscolasController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('admin.escolas.index')->with('error-message', 'Não foi possível excluir os dados');
         }
-
     }
 }
