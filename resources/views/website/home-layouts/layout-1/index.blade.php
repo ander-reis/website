@@ -14,16 +14,16 @@
 <section class="mt-3 ml-3">
     @component('website.home-layouts.layout-1.components.noticias2')@endcomponent
 </section>
-{{-- <section class="mt-3 ml-2 mr-2"> --}}
+<section class="mt-3 ml-2 mr-2">
     @component('website.home-layouts.layout-1.components.servicos')@endcomponent
-{{-- </section> --}}
-{{-- <section class="mt-3 ml-2 mr-2"> --}}
+</section>
+<section class="mt-3 ml-2 mr-2">
     @component('website.home-layouts.layout-1.components.revista')@endcomponent
-{{-- </section> --}}
+</section>
 
 <hr style="border-top: 1px solid rgb(0, 0, 0);">
 
-{{-- <section class="mt-3 ml-2 mr-2"> --}}
+<section class="mt-3 ml-2 mr-2">
     @component('website.home-layouts.layout-1.components.mapasite')@endcomponent
-{{-- </section> --}}
+</section>
 @endsection
