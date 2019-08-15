@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Site SinproSP') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -17,21 +18,22 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
-<div id="app">
+    <div id="app">
 
-@component('website.components._navbar')@endcomponent
+        @component('website.components.layout-1._header')@endcomponent
 
-    <main id="container" class="container py-4">
-        @yield('content')
-    </main>
+        <main id="container" class="container py-4">
+            @yield('content')
+        </main>
 
-    <div id="push"></div>
-</div>
+        {{-- <div id="push"></div> --}}
 
-@component('website.components._footer')@endcomponent
+        @component('website.components.layout-1._footer')@endcomponent
+    </div>
 
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

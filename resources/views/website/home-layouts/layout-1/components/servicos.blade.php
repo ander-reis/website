@@ -1,44 +1,160 @@
-<div class="line-section" style="border-color: #197EE4"></div>
-<h1 class="text-center">Serviços</h1>
+{{-- 1ª linha de serviços --}}
+<div class="row">
+    <div class="col-lg-12 mt-3">
+        <div class="row">
+            <div class="col-md-3 p-1 servicos1">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-balance-scale fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> ATENDIMENTO <br />
+                            JURÍDICO</span>
+                    </div>
+                </div>
+            </div>
 
-<div class="row mt-3 mt-sm-3 mt-md-3 mt-lg-3">
+            <div class="col-md-3 p-1 servicos1">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-tasks fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> ATENDIMENTO <br />
+                            PREVIDENCIÁRIO</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/juridico.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/previdencia.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/medico.jpg') }}" class="img-fluid" alt="">
-    </div>
+            <div class="col-md-3 p-1 servicos1">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-user-md fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> ATENDIMENTO <br />
+                            MÉDICO</span>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3 p-1 servicos1">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-umbrella-beach fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> COLÔNIA <br />
+                            DE FÉRIAS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row mt-3 mt-sm-3 mt-md-3 mt-lg-3">
+{{-- 2ª linha de serviços --}}
+<div class="row">
+    <div class="col-lg-12 mt-3">
+        <div class="row">
+            <div class="col-md-3 p-1 servicos2">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fab fa-creative-commons-sampling fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> FONOAUDIOLOGIA</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/fonoaudiologia.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/colonia.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/saude.jpg') }}" class="img-fluid" alt="">
-    </div>
+            <div class="col-md-3 p-1 servicos2">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-notes-medical fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> PLANO DE SAÚDE</span>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3 p-1 servicos2">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-handshake fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> CONVÊNIOS <br />
+                            E PARCERIAS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 p-1" style="background: rgb(109, 194, 215)">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-mobile-alt fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> APLICATIVO <br />
+                            DO SINPROSP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row mt-3 mt-sm-3 mt-md-3 mt-lg-3">
+{{-- 3ª linha de serviços --}}
+<div class="row">
+    <div class="col-lg-12 mt-3">
+        <div class="row">
+            <div class="col-md-3 p-1 servicos3">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-comments fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> ATENDIMENTO<br />
+                            ELETRÔNICO</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/convenios.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/curriculo.jpg') }}" class="img-fluid" alt="">
-    </div>
-    <div class="col-12 col-sm-4 col-lg-4 mt-lg-0 mt-md-3 mt-sm-3 mt-3">
-        <img src="{{ asset('images/layout-1/servicos/homologacao.jpg') }}" class="img-fluid" alt="">
-    </div>
+            <div class="col-md-3 p-1 servicos3">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-envelope-open-text fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> RECEBA O BOLETIM<br />
+                            DO SINPROSP</span>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3 p-1 servicos3">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-folder-plus fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> ACERVO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 p-1 servicos3">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fas fa-copy fa-3x text-dark"></i>
+                    </div>
+                    <div class="col-9">
+                        <span class="text-dark servicos_size"> HOMOLOGAÇÃO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
