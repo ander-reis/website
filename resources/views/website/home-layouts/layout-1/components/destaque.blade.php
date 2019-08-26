@@ -1,6 +1,6 @@
 <div class="row">
     {{-- <div class="col-lg-5 mt-lg-0 mt-md-3 mt-sm-3 mt-3"> --}}
-    <div class="col-5 mt-3">
+    <div class="col-lg-5 mt-3">
         @component('website.components.layout-1._slider')@endcomponent
     </div>
     {{-- </div> --}}
@@ -24,7 +24,7 @@
                     <br />
 
                     <span class="text-dark mb-0 manchete_titulo">
-                        Encontros de mobilização dias 16 e 23 de fevereiro preparam assembleia com falta abonada
+                        Encontros de mobilização dias 16 e 23 de fevereiro preparam assembleia com falta abonada1
                     </span>
 
                     <p class="text-dark text-justify manchete_corpo">

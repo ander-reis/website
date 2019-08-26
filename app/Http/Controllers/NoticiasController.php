@@ -13,7 +13,7 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = Noticias::where('fl_oculta', 1)->paginate(12);
+        $noticias = Noticias::where('fl_oculta', 'N')->orderBy('id_noticia', 'desc')->paginate(12);
 
         return view('website.noticias.index', compact('noticias'));
     }
@@ -26,9 +26,9 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
-        $noticia = Noticias::where('fl_oculta', 1)->findOrFail($id);
+        $noticia = Noticias::where('fl_oculta', 'N')->findOrFail($id);
         $ultimasNoticias = Noticias::ultimasNoticias();
 
-        return view('website.noticias.index', compact('noticia', 'ultimasNoticias'));
+        return view('website.noticias._noticia-page', compact('noticia', 'ultimasNoticias'));
     }
 }

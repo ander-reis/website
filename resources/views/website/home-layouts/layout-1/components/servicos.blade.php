@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12 mt-3">
         <div class="row">
-            <div class="col-md-3 p-1 servicos1">
+            <div class="col-md-3 servicos1 pr-md-1">
                 <div class="row">
                     <div class="col-3">
                         <i class="fas fa-balance-scale fa-3x text-dark"></i>
@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 p-1 servicos1">
+            <div class="col-md-3 servicos1  pl-md-2">
                 <div class="row">
                     <div class="col-3">
                         <i class="fas fa-tasks fa-3x text-dark"></i>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3 p-1 servicos1">
+            <div class="col-md-3 m-0 servicos1">
                 <div class="row">
                     <div class="col-3">
                         <i class="fas fa-umbrella-beach fa-3x text-dark"></i>

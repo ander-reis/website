@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row m-1">
     <div class="col-lg-12 mt-3">
         <div class="row">
             <div class="col-md-3 p-0 pr-4">

@@ -1,4 +1,4 @@
-<footer class="header_footer">
+<footer class="header_footer footer">
     <div class="container">
         <div class="row pt-2">
             <div class="col-md-8 offset-md-3 header_footer">
