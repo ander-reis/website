@@ -34,6 +34,17 @@ Route::name('logout')->post('/logout', 'Auth\LoginController@logout');
 Route::resource('noticias', 'NoticiasController', ['only' => ['index', 'show']]);
 
 /**
+ * rota quem somos
+ */
+Route::resource('quemsomos', 'QuemSomosController', ['only' => ['index']]);
+
+/**
+ * rota estatudo
+ */
+Route::resource('estatuto', 'EstatutoController', ['only' => ['index']]);
+
+
+/**
  * rotas para download do pdf
  */
 Route::name('convencao.asset')->get('/pdf/{convencao}', 'ConvencoesController@convencaoWebAsset');
