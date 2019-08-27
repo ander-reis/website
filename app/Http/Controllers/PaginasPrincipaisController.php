@@ -2,9 +2,7 @@
 
 namespace Website\Http\Controllers;
 
-use Website\Models\MenuItems;
 use Website\Models\PaginasPrincipais;
-use Illuminate\View\View;
 
 class PaginasPrincipaisController extends Controller
 {
@@ -16,11 +14,11 @@ class PaginasPrincipaisController extends Controller
      */
     public function show($url_pagina)
     {
-        //$pagina = PaginasPrincipais::where('url_pagina', '=', $url_pagina)->first();
-        //dd($pagina);
-//        if(!$pagina){
-//            return view('website.error.index');
-//        }
-//        return view('website.paginas-principais.show', compact('pagina'));
+        $pagina = PaginasPrincipais::where('url_pagina', '=', $url_pagina)->first();
+
+        if(!$pagina){
+            return view('website.error.index');
+        }
+        return view('website.paginas-principais.show', compact('pagina'));
     }
 }

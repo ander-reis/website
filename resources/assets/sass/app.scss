@@ -324,7 +324,6 @@ ul.timeline>li:before {
     color: white;
 }
 .footer {
-    position: fixed;
     bottom: 0;
     width: 100%;
  }
@@ -602,8 +601,15 @@ ul.timeline>li:before {
     content: '';
 }
 
-.dropdown-toggle::after {
-    display: none;
+// menu level 3
+.dropdown-submenu {
+    position: relative !important;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0 !important;
+    left: 100% !important;
+    margin-top: -1px !important;
 }
 
 /** media queries **/

@@ -34,14 +34,9 @@ Route::name('logout')->post('/logout', 'Auth\LoginController@logout');
 Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', 'show']]);
 
 /**
- * rota quem somos
+ * rota fonoaudiologia
  */
-Route::resource('quemsomos', 'Website\QuemSomosController', ['only' => ['index']]);
-
-/**
- * rota estatudo
- */
-Route::resource('estatuto', 'Website\EstatutoController', ['only' => ['index']]);
+Route::resource('fono', 'FonoAudiologiaController', ['only' => ['index']]);
 
 
 /**

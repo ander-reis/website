@@ -46,9 +46,6 @@
             @foreach($noticias as $noticia)
             <div class="col-md-3 mb-5">
                 <div class="card border-secondary">
-                    {{-- <a href="{{ route('noticias.show', ['noticia' => $noticia->id_noticia]) }}">
-                    <img src="{{ asset('images/layout-1/noticias/jose-simao.jpg') }}" class="card-img-top" alt="...">
-                    </a> --}}
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted text-right">{!! $noticia->dt_cadastro_formatted !!}
                         </h6>

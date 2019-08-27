@@ -5,15 +5,16 @@ namespace Website\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 
-class QuemSomosController extends Controller
+class FonoAudiologiaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+   /**
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('website.quemsomos.index');
+        return view('website.fonoaudiologia.index');
     }
 }
