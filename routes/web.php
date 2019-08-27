@@ -36,18 +36,18 @@ Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', '
 /**
  * rota fonoaudiologia
  */
-Route::resource('fono', 'FonoAudiologiaController', ['only' => ['index']]);
+Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
 
 /**
  * rotas para download do pdf
  */
-Route::name('convencao.asset')->get('/pdf/{convencao}', 'ConvencoesController@convencaoWebAsset');
-Route::name('aditamento.asset')->get('/pdf-aditamento/{convencao}', 'ConvencoesController@aditamentoWebAsset');
+Route::name('convencao.asset')->get('/pdf/{convencao}', 'Website\ConvencoesController@convencaoWebAsset');
+Route::name('aditamento.asset')->get('/pdf-aditamento/{convencao}', 'Website\ConvencoesController@aditamentoWebAsset');
 /***
  * Convençoes e acordo
  */
-Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.'], function(){
+Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespace' => 'Website'], function(){
     Route::name('index')->get('{convencoes_entidade}', 'ConvencoesController@index');
     Route::name('show')->get('{convencoes_entidade}/convencao/{convencao}', 'ConvencoesController@show');
     Route::name('clausulas.show')->get('{convencoes_entidade}/convencao/{convencao}/clausula/{convencao_clausula}', 'ClausulasController@show');
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.'], function
 /**
  * páginas principais
  */
-Route::name('paginas-principais')->get('/{url_pagina}', 'PaginasPrincipaisController@show', ['only' => ['show']]);
+Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
 
 /**
  * Rota administração usuário

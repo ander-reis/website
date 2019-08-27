@@ -1,6 +1,6 @@
 <?php
 
-namespace Website\Http\Controllers;
+namespace Website\Http\Controllers\Website;
 
 use Website\Http\Controllers\Controller;
 use Website\Models\Convencoes;
@@ -25,10 +25,10 @@ class ConvencoesController extends Controller
          * lista convencoes através do relacionamento
          */
         $convencoes = $convencoes_entidade->convencoes()
-            ->where('fl_ativo', 1)
+            ->where('fl_status', 1)
             ->orderBy('dt_validade', 'desc')
             ->paginate();
-        dd($convencoes);
+
         return view('website.convencoes.index', compact('convencoes', 'convencao_entidade'));
     }
 
@@ -45,7 +45,7 @@ class ConvencoesController extends Controller
          */
         $convencao_entidade = $convencoes_entidade;
 
-        $clausulas = $convencao->clausulas()->where('fl_ativo', 1)->orderBy('num_clausula')->get();
+        $clausulas = $convencao->clausulas()->where('fl_status', 1)->orderBy('num_clausula')->get();
 
         return view('website.convencoes.show', compact('convencao', 'clausulas', 'convencao_entidade'));
     }
