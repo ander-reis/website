@@ -2,6 +2,7 @@
 
 namespace Website\Http\Controllers;
 
+use Website\Http\Controllers\Controller;
 use Website\Models\Convencoes;
 use Website\Models\ConvencoesClausulas;
 use Website\Models\ConvencoesEntidade;

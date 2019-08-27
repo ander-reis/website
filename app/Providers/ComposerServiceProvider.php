@@ -13,10 +13,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer(
-            'layouts.website',
-            'Website\Http\Controllers\MenuNavBarController'
-        );
+        //
     }
 
     /**

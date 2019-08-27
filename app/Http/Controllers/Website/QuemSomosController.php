@@ -1,8 +1,9 @@
 <?php
 
-namespace Website\Http\Controllers;
+namespace Website\Http\Controllers\Website;
 
 use Illuminate\Http\Request;
+use Website\Http\Controllers\Controller;
 
 class QuemSomosController extends Controller
 {

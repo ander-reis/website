@@ -4,19 +4,12 @@
 @import 'variables';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
 // FontAwesome
-// $fa-font-path: "~font-awesome/fonts";
-// @import "node_modules/font-awesome/scss/font-awesome.scss";
-// @import "node_modules/font-awesome/scss/font-awesome";
-
-//$fa-font-path: "~font-awesome/fonts";
-@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 // Owl carousel
-@import "node_modules/owl.carousel/src/scss/owl.carousel.scss";
+@import "~owl.carousel/src/scss/owl.carousel";
 
 /** reset **/
 html,
@@ -320,90 +313,6 @@ ul.timeline>li:before {
     transition-delay: initial;
 }
 
-//#nav-bar{
-//  font-family: 'Raggedways';
-//}
-
-/** font **/
-//@font-face {
-//  font-family: 'BodegaScript';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('BodegaScript'), url('../../../public/fonts/Bodega Script/TTF/Bodega Script.ttf');
-//}
-//
-//@font-face {
-//  font-family: 'Monotype';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('Monotype'), url('../../../public/fonts/Monotype/mtcorsva.ttf') format('woff');
-//}
-//
-//@font-face {
-//  font-family: 'MrAcordion';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('MrAcordion'), url('../../../public/fonts/MrAcordion/Mr-Accordion-Regular.ttf') format('woff');
-//}
-//
-//@font-face {
-//  font-family: 'Tusj';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('Tusj'), url('../../../public/fonts/Tusj/FFF Tusj.ttf') format('woff');
-//}
-//
-//@font-face {
-//  font-family: 'Raggedways';
-//  font-style: normal;
-//  font-weight: normal;
-//  src: local('Raggedways'), url('../../../public/fonts/Raggedways/Raggedways Regular.otf') format('woff');
-//}
-
-
-/** media queries **/
-/*fixa tamanho minimo da tela*/
-@media (max-width: 320px) {
-    #app {
-        width: 320px !important;
-    }
-}
-
-@media (max-width: 992px) {
-    #box-search-one {
-        display: none;
-    }
-
-    #input-search .input-group {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-
-    .text-center-person {
-        text-align: center !important;
-    }
-}
-
-@media (min-width: 993px) and (max-width: 1023px) {
-    #input-search .input-group {
-        padding-top: 20px;
-        padding-bottom: 10px;
-    }
-}
-
-@media (min-width: 1024px) {
-    #input-search .input-group {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-}
-
-
-/* aplica somente até de 320px */
-//@media screen and (max-width: 320px) and (orientation: portrait) {
-//  body { width: 320px !important; }
-//}
-
 /******
 *
 ***** CONFIGURAÇÕES NOVO LAYOUT
@@ -695,4 +604,41 @@ ul.timeline>li:before {
 
 .dropdown-toggle::after {
     display: none;
+}
+
+/** media queries **/
+/*fixa tamanho minimo da tela*/
+@media (max-width: 320px) {
+    #app {
+        width: 320px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    #box-search-one {
+        display: none;
+    }
+
+    #input-search .input-group {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .text-center-person {
+        text-align: center !important;
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1023px) {
+    #input-search .input-group {
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #input-search .input-group {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }

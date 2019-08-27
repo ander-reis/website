@@ -14,7 +14,7 @@
 /**
  * rota home
  */
-Route::name('home')->get('/', 'HomeController@index');
+Route::name('home')->get('/', 'Website\HomeController@index');
 
 /**
  * rotas auth: login, logout, register, remember password
@@ -31,17 +31,17 @@ Route::name('logout')->post('/logout', 'Auth\LoginController@logout');
 /**
  * rota noticias
  */
-Route::resource('noticias', 'NoticiasController', ['only' => ['index', 'show']]);
+Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', 'show']]);
 
 /**
  * rota quem somos
  */
-Route::resource('quemsomos', 'QuemSomosController', ['only' => ['index']]);
+Route::resource('quemsomos', 'Website\QuemSomosController', ['only' => ['index']]);
 
 /**
  * rota estatudo
  */
-Route::resource('estatuto', 'EstatutoController', ['only' => ['index']]);
+Route::resource('estatuto', 'Website\EstatutoController', ['only' => ['index']]);
 
 
 /**

@@ -1,7 +1,8 @@
 <?php
 
-namespace Website\Http\Controllers;
+namespace Website\Http\Controllers\Website;
 
+use Website\Http\Controllers\Controller;
 use Website\Models\Noticias;
 
 class NoticiasController extends Controller

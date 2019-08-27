@@ -2,6 +2,7 @@
 
 namespace Website\Http\Controllers;
 
+use Website\Http\Controllers\Controller;
 use Website\Models\Convencoes;
 use Website\Models\ConvencoesEntidade;
 use Illuminate\Support\Facades\Artisan;
@@ -27,7 +28,7 @@ class ConvencoesController extends Controller
             ->where('fl_ativo', 1)
             ->orderBy('dt_validade', 'desc')
             ->paginate();
-
+        dd($convencoes);
         return view('website.convencoes.index', compact('convencoes', 'convencao_entidade'));
     }
 

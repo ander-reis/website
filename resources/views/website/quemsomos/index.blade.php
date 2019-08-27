@@ -2,8 +2,6 @@
 
 @section('content')
 
-    @component('website.components.layout-1._navbar')@endcomponent
-
     <p>Há mais de 60 anos, o SinproSP representa os interesses dos professores que trabalham nas escolas particulares de todos os níveis e graus da cidade de São Paulo.</p>
 
     <p>Nesse longo período, tem sido o Sindicato, graças ao apoio que recebe de sua categoria, o principal responsável pela ampliação sistemática dos direitos e garantias que cercam nossa atividade profissional.</p>
