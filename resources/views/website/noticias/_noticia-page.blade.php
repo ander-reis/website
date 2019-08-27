@@ -4,8 +4,6 @@
 
 {{-- {{ Breadcrumbs::render('noticias-show', $noticia) }} --}}
 
-@component('website.components.layout-1._navbar')@endcomponent
-
 <div class="row">
     <span class="noticia_interna_chapeu1">teste</span>
 
