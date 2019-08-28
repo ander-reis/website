@@ -2,59 +2,55 @@
 
 @section('content')
 <img alt="" src="{{ asset('images/fonoaudiologia/banner_voz_top.jpg') }}">
-
 <div class="row">
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col-md-3 mt-4 text-center">
+    <div class="col-12 col-sm-6 col-lg-8">
+        <div class="row">
+            <div class="col-4 mt-4 text-center">
+                <a href="http://www.sinprosp.org.br/voz.asp?mn=2" target="_blank">
                     <img alt="" src="{{ asset('images/fonoaudiologia/tratamento.jpg') }}">
-                </div>
+                </a>
+            </div>
 
-                <div class="col-md-3 mt-4 text-center">
+            <div class="col-4 mt-4 text-center">
+                <a href="http://www.sinprosp.org.br/voz.asp?mn=3" target="_blank">
                     <img alt="" src="{{ asset('images/fonoaudiologia/palestra.jpg') }}">
-                </div>
+                </a>
+            </div>
 
-                <div class="col-md-3 mt-4 text-center">
+            <div class="col-4 mt-4 text-center">
+                <a href="http://www.sinprosp.org.br/voz.asp?mn=4" target="_blank">
                     <img alt="" src="{{ asset('images/fonoaudiologia/dicas.jpg') }}">
-                </div>
+                </a>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6 mt-4 text-center">
+                <img alt="" src="{{ asset('images/fonoaudiologia/bemestar.jpg') }}">
 
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col-md-6 mt-4 text-center">
-                    <img alt="" src="{{ asset('images/fonoaudiologia/bemestar.jpg') }}">
-
-                    <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank"><img
-                            src="img/servicos/voz/img_bemestar.jpg" alt=""
-                            title="Clique para acessar a versão em português" style="border:1px #000 solid" /></a>
-                    <div style="width:273px" class="texto_12_preto">
-                        <p>Faça o download do pdf:</p>
-                        <p>
-                            <span>
-                                <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank">(Versão em
+                <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank"><img
+                        src="img/servicos/voz/img_bemestar.jpg" alt="" title="Clique para acessar a versão em português"
+                        style="border:1px #000 solid" /></a>
+                <div style="width:273px" class="texto_12_preto">
+                    <small>Faça o download do pdf:</small>
+                    <p>
+                        <small>
+                            <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank">(Versão em
                                 Português)<br />Bem-estar vocal: uma nova perspectiva de cuidar da voz</a>
-                            </span>
-                        </p>
-                        <p>
-                            <span>
-                                <a href="arquivos/voz/bem_estar_vocal2016_en.pdf" target="_blank">(English
+                        </small>
+                    </p>
+                    <p>
+                        <small>
+                            <a href="arquivos/voz/bem_estar_vocal2016_en.pdf" target="_blank">(English
                                 version)<br />Vocal wellbeing: a new perspective of vocal care</a>
-                            </span>
-                        </p>
-                    </div>
+                            </small>
+                    </p>
                 </div>
-                <div class="col-md-6 mt-4 text-center">
-                    <img alt="" src="{{ asset('images/fonoaudiologia/capafilme.jpg') }}">
-                </div>
+            </div>
+            <div class="col-6 mt-4 text-center">
+                <img alt="" src="{{ asset('images/fonoaudiologia/capafilme.jpg') }}">
             </div>
         </div>
     </div>
-
     @component('website.components._column-right')@endcomponent
 </div>
 @endsection

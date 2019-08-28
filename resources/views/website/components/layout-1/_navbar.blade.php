@@ -39,12 +39,14 @@
 
                 <li class="nav-item dropdown pr-45">
                     <a href="#" id="menu" data-toggle="dropdown" class="nav-link">
-                        <span class="font-weight-bold menu">Direitos</span>
+                        <span class="font-weight-bold menu">Direitos </span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item dropdown-submenu">
-                            <a href="#" data-toggle="dropdown">Convençoes e Acordos</a>
+                            <a href="#" data-toggle="dropdown" style="color: #212529;">Convençoes e Acordos
+                                    <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
+                            </a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item"
                                    href="{{ route('convencao.index', ['convencao' => 2]) }}">Educação Básica</a>
