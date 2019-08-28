@@ -1,10 +1,15 @@
-<section>
+<section class="mb-2">
     <nav class="navbar navbar-expand-lg navbar-light">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <a class="navbar-brand" href="#">
+            <img src="{{asset('images/logo_fonte_preta2.png')}}" alt="SinproSP" class="d-lg-none">
+        </a>
+
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
@@ -24,7 +29,8 @@
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'diretoria'])}}">
                             Diretoria
                         </a>
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'localizacao'])}}">
+                        <a class="dropdown-item"
+                           href="{{route('paginas-principais', ['url-pagina' => 'localizacao'])}}">
                             Localização
                         </a>
                     </div>
@@ -83,7 +89,8 @@
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
+                        <a class="dropdown-item"
+                           href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
                             Atendimento Jurídico
                         </a>
                         <a class="dropdown-item"
@@ -112,13 +119,15 @@
                         <a class="dropdown-item" href="http://www.sinprosp.org.br/atendimento.asp" target="_blank">
                             Atendimento Eletrônico
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br/boletim_eletronico.asp" target="_blank">
+                        <a class="dropdown-item" href="http://www.sinprosp.org.br/boletim_eletronico.asp"
+                           target="_blank">
                             Receba o Boletim
                         </a>
                         <a class="dropdown-item" href="#">
                             Acervo
                         </a>
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
+                        <a class="dropdown-item"
+                           href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
                             Homologação
                         </a>
                     </div>

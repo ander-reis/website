@@ -5,7 +5,7 @@
 {{-- {{ Breadcrumbs::render('noticias-show', $noticia) }} --}}
 
 <div class="row">
-    <span class="noticia_interna_chapeu1">teste</span>
+    <span class="noticia_interna_chapeu1">{{ $noticia->categoria->ds_categoria }}</span>
 
 </div>
 <div class="row">

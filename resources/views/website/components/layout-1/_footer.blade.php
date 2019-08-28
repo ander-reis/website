@@ -1,4 +1,4 @@
-<footer class="header_footer footer">
+<footer class="header_footer footer mt-3">
     <div class="container">
         <div class="row pt-2 text-center  align-middle">
             <div class="col-md-12 header_footer">

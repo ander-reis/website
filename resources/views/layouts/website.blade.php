@@ -24,7 +24,7 @@
 
         @component('website.components.layout-1._header')@endcomponent
 
-        <main id="container" class="container py-4">
+        <main id="container" class="container">
             @component('website.components.layout-1._navbar')@endcomponent
             @yield('content')
         </main>
