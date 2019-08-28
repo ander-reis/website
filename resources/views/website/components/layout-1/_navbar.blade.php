@@ -1,4 +1,4 @@
-<section>
+<section class="mb-2">
     <nav class="navbar navbar-expand-lg navbar-light">
 
         <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarNav"
