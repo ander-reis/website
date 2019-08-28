@@ -27,27 +27,32 @@
             <div class="col-6 mt-4 text-center">
                 <img alt="" src="{{ asset('images/fonoaudiologia/bemestar.jpg') }}">
 
-                <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank"><img
+                <a href="http://www.sinprosp.org.br/arquivos/voz/bem_estar_vocal2016.pdf" target="_blank"><img
                         src="img/servicos/voz/img_bemestar.jpg" alt="" title="Clique para acessar a versão em português"
                         style="border:1px #000 solid" /></a>
                 <div style="width:273px" class="texto_12_preto">
                     <small>Faça o download do pdf:</small>
                     <p>
                         <small>
-                            <a href="arquivos/voz/bem_estar_vocal2016.pdf" target="_blank">(Versão em
+                            <a href="http://www.sinprosp.org.br/arquivos/voz/bem_estar_vocal2016.pdf" target="_blank">(Versão em
                                 Português)<br />Bem-estar vocal: uma nova perspectiva de cuidar da voz</a>
                         </small>
                     </p>
                     <p>
                         <small>
-                            <a href="arquivos/voz/bem_estar_vocal2016_en.pdf" target="_blank">(English
+                            <a href="http://www.sinprosp.org.br/arquivos/voz/bem_estar_vocal2016_en.pdf" target="_blank">(English
                                 version)<br />Vocal wellbeing: a new perspective of vocal care</a>
                             </small>
                     </p>
                 </div>
             </div>
             <div class="col-6 mt-4 text-center">
-                <img alt="" src="{{ asset('images/fonoaudiologia/capafilme.jpg') }}">
+                <a href="http://youtu.be/d9e4oHqtIXY" target="_blank">
+                    <img alt="" src="{{ asset('images/fonoaudiologia/capafilme.jpg') }}">
+                    <p>
+                        <small>Clique na imagem para assistir</small>
+                    </p>
+                </a>
             </div>
         </div>
     </div>
