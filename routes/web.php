@@ -49,8 +49,8 @@ Route::name('aditamento.asset')->get('/pdf-aditamento/{convencao}', 'Website\Con
  */
 Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespace' => 'Website'], function(){
     Route::name('index')->get('{convencoes_entidade}', 'ConvencoesController@index');
-    Route::name('show')->get('{convencoes_entidade}/convencao/{convencao}', 'ConvencoesController@show');
-    Route::name('clausulas.show')->get('{convencoes_entidade}/convencao/{convencao}/clausula/{convencao_clausula}', 'ClausulasController@show');
+    Route::name('show')->get('{convencoes_entidade}/{convencao}', 'ConvencoesController@show');
+    Route::name('clausulas.show')->get('{convencoes_entidade}/{convencao}/{convencao_clausula}', 'ClausulasController@show');
 });
 
 /**

@@ -2,12 +2,12 @@
 
 @section('content')
 
-    {{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
+{{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
 
     <div class="row">
         <div class="col-md-8">
             <h1>{{ $convencao_clausula->ds_titulo }}</h1>
-            <p>{{ $convencao_clausula->ds_texto }}</p>
+            <p> {!! $convencao_clausula->ds_texto !!}</p>
 
             <div class="text-center mt-3 mb-3">
                 @isset($previous)
