@@ -1,12 +1,12 @@
 <section class="mb-2">
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light pl-0">
 
         <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand pl-1 mr-0" href="/">
             <img src="{{asset('images/logo_fonte_preta2.png')}}" alt="SinproSP" class="d-lg-none">
         </a>
 
