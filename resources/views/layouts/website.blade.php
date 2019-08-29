@@ -29,7 +29,9 @@
             @yield('content')
         </main>
 
-        {{-- <div id="push"></div> --}}
+        <a id="return-to-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
         @component('website.components.layout-1._footer')@endcomponent
     </div>
