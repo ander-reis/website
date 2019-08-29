@@ -2,7 +2,7 @@
 
 @section('content')
 
-    {{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
+{{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
 
     <div class="row">
         <div class="col-md-8">

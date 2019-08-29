@@ -36,7 +36,7 @@ Breadcrumbs::register('convencao.clausula.show', function($breadcrumbs, $convenc
     $breadcrumbs->push($convencoes_entidade->ds_entidade, route('convencao.index', ['convencao' => $convencoes_entidade->id]));
     $breadcrumbs->push('Convenção', route('convencao.show', [
         'convencao_entidade' => $convencoes_entidade->id,
-        'convencao' => $convencao->id
+        'convencao' => $convencao->id_convencao
     ]));
     $breadcrumbs->push('Cláusula ' . $convencao_clausula->num_clausula);
 });
