@@ -606,6 +606,38 @@ ul.timeline>li:before {
     margin-top: -1px !important;
 }
 
+/** social share **/
+.share-buttons {
+    letter-spacing: 1px;
+    margin: 0 0 10px;
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+}
+
+.share-buttons li {
+    height: auto;
+    flex: 0 1 auto;
+    width: calc(15% - 1px);
+    margin-right: 1px;
+}
+
+.share-buttons li:last-child {
+    width: 15%;
+    margin-right: 0;
+}
+
+.share-buttons a {
+    display: block;
+    padding: 12px 12px 9px;
+    text-align: center;
+}
+
 /** media queries **/
 /*fixa tamanho minimo da tela*/
 @media (max-width: 320px) {
