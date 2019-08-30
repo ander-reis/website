@@ -15,7 +15,7 @@ class PaginasPrincipaisController extends Controller
      */
     public function show($url_pagina)
     {
-        $pagina = PaginasPrincipais::where('url_pagina', '=', $url_pagina)->first();
+        $pagina = PaginasPrincipais::where('url', '=', $url_pagina)->first();
 
         if(!$pagina){
             return view('website.error.index');
