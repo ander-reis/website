@@ -2,10 +2,12 @@ $(document).ready(function () {
     /**
      * owl-carousel
      */
+    /*
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 5,
         nav: true,
+        dots: false,
         responsive: {
             0: {
                 items: 1
@@ -18,7 +20,29 @@ $(document).ready(function () {
             }
         }
     });
-
+*/
+$('.owl-content .owl-carousel').owlCarousel({
+    stagePadding: 50,
+    loop: true,
+    margin: 10,
+    nav: true,
+    navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+    navContainer: '.owl-content .custom-nav',
+    responsive:{
+        0:{
+            items: 2
+        },
+        600:{
+            items: 3
+        },
+        1000:{
+            items: 4
+        }
+    }
+});
     /**
      * search-bar
      */
