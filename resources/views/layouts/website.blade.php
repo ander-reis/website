@@ -33,8 +33,9 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-        @component('website.components.layout-1._footer')@endcomponent
+        <div id="push"></div>
     </div>
+    @component('website.components.layout-1._footer')@endcomponent
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
