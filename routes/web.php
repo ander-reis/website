@@ -59,6 +59,12 @@ Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespac
 Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
 
 /**
+ * atendimento eletrônico
+ */
+//Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController');
+Route::get('atendimento-eletronico', function(){return 1;});
+
+/**
  * Rota administração usuário
  */
 Route::group([
