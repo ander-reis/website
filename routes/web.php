@@ -15,7 +15,13 @@
  * rota home
  */
 Route::name('home')->get('/', 'Website\HomeController@index');
-Route::name('user')->get('/user', 'Admin\DadosPessoalController@index');
+
+/**
+ * Corrige erro: se estiver logado e acessar rota '/login' estava redirecionando para '/home'
+ */
+Route::get('/home', function(){
+    return redirect('/admin/dados-pessoal');
+});
 
 /**
  * rotas auth: login, logout, register, remember password
@@ -39,6 +45,15 @@ Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', '
  */
 Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
+/**
+ * atendimento eletrônico
+ */
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController');
+
+/**
+ * páginas principais
+ */
+Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
 
 /**
  * rotas para download do pdf
@@ -55,11 +70,6 @@ Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespac
 });
 
 /**
- * páginas principais
- */
-Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
-
-/**
  * Rota administração usuário
  */
 Route::group([
@@ -68,7 +78,6 @@ Route::group([
     'as' => 'admin.',
     'middleware' => 'auth'
 ], function(){
-
     /**
      * dados pessoal
      */

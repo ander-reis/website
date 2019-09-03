@@ -2,7 +2,6 @@
 
 namespace Website\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\EscolaCreateRequest;
 use Website\Http\Requests\EscolaDeleteRequest;

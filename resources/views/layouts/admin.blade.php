@@ -35,9 +35,9 @@
                     <li class="nav-item {{ active('admin.dados-pessoal.*') }}">
                         <a class="nav-link" href="{{ route('admin.dados-pessoal.index') }}">Dados Pessoal</a>
                     </li>
-                    <li class="nav-item {{ active('admin.escolas.*') }}">
-                        <a class="nav-link" href="{{ route('admin.escolas.index') }}">Escolas</a>
-                    </li>
+{{--                    <li class="nav-item {{ active('admin.escolas.*') }}">--}}
+{{--                        <a class="nav-link" href="{{ route('admin.escolas.index') }}">Escolas</a>--}}
+{{--                    </li>--}}
                     <li class="nav-item {{ active('admin.historico.*') }}">
                         <a class="nav-link" href="{{ route('admin.historico.index') }}">Histórico</a>
                     </li>

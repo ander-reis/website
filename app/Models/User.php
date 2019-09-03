@@ -9,8 +9,7 @@ use Yadahan\AuthenticationLog\AuthenticationLogable;
 
 class User extends Authenticatable
 {
-//    use Notifiable, AuthenticationLogable, LogsActivity;
-    use Notifiable, LogsActivity;
+    use Notifiable, LogsActivity, AuthenticationLogable;
 
     /**
      * Conexão database SINPRO
