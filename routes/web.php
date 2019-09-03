@@ -15,6 +15,7 @@
  * rota home
  */
 Route::name('home')->get('/', 'Website\HomeController@index');
+Route::name('user')->get('/user', 'Admin\DadosPessoalController@index');
 
 /**
  * rotas auth: login, logout, register, remember password

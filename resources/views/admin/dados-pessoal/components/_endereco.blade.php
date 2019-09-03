@@ -28,7 +28,7 @@
     <div class="col-md-4">
         @component('admin.form-components._form_group',['field' => 'Complemento'])
             {{ Form::label('Complemento', 'Complemento', ['class' => 'control-label']) }}
-            {{ Form::text('Complemento', null, ['class' => 'form-control', 'maxlength' => 50]) }}
+            {{ Form::text('Complemento', null, ['class' => 'form-control text-uppercase', 'maxlength' => 50]) }}
         @endcomponent
     </div>
     <div class="col-md-3">

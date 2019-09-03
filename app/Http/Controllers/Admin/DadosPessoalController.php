@@ -19,46 +19,9 @@ class DadosPessoalController extends Controller
     public function index()
     {
         /**
-         * consulta user
-         *
+         * consultar por, e qual usuário
          */
-        $user = \DB::table('Cadastro_Professores')
-            ->select([
-                'Codigo_Professor',
-                'Nome',
-                'CPF',
-                'RG',
-                'Email',
-                'Materia',
-                'Pre',
-                '1_4Serie as primeira_quarta_serie',
-                '5_8Serie as quinta_oitava_serie',
-                'Ens_Medio',
-                'Ens_Superior',
-                '2_3Grau as segundo_terceiro_grau',
-                'Tecnico',
-                'Supletivo',
-                'Curso_Livre',
-                'Data_Aniversario',
-                'Sexo',
-                'CEP',
-                'Endereco',
-                'Numero',
-                'Complemento',
-                'Bairro',
-                'Cidade',
-                'Estado',
-                'DDD_Telefone_Residencial',
-                'Telefone_Residencial',
-                'DDD_Telefone_Comercial',
-                'Telefone_Comercial',
-                'DDD_Telefone_Celular',
-                'Telefone_Celular',
-            ])
-            ->where('CPF', '=', \Auth::user()->CPF)
-            ->get();
-
-        $user = $user[0];
+        $user = User::where('CPF', \Auth::user()->CPF)->first();
 
         /**
          * consulta materia
@@ -68,7 +31,6 @@ class DadosPessoalController extends Controller
         $materia = $materias->mapWithKeys(function ($item) {
                 return [$item->Codigo_Materia => $item->Materia];
             });
-
         return view('admin.dados-pessoal.index', compact('user', 'materia'));
     }
 
@@ -103,6 +65,12 @@ class DadosPessoalController extends Controller
         }
     }
 
+    /**
+     * Busca endereço pelo CEP
+     *
+     * @param CepRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function buscarCep(CepRequest $request)
     {
         $cep = $request->only(array_keys($request->all()));

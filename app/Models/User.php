@@ -10,21 +10,22 @@ use Yadahan\AuthenticationLog\AuthenticationLogable;
 class User extends Authenticatable
 {
 //    use Notifiable, AuthenticationLogable, LogsActivity;
-    use Notifiable;
+    use Notifiable, LogsActivity;
 
     /**
      * Conexão database SINPRO
      */
-//    protected $connection = 'sqlsrv-sinpro';
+    protected $connection = 'sqlsrv-sinpro';
 
     /**
      * Conexão database POSTGRE
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
 
     protected $table = 'Cadastro_Professores';
     protected $primaryKey = 'Codigo_Professor';
     protected $rememberTokenName = null;
+    protected $casts = ['Codigo_Professor' => 'string'];
 
     /**
      * The attributes that are mass assignable.
@@ -91,40 +92,40 @@ class User extends Authenticatable
     /**
      * configura logging
      */
-//    protected static $logAttributes = [
-//        'Codigo_Professor',
-//        'Nome',
-//        'CPF',
-//        'Email',
-//        'Data_Aniversario',
-//        'Materia',
-//        'Pre',
-//        '1_4Serie',
-//        '5_8Serie',
-//        'Ens_Medio',
-//        'Ens_Superior',
-//        '2_3Grau',
-//        'Tecnico',
-//        'Supletivo',
-//        'Curso_Livre',
-//        'CEP',
-//        'Sexo',
-//        'Endereco',
-//        'Numero',
-//        'Complemento',
-//        'Bairro',
-//        'Cidade',
-//        'Estado',
-//        'DDD_Telefone_Residencial',
-//        'Telefone_Residencial',
-//        'DDD_Telefone_Comercial',
-//        'Telefone_Comercial',
-//        'DDD_Telefone_Celular',
-//        'Telefone_Celular',
-//    ];
+    protected static $logAttributes = [
+        'Codigo_Professor',
+        'Nome',
+        'CPF',
+        'Email',
+        'Data_Aniversario',
+        'Materia',
+        'Pre',
+        '1_4Serie',
+        '5_8Serie',
+        'Ens_Medio',
+        'Ens_Superior',
+        '2_3Grau',
+        'Tecnico',
+        'Supletivo',
+        'Curso_Livre',
+        'CEP',
+        'Sexo',
+        'Endereco',
+        'Numero',
+        'Complemento',
+        'Bairro',
+        'Cidade',
+        'Estado',
+        'DDD_Telefone_Residencial',
+        'Telefone_Residencial',
+        'DDD_Telefone_Comercial',
+        'Telefone_Comercial',
+        'DDD_Telefone_Celular',
+        'Telefone_Celular',
+    ];
 
-//    protected static $logFillable = true;
+    protected static $logFillable = true;
 
-//    protected static $logName = 'user_website';
+    protected static $logName = 'user_website';
 
 }
