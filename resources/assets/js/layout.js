@@ -1,27 +1,5 @@
 $(document).ready(function () {
-    /**
-     * owl-carousel
-     */
-    /*
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 5,
-        nav: true,
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 4
-            }
-        }
-    });
-*/
-$('.owl-content .owl-carousel').owlCarousel({
+    $('.owl-content .owl-carousel').owlCarousel({
     stagePadding: 4,
     loop: true,
     margin: 5,
