@@ -17,6 +17,7 @@
                         </svg>
                     </span>
                 </span>
+                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                 <p class="mb-0 text-dark manchete_titulo">
                     Encontros de mobilização dias 16 e 23 de fevereiro preparam assembleia com falta abonada
                 </p>
@@ -26,6 +27,7 @@
                     no dia 28 de fevereiro. Confira também o que já está sendo feito para intensificar o nosso
                     movimento. Participe!
                 </p>
+            </a>
             </div>
         </div>
         <div class="row">
@@ -41,6 +43,7 @@
                         </svg>
                     </span>
                 </span>
+                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                 <p class="text-dark mb-1 noticia_titulo1">
                     O que você deve saber para o início do ano letivo
                 </p>
@@ -48,6 +51,7 @@
                     No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do número de
                     matrículas suficientemente grande que inviabiliza a formação de uma classe.
                 </p>
+            </a>
             </div>
             <div class="col-md-6 col-sm-12 col-md-6">
                 <span class="mb-0">
@@ -61,6 +65,7 @@
                         </svg>
                     </span>
                 </span>
+                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                 <p class="text-dark mb-1 noticia_titulo1">
                     O que você deve saber para o início do ano letivo
                 </p>
@@ -68,6 +73,7 @@
                     No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do número de
                     matrículas suficientemente grande que inviabiliza a formação de uma classe.
                 </p>
+            </a>
             </div>
         </div>
     </div>
