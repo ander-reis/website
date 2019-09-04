@@ -16,7 +16,6 @@ class Noticias extends Model
 
     protected $primaryKey = 'id_noticia';
 
-    protected $connection = 'sqlsrv-website';
     /**
      * Relacionamento noticias para categorias, um para um
      *
