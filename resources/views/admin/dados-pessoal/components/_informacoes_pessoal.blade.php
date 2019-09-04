@@ -8,7 +8,7 @@
     <div class="col-md-5">
         @component('admin.form-components._form_group',['field' => 'Nome'])
             {{ Form::label('Nome', 'Nome', ['class' => 'control-label']) }}
-            {{ Form::text('Nome', null, ['class' => 'form-control', 'maxlength' => 100]) }}
+            {{ Form::text('Nome', null, ['class' => 'form-control text-uppercase', 'maxlength' => 100]) }}
         @endcomponent
     </div>
     <div class="col-md-5">

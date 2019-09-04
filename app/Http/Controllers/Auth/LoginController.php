@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Website\Http\Requests\LoginRequest;
+use Website\Models\User;
 
 class LoginController extends Controller
 {
@@ -43,18 +44,49 @@ class LoginController extends Controller
      * sobreescrevendo credentials
      *
      * @param Request $request
-     * @return array
+     * @return array|\Symfony\Component\HttpFoundation\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
     protected function credentials(Request $request)
     {
         $data = $request->only($this->username(), 'password');
 
-        $usernameKey = $this->usernameKey();
+        if($this->getUser($data['username'])){
+            $usernameKey = $this->usernameKey();
 
-        $data[$usernameKey] = $data[$this->username()];
-        unset($data[$this->username()]);
+            $data[$usernameKey] = $data[$this->username()];
+            unset($data[$this->username()]);
 
-        return $data;
+            return $data;
+        }
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Verifica se usuário tem Situação válida
+     *
+     * @param $user
+     * @return bool
+     */
+    private function getUser($user){
+        if (strlen($user) === 5) {
+            $codigo = User::where('Codigo_Professor', $user)
+                ->where('Situacao', '!=', 3)
+                ->where('Situacao', '!=', 4)
+                ->where('Situacao', '!=', 7)
+                ->where('Situacao', '!=', 8)
+                ->first();
+            return $codigo;
+        } else if (strlen($user) === 14) {
+            $cpf = User::where('CPF', $user)
+                ->where('Situacao', '!=', 3)
+                ->where('Situacao', '!=', 4)
+                ->where('Situacao', '!=', 7)
+                ->where('Situacao', '!=', 8)
+                ->first();
+            return $cpf;
+        }
+        return false;
     }
 
     /**
@@ -76,7 +108,7 @@ class LoginController extends Controller
     /**
      * Valida request user
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     protected function validateLogin(Request $request)

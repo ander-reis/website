@@ -9,12 +9,12 @@ class CepSP extends Model
     /**
      * Conexão database SINPRO
      */
-//    protected $connection = 'sqlsrv-sinpro';
+    protected $connection = 'sqlsrv-sinpro';
 
     /**
      * Conexão database POSTGRE
      */
-    protected $connection = 'pgsql';
+//    protected $connection = 'pgsql';
 
     protected $table = 'CepSP';
 
