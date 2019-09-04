@@ -123,7 +123,7 @@
                            target="_blank">
                             Receba o Boletim
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="http://www.sinprosp.org.br" target="_blank">
                             Acervo
                         </a>
                         <a class="dropdown-item"

@@ -14,7 +14,9 @@
                 </span>
 
                 <p class="text-dark mb-0 noticia_titulo2">
-                    Informações sempre úteis para os professores no reinício das aulas
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
+                        Informações sempre úteis para os professores no reinício das aulas
+                    </a>
                 </p>
             </div>
 
@@ -31,7 +33,9 @@
                 </span>
 
                 <p class="text-dark mb-0 noticia_titulo2">
-                    Como ficou o dissídio coletivo da Educação Básica ?
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
+                        Como ficou o dissídio coletivo da Educação Básica ?
+                    </a>
                 </p>
             </div>
 
@@ -48,7 +52,9 @@
                 </span>
 
                 <p class="text-dark mb-0 noticia_titulo2">
-                    Assembleia aceita proposta das Faculdades Rio Branco
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
+                        Assembleia aceita proposta das Faculdades Rio Branco
+                    </a>
                 </p>
             </div>
 
@@ -65,7 +71,9 @@
                 </span>
 
                 <p class="text-dark mb-0 noticia_titulo2">
-                    Dicas que podem evitar ou resolver problemas no trabalho
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
+                        Dicas que podem evitar ou resolver problemas no trabalho
+                    </a>
                 </p>
             </div>
         </div>
