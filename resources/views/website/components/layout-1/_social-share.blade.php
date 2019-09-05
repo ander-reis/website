@@ -5,7 +5,8 @@
         </a>
     </li>
     <li>
-        <a href="https://web.whatsapp.com/send?text={{url()->full()}}" target="_blank">
+{{--        <a href="https://web.whatsapp.com/send?text={{url()->full()}}" target="_blank">--}}
+        <a href="whatsapp://send?text={{url()->full()}}">
             <img src="{{asset('fonts/icons/whatsapp.svg')}}" alt="compartilhar no whatsapp">
         </a>
     </li>
