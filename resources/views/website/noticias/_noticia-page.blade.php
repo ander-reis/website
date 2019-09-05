@@ -10,7 +10,7 @@
         <h1 class="noticia_interna_titulo1">{!! $noticia->ds_resumo !!}</h1>
         <div class="row mb-3">
             <div class="col-12 col-md-6">
-                @component('website.components._social-share', ['noticia' => $noticia])@endcomponent
+                @component('website.components.layout-1._social-share', ['noticia' => $noticia])@endcomponent
             </div>
             <div class="col-12 col-md-6 text-sm-left text-md-right time">
                 Atualizada em {!! $noticia->dt_noticia_formatted !!}
@@ -18,6 +18,6 @@
         </div>
         <span class="noticia_interna_corpo1"> {!! $noticia->ds_texto !!}</span>
     </div>
-    @component('website.components._column-right')@endcomponent
+    @component('website.components.layout-1._column_right')@endcomponent
 </div>
 @endsection
