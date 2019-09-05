@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Website\Model' => 'Website\Policies\ModelPolicy',
+        //
     ];
 
     /**
@@ -26,11 +26,5 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        /**
-         * registra provider personalizado de autenticação
-         */
-        \Auth::provider('custom-user', function ($app, array $config){
-            return new CustomUserProvider($app['hash'], $config['model']);
-        });
     }
 }

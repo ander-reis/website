@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="pt-md-1">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
+{{--    <div class="col-md-4 pt-md-1">--}}
+{{--        <div class="row">--}}
+            <div class="col-sm-6 col-lg-3 mt-2">
                 <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
                 <span class="manchete_chapeu"> FIQUE DE OLHO
                     <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24"
@@ -20,7 +20,7 @@
                 </p>
             </div>
 
-            <div class="col-md-3 col-sm-6 pt-md-0 pt-sm-0 pt-2">
+            <div class="col-sm-6 col-lg-3 mt-2">
                 <i class="fa fa-ellipsis-v orange" aria-hidden="true"></i>
                 <span class="manchete_chapeu"> CAMPANHA SALARIAL
                     <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24"
@@ -39,7 +39,7 @@
                 </p>
             </div>
 
-            <div class="col-md-3 col-sm-6 pt-md-0 pt-sm-2 pt-2">
+            <div class="col-sm-6 col-lg-3 mt-2">
                 <i class="fa fa-ellipsis-v lightblue" aria-hidden="true"></i>
                 <span class="manchete_chapeu"> ENSINO SUPERIOR
                     <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24"
@@ -58,7 +58,7 @@
                 </p>
             </div>
 
-            <div class="col-md-3 col-sm-6 pt-md-0 pt-sm-2 pt-2">
+            <div class="col-sm-6 col-lg-3 mt-2">
                 <i class="fa fa-ellipsis-v purple" aria-hidden="true"></i>
                 <span class="manchete_chapeu"> FIQUE DE OLHO
                     <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24"
@@ -76,6 +76,6 @@
                     </a>
                 </p>
             </div>
-        </div>
-    </div>
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
