@@ -625,7 +625,7 @@ ul.timeline > li:before {
 
 .share-buttons a {
   display: block;
-  padding: 12px 12px 9px;
+  padding: 12px 8px 9px;
   text-align: center;
 }
 
@@ -634,6 +634,18 @@ ul.timeline > li:before {
 @media only screen and (max-width: 320px) {
   body {
     min-width: 320px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 766px) {
+  .share-buttons a {
+    padding: 12px 20px 9px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+  .share-buttons a {
+    padding: 12px 3px 9px;
   }
 }
 

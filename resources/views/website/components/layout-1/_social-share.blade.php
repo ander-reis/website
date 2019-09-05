@@ -4,8 +4,7 @@
             <img src="{{asset('fonts/icons/facebook.svg')}}" alt="compartilhar no facebook">
         </a>
     </li>
-    <li>
-{{--        <a href="https://web.whatsapp.com/send?text={{url()->full()}}" target="_blank">--}}
+    <li class="d-sm-none">
         <a href="whatsapp://send?text={{url()->full()}}">
             <img src="{{asset('fonts/icons/whatsapp.svg')}}" alt="compartilhar no whatsapp">
         </a>
