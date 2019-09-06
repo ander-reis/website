@@ -16,19 +16,20 @@
                         </svg>
                     </span>
                 </span>
-                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                    <p class="mb-0 text-dark manchete_titulo">
+                <p class="mb-0 text-dark manchete_titulo">
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         Encontros de mobilização dias 16 e 23 de fevereiro preparam assembleia com falta abonada
-                    </p>
-                    <p class="text-dark manchete_corpo">
-                        Dias 16 e 23 estão previstos encontros de mobilização para organizar a categoria para a
-                        assembleia
-                        no dia 28 de fevereiro. Confira também o que já está sendo feito para intensificar o nosso
-                        movimento. Participe!
-                    </p>
-                </a>
+                    </a>
+                </p>
+                <p class="text-dark manchete_corpo">
+                    Dias 16 e 23 estão previstos encontros de mobilização para organizar a categoria para a
+                    assembleia
+                    no dia 28 de fevereiro. Confira também o que já está sendo feito para intensificar o nosso
+                    movimento. Participe!
+                </p>
+
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <span class="mb-0">
                     <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
                     <span class="noticia_chapeu1"> FIQUE DE OLHO 1
@@ -40,18 +41,19 @@
                         </svg>
                     </span>
                 </span>
-                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                    <p class="text-dark mb-1 noticia_titulo1">
+                <p class="text-dark mb-1 noticia_titulo1">
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         O que você deve saber para o início do ano letivo
-                    </p>
-                    <p class="text-dark text-justify noticia_corpo1">
-                        No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do
-                        número de
-                        matrículas suficientemente grande que inviabiliza a formação de uma classe.
-                    </p>
-                </a>
+                    </a>
+                </p>
+                <p class="text-dark text-justify noticia_corpo1">
+                    No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do
+                    número de
+                    matrículas suficientemente grande que inviabiliza a formação de uma classe.
+                </p>
+
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <span class="mb-0">
                     <i class="fa fa-ellipsis-v blue" aria-hidden="true"></i>
                     <span class="noticia_chapeu1"> FIQUE DE OLHO 2
@@ -63,15 +65,16 @@
                         </svg>
                     </span>
                 </span>
-                <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                    <p class="text-dark mb-1 noticia_titulo1">
+                <p class="text-dark mb-1 noticia_titulo1">
+                    <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         O que você deve saber para o início do ano letivo
-                    </p>
-                    <p class="text-dark text-justify noticia_corpo1">
-                        No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do
-                        número de
-                        matrículas suficientemente grande que inviabiliza a formação de uma classe.
-                    </p>
+                    </a>
+                </p>
+                <p class="text-dark text-justify noticia_corpo1">
+                    No retorno às aulas, a redução de carga horária só pode ocorrer por comprovada diminuição do
+                    número de
+                    matrículas suficientemente grande que inviabiliza a formação de uma classe.
+                </p>
                 </a>
             </div>
         </div>
