@@ -4,7 +4,7 @@
     <div class="col-12">
         <div class="row">
             <div class="col-md-3 mb-3">
-                <div class="card border-danger">
+                <div class="card">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
@@ -15,7 +15,7 @@
             </div>
 
             <div class="col-md-3 mb-3">
-                <div class="card border-danger">
+                <div class="card">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Campanha Salarial</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="col-md-3 mb-3">
-                <div class="card border-danger">
+                <div class="card">
                     <div class="card-body">
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                             <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-md-3 mb-3">
-                <div class="card border-danger">
+                <div class="card">
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
@@ -54,13 +54,15 @@
         <div class="row mt-4">
             @foreach($noticias as $noticia)
             <div class="col-md-3 mb-5">
-                <div class="card border-secondary">
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted text-right">{!! $noticia->dt_cadastro_formatted !!}
+                <div class="card">
+                    <div class="card-body card-not">
+                        <h6 class="card-subtitle mb-2 text-muted text-right">
+                            {!! $noticia->dt_cadastro_formatted !!}
                         </h6>
-                        <a href="{{ route('noticias.show', ['noticia' => $noticia->id_noticia]) }}">
+                        <a href="{{ route('noticias.show', ['noticia' => $noticia->id_noticia]) }}" class="text-link">
                             <p class="card-text">{!! $noticia->ds_resumo !!}</p>
                         </a>
+
                     </div>
                 </div>
             </div>

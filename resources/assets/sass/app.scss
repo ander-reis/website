@@ -449,6 +449,10 @@ ul.timeline > li:before {
   line-height: 1.4;
 }
 
+.card-not {
+  background-color: rgba(204, 204, 204, 0.3);
+}
+
 .time {
   color: grey;
   font-size: 14px;
@@ -457,42 +461,42 @@ ul.timeline > li:before {
 
 /* FAIXA HOME */
 .owl-content {
-    position: relative;
-    background-color:rgb(216, 215, 70);
-    min-height:6rem;
+  position: relative;
+  background-color: rgb(216, 215, 70);
+  min-height: 6rem;
 
-    .owl-theme {
-        margin: auto;
+  .owl-theme {
+    margin: auto;
 
-        .custom-nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+    .custom-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
 
-            .owl-prev, .owl-next {
-                position: absolute;
-                height: 6rem;
-                color: inherit;
-                background: none;
-                border: none;
-                z-index: 100;
+      .owl-prev, .owl-next {
+        position: absolute;
+        height: 6rem;
+        color: inherit;
+        background: none;
+        border: none;
+        z-index: 100;
 
-                i {
-                    font-size: 1.5rem;
-                    color: #c0721f;
-                }
-            }
-
-            .owl-prev {
-                left: 0;
-            }
-
-            .owl-next {
-                right: 0;
-            }
+        i {
+          font-size: 1.5rem;
+          color: #c0721f;
         }
+      }
+
+      .owl-prev {
+        left: 0;
+      }
+
+      .owl-next {
+        right: 0;
+      }
     }
+  }
 }
 
 /***
@@ -625,8 +629,13 @@ ul.timeline > li:before {
 }
 
 .share-buttons img {
-  width: 32px;
-  height: 32px;
+  width: $icon-width;
+  height: $icon-width;
+}
+
+.icon-img {
+  width: $icon-width;
+  height: $icon-width;
 }
 
 /** media queries **/

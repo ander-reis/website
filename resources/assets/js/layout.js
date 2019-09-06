@@ -73,6 +73,4 @@ $(document).ready(function () {
         // hide any open menus when parent closes
         $('.dropdown-menu.show').removeClass('show');
     });
-
-
 });

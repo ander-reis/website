@@ -39,5 +39,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#icon-popover').popover();
+            $('#icon-popover2').popover();
+        })
+    </script>
 </body>
 </html>
