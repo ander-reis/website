@@ -11,6 +11,8 @@
 // Owl carousel
 @import "~owl.carousel/src/scss/owl.carousel";
 
+@import url('https://fonts.googleapis.com/css?family=Quicksand:500&display=swap');
+
 /** reset **/
 html,
 body {
@@ -313,7 +315,7 @@ ul.timeline > li:before {
 
 .manchete_chapeu {
   color: rgb(51, 51, 51);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .manchete_titulo {
@@ -403,7 +405,7 @@ ul.timeline > li:before {
 }
 
 .servicos_size {
-  font-family: Quicksand, Arial;
+  font-family: 'Quicksand', 'Arial';
   font-size: 1.0rem;
   line-height: 1.3;
 }

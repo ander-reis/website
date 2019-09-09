@@ -135,7 +135,7 @@
 
                 <li class="nav-item pr-45">
                     <a class="nav-item nav-link font-weight-bold" href="{{route('atendimento-eletronico.index')}}"
-                       target="_blank" style="color:rgb(51, 51, 51)">
+                        style="color:rgb(51, 51, 51)">
                         <span class="font-weight-bold menu">Fale Conosco</span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
