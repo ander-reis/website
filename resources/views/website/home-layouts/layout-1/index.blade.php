@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- @component('website.home-layouts.layout-1.components.intro')@endcomponent --}}
+{{-- @component('website.components.layout-1._intro')@endcomponent --}}
 @component('website.components.layout-1._destaque')@endcomponent
 
 <section class="mt-3">
