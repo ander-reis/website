@@ -7,8 +7,9 @@
     </div>
     <div class="row mt-3">
         <div class="col">
-            <img class="img-fluid rounded" src="{{ asset('images/layout-1/images-coluna/fale_conosco.jpg') }}"
-                 alt="">
+            <a href="{{route('atendimento-eletronico.index')}}">
+                <img class="img-fluid rounded" src="{{ asset('images/layout-1/images-coluna/fale_conosco.jpg') }}" alt="">
+            </a>
         </div>
     </div>
     <div class="row mt-3">
