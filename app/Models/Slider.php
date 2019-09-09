@@ -7,11 +7,9 @@ use Website\Traits\SliderPaths;
 
 class Slider extends Model
 {
-
     use SliderPaths;
 
     protected $table = 'tb_sinpro_slider';
-
 
     public static function slider()
     {

@@ -1,30 +1,14 @@
 $(document).ready(function () {
-    /**
-     * owl-carousel
-     */
-    /*
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 5,
-        nav: true,
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 4
-            }
-        }
-    });
-*/
-$('.owl-content .owl-carousel').owlCarousel({
-    stagePadding: 50,
+    $('.owl-content .owl-carousel').owlCarousel({
+    stagePadding: 4,
     loop: true,
-    margin: 10,
+    // loop: false,
+    margin: 5,
+    autoplay: 2000,
+    // autoplay: 0,
+    smartSpeed: 1000, // duration of change of 1 slide
+    // smartSpeed: 0,
+    responsiveClass: true,
     nav: true,
     navText: [
         '<i class="fa fa-angle-left" aria-hidden="true"></i>',
@@ -33,13 +17,14 @@ $('.owl-content .owl-carousel').owlCarousel({
     navContainer: '.owl-content .custom-nav',
     responsive:{
         0:{
-            items: 2
+            items: 1
         },
         600:{
             items: 3
         },
         1000:{
-            items: 4
+            items: 4,
+            autoplay: false
         }
     }
 });
@@ -88,6 +73,4 @@ $('.owl-content .owl-carousel').owlCarousel({
         // hide any open menus when parent closes
         $('.dropdown-menu.show').removeClass('show');
     });
-
-
 });

@@ -51,6 +51,6 @@
                 </div>
             </form>
         </div>
-        @component('website.components._column-right')@endcomponent
+        @component('website.components.layout-1._column_right')@endcomponent
     </div>
 @endsection

@@ -15,14 +15,11 @@ class PaginasPrincipaisController extends Controller
      */
     public function show($url_pagina)
     {
-        /*
         $pagina = PaginasPrincipais::where('url', '=', $url_pagina)->first();
-
 
         if(!$pagina){
             return view('website.error.index');
         }
         return view('website.paginas-principais.show', compact('pagina'));
-        */
     }
 }

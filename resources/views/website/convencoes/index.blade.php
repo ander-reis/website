@@ -6,7 +6,7 @@
 
     <div class="row">
 
-        @component('website.components._data_exists', ['collection' => $convencoes->isEmpty()])@endcomponent
+        @component('website.components.layout-1._data_exists', ['collection' => $convencoes->isEmpty()])@endcomponent
 
         @foreach($convencoes as $key => $convencao)
             <div class="col-sm-12 mb-3">
