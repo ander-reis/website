@@ -36,6 +36,8 @@ class AtendimentoEletronicoController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
+        print_r($request->frmNome);
     }
 
     /**

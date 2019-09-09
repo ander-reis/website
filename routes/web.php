@@ -34,7 +34,20 @@ Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoControll
 /**
  * páginas principais
  */
+Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
+
+/**
+ * atendimento eletrônico
+ */
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index']]);
+Route::post('/atendimento-eletronico','Website\AtendimentoEletronicoController@store');
+
+
+/**
+ * páginas principais
+ */
 Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
+
 
 /**
  * rotas para download do pdf
