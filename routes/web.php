@@ -38,6 +38,18 @@ Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', '
  */
 Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
+/**
+ * atendimento eletrônico
+ */
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index']]);
+Route::post('/atendimento-eletronico','Website\AtendimentoEletronicoController@store');
+
+
+/**
+ * páginas principais
+ */
+Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
+
 
 /**
  * rotas para download do pdf
@@ -52,17 +64,6 @@ Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespac
     Route::name('show')->get('{convencoes_entidade}/{convencao}', 'ConvencoesController@show');
     Route::name('clausulas.show')->get('{convencoes_entidade}/{convencao}/{convencao_clausula}', 'ClausulasController@show');
 });
-
-/**
- * páginas principais
- */
-Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
-
-/**
- * atendimento eletrônico
- */
-//Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController');
-Route::get('atendimento-eletronico', function(){return 1;});
 
 /**
  * Rota administração usuário

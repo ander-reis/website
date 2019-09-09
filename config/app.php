@@ -162,6 +162,9 @@ return [
         Website\Providers\RouteServiceProvider::class,
         Website\Providers\ComposerServiceProvider::class,
 
+        //CAPTCHA 
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+
     ],
 
     /*
@@ -213,6 +216,7 @@ return [
         'Active' => Watson\Active\Facades\Active::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
     ],
 
 ];
