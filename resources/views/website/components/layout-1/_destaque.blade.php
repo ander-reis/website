@@ -11,12 +11,12 @@
                         @include('website.components.layout-1._social_share_home')
                     </span>
                 </span>
-                <p class="mb-0 text-dark manchete_titulo">
+                <p class="mb-0 text-dark manchete_titulo text-justify">
                     <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         Encontros de mobilização dias 16 e 23 de fevereiro preparam assembleia com falta abonada
                     </a>
                 </p>
-                <p class="text-dark manchete_corpo">
+                <p class="text-dark manchete_corpo text-justify">
                     Dias 16 e 23 estão previstos encontros de mobilização para organizar a categoria para a
                     assembleia
                     no dia 28 de fevereiro. Confira também o que já está sendo feito para intensificar o nosso
@@ -36,7 +36,7 @@
                         </svg>
                     </span>
                 </span>
-                <p class="text-dark mb-1 noticia_titulo1">
+                <p class="text-dark mb-1 noticia_titulo1 text-justify">
                     <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         O que você deve saber para o início do ano letivo
                     </a>
@@ -60,7 +60,7 @@
                         </svg>
                     </span>
                 </span>
-                <p class="text-dark mb-1 noticia_titulo1">
+                <p class="text-dark mb-1 noticia_titulo1 text-justify">
                     <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                         O que você deve saber para o início do ano letivo
                     </a>

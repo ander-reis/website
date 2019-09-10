@@ -10,7 +10,7 @@
                         </path>
                     </svg>
                 </span>
-        <p class="text-dark mb-0 noticia_titulo2">
+        <p class="text-dark mb-0 noticia_titulo2 text-justify">
             <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                 Informações sempre úteis para os professores no reinício das aulas
             </a>
@@ -29,7 +29,7 @@
                     </svg>
                 </span>
 
-        <p class="text-dark mb-0 noticia_titulo2">
+        <p class="text-dark mb-0 noticia_titulo2 text-justify">
             <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                 Como ficou o dissídio coletivo da Educação Básica ?
             </a>
@@ -48,7 +48,7 @@
                     </svg>
                 </span>
 
-        <p class="text-dark mb-0 noticia_titulo2">
+        <p class="text-dark mb-0 noticia_titulo2 text-justify">
             <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                 Assembleia aceita proposta das Faculdades Rio Branco
             </a>
@@ -67,7 +67,7 @@
                     </svg>
                 </span>
 
-        <p class="text-dark mb-0 noticia_titulo2">
+        <p class="text-dark mb-0 noticia_titulo2 text-justify">
             <a href="{{ route('noticias.show', ['noticia' => 3634]) }}" class="text-link">
                 Dicas que podem evitar ou resolver problemas no trabalho
             </a>
