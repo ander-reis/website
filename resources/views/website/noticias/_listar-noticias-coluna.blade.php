@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-destaque">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                             Redobre os cuidados com a hora extra
@@ -16,7 +16,7 @@
 
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-destaque">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Campanha Salarial</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                             Dissídio Coletivo: MPT dá parecer a favor dos professores
@@ -27,7 +27,7 @@
 
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-destaque">
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                             <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
                             Os "sem poupança na CEF" receberão os R$ 500,00 do Fundo só a partir de outubro
@@ -38,7 +38,7 @@
 
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-destaque">
                         <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
                         <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
                             Novos videos da Associação Juízes Para A Democracia alertam sobre a MP da Liberdade

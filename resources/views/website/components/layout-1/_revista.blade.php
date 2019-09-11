@@ -51,7 +51,7 @@
                                 <div class="col-12">
                                     <a href="http://revistagiz.sinprosp.org.br/?p=7724" target="_blank"
                                         class="text-link">
-                                        <p class="text-dark giz_corpo text-justify">Livro discute como esses códigos
+                                        <p class="text-dark giz_corpo text-justify mb-0">Livro discute como esses códigos
                                             atuam sobre a modulação de comportamentos e seus efeitos na
                                             política</p>
                                     </a>
