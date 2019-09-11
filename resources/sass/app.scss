@@ -11,6 +11,8 @@
 // Owl carousel
 @import "~owl.carousel/src/scss/owl.carousel";
 
+@import url('https://fonts.googleapis.com/css?family=Quicksand:500&display=swap');
+
 /** reset **/
 html,
 body {
@@ -313,17 +315,17 @@ ul.timeline > li:before {
 
 .manchete_chapeu {
   color: rgb(51, 51, 51);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .manchete_titulo {
-  font-family: Georgia, Arial;
+  font-family: 'Georgia', 'Arial';
   font-size: 25px;
   line-height: 1.3;
 }
 
 .manchete_corpo {
-  font-family: Arial;
+  font-family: 'Arial';
   font-size: 15px;
   line-height: 1.4;
 }
@@ -364,8 +366,8 @@ ul.timeline > li:before {
 }
 
 .noticia_titulo1 {
-  font-family: Georgia, Arial;
-  font-size: 20px;
+  font-family: 'Georgia', 'Arial';
+  font-size: 21px;
   line-height: 1.3;
 }
 
@@ -385,9 +387,10 @@ ul.timeline > li:before {
 }
 
 .noticia_titulo2 {
-  font-family: Georgia, Arial;
-  font-size: 17px;
+  font-family: 'Georgia', 'Arial';
+  font-size: 16px;
   line-height: 1.3;
+
 }
 
 .servicos1 {
@@ -403,9 +406,11 @@ ul.timeline > li:before {
 }
 
 .servicos_size {
-  font-family: Quicksand, Arial;
+  font-family: 'Quicksand', 'Arial';
   font-size: 1.0rem;
   line-height: 1.3;
+  font-weight: bold;
+
 }
 
 .giz_background {
@@ -452,6 +457,11 @@ ul.timeline > li:before {
 
 .card-not {
   background-color: rgba(204, 204, 204, 0.3);
+  height:10rem;
+}
+
+.card-destaque {
+    height:10rem;
 }
 
 .time {

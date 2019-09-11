@@ -15,6 +15,9 @@ class Convencoes extends Model
      *
      * @var string
      */
+
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_convencoes';
 
     protected $primaryKey = 'id_convencao';

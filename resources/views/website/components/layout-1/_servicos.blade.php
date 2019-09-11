@@ -70,7 +70,7 @@
         <div class="row">
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => route('fono.index'),
+                'route' => route('atendimento-eletronico.index'),
                 'icon' => '<i class="fas fa-comments fa-3x text-dark"></i>',
                 'class' => 'servicos3',
                 'title' => 'ATENDIMENTO<br/>ELETRÔNICO'

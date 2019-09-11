@@ -150,7 +150,8 @@ return [
         /*
          * Package Service Providers...
          */
-        Collective\Html\HtmlServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        #Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -162,8 +163,6 @@ return [
         Website\Providers\RouteServiceProvider::class,
         Website\Providers\ComposerServiceProvider::class,
 
-        //CAPTCHA 
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
 
     ],
 
@@ -214,8 +213,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => Watson\Active\Facades\Active::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+        #'Form' => Collective\Html\FormFacade::class,
+        #'Html' => Collective\Html\HtmlFacade::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
     ],
 
