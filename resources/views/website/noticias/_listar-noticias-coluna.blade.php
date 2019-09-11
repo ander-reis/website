@@ -75,4 +75,4 @@
 </div>
 
 {{--paginacao--}}
-{!! $noticias->links() !!}
+{!! $noticias->onEachSide(1)->links() !!}

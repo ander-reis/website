@@ -11,6 +11,9 @@ class ConvencoesEntidade extends Model
      *
      * @var string
      */
+
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_convencoes_entidades';
 
     /**

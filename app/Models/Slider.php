@@ -9,6 +9,8 @@ class Slider extends Model
 {
     use SliderPaths;
 
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_slider';
 
     public static function slider()

@@ -12,6 +12,9 @@ class Noticias extends Model
      *
      * @var string
      */
+
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_noticias';
 
     protected $primaryKey = 'id_noticia';
@@ -117,12 +120,10 @@ class Noticias extends Model
     public function getDtNoticiaFormattedAttribute()
     {
         return (new \DateTime($this->dt_noticia))->format('d/m/Y H:i');
-
     }
 
     public function getDtCadastroFormattedAttribute()
     {
         return (new \DateTime($this->dt_cadastro))->format('d/m/Y H:i');
-
     }
 }
