@@ -74,7 +74,7 @@ class BoletimController extends Controller
     {
 
         try {
-            $delete = BoletimInsc::where('ds_email', $request->ds_email)->delete();
+            $delete = BoletimInsc::where('ds_email', $request->ds_email_excluir)->delete();
 
             if ( $delete ) {
                 toastr()->success('E-mail excluído com sucesso');

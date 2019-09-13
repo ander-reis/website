@@ -151,7 +151,6 @@ return [
          * Package Service Providers...
          */
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-        Yoeunes\Toastr\ToastrServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
         /*

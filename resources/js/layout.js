@@ -74,7 +74,7 @@ $(document).ready(function () {
         $('.dropdown-menu.show').removeClass('show');
     });
 
-    $('input[name="boletimsind"]').click(function() {
+    $('input[name="boletimsind"]').change(function($x) {
         if (this.value == 1) { //Sindicalizado
             $("#num_matricula").prop("disabled", false);
             $("#lecionar :checkbox").prop("disabled", true);

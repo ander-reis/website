@@ -21,7 +21,7 @@
                 {{ Form::open(['route' => 'boletim.store', 'method' => 'POST']) }}
                 <div class="form-group" style="background: #f1f1f1;border: 1px solid;">
                     <span class="text-center">
-                        <div class="row p-2">
+                        <div class="row p-2 {{ $errors->has('boletimsind') ?'has-error' : '' }}">
                             <div class="col">
                                 {{ Form::radio('boletimsind',1) }}
                                 {{ Form::label('titulo', 'Sou Sindicalizado', ['class' => 'control-label']) }}
@@ -31,14 +31,18 @@
                                 {{ Form::label('titulo', 'Não Sou Sindicalizado', ['class' => 'control-label']) }}
                             </div>
                         </div>
+                        <div class="col mt-0 pt-0">@include('website.components.form-components._help_block',['field' => 'boletimsind'])</div>
+
                     </span>
 
                     <div class="row p-2">
-                        <div class="col">
+                        <div class="col {{ $errors->has('num_matricula') ?'has-error' : '' }}">
                             {{ Form::text('num_matricula', null, ['id' => 'num_matricula','class' => 'form-control', 'placeholder' => 'Matrícula']) }}
+                            @include('website.components.form-components._help_block',['field' => 'num_matricula'])
                         </div>
-                        <div class="col">
+                        <div class="col {{ $errors->has('num_cpf') ?'has-error' : '' }}">
                             {{ Form::text('num_cpf', null, ['class' => 'form-control', 'placeholder' => 'CPF']) }}
+                            @include('website.components.form-components._help_block',['field' => 'num_cpf'])
                         </div>
                     </div>
                     <div class="row p-2">
@@ -55,16 +59,18 @@
                     <div class="row p-2 align-items-center">
                         <div class="col-sm-12 col-lg-8 mb-2" id="lecionar" name="lecionar">
                             <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_a', 'value') }}
+                                {{ Form::checkbox('opt_perg_a', '') }}
                                 {{ Form::label('lbl_a', 'Leciono em escola particular.', ['class' => 'control-label mb-0']) }}
                             </div>
                             <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_b', 'value') }}
+                                {{ Form::checkbox('opt_perg_b', '') }}
                                 {{ Form::label('lbl_b', 'Leciono em escola pública.', ['class' => 'control-label m-0']) }}
                             </div>
                             <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_c', 'value') }}
-                                {{ Form::label('lbl_b', 'Outra função.', ['class' => 'control-label m-0']) }} </div>
+                                {{ Form::checkbox('opt_perg_c', '') }}
+                                {{ Form::label('lbl_b', 'Outra função.', ['class' => 'control-label m-0']) }}
+                            </div>
+                            @include('website.components.form-components._help_block',['field' => 'lecionar'])
                         </div>
                         <div class="col-sm-12 col-lg-4 mb-2 text-center">
                             {{ Form::submit('Cadastrar',['class' => 'btn btn-primary']) }}
