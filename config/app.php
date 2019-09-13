@@ -153,7 +153,6 @@ return [
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        #Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...

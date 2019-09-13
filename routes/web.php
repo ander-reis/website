@@ -39,7 +39,7 @@ Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']
 /**
  * atendimento eletrônico
  */
-Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index']]);
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index','store']]);
 
 /**
  * rota boletim
