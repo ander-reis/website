@@ -77,10 +77,10 @@
             ])
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => route('fono.index'),
+                'route' => route('boletim.index'),
                 'icon' => '<i class="fas fa-envelope-open-text fa-3x text-dark"></i>',
                 'class' => 'servicos3',
-                'title' => 'BOLETIM<br/>DO SINPRO'
+                'title' => 'BOLETIM<br/>DO SINPROSP'
             ])
 
             @include('website.components.layout-1._icons_servicos', [

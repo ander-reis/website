@@ -119,9 +119,8 @@
                         <a class="dropdown-item" href="http://www.sinprosp.org.br/atendimento.asp" target="_blank">
                             Atendimento Eletrônico
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br/boletim_eletronico.asp"
-                           target="_blank">
-                            Receba o Boletim
+                        <a class="dropdown-item" href="{{route('boletim.index')}}">
+                            Boletim do SinproSP
                         </a>
                         <a class="dropdown-item" href="http://www.sinprosp.org.br" target="_blank">
                             Acervo
