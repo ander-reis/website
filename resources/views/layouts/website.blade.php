@@ -34,8 +34,15 @@
         </a>
 
         <div id="push"></div>
+
     </div>
     @component('website.components.layout-1._footer')@endcomponent
+
+    {{-- toastr --}}
+    @jquery
+    @toastr_css
+    @toastr_js
+    @toastr_render
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -47,4 +54,5 @@
         })
     </script>
 </body>
+
 </html>

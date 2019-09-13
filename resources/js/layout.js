@@ -73,4 +73,16 @@ $(document).ready(function () {
         // hide any open menus when parent closes
         $('.dropdown-menu.show').removeClass('show');
     });
+
+    $('input[type=radio][name=boletimsind]').click(function() {
+        if (this.value == 1) { //Sindicalizado
+            $("#num_matricula").prop("disabled", false);
+            $("#lecionar :checkbox").prop("disabled", true);
+            $("#lecionar :checkbox").prop("checked", false);
+        }
+        else {
+            $("#num_matricula").prop("disabled", true);
+            $("#lecionar :checkbox").prop("disabled", false);
+        }
+    })
 });
