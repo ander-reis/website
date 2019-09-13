@@ -174,6 +174,7 @@ return [
         'year'                  => 'ano',
         'endereco'              => 'endereço',
         'ds_email'              => 'E-mail',
-        'ds_email_excluir'              => 'E-mail'
+        'ds_email_excluir'      => 'E-mail',
+        'ds_nome'               => 'Nome'
     ],
 ];

@@ -23,11 +23,11 @@
                     <span class="text-center">
                         <div class="row p-2">
                             <div class="col">
-                                {{ Form::radio('boletimsind1', 'value') }}
+                                {{ Form::radio('boletimsind',1) }}
                                 {{ Form::label('titulo', 'Sou Sindicalizado', ['class' => 'control-label']) }}
                             </div>
                             <div class="col">
-                                {{ Form::radio('boletimsind2', 'value') }}
+                                {{ Form::radio('boletimsind',0) }}
                                 {{ Form::label('titulo', 'Não Sou Sindicalizado', ['class' => 'control-label']) }}
                             </div>
                         </div>
@@ -35,7 +35,7 @@
 
                     <div class="row p-2">
                         <div class="col">
-                            {{ Form::text('num_matricula', null, ['class' => 'form-control', 'placeholder' => 'Matrícula']) }}
+                            {{ Form::text('num_matricula', null, ['id' => 'num_matricula','class' => 'form-control', 'placeholder' => 'Matrícula']) }}
                         </div>
                         <div class="col">
                             {{ Form::text('num_cpf', null, ['class' => 'form-control', 'placeholder' => 'CPF']) }}
