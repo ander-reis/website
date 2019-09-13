@@ -9,47 +9,51 @@
                 assunto relacionado ao trabalho desenvolvido pelo Sindicato, utilize os campos abaixo para nos enviar sua mensagem. A resposta
                 será enviada o mais breve possível.</p>
             </div>
-            <div>
-            @csrf
+            
+            {{ Form::open(['route' => 'atendimento-eletronico.store']) }}
+
+            @component('website.form-components._form_group',['field' => 'txtNome'])
+                {{ Form::label('txtNome', 'Nome', ['class' => 'control-label']) }}
+                {{ Form::text('txtNome', null, ['class' => 'form-control', 'maxlength' => 80, 'placeholder' => 'Informe seu nome']) }}            
+            @endcomponent
+
+            @component('website.form-components._form_group',['field' => 'txtEmail'])
+                {{ Form::label('txtEmail', 'E-mail', ['class' => 'control-label']) }}
+                {{ Form::email('txtEmail', null, ['class' => 'form-control', 'placeholder' => 'Informe um e-mail válido']) }}            
+            @endcomponent
+
+            @component('website.form-components._form_group',['field' => 'selDpto'])
+                {{ Form::label('selDpto', 'Selecione o assunto/departamento:', ['class' => 'control-label']) }}
+                
+                {{ Form::select('selDpto', ['1' => 'Atendimento', '2' => 'Previdência'], null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control']) }}
+               
+                <!--
+                    Form::select('id_categoria', \App\Models\NoticiasCategoria::pluck('ds_categoria', 'id_categoria'), null, ['placeholder' => 'Selecione a Categoria', 'class' => 'form-control'])                    
+                    Form::select('selDpto', \App\Models\AtendimentoDptos::pluck('ds_departamento', 'id_departamento'), null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control'])
+                 -->
+                
+
+            @endcomponent
+
+            @component('website.form-components._form_group',['field' => 'txtMsg'])
+                {{ Form::label('txtMsg', 'Texto a ser enviado:', ['class' => 'control-label']) }}
+                {{ Form::textarea('txtMsg', null, ['class' => 'form-control', 'rows' => 5]) }}
+            @endcomponent
+
+            @component('website.form-components._form_group',['field' => 'optPrivacidade'])
+                <div class="custom-control custom-checkbox custom-control-inline my-2">
+                    {{ Form::checkbox('optPrivacidade', '1', true, ['class' => 'custom-control-input', 'id' => 'optPrivacidade']) }}
+                    {{ Form::label('optPrivacidade', 'Estou ciente de que o SinproSP respeita a privacidade e restringe o acesso à quaisquer informações que eu mencionar nesse atendimento.', ['class' => 'custom-control-label']) }}
+                </div>
+            @endcomponent
+
+            {!! Recaptcha::render() !!}
+
+            <div class="mt-2">
+                <button type="submit" class="btn btn-primary">Enviar ao SinproSP</button>
             </div>
-            <form action="{{url('/atendimento-eletronico')}}" method="get">
-                <div class="form-group">
-                    <label for="frmNome">Nome</label>
-                    <input type="text" class="form-control" id="frmNome" required placeholder="Informe seu nome">
-                </div>
-                <div class="form-group">
-                    <label for="frmDpto">Selecione o assunto/departamento:</label>
-                    <select class="form-control" id="frmDpto" required>
-                        <option value="">Escolha uma opção...</option>
-                        <option value="1">Dúvida trabalhista</option>
-                        <option value="2">Colônia de férias</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="frmEmail">E-mail</label>
-                    <input type="email" class="form-control" id="frmEmail" required aria-describedby="email-obs" placeholder="Informe um e-mail válido">
-                    <small id="email-obs" class="form-text text-muted">Essa informação é restrita e confidencial!</small>
-                </div>
 
-                <div class="form-group">
-                    <label for="frmTexto">Texto a ser enviado:</label>
-                    <textarea class="form-control" id="frmTexto" rows="3" maxlength="2000" required></textarea><!--minlength="10"-->
-                </div>
-
-                <div class="form-check my-3">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1" style="font-size:0.8rem;">
-                        Estou ciente de que o SinproSP respeita a privacidade e não divulga quaisquer informações que eu mencionar nesse atendimento.
-                    </label>
-                </div>
-
-                {!! Recaptcha::render() !!}
-
-                <div class="form-group mt-2">
-                    <input type="hidden" nome="_token" value="{{csrf_token()}}">
-                    <button type="submit" class="btn btn-primary">Enviar ao SinproSP</button>
-                </div>
-            </form>
+            {{ Form::close() }}
         </div>
         @component('website.components.layout-1._column_right')@endcomponent
     </div>

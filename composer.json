@@ -12,6 +12,7 @@
         "greggilbert/recaptcha": "^2.2",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "laravelcollective/html": "^5.8.0",
         "watson/active": "^3.0"
     },
     "require-dev": {

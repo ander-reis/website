@@ -36,8 +36,8 @@ class AtendimentoEletronicoController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
-        print_r($request->frmNome);
+        dd('teste');
+        //return redirect()->route('atendimento-eletronico.index')->with('message', 'Categoria cadastrada com sucesso');
     }
 
     /**

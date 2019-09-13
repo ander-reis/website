@@ -39,9 +39,7 @@ Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']
 /**
  * atendimento eletrônico
  */
-Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index']]);
-Route::post('/atendimento-eletronico','Website\AtendimentoEletronicoController@store');
-
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index','store']]);
 
 /**
  * páginas principais
