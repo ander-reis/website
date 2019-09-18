@@ -23,11 +23,35 @@ class BoletimStoreRequest extends FormRequest
      */
     public function rules()
     {
-        //$this->sanitize();
-        return [
-            'ds_email'  => 'email',
-            'ds_nome'   =>  'required'
-        ];
+        $input = $this->all();
+
+        if (!isset($input['boletimsind'])) {
+            return [
+                'boletimsind' => 'required'
+            ];
+        }
+
+        if ($input['boletimsind'] == 1) {  //sindicalizado
+            return [
+                'num_matricula' => 'required',
+                'ds_email'      => 'email:rfc,dns',
+                'ds_nome'       => 'required'
+            ];
+        } else {
+            if (!isset($input['opt_perg_a']) && !isset($input['opt_perg_b']) && !isset($input['opt_perg_c'])) {
+                return [
+                    'ds_email'      => 'email:rfc,dns',
+                    'ds_nome'       => 'required',
+
+                ];
+            } else {
+                return [
+                    'ds_email'      => 'email:rfc,dns',
+                    'ds_nome'       => 'required',
+                    'lecionar'      => 'required',
+                ];
+            }
+        }
     }
 
     /**
