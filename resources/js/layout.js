@@ -74,7 +74,12 @@ $(document).ready(function () {
         $('.dropdown-menu.show').removeClass('show');
     });
 
-    $('input[name="boletimsind"]').change(function($x) {
+    $('input[name="boletimSind"]').change(function($x) {
+        $("#num_cpf").prop("disabled", false);
+        $("#ds_nome").prop("disabled", false);
+        $("#ds_email").prop("disabled", false);
+        $("#btnCadastrar").prop("disabled", false);
+
         if (this.value == 1) { //Sindicalizado
             $("#num_matricula").prop("disabled", false);
             $("#lecionar :checkbox").prop("disabled", true);

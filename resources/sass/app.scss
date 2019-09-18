@@ -654,6 +654,11 @@ ul.timeline > li:before {
   height: $icon-width;
 }
 
+/**** ALTERAR A COR DE TODOS OS RADIOS / CHECKBOX NO FORMVALIDATION ***/
+.checkbox-container.has-danger .custom-control-label { color: #dc3545; }
+.checkbox-container.has-success .custom-control-label { color: #28a745; }
+
+
 /** media queries **/
 /* bloqueio de tela minima */
 @media only screen and (max-width: 320px) {

@@ -89,6 +89,17 @@ return [
             'prefix' => '',
         ],
 
+        'sqlsrv-site' => [
+            'driver' => 'sqlsrv',
+            'host' => env('DB_HOST_SQLSRV_SITE', 'localhost'),
+            'port' => env('DB_PORT_SQLSRV_SITE', '1433'),
+            'database' => env('DB_DATABASE_SQLSRV_SITE', 'forge'),
+            'username' => env('DB_USERNAME_SQLSRV_SITE', 'forge'),
+            'password' => env('DB_PASSWORD_SQLSRV_SITE', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+        ],
+
     ],
 
     /*

@@ -4,6 +4,7 @@ namespace Website\Http\Controllers\Website;
 
 use Website\Http\Controllers\Controller;
 use Website\Models\Noticias;
+use Website\Models\NoticiasOrdem;
 
 class NoticiasController extends Controller
 {
@@ -14,9 +15,14 @@ class NoticiasController extends Controller
      */
     public function index()
     {
-        $noticias = Noticias::where('fl_oculta', 'N')->orderBy('id_noticia', 'desc')->paginate(12);
+        $notdestaque = NoticiasOrdem::orderBy('ordem_noticia')->select('id_noticia')->get();
 
-        return view('website.noticias.index', compact('noticias'));
+        $noticias = Noticias::where('fl_status', 1)
+                                ->whereNotIN('id_noticia',$notdestaque)
+                                ->orderBy('id_noticia','desc')
+                                ->paginate(12);
+
+        return view('website.noticias.index', compact('notdestaque', 'noticias'));
     }
 
     /**

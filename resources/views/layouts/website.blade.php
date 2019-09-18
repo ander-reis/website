@@ -17,6 +17,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css">
+    <link rel="stylesheet" href="css/formValidation.min.css">
 </head>
 
 <body>
@@ -46,6 +49,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script> --}}
+    <script src="{{ asset('js/FormValidation.js') }}"></script>
+    <script src="{{ asset('js/plugins/Bootstrap.min.js') }}"></script>
 
     <script>
         $(document).ready(function () {

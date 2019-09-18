@@ -15,94 +15,92 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-8">
-                {{ Form::open(['route' => 'boletim.store', 'method' => 'POST']) }}
+            <div class="col-lg-12">
+                {{ Form::open(['id' => 'formCadastrar', 'route' => 'boletim.store', 'method' => 'POST']) }}
                 <div class="form-group" style="background: #f1f1f1;border: 1px solid;">
                     <span class="text-center">
-                        <div class="row p-2 {{ $errors->has('boletimsind') ?'has-error' : '' }}">
-                            <div class="col">
-                                {{ Form::radio('boletimsind',1) }}
-                                {{ Form::label('titulo', 'Sou Sindicalizado', ['class' => 'control-label']) }}
+                        <div class="row p-2 checkbox-container js-alert-field-container">
+                            <div class="col-sm-12 col-lg-6 custom-control custom-radio">
+                                {{ Form::radio('boletimSind',1,false,['id'=>'lblSindicalizado', 'class' => 'custom-control-input']) }}
+                                {{ Form::label('lblSindicalizado', 'Sou Sindicalizado.', ['class' => 'custom-control-label']) }}
                             </div>
-                            <div class="col">
-                                {{ Form::radio('boletimsind',0) }}
-                                {{ Form::label('titulo', 'Não Sou Sindicalizado', ['class' => 'control-label']) }}
+                            <div class="col-sm-12 col-lg-6 custom-control custom-radio">
+                                {{ Form::radio('boletimSind',0,false,['id'=>'lblNSindicalizado', 'class' => 'custom-control-input']) }}
+                                {{ Form::label('lblNSindicalizado', 'Não Sou Sindicalizado.', ['class' => 'custom-control-label']) }}
                             </div>
                         </div>
-                        <div class="col mt-0 pt-0">@include('website.components.form-components._help_block',['field' => 'boletimsind'])</div>
 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="boletimSindMessage"></div>
+                            </div>
+                        </div>
                     </span>
 
                     <div class="row p-2">
-                        <div class="col {{ $errors->has('num_matricula') ?'has-error' : '' }}">
-                            {{ Form::text('num_matricula', null, ['id' => 'num_matricula','class' => 'form-control', 'placeholder' => 'Matrícula']) }}
+                        <div class="col-12 col-lg-6 mb-2 fl {{ $errors->has('num_matricula') ?'has-error' : '' }}">
+                            {{ Form::text('num_matricula', null, ['id' => 'num_matricula','class' => 'form-control', 'placeholder' => 'Matrícula', 'disabled']) }}
                             @include('website.components.form-components._help_block',['field' => 'num_matricula'])
                         </div>
-                        <div class="col {{ $errors->has('num_cpf') ?'has-error' : '' }}">
-                            {{ Form::text('num_cpf', null, ['class' => 'form-control', 'placeholder' => 'CPF']) }}
+                        <div class="col-12 col-lg-6 mb-2 fl {{ $errors->has('num_cpf') ?'has-error' : '' }}">
+                            {{ Form::text('num_cpf', null, ['id' => 'num_cpf', 'class' => 'form-control', 'placeholder' => 'CPF', 'disabled']) }}
                             @include('website.components.form-components._help_block',['field' => 'num_cpf'])
                         </div>
                     </div>
-                    <div class="row p-2">
-                        <div class="col-sm-12 mb-2 {{ $errors->has('ds_email') ?'has-error' : '' }}">
-                            {{ Form::text('ds_nome', null, ['class' => 'form-control', 'placeholder' => 'Nome']) }}
-                            @include('website.components.form-components._help_block',['field' => 'ds_nome'])
+                    <div class="row p-2 ">
+                        <div class="col-12 mb-2 fl {{ $errors->has('ds_nome') ?'has-error' : '' }}">
+                            {{ Form::text('ds_nome', null, ['id' => 'ds_nome', 'class' => 'form-control', 'placeholder' => 'Nome', 'disabled']) }}
                         </div>
-                        <div class="col-sm-12 mb-2 {{ $errors->has('ds_email') ?'has-error' : '' }}">
-                            {{ Form::email('ds_email', null, ['class' => 'form-control', 'placeholder' => 'E-mail']) }}
+                        <div class="col-12 mb-2 fl {{ $errors->has('ds_email') ?'has-error' : '' }}">
+                            {{ Form::email('ds_email', null, ['id' => 'ds_email', 'class' => 'form-control', 'placeholder' => 'E-mail', 'disabled']) }}
                             @include('website.components.form-components._help_block',['field' => 'ds_email'])
                         </div>
                     </div>
 
-                    <div class="row p-2 align-items-center">
-                        <div class="col-sm-12 col-lg-8 mb-2" id="lecionar" name="lecionar">
-                            <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_a', '') }}
-                                {{ Form::label('lbl_a', 'Leciono em escola particular.', ['class' => 'control-label mb-0']) }}
+                    <div class="row p-2 align-items-center checkbox-container js-alert-field-container">
+                        <div class="col-sm-12 col-lg-10 mb-2" id="lecionar" name="lecionar">
+                            <div class="custom-control custom-checkbox">
+                                {{ Form::checkbox('lecionar[]', '1',false,['id'=>'lblPrivado', 'class' => 'custom-control-input', 'disabled']) }}
+                                {{ Form::label('lblPrivado', 'Leciono em escola particular.', ['class' => 'custom-control-label mb-0']) }}
                             </div>
-                            <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_b', '') }}
-                                {{ Form::label('lbl_b', 'Leciono em escola pública.', ['class' => 'control-label m-0']) }}
+
+                            <div class="custom-control custom-checkbox">
+                                {{ Form::checkbox('lecionar[]', '2',false,['id'=>'lblPublica', 'class' => 'custom-control-input', 'disabled']) }}
+                                {{ Form::label('lblPublica', 'Leciono em escola publica.', ['class' => 'custom-control-label mb-0']) }}
                             </div>
-                            <div class="custom-checkbox">
-                                {{ Form::checkbox('opt_perg_c', '') }}
-                                {{ Form::label('lbl_b', 'Outra função.', ['class' => 'control-label m-0']) }}
+                            <div class="custom-control custom-checkbox">
+                                {{ Form::checkbox('lecionar[]', '3',false,['id'=>'lblOutro', 'class' => 'custom-control-input', 'disabled']) }}
+                                {{ Form::label('lblOutro', 'Leciono em escola particular.', ['class' => 'custom-control-label mb-0']) }}
                             </div>
-                            @include('website.components.form-components._help_block',['field' => 'lecionar'])
+                            <div class="col-lg-12">
+                                <div id="lecionarMessage"></div>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-lg-4 mb-2 text-center">
-                            {{ Form::submit('Cadastrar',['class' => 'btn btn-primary']) }}
+                        <div class="col-sm-12 col-lg-2 mb-2 text-center">
+                            {{ Form::submit('Cadastrar',['name' => 'btnCadastrar', 'id' => 'btnCadastrar', 'class' => 'btn btn-primary']) }}
                         </div>
                     </div>
-                    {{ Form::close() }}
                 </div>
+                {{ Form::close() }}
             </div>
-
-            <div class="col-lg-2"></div>
         </div>
 
         <div class="row mt-4">
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-8">
-                {{ Form::open(['route' => ['boletim.destroy', 'email'], 'method' => 'DELETE']) }}
-                    <div class="form-group p-2" style="background: #f1f1f1;border: 1px solid;">
-                        <div class="row p-2 align-items-center">
-                            <div class="col-9 col-lg-10 mb-2 {{ $errors->has('ds_email_excluir') ?'has-error' : '' }}">
-                                {{ Form::email('ds_email_excluir', null, ['class' => 'form-control', 'placeholder' => 'E-mail para excluir']) }}
-                                @include('website.components.form-components._help_block',['field' => 'ds_email_excluir'])
-                            </div>
-                            <div class="col-2 mb-2 text-center">
-                                {{ Form::submit('Ok',['class' => 'btn btn-danger']) }}
-                            </div>
+            <div class="col-12">
+                {{ Form::open(['id' => 'formExcluir', 'route' => ['boletim.destroy', 'email'], 'method' => 'DELETE']) }}
+                <div class="form-group p-2" style="background: #f1f1f1;border: 1px solid;">
+                    <div class="row p-2 align-items-center">
+                        <div class="col-11 mb-2 fl {{ $errors->has('ds_email_excluir') ?'has-error' : '' }}">
+                            {{ Form::email('ds_email_excluir', null, ['id' => 'ds_email_excluir', 'class' => 'form-control', 'placeholder' => 'E-mail para excluir']) }}
+                            @include('website.components.form-components._help_block',['field' => 'ds_email_excluir'])
+                        </div>
+                        <div class="col-1 mb-2 text-center">
+                            {{ Form::submit('Ok',['class' => 'btn btn-danger']) }}
                         </div>
                     </div>
+                </div>
                 {{ Form::close() }}
             </div>
-
-            <div class="col-lg-2"></div>
         </div>
 
         <hr style="border-top: 1px solid rgb(0, 0, 0);">
@@ -132,4 +130,189 @@
 {{--paginacao--}}
 {!! $boletim->onEachSide(3)->links() !!}
 
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function(e) {
+    const formCadastrar = document.getElementById('formCadastrar');
+    const fvCadastrar = FormValidation
+        .formValidation(
+            formCadastrar, {
+                fields: {
+                    boletimSind: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Escolha uma das opções acima'
+                            }
+                        }
+                    },
+                    num_matricula: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Informe o seu número de matrícula de sócio'
+                            },
+                            regexp: {
+                                regexp: /^[0-9]+$/i,
+                                message: 'Somente números são permitidos'
+                            },
+                        }
+                    },
+                    ds_nome: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Informe o seu nome completo'
+                            },
+                            regexp: {
+                                regexp: /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/i,
+                                message: 'Nome só pode conter letras ou espaço'
+                            },
+                            stringLength: {
+                                min: 5,
+                                max: 100,
+                                message: 'Informe o seu nome completo'
+                            }
+                        }
+                    },
+                    ds_email: {
+                        validators: {
+                            callback: {
+                                message: 'E-mail inválido',
+                                callback: function(input) {
+                                    const value = input.value;
+                                    if (value === '') {
+                                        return false;
+                                    }
+
+                                    // I want the value has to pass both emailAddress and regexp validators
+                                    return FormValidation.validators.emailAddress().validate({
+                                        value: value,
+                                    }).valid;
+                                }
+                            },
+                            blank: {}
+                        }
+                    },
+                    'lecionar[]': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Escolha uma das opções acima'
+                            }
+                        }
+                    },
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    excluded: new FormValidation.plugins.Excluded(),
+                    tachyons: new FormValidation.plugins.Bootstrap({
+                        defaultMessageContainer: false,
+                        rowSelector: function(field, ele) {
+                            return field === 'boletimSind' || field === 'lecionar[]' ? '.js-alert-field-container' : '.fl';
+                        },
+                    }),
+                    submitButton: new FormValidation.plugins.SubmitButton(),
+
+                    message: new FormValidation.plugins.Message({
+                        clazz: 'red lh-copy',
+                        container: function(field, ele) {
+                            return field === 'boletimSind' ?
+                                document.getElementById('boletimSindMessage') :
+                                field === 'lecionar[]' ? document.getElementById('lecionarMessage') :
+                                FormValidation.plugins.Message.getClosestContainer(ele, formCadastrar, /^(.*)fl(.*)$/);
+                        },
+                    }),
+                },
+            }
+        )
+        .on('core.form.valid', function() {
+            $("#btnCadastrar").prop("disabled", true);
+            $("#btnCadastrar").prop("value", "Aguarde !!!");
+
+            let perg_a = 0;
+            let perg_b = 0;
+            let perg_c = 0;
+
+            let lecionar = $('input[name="lecionar[]"]');
+
+            console.log(lecionar);
+
+
+            lecionar.each(function() {
+                if ($(this).is(':checked')) { //se está marcado conta mais 1
+                    alert(1);
+                    if ($(this).val() == 1) {
+                        perg_a = 1;
+                    } else if ($(this).val() == 2) {
+                        perg_b = 1;
+                    } else if ($(this).val() == 3) {
+                        perg_c = 1;
+                    }
+                }
+            });
+
+            FormValidation.utils.fetch('', {
+                method: 'POST',
+                params: {
+                    _token: "{{ csrf_token() }}",
+                    ds_nome: document.getElementById('ds_nome').value,
+                    ds_email: document.getElementById('ds_email').value,
+                    opt_perg_a: perg_a,
+                    opt_perg_b: perg_b,
+                    opt_perg_c: perg_c,
+                },
+            }).then(function(response) {
+                if (response.errors) {
+                    for (const field in response.errors) {
+                        fvCadastrar
+                            // Update the message option
+                            .updateValidatorOption(
+                                field, 'blank', 'message', 'E-mail inválido'
+                            )
+                            // // Set the field as invalid
+                            .updateFieldStatus(field, 'Invalid', 'blank');
+                    }
+                    $("#btnCadastrar").prop("value", "Cadastrar");
+                    $("#btnCadastrar").prop("disabled", false);
+                } else {
+                    toastr.success('E-mail cadastrado com sucesso');
+                    setInterval(function() {
+                        location.reload();
+                    }, 1800);
+                }
+            });
+        });
+
+    const formExcluir = document.getElementById('formExcluir');
+    const fvExcluir = FormValidation
+    .formValidation(
+        formExcluir,
+        {
+            fields: {
+                ds_email_excluir: {
+                    validators: {
+                        callback: {
+                            message: 'E-mail inválido',
+                            callback: function(input) {
+                                const value = input.value;
+                                if (value === '') {
+                                    return false;
+                                }
+
+                                // I want the value has to pass both emailAddress and regexp validators
+                                return FormValidation.validators.emailAddress().validate({
+                                        value: value,
+                                    }).valid;
+                            },
+                        }
+                    }
+                },
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                tachyons: new FormValidation.plugins.Bootstrap(),
+                submitButton: new FormValidation.plugins.SubmitButton(),
+                defaultSubmit: new FormValidation.plugins.DefaultSubmit()
+            },
+        }
+    );
+
+});
+</script>
 @endsection
