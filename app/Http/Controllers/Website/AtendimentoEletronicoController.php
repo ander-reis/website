@@ -4,6 +4,10 @@ namespace Website\Http\Controllers\website;
 
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\AtendimentoEletronicoRequest;
+
+use Website\Models\AtendimentoEletronico;
+
 
 class AtendimentoEletronicoController extends Controller
 {
@@ -33,12 +37,25 @@ class AtendimentoEletronicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AtendimentoEletronicoRequest $request)
     {
-        //
-        dd('teste');
-        //return redirect()->route('atendimento-eletronico.index')->with('message', 'Categoria cadastrada com sucesso');
+        try {
+            $insert =  AtendimentoEletronico::create([
+                'ds_nome'           => strtoupper($request['txtNome']),
+                'ds_email'          => strtolower($request['txtEmail']),
+                'ds_texto'          => $request['txtMsg'],
+                'fl_departamento'   => $request['selDpto'],
+                'ds_ip'             => $request->ip()
+            ]);
+
+            toastr()->success('Mensagem enviada com sucesso!');
+            return redirect()->route('atendimento-eletronico.index');
+        } catch (\Exception $e) {
+            toastr()->error('Não foi possível enviar a mensagem!');
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -48,8 +65,10 @@ class AtendimentoEletronicoController extends Controller
      */
     public function show($id)
     {
-        //
+        $chamado = AtendimentoEletronico::where('fl_status', '1')->findOrFail($id);
+        return view('website.atendimento-eletronico.show', compact('chamado'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
