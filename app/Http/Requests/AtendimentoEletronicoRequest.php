@@ -24,7 +24,12 @@ class AtendimentoEletronicoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'txtNome'               => 'required|max:50',
+            'txtEmail'              => 'email|max:80',
+            'selDpto'               => 'required',
+            'txtMsg'                => 'required|max:5000',
+            'optPrivacidade'        => 'accepted',
+            'g-recaptcha-response'  => 'required|recaptcha',
         ];
     }
 }

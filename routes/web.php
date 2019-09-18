@@ -27,11 +27,6 @@ Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', '
 Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
 // /**
-//  * atendimento eletrônico
-//  */
-// Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['show']]);
-
-// /**
 //  * páginas principais
 //  */
 // Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
@@ -39,7 +34,7 @@ Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']
 /**
  * atendimento eletrônico
  */
-Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index','store']]);
+Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index','show','store']]);
 
 /**
  * rota boletim
