@@ -4,14 +4,14 @@
             <div class="col-lg-3 col-md-6 mt-3">
                 <a href="/">
                     <img class="rounded mx-auto d-block w-100"
-                        src="{{ asset('images/layout-1/home/sindicalizese.png') }}" alt="SinproSP">
+                        src="{{ asset('images/layout-1/home/sindicalizese.jpg') }}" alt="SinproSP">
                 </a>
             </div>
 
             <div class="col-lg-3 col-md-6 mt-3">
                 <a href="/">
                     <img class="rounded mx-auto d-block w-100"
-                        src="{{ asset('http://www.sinprosp.org.br/img/home/cadevoce1.jpg') }}" alt="SinproSP">
+                        src="{{ asset('images/layout-1/home/cadevoce.jpg') }}" alt="SinproSP">
                 </a>
             </div>
 
