@@ -2,14 +2,14 @@
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-3 col-md-6 mt-3">
-                <a href="/">
+                <a href="http://www.sinprosp.org.br/sindicalizacao.asp" target="_blank">
                     <img class="rounded mx-auto d-block w-100"
                         src="{{ asset('images/layout-1/home/sindicalizese.jpg') }}" alt="SinproSP">
                 </a>
             </div>
 
             <div class="col-lg-3 col-md-6 mt-3">
-                <a href="/">
+                <a href="http://www.sinprosp.org.br/cadastro_login.asp" target="_blank">
                     <img class="rounded mx-auto d-block w-100"
                         src="{{ asset('images/layout-1/home/cadevoce.jpg') }}" alt="SinproSP">
                 </a>

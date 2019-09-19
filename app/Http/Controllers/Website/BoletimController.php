@@ -24,15 +24,10 @@ class BoletimController extends Controller
         return view('website.boletim.index', compact('boletim'));
     }
 
-    /**
-     * Show the form for creating a new resource.
+    /* Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return 'Cadastrando ...';
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,10 +37,8 @@ class BoletimController extends Controller
      */
     public function store(BoletimStoreRequest $request)
     {
-        //dd($request);
         try {
-
-            $request['num_matricula'] = (!isset($request['num_matricula']) ? '000000' : substr('000000' . $request['num_matricula'], -6));
+            $request['num_matricula'] = (is_null($request['num_matricula']) ? '000000' : substr('000000' . $request['num_matricula'], -6));
             $request['num_cpf'] = (is_null($request['num_cpf']) ? '000.000.000-00' : $request['num_cpf']);
 
             $request['num_ip'] =  $request->ip();

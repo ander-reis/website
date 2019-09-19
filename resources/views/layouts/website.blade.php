@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/formValidation.min.css">
 </head>
 
@@ -55,8 +55,15 @@
 
     <script>
         $(document).ready(function () {
-            $('#icon-popover').popover();
+            $('#icon-popover1').popover();
             $('#icon-popover2').popover();
+            $('#icon-popover3').popover();
+            $('#icon-popover4').popover();
+            $('#icon-popover5').popover();
+            $('#icon-popover6').popover();
+            $('#icon-popover7').popover();
+            $('#icon-popover8').popover();
+            $('#icon-popover9').popover();
         })
     </script>
 </body>

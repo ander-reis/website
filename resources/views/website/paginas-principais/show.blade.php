@@ -9,5 +9,6 @@
             <h2>{!! $pagina->txt_titulo !!}</h2>
             <span>{!! $pagina->txt_pagina !!}</span>
         </div>
+        @component('website.components.layout-1._column_right')@endcomponent
     </div>
 @endsection

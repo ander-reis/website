@@ -152,6 +152,7 @@ return [
          */
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        geekcom\ValidatorDocs\ValidatorProvider::class,
 
         /*
          * Application Service Providers...

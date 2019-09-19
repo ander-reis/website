@@ -129,8 +129,34 @@
 </div>
 {{--paginacao--}}
 {!! $boletim->onEachSide(3)->links() !!}
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+    function TestaCPF(strCPF) {
+        var Soma;
+        var Resto;
+        Soma = 0;
+        strCPF = strCPF.replace(/[^a-z0-9]/gi,'');
+        if (strCPF == "00000000000") return false;
+
+        for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+        Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+
+        Soma = 0;
+        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+        Resto = (Soma * 10) % 11;
+
+        if ((Resto == 10) || (Resto == 11))  Resto = 0;
+        if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+        return true;
+    }
+
+    $(document).ready(function(){
+        $('#num_cpf').mask('000.000.000-00', {reverse: true});
+    });
+
     document.addEventListener('DOMContentLoaded', function(e) {
     const formCadastrar = document.getElementById('formCadastrar');
     const fvCadastrar = FormValidation
@@ -153,6 +179,21 @@
                                 regexp: /^[0-9]+$/i,
                                 message: 'Somente números são permitidos'
                             },
+                        }
+                    },
+                    num_cpf: {
+                        validators: {
+                            callback: {
+                                message: 'CPF inválid',
+                                callback: function(input) {
+                                    if (input.value !== '') {
+                                       return TestaCPF(input.value);
+                                    } else {
+                                        return true;
+                                    }
+                                }
+                            },
+                            blank: {}
                         }
                     },
                     ds_nome: {
@@ -231,12 +272,8 @@
 
             let lecionar = $('input[name="lecionar[]"]');
 
-            console.log(lecionar);
-
-
             lecionar.each(function() {
                 if ($(this).is(':checked')) { //se está marcado conta mais 1
-                    alert(1);
                     if ($(this).val() == 1) {
                         perg_a = 1;
                     } else if ($(this).val() == 2) {
@@ -251,8 +288,11 @@
                 method: 'POST',
                 params: {
                     _token: "{{ csrf_token() }}",
+                    num_matricula: document.getElementById('num_matricula').value,
+                    num_cpf: document.getElementById('num_cpf').value,
                     ds_nome: document.getElementById('ds_nome').value,
                     ds_email: document.getElementById('ds_email').value,
+
                     opt_perg_a: perg_a,
                     opt_perg_b: perg_b,
                     opt_perg_c: perg_c,
@@ -260,13 +300,20 @@
             }).then(function(response) {
                 if (response.errors) {
                     for (const field in response.errors) {
-                        fvCadastrar
-                            // Update the message option
-                            .updateValidatorOption(
-                                field, 'blank', 'message', 'E-mail inválido'
-                            )
-                            // // Set the field as invalid
-                            .updateFieldStatus(field, 'Invalid', 'blank');
+                            if ( field == "num_cpf") {
+                                // Update the message option
+                                fvCadastrar.updateValidatorOption(field, 'blank', 'message', 'CPF inválido')
+
+                                // Set the field as invalid
+                                fvCadastrar.updateFieldStatus(field, 'Invalid', 'blank');
+                            }
+                            else {
+                                // Update the message option
+                                fvCadastrar.updateValidatorOption(field, 'blank', 'message', 'E-mail inválido')
+
+                                // Set the field as invalid
+                                fvCadastrar.updateFieldStatus(field, 'Invalid', 'blank');
+                            }
                     }
                     $("#btnCadastrar").prop("value", "Cadastrar");
                     $("#btnCadastrar").prop("disabled", false);
