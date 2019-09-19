@@ -5,6 +5,7 @@
 <h2>Boletim Eletrônico</h2>
 
 <div class="row">
+
     <div class="col-12">
         <div class="row">
             <div class="col text-justify mb-2">
@@ -128,7 +129,8 @@
     </div>
 </div>
 {{--paginacao--}}
-{!! $boletim->onEachSide(3)->links() !!}
+{!! $boletim->links('pagination.default') !!}
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
     function TestaCPF(strCPF) {
