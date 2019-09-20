@@ -58,6 +58,7 @@
 
     <script>
         $(document).ready(function () {
+            $('#num_cpf').mask('000.000.000-00', {reverse: true});
             $('#icon-popover1').popover();
             $('#icon-popover2').popover();
             $('#icon-popover3').popover();
@@ -69,6 +70,7 @@
             $('#icon-popover9').popover();
         })
     </script>
+    @stack('boletim-script')
 </body>
 
 </html>
