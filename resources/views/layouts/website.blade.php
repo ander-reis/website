@@ -9,6 +9,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- ROBOTS -->
+    @yield('robots')
+
     <title>{{ config('app.name', 'Site SinproSP') }}</title>
 
     <!-- Fonts -->

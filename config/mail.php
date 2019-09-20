@@ -17,7 +17,6 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
-    //'driver' => env('mailgun', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtpd.sinprosp.org.br'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+      'address' => env('MAIL_FROM_ADDRESS', 'webmaster@sinprosp.org.br'),
+        'name' => env('MAIL_FROM_NAME', 'SinproSP'),
     ],
 
     /*

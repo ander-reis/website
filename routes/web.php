@@ -34,7 +34,9 @@ Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']
 /**
  * atendimento eletrônico
  */
-Route::resource('atendimento-eletronico', 'Website\AtendimentoEletronicoController', ['only' => ['index','show','store']]);
+Route::get('/atendimento-eletronico','Website\AtendimentoEletronicoController@index')->name('atendimento-eletronico.index');
+Route::post('/atendimento-eletronico','Website\AtendimentoEletronicoController@store')->name('atendimento-eletronico.store');
+Route::get('/atendimento-eletronico/{id}','Website\AtendimentoEletronicoController@show')->name('atendimento-eletronico.show');
 
 /**
  * rota boletim
