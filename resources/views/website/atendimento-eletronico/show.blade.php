@@ -1,5 +1,9 @@
 @extends('layouts.website')
 
+@section('robots')
+<meta name="robots" content="noindex, nofollow">
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-12 col-sm-12 col-md-9">

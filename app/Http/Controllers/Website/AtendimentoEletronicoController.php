@@ -2,12 +2,12 @@
 
 namespace Website\Http\Controllers\website;
 
+use Website\Mail\AtendimentoEletronicoEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\AtendimentoEletronicoRequest;
-
 use Website\Models\AtendimentoEletronico;
-
 
 class AtendimentoEletronicoController extends Controller
 {
@@ -16,7 +16,8 @@ class AtendimentoEletronicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function index()
     {
         return view('website.atendimento-eletronico.index');
     }
@@ -47,10 +48,13 @@ class AtendimentoEletronicoController extends Controller
                 'fl_departamento'   => $request['selDpto'],
                 'ds_ip'             => $request->ip()
             ]);
+            
+            Mail::to('sinprosp@sinprosp.org.br')->send(new AtendimentoEletronicoEmail($insert->id_chamado,$insert->fl_departamento));
 
             toastr()->success('Mensagem enviada com sucesso!');
             return redirect()->route('atendimento-eletronico.index');
         } catch (\Exception $e) {
+            dd($e);
             toastr()->error('Não foi possível enviar a mensagem!');
             return redirect()->back();
         }
