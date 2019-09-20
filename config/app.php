@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -151,7 +151,8 @@ return [
          * Package Service Providers...
          */
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-        #Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        geekcom\ValidatorDocs\ValidatorProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,8 +214,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => Watson\Active\Facades\Active::class,
-        #'Form' => Collective\Html\FormFacade::class,
-        #'Html' => Collective\Html\HtmlFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
         'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
     ],
 

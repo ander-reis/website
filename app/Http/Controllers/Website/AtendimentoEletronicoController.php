@@ -2,8 +2,13 @@
 
 namespace Website\Http\Controllers\website;
 
+use Website\Mail\AtendimentoEletronicoEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\AtendimentoEletronicoRequest;
+use Website\Models\AtendimentoEletronico;
+use Website\Models\AtendimentoDptos;
 
 class AtendimentoEletronicoController extends Controller
 {
@@ -12,7 +17,8 @@ class AtendimentoEletronicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function index()
     {
         return view('website.atendimento-eletronico.index');
     }
@@ -33,12 +39,31 @@ class AtendimentoEletronicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AtendimentoEletronicoRequest $request)
     {
-        //
-        dd($request->all());
-        print_r($request->frmNome);
+        try {
+
+            $DptoEmail = AtendimentoDptos::find($request['selDpto']);
+
+            $insert =  AtendimentoEletronico::create([
+                'ds_nome'           => strtoupper($request['txtNome']),
+                'ds_email'          => strtolower($request['txtEmail']),
+                'ds_texto'          => $request['txtMsg'],
+                'fl_departamento'   => $request['selDpto'],
+                'ds_ip'             => $request->ip()
+            ]);
+            
+            Mail::to($DptoEmail->ds_email)->send(new AtendimentoEletronicoEmail($insert->id_chamado));
+
+            toastr()->success('Mensagem enviada com sucesso!');
+            return redirect()->route('atendimento-eletronico.index');
+        } catch (\Exception $e) {
+            dd($e);
+            toastr()->error('Não foi possível enviar a mensagem!');
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -48,7 +73,8 @@ class AtendimentoEletronicoController extends Controller
      */
     public function show($id)
     {
-        //
+        $chamado = AtendimentoEletronico::where('fl_status', '1')->findOrFail($id);
+        return view('website.atendimento-eletronico.show', compact('chamado'));
     }
 
     /**

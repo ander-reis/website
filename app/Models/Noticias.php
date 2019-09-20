@@ -12,6 +12,9 @@ class Noticias extends Model
      *
      * @var string
      */
+
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_noticias';
 
     protected $primaryKey = 'id_noticia';
@@ -24,6 +27,18 @@ class Noticias extends Model
     public function categoria()
     {
         return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
+    }
+
+
+
+    /**
+     * Retorna as 4 noticias de destaque
+     *
+     * @return mixed
+     */
+    public static function noticiasDestaque()
+    {
+        return Noticias::where('fl_oculta', '')->inRandomOrder()->take(2)->get();
     }
 
     /**
@@ -117,12 +132,10 @@ class Noticias extends Model
     public function getDtNoticiaFormattedAttribute()
     {
         return (new \DateTime($this->dt_noticia))->format('d/m/Y H:i');
-
     }
 
     public function getDtCadastroFormattedAttribute()
     {
         return (new \DateTime($this->dt_cadastro))->format('d/m/Y H:i');
-
     }
 }

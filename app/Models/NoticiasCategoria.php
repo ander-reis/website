@@ -11,6 +11,9 @@ class NoticiasCategoria extends Model
      *
      * @var $table string
      */
+
+    protected $connection = 'sqlsrv-website';
+
     protected $table = 'tb_sinpro_noticias_categorias';
 
     protected $primaryKey = 'id_categoria';

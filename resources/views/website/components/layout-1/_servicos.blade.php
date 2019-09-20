@@ -17,10 +17,10 @@
             ])
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => route('paginas-principais', ['url-pagina' => 'atendimento-medico']),
-                'icon' => '<i class="fas fa-user-md fa-3x text-dark"></i>',
+                'route' => route('fono.index'),
+                'icon' => '<i class="fab fa-creative-commons-sampling fa-3x text-dark"></i>',
                 'class' => 'servicos1',
-                'title' => 'ATENDIMENTO<br/>MÉDICO'
+                'title' => 'FONOAUDIOLOGIA'
             ])
 
             @include('website.components.layout-1._icons_servicos', [
@@ -35,14 +35,7 @@
     <div class="col-md-12">
         <div class="row">
 
-            @include('website.components.layout-1._icons_servicos', [
-                'route' => route('fono.index'),
-                'icon' => '<i class="fab fa-creative-commons-sampling fa-3x text-dark"></i>',
-                'class' => 'servicos2',
-                'title' => 'FONOAUDIOLOGIA'
-            ])
-
-            @include('website.components.layout-1._icons_servicos', [
+           @include('website.components.layout-1._icons_servicos', [
                 'route' => route('fono.index'),
                 'icon' => '<i class="fas fa-notes-medical fa-3x text-dark"></i>',
                 'class' => 'servicos2',
@@ -58,11 +51,17 @@
 
             @include('website.components.layout-1._icons_servicos', [
                 'route' => route('fono.index'),
-                'icon' => '<i class="fas fa-mobile-alt fa-3x text-dark"></i>',
+                'icon' => '<i class="fas fa-copy fa-3x text-dark"></i>',
                 'class' => 'servicos2',
-                'title' => 'APLICATIVO<br/>DO SINPROSP'
+                'title' => 'HOMOLOGAÇÃO'
             ])
 
+            @include('website.components.layout-1._icons_servicos', [
+                'route' => route('fono.index'),
+                'icon' => '<i class="fas fa-folder-plus fa-3x text-dark"></i>',
+                'class' => 'servicos2',
+                'title' => 'ACERVO'
+            ])
         </div>
     </div>
 
@@ -77,26 +76,25 @@
             ])
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => route('fono.index'),
+                'route' => route('boletim.index'),
                 'icon' => '<i class="fas fa-envelope-open-text fa-3x text-dark"></i>',
                 'class' => 'servicos3',
-                'title' => 'BOLETIM<br/>DO SINPRO'
+                'title' => 'BOLETIM<br/>DO SINPROSP'
             ])
 
             @include('website.components.layout-1._icons_servicos', [
                 'route' => route('fono.index'),
-                'icon' => '<i class="fas fa-folder-plus fa-3x text-dark"></i>',
+                'icon' => '<i class="fas fa-mobile-alt fa-3x text-dark"></i>',
                 'class' => 'servicos3',
-                'title' => 'ACERVO'
+                'title' => 'APLICATIVO<br/>DO SINPROSP'
             ])
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => route('fono.index'),
-                'icon' => '<i class="fas fa-copy fa-3x text-dark"></i>',
+                'route' => route('paginas-principais', ['url-pagina' => 'whatsapp']),
+                'icon' => '<i class="fab fa-whatsapp fa-3x text-dark"></i>',
                 'class' => 'servicos3',
-                'title' => 'HOMOLOGAÇÃO'
+                'title' => 'WHATSAPP'
             ])
-
         </div>
     </div>
 </div>

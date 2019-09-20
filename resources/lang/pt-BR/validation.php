@@ -172,6 +172,15 @@ return [
         'title'                 => 'título',
         'username'              => 'usuário',
         'year'                  => 'ano',
-        'endereco'              => 'endereço'
+        'endereco'              => 'endereço',
+        'ds_email'              => 'E-mail',
+        'ds_email_excluir'      => 'E-mail',
+        'ds_nome'               => 'Nome',
+        'txtNome'               => 'Nome',
+        'txtEmail'              => 'E-mail',
+        'selDpto'               => 'Assunto/Departamento',
+        'txtMsg'                => 'Texto',
+        'optPrivacidade'        => 'Privacidade',
+        'g-recaptcha-response'  => 'reCaptcha',
     ],
 ];
