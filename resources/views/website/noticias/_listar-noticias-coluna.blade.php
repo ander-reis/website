@@ -44,5 +44,4 @@
 </div>
 
 {{--paginacao--}}
-{{-- {!! $noticias->onEachSide(1)->links() !!} --}}
-{!! $noticias->links('pagination.default') !!}
+{!! $noticias->links() !!}

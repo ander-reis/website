@@ -129,7 +129,7 @@
     </div>
 </div>
 {{--paginacao--}}
-{!! $boletim->links('pagination.default') !!}
+{!! $boletim->links() !!}
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
