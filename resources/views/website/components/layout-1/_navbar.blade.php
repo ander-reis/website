@@ -116,7 +116,7 @@
                         <a class="dropdown-item" href="#">
                             Aplicativo do SinproSP
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br/atendimento.asp" target="_blank">
+                        <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
                             Atendimento Eletrônico
                         </a>
                         <a class="dropdown-item" href="{{route('boletim.index')}}">

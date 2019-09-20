@@ -24,15 +24,10 @@ class BoletimController extends Controller
         return view('website.boletim.index', compact('boletim'));
     }
 
-    /**
-     * Show the form for creating a new resource.
+    /* Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return 'Cadastrando ...';
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,21 +38,17 @@ class BoletimController extends Controller
     public function store(BoletimStoreRequest $request)
     {
         try {
-
-            $request['num_matricula'] = (!isset($request['num_matricula']) ? '000000' : substr('000000' . $request['num_matricula'], -6));
+            $request['num_matricula'] = (is_null($request['num_matricula']) ? '000000' : substr('000000' . $request['num_matricula'], -6));
             $request['num_cpf'] = (is_null($request['num_cpf']) ? '000.000.000-00' : $request['num_cpf']);
-            $request['opt_perg_a'] = (!isset($request['opt_perg_a']) ? 0 : 1);
-            $request['opt_perg_b'] = (!isset($request['opt_perg_b']) ? 0 : 1);
-            $request['opt_perg_c'] = (!isset($request['opt_perg_c']) ? 0 : 1);
 
             $request['num_ip'] =  $request->ip();
 
             $insert = BoletimInsc::firstOrCreate(['ds_email' => $request['ds_email']], $request->all());
 
-            toastr()->success('E-mail cadastrado com sucesso');
+            return response()->json(['ok' => true]);
 
-            return redirect()->route('boletim.index');
         } catch (\Exception $e) {
+            dd($e);
             toastr()->error('Não foi possível cadastrar o e-mail');
             // dd($e->getMessage());
             return redirect()->back();

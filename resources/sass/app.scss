@@ -146,8 +146,8 @@ ul.timeline > li:before {
 
 /** footer **/
 .icon-home {
-  width: 25px;
-  height: 25px;
+  width: 32px;
+  height: 32px;
 }
 
 .text-link-footer {
@@ -653,6 +653,11 @@ ul.timeline > li:before {
   width: $icon-width;
   height: $icon-width;
 }
+
+/**** ALTERAR A COR DE TODOS OS RADIOS / CHECKBOX NO FORMVALIDATION ***/
+.checkbox-container.has-danger .custom-control-label { color: #dc3545; }
+.checkbox-container.has-success .custom-control-label { color: #28a745; }
+
 
 /** media queries **/
 /* bloqueio de tela minima */

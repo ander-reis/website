@@ -29,6 +29,18 @@ class Noticias extends Model
         return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
     }
 
+
+
+    /**
+     * Retorna as 4 noticias de destaque
+     *
+     * @return mixed
+     */
+    public static function noticiasDestaque()
+    {
+        return Noticias::where('fl_oculta', '')->inRandomOrder()->take(2)->get();
+    }
+
     /**
      * Retorna 2 notícias random
      *

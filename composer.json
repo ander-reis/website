@@ -14,7 +14,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8.0",
         "watson/active": "^3.0",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "geekcom/validator-docs" : "1.*"
     },
     "require-dev": {
         "composer/composer": "^1.9",

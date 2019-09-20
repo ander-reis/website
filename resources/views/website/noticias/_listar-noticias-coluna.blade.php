@@ -3,50 +3,20 @@
 <div class="row">
     <div class="col-12">
         <div class="row">
-            <div class="col-md-3 mb-3">
-                <div class="card">
-                    <div class="card-body card-destaque">
-                        <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
-                        <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                            Redobre os cuidados com a hora extra
-                        </a>
+                @foreach($notdestaque as $destaque)
+                <div class="col-md-3 mb-3">
+                    <div class="card">
+                        <div class="card-body card-destaque">
+                                <h6 class="card-subtitle mb-2 text-muted text-right">
+                                    {!! $destaque->noticia->dt_cadastro_formatted !!}
+                                </h6>
+                                <a href="{{ route('noticias.show', ['noticia' => $destaque->noticia->id_noticia]) }}" class="text-link">
+                                    <p class="card-text">{!! $destaque->noticia->ds_resumo !!}</p>
+                                </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card">
-                    <div class="card-body card-destaque">
-                        <h6 class="card-subtitle mb-2 text-muted text-right">Campanha Salarial</h6>
-                        <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                            Dissídio Coletivo: MPT dá parecer a favor dos professores
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card">
-                    <div class="card-body card-destaque">
-                        <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                            <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
-                            Os "sem poupança na CEF" receberão os R$ 500,00 do Fundo só a partir de outubro
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mb-3">
-                <div class="card">
-                    <div class="card-body card-destaque">
-                        <h6 class="card-subtitle mb-2 text-muted text-right">Teste</h6>
-                        <a href="{{ route('noticias.show', ['noticia' => 3634]) }}">
-                            Novos videos da Associação Juízes Para A Democracia alertam sobre a MP da Liberdade
-                            Econômica
-                        </a>
-                    </div>
-                </div>
-            </div>
+                @endforeach
         </div>
 
         <hr style="border-top: 1px solid rgb(0, 0, 0);">
@@ -62,7 +32,6 @@
                         <a href="{{ route('noticias.show', ['noticia' => $noticia->id_noticia]) }}" class="text-link">
                             <p class="card-text">{!! $noticia->ds_resumo !!}</p>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -75,4 +44,5 @@
 </div>
 
 {{--paginacao--}}
-{!! $noticias->onEachSide(1)->links() !!}
+{{-- {!! $noticias->onEachSide(1)->links() !!} --}}
+{!! $noticias->links('pagination.default') !!}
