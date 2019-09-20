@@ -12,17 +12,15 @@ class AtendimentoEletronicoEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $id;
-    public $dpto;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($id,$dpto)
+    public function __construct($id)
     {
         $this->id = $id;
-        $this->dpto = $dpto;
     }
 
     /**
@@ -33,6 +31,7 @@ class AtendimentoEletronicoEmail extends Mailable
     public function build()
     {
         return $this->markdown('website.emails.atendimento-eletronico')
-                    ->subject('[SinproSP] Atendimento on-line (chamado nº '. $this->id .')');
+                    ->subject('[SinproSP] Atendimento on-line (chamado nº '. $this->id .')')
+                    ->cc('sinprosp@sinprosp.org.br');
     }
 }

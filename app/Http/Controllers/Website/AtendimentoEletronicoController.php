@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\AtendimentoEletronicoRequest;
 use Website\Models\AtendimentoEletronico;
+use Website\Models\AtendimentoDptos;
 
 class AtendimentoEletronicoController extends Controller
 {
@@ -41,6 +42,9 @@ class AtendimentoEletronicoController extends Controller
     public function store(AtendimentoEletronicoRequest $request)
     {
         try {
+
+            $DptoEmail = AtendimentoDptos::find($request['selDpto']);
+
             $insert =  AtendimentoEletronico::create([
                 'ds_nome'           => strtoupper($request['txtNome']),
                 'ds_email'          => strtolower($request['txtEmail']),
@@ -49,7 +53,7 @@ class AtendimentoEletronicoController extends Controller
                 'ds_ip'             => $request->ip()
             ]);
             
-            Mail::to('sinprosp@sinprosp.org.br')->send(new AtendimentoEletronicoEmail($insert->id_chamado,$insert->fl_departamento));
+            Mail::to($DptoEmail->ds_email)->send(new AtendimentoEletronicoEmail($insert->id_chamado));
 
             toastr()->success('Mensagem enviada com sucesso!');
             return redirect()->route('atendimento-eletronico.index');
@@ -72,7 +76,6 @@ class AtendimentoEletronicoController extends Controller
         $chamado = AtendimentoEletronico::where('fl_status', '1')->findOrFail($id);
         return view('website.atendimento-eletronico.show', compact('chamado'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
