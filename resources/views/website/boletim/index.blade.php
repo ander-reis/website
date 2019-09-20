@@ -175,7 +175,7 @@
                     num_matricula: {
                         validators: {
                             notEmpty: {
-                                message: 'Informe o seu número de matrícula de sócio'
+                                message: 'Informe o número de matrícula de sócio'
                             },
                             regexp: {
                                 regexp: /^[0-9]+$/i,
@@ -186,7 +186,7 @@
                     num_cpf: {
                         validators: {
                             callback: {
-                                message: 'CPF inválid',
+                                message: 'CPF inválido',
                                 callback: function(input) {
                                     if (input.value !== '') {
                                        return TestaCPF(input.value);
