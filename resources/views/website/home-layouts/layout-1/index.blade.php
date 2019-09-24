@@ -2,7 +2,11 @@
 
 @section('content')
 
-{{-- @component('website.components.layout-1._intro')@endcomponent --}}
+
+@if( $intro->count() > 0 )
+    @component('website.components.layout-1._intro',['intro' => $intro])@endcomponent
+@endif
+
 @component('website.components.layout-1._destaque',['sliders' => $sliders, 'noticias' => $noticias])@endcomponent
 
 <section class="mt-3">

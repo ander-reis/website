@@ -7,6 +7,7 @@ use Website\Models\Home;
 use Website\Models\Noticias;
 use Website\Models\OwlCarousel;
 use Website\Models\Slider;
+use Website\Models\Intro;
 
 class HomeController extends Controller
 {
@@ -20,6 +21,7 @@ class HomeController extends Controller
 
         $sliders = Slider::slider();
         $noticias = Home::get();
+        $intro = Intro::intro();
 
         $home = 1;
 
@@ -29,6 +31,6 @@ class HomeController extends Controller
             $layout = 'layout-2';
         }
 
-        return view("website.home-layouts.$layout.index", compact('sliders', 'noticias'));
+        return view("website.home-layouts.$layout.index", compact('intro', 'sliders', 'noticias'));
     }
 }
