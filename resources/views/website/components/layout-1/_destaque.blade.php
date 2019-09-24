@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-5 mb-3">
-        @component('website.components.layout-1._slider')@endcomponent
+        @component('website.components.layout-1._slider',['sliders' => $sliders])@endcomponent
     </div>
     <div class="col-lg-7">
         <div class="row">

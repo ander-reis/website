@@ -17,7 +17,7 @@ class HomeController extends Controller
 
 //        $owlItems = OwlCarousel::all();
 
-//        $sliders = Slider::slider();
+        $sliders = Slider::slider();
 
         $home = 1;
 
@@ -27,6 +27,6 @@ class HomeController extends Controller
             $layout = 'layout-2';
         }
 
-        return view("website.home-layouts.$layout.index");
+        return view("website.home-layouts.$layout.index", compact('sliders'));
     }
 }

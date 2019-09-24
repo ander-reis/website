@@ -53,6 +53,8 @@ Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipa
  */
 Route::name('convencao.asset')->get('/pdf/{convencao}', 'Website\ConvencoesController@convencaoWebAsset');
 Route::name('aditamento.asset')->get('/pdf-aditamento/{convencao}', 'Website\ConvencoesController@aditamentoWebAsset');
+// Route::name('slider.asset')->get('/slider/{id}/{img}', 'Website\HomeController@sliderImgAsset');
+
 /***
  * Convençoes e acordo
  */
