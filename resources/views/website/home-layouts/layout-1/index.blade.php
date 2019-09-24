@@ -3,14 +3,14 @@
 @section('content')
 
 {{-- @component('website.components.layout-1._intro')@endcomponent --}}
-@component('website.components.layout-1._destaque',['sliders' => $sliders])@endcomponent
+@component('website.components.layout-1._destaque',['sliders' => $sliders, 'noticias' => $noticias])@endcomponent
 
 <section class="mt-3">
     @component('website.components.layout-1._faixa')@endcomponent
 </section>
 
 <section class="mt-3">
-    @component('website.components.layout-1._noticias2')@endcomponent
+    @component('website.components.layout-1._noticias2',['noticias' => $noticias])@endcomponent
 </section>
 
 <section class="mt-3">
