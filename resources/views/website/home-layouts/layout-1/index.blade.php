@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- @component('website.components.layout-1._intro')@endcomponent --}}
-@component('website.components.layout-1._destaque')@endcomponent
+@component('website.components.layout-1._destaque',['sliders' => $sliders])@endcomponent
 
 <section class="mt-3">
     @component('website.components.layout-1._faixa')@endcomponent
