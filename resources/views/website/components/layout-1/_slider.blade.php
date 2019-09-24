@@ -2,7 +2,6 @@
     <div id="carousel-sinpro" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             @foreach($sliders as $slider)
-
                 <li data-target="#carousel-sinpro" data-slide-to="{{ $loop->index }}" class="{{ $loop->index == 0 ? 'active' : ''}}""></li>
             @endforeach
         </ol>
