@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-light pl-0">
 
         <button class="navbar-toggler text-center" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -30,7 +30,7 @@
                             Diretoria
                         </a>
                         <a class="dropdown-item"
-                           href="{{route('paginas-principais', ['url-pagina' => 'localizacao'])}}">
+                            href="{{route('paginas-principais', ['url-pagina' => 'localizacao'])}}">
                             Localização
                         </a>
                     </div>
@@ -51,27 +51,27 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-item dropdown-submenu">
                             <a href="#" data-toggle="dropdown" style="color: #212529;">Convençoes e Acordos
-                                    <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
+                                <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 2]) }}">Educação Básica</a>
+                                    href="{{ route('convencao.index', ['convencao' => 2]) }}">Educação Básica</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 1]) }}">Ensino Superior</a>
+                                    href="{{ route('convencao.index', ['convencao' => 1]) }}">Ensino Superior</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 9]) }}">PUC-SP</a>
+                                    href="{{ route('convencao.index', ['convencao' => 9]) }}">PUC-SP</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 3]) }}">Sesi</a>
+                                    href="{{ route('convencao.index', ['convencao' => 3]) }}">Sesi</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 4]) }}">Senai</a>
+                                    href="{{ route('convencao.index', ['convencao' => 4]) }}">Senai</a>
+                                <a class="dropdown-item" href="{{ route('convencao.index', ['convencao' => 5]) }}">Senai
+                                    Superior</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 5]) }}">Senai Superior</a>
+                                    href="{{ route('convencao.index', ['convencao' => 6]) }}">Senac</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 6]) }}">Senac</a>
+                                    href="{{ route('convencao.index', ['convencao' => 8]) }}">Mackenzie</a>
                                 <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 8]) }}">Mackenzie</a>
-                                <a class="dropdown-item"
-                                   href="{{ route('convencao.index', ['convencao' => 7]) }}">Ensino Supletivo</a>
+                                    href="{{ route('convencao.index', ['convencao' => 7]) }}">Ensino Supletivo</a>
                             </ul>
                         </li>
                         <a class="dropdown-item" href="#">
@@ -90,31 +90,32 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item"
-                           href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
+                            href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
                             Atendimento Jurídico
                         </a>
                         <a class="dropdown-item"
-                           href="{{route('paginas-principais', ['url-pagina' => 'assistencia-previdenciaria'])}}">
+                            href="{{route('paginas-principais', ['url-pagina' => 'assistencia-previdenciaria'])}}">
                             Atendimento Previdenciário
-                        </a>
-                        <a class="dropdown-item"
-                           href="{{route('paginas-principais', ['url-pagina' => 'atendimento-medico'])}}">
-                            Atendimento Médico
-                        </a>
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'colonia'])}}">
-                            Colônia de Férias
                         </a>
                         <a class="dropdown-item" href="{{route('fono.index')}}">
                             Fonoaudiologia
                         </a>
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'colonia'])}}">
+                            Colônia de Férias
+                        </a>
+
                         <a class="dropdown-item" href="http://planoprofessor.com.br/" target="_blank">
                             Plano de Saúde
                         </a>
                         <a class="dropdown-item" href="http://www.sinprosp.org.br/convenios.asp" target="_blank">
                             Convênios e Parcerias
                         </a>
-                        <a class="dropdown-item" href="#">
-                            Aplicativo do SinproSP
+                        <a class="dropdown-item"
+                            href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
+                            Homologação
+                        </a>
+                        <a class="dropdown-item" href="http://www.sinprosp.org.br" target="_blank">
+                            Acervo
                         </a>
                         <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
                             Atendimento Eletrônico
@@ -122,12 +123,11 @@
                         <a class="dropdown-item" href="{{route('boletim.index')}}">
                             Boletim do SinproSP
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br" target="_blank">
-                            Acervo
+                        <a class="dropdown-item" href="#">
+                            Aplicativo do SinproSP
                         </a>
-                        <a class="dropdown-item"
-                           href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
-                            Homologação
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'whatsapp'])}}">
+                            Whatsapp
                         </a>
                     </div>
                 </li>

@@ -8,11 +8,11 @@
                 <p class="footer_size2">CEP 04038-000 Tel.: 50805988</p>
             </div>
         </div>
-        <div class="row  align-middle pb-2">
-            <div class="col-md-6 text-left header_footer">
-                <span class="footer_size2">Copyright © 2019 SinproS - Todos os direitos reservados.</span>
+        <div class="row align-middle pb-2 text-center">
+            <div class="col-12 col-md-6 header_footer mb-3">
+                <span class="footer_size2">Copyright © 2019 SinproSP</span>
             </div>
-            <div class="col-md-6 text-right header_footer">
+            <div class="col-12 col-md-6 header_footer">
                     <span class="footer_size2">Projeto Gráfico: <a href="https://pwiwebstudio.com.br/">Is Multimídia</a></span>
                 </div>
         </div>

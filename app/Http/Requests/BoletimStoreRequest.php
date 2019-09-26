@@ -26,8 +26,8 @@ class BoletimStoreRequest extends FormRequest
 
         $input = $this->all();
 
+        //'num_cpf'       => 'cpf',
         return [
-            'num_cpf'       => 'cpf',
             'ds_email'      => 'email:rfc,dns'
         ];
     }

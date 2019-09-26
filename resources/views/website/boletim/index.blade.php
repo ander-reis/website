@@ -131,34 +131,29 @@
 {{--paginacao--}}
 {!! $boletim->links() !!}
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+@push('boletim-script')
 <script type="text/javascript">
     function TestaCPF(strCPF) {
         var Soma;
         var Resto;
         Soma = 0;
-        strCPF = strCPF.replace(/[^a-z0-9]/gi,'');
+        strCPF = strCPF.replace(/[^a-z0-9]/gi, '');
         if (strCPF == "00000000000") return false;
 
-        for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+        for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
         Resto = (Soma * 10) % 11;
 
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+        if ((Resto == 10) || (Resto == 11)) Resto = 0;
+        if (Resto != parseInt(strCPF.substring(9, 10))) return false;
 
         Soma = 0;
-        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+        for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
         Resto = (Soma * 10) % 11;
 
-        if ((Resto == 10) || (Resto == 11))  Resto = 0;
-        if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+        if ((Resto == 10) || (Resto == 11)) Resto = 0;
+        if (Resto != parseInt(strCPF.substring(10, 11))) return false;
         return true;
     }
-
-    $(document).ready(function(){
-        $('#num_cpf').mask('000.000.000-00', {reverse: true});
-    });
-
     document.addEventListener('DOMContentLoaded', function(e) {
     const formCadastrar = document.getElementById('formCadastrar');
     const fvCadastrar = FormValidation
@@ -175,7 +170,7 @@
                     num_matricula: {
                         validators: {
                             notEmpty: {
-                                message: 'Informe o seu número de matrícula de sócio'
+                                message: 'Informe o número de matrícula de sócio'
                             },
                             regexp: {
                                 regexp: /^[0-9]+$/i,
@@ -186,7 +181,7 @@
                     num_cpf: {
                         validators: {
                             callback: {
-                                message: 'CPF inválid',
+                                message: 'CPF inválido',
                                 callback: function(input) {
                                     if (input.value !== '') {
                                        return TestaCPF(input.value);
@@ -364,4 +359,5 @@
 
 });
 </script>
+@endpush
 @endsection
