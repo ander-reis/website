@@ -8,7 +8,7 @@ class PaginasPrincipais extends Model
 {
     protected $table =  'tb_sinpro_conteudo_paginas_principais';
 
-    protected $connection = 'sqlsrv-website';
+    protected $connection = 'sqlsrv-site';
 
     /**
      * Mutators formata status da página
