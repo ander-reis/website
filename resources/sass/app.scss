@@ -525,7 +525,7 @@ ul.timeline > li:before {
   left: 0;
   color: #fff;
   padding-bottom: 0px !important;
-  text-align: left;
+  text-align: left !important;
 }
 
 .carousel-indicators {
@@ -652,6 +652,16 @@ ul.timeline > li:before {
 .icon-img {
   width: $icon-width;
   height: $icon-width;
+}
+
+.intro-img {
+    width: 1190px;
+    height: 321px !important;
+}
+
+.giz-img {
+    width:195px;
+    height:103px;
 }
 
 /**** ALTERAR A COR DE TODOS OS RADIOS / CHECKBOX NO FORMVALIDATION ***/

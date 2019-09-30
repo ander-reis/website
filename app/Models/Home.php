@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Home extends Model
 {
-    protected $connection = 'sqlsrv-website';
+    protected $connection = 'sqlsrv-site';
 
     protected $table = 'tb_sinpro_admin_home_page';
 
