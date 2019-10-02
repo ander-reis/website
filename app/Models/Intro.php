@@ -7,7 +7,7 @@ use Website\Traits\SliderPaths;
 
 class Intro extends Model
 {
-    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
 
     protected $table = 'tb_sinpro_intro';
 

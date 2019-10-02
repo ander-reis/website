@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-6 col-lg-3 p-2">
     <div class="p-2 {{ $class }}">
-        <a href="{{ $route }}" target="{{ $target }}">
+        <a href="{{ $route }}" target="{{ $target }}" class="text-link">
             <div class="row no-gutters align-items-center">
                 <div class="col-3 col-sm-4 col-lg-4">
                     {!! $icon !!}
