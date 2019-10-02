@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-9 mb-3 mb-md-5">
             <h2>{!! $pagina->txt_titulo !!}</h2>
-            <span>{!! $pagina->txt_pagina !!}</span>
+            <div class="mt-4">{!! $pagina->ds_texto !!}</div>
         </div>
         @component('website.components.layout-1._column_right')@endcomponent
     </div>

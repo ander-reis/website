@@ -1,6 +1,6 @@
 <?php
 
-namespace Website\Http\Controllers\website;
+namespace Website\Http\Controllers\Website;
 
 use Website\Mail\AtendimentoEletronicoEmail;
 use Illuminate\Http\Request;
@@ -58,12 +58,10 @@ class AtendimentoEletronicoController extends Controller
             toastr()->success('Mensagem enviada com sucesso!');
             return redirect()->route('atendimento-eletronico.index');
         } catch (\Exception $e) {
-            dd($e);
             toastr()->error('Não foi possível enviar a mensagem!');
             return redirect()->back();
         }
     }
-
 
     /**
      * Display the specified resource.

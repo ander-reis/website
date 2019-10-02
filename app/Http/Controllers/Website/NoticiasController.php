@@ -33,9 +33,16 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
-        $noticia = Noticias::where('fl_oculta', 'N')->findOrFail($id);
+        $noticia = Noticias::where('fl_status', 1)->findOrFail($id);
         $ultimasNoticias = Noticias::ultimasNoticias();
 
+        return view('website.noticias._noticia-page', compact('noticia', 'ultimasNoticias'));
+    }
+
+    public function oculta($id)
+    {
+        $noticia = Noticias::where('fl_status', 0)->findOrFail($id);
+        $ultimasNoticias = null;
         return view('website.noticias._noticia-page', compact('noticia', 'ultimasNoticias'));
     }
 }

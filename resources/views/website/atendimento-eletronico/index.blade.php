@@ -9,22 +9,22 @@
                 assunto relacionado ao trabalho desenvolvido pelo Sindicato, utilize os campos abaixo para nos enviar sua mensagem. A resposta
                 será enviada o mais breve possível.</p>
             </div>
-            
+
             {{ Form::open(['route' => 'atendimento-eletronico.store']) }}
 
             @component('website.form-components._form_group',['field' => 'txtNome'])
                 {{ Form::label('txtNome', 'Nome', ['class' => 'control-label']) }}
-                {{ Form::text('txtNome', null, ['class' => 'form-control', 'maxlength' => 50, 'placeholder' => 'Informe seu nome']) }}   
+                {{ Form::text('txtNome', null, ['class' => 'form-control', 'maxlength' => 50, 'placeholder' => 'Informe seu nome']) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'txtEmail'])
                 {{ Form::label('txtEmail', 'E-mail', ['class' => 'control-label']) }}
-                {{ Form::email('txtEmail', null, ['class' => 'form-control', 'maxlength' => 80, 'placeholder' => 'Informe um e-mail válido']) }}   
+                {{ Form::email('txtEmail', null, ['class' => 'form-control', 'maxlength' => 80, 'placeholder' => 'Informe um e-mail válido']) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'selDpto'])
                 {{ Form::label('selDpto', 'Selecione o assunto/departamento:', ['class' => 'control-label']) }}
-                {{ Form::select('selDpto', Website\Models\AtendimentoDptos::pluck('ds_departamento', 'id_departamento'), null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control']) }}
+                {{ Form::select('selDpto', Website\Models\AtendimentoDptos::orderBy('ds_departamento')->pluck('ds_departamento', 'id_departamento'), null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control']) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'txtMsg'])

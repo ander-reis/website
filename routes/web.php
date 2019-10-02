@@ -20,6 +20,7 @@ Route::name('home')->get('/', 'Website\HomeController@index');
  * rota noticias
  */
 Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', 'show']]);
+Route::name('oculta')->get('/oculta/{id}', 'Website\NoticiasController@oculta');
 
 /**
  * rota fonoaudiologia
@@ -30,6 +31,22 @@ Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']
 //  * páginas principais
 //  */
 // Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
+
+/**
+ * busca
+ */
+Route::view('/busca','website.busca.index');
+Route::get('/busca/{Busca}','Website\BuscaController@show')->name('busca.show');
+Route::post('/busca', function () {
+    return redirect()->route('busca.show', ['termo' => $_POST['Buscar']]);
+})->name('busca.executa');
+
+
+/**
+ * sindicalização
+ */
+Route::get('/nova-sindicalizacao','Website\NovaSindicalizacaoController@index')->name('nova-sindicalizacao.index');
+Route::post('/nova-sindicalizacao','Website\NovaSindicalizacaoController@store')->name('nova-sindicalizacao.store');
 
 /**
  * atendimento eletrônico
