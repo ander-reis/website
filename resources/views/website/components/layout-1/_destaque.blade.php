@@ -11,13 +11,17 @@
                         @include('website.components.layout-1._social_share_home', ['name' => 'icon-popover1'])
                     </span>
                 </span>
+
                 <p class="mb-0 text-dark manchete_titulo text-justify">
                     <a href="{{$noticias[0]->ds_link}}" class="text-link">
                         {{$noticias[0]->ds_titulo}}
+                    </a>
                 </p>
-                <p class="text-dark manchete_corpo text-justify">
-                    {{$noticias[0]->ds_texto_noticia}}
-                </p>
+                <a href="{{$noticias[0]->ds_link}}" class="text-link">
+                    <p class="text-dark manchete_corpo text-justify">
+                        {{$noticias[0]->ds_texto_noticia}}
+                    </p>
+                </a>
 
             </div>
             @foreach ($noticias->slice(1, 2) as $noticia)
@@ -33,9 +37,11 @@
                             {{$noticia->ds_titulo}}
                         </a>
                     </p>
-                    <p class="text-dark text-justify noticia_corpo1">
-                        {{$noticia->ds_texto_noticia}}
-                    </p>
+                    <a href="{{$noticia->ds_link}}" class="text-link">
+                        <p class="text-dark text-justify noticia_corpo1">
+                            {{$noticia->ds_texto_noticia}}
+                        </p>
+                    </a>
                 </div>
             @endforeach
         </div>

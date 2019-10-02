@@ -20,6 +20,7 @@ Route::name('home')->get('/', 'Website\HomeController@index');
  * rota noticias
  */
 Route::resource('noticias', 'Website\NoticiasController', ['only' => ['index', 'show']]);
+Route::name('oculta')->get('/oculta/{id}', 'Website\NoticiasController@oculta');
 
 /**
  * rota fonoaudiologia

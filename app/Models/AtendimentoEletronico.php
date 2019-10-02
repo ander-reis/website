@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class AtendimentoEletronico extends Model
 {
-    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
     protected $table = 'tb_sinpro_atendimento_chamado';
-   
+
     public $timestamps = false;
 
     protected $primaryKey = 'id_chamado';

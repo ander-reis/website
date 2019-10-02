@@ -7,7 +7,7 @@ use Website\Traits\SliderPaths;
 
 class Intro extends Model
 {
-    protected $connection = 'sqlsrv-site';
+    protected $connection = 'sqlsrv-website';
 
     protected $table = 'tb_sinpro_intro';
 
@@ -15,6 +15,7 @@ class Intro extends Model
     {
         return Intro::where('dt_de', '<=', date('Y-m-d H:i:s'))
                     ->where('dt_ate', '>=', date('Y-m-d H:i:s'))
+                    ->take(1)
                     ->get();
     }
 }
