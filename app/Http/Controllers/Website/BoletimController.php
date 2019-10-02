@@ -19,7 +19,6 @@ class BoletimController extends Controller
      */
     public function index()
     {
-
         $boletim = Boletim::orderBy('id_boletim', 'desc')->paginate(12);
         return view('website.boletim.index', compact('boletim'));
     }
