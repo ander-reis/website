@@ -10,7 +10,7 @@
         </div>
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <a href="http://sinprosp.org.br/convencoes_acordos.asp" class="black faixa_size" target="_blank">Convenções e<br/>acordos</a>
+            <a href="{{route('convencao.lista')}}" class="black faixa_size">Convenções e<br/>acordos</a>
         </div>
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>

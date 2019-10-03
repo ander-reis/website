@@ -31,5 +31,4 @@ class Convencoes extends Model
     {
         return $this->hasMany(ConvencoesClausulas::class, 'id_convencao');
     }
-
 }

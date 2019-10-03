@@ -50,6 +50,25 @@ class ConvencoesController extends Controller
         return view('website.convencoes.show', compact('convencao', 'clausulas', 'convencao_entidade'));
     }
 
+    public function lista()
+    {
+        $convencao = array();
+        $entidades = ConvencoesEntidade::orderBy('fl_ordem')->get();
+
+        foreach ($entidades as $entidade) {
+            array_push($convencao,
+                Convencoes::where('fl_entidade', $entidade->id)
+                    ->where('fl_status', 1)
+                    ->orderBy('dt_validade', 'desc')
+                    ->take(1)
+                    ->get()
+            );
+        }
+
+        return view('website.convencoes.lista', compact('entidades', 'convencao'));
+    }
+
+
     /**
      * Método responsavel download pdf
      *
