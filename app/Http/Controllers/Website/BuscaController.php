@@ -51,7 +51,7 @@ class BuscaController extends Controller
         $ig = array("DOS","DIA","POR","ANO","NOS","SEM","DAS","QUE","SAO","NAO","COM","TEM","SER","NAS","MES","ATE","FIM","AOS","UMA","BEM","PAI","VIA","PRA","FOI","DAR","RUA","SEU");
         $comAcentos = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ù', 'Ü', 'Ú');
         $semAcentos = array('A', 'A', 'A', 'A', 'A', 'A', 'C', 'E', 'E', 'E', 'E', 'I', 'I', 'I', 'I', 'N', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U');
-        $text = trim(str_replace($comAcentos, $semAcentos, mb_strtoupper($termo, 'UTF-8'))) ." ";
+        $text = trim(str_replace($comAcentos, $semAcentos, mb_strtoupper($termo))) ." ";
         $word = "";
         $words = array();
         

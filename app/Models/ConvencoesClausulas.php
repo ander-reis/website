@@ -28,4 +28,14 @@ class ConvencoesClausulas extends Model
     {
         return Str::words(strip_tags($this->ds_titulo), 3, '...');
     }
+
+    /**
+     * Relacionamento convencao para clausula, um para muitos
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function convencao()
+    {
+        return $this->belongsTo(Convencoes::class, 'id_convencao');
+    }
 }
