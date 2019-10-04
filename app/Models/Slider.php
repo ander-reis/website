@@ -15,6 +15,6 @@ class Slider extends Model
 
     public static function slider()
     {
-        return Slider::where('fl_ativo', 1)->get();
+        return Slider::where('fl_ativo', 1)->orderBy('fl_ordem')->get();
     }
 }
