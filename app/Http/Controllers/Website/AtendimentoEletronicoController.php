@@ -3,7 +3,6 @@
 namespace Website\Http\Controllers\Website;
 
 use Website\Mail\AtendimentoEletronicoEmail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\AtendimentoEletronicoRequest;
@@ -21,16 +20,6 @@ class AtendimentoEletronicoController extends Controller
      public function index()
     {
         return view('website.atendimento-eletronico.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -52,7 +41,7 @@ class AtendimentoEletronicoController extends Controller
                 'fl_departamento'   => $request['selDpto'],
                 'ds_ip'             => $request->ip()
             ]);
-            
+
             Mail::to($DptoEmail->ds_email)->send(new AtendimentoEletronicoEmail($insert->id_chamado));
 
             toastr()->success('Mensagem enviada com sucesso!');
@@ -73,39 +62,5 @@ class AtendimentoEletronicoController extends Controller
     {
         $chamado = AtendimentoEletronico::where('fl_status', '1')->findOrFail($id);
         return view('website.atendimento-eletronico.show', compact('chamado'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
