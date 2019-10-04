@@ -27,7 +27,11 @@
             @foreach ($noticias->slice(1, 2) as $noticia)
                 <div class="col-12 col-md-6">
                     <span class="mb-0">
-                        <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
+                        @if($loop->index == 0)
+                            <i class="fa fa-ellipsis-v green" aria-hidden="true"></i>
+                        @elseif($loop->index == 1)
+                            <i class="fa fa-ellipsis-v blue" aria-hidden="true"></i>
+                        @endif
                         <span class="noticia_chapeu1"> {{$noticia->ds_categoria}}
                             @include('website.components.layout-1._social_share_home', ['name' => 'icon-popover2'])
                         </span>
