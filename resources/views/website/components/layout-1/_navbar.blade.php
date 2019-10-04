@@ -74,10 +74,10 @@
                                     href="{{ route('convencao.index', ['convencao' => 7]) }}">Ensino Supletivo</a>
                             </ul>
                         </li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/guia_consultas.asp" target="_blank">
                             Guia de Consultas
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/guia_consultas.asp#salario" target="_blank">
                             Salário do Professor
                         </a>
                     </ul>
@@ -107,14 +107,14 @@
                         <a class="dropdown-item" href="http://planoprofessor.com.br/" target="_blank">
                             Plano de Saúde
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br/convenios.asp" target="_blank">
+                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
                             Convênios e Parcerias
                         </a>
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
                             Homologação
                         </a>
-                        <a class="dropdown-item" href="http://www.sinprosp.org.br" target="_blank">
+                        <a class="dropdown-item" href="https://www.youtube.com/user/SINPROSP" target="_blank">
                             Acervo
                         </a>
                         <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
@@ -123,7 +123,7 @@
                         <a class="dropdown-item" href="{{route('boletim.index')}}">
                             Boletim do SinproSP
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'app'])}}">
                             Aplicativo do SinproSP
                         </a>
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'whatsapp'])}}">

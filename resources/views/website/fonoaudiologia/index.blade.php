@@ -10,19 +10,19 @@
 
             <div class="row">
                 <div class="col-4 mt-4 text-center">
-                    <a href="http://www.sinprosp.org.br/voz.asp?mn=2" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/voz.asp?mn=2" target="_blank">
                         <img class="img-fluid" alt="" src="{{ asset('images/fonoaudiologia/tratamento.jpg') }}">
                     </a>
                 </div>
 
                 <div class="col-4 mt-4 text-center">
-                    <a href="http://www.sinprosp.org.br/voz.asp?mn=3" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/voz.asp?mn=3" target="_blank">
                         <img class="img-fluid" alt="" src="{{ asset('images/fonoaudiologia/palestra.jpg') }}">
                     </a>
                 </div>
 
                 <div class="col-4 mt-4 text-center">
-                    <a href="http://www.sinprosp.org.br/voz.asp?mn=4" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/voz.asp?mn=4" target="_blank">
                         <img class="img-fluid" alt="" src="{{ asset('images/fonoaudiologia/dicas.jpg') }}">
                     </a>
                 </div>
