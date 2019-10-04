@@ -5,30 +5,29 @@
         <div class="col-12 col-sm-12 col-md-9">
             <h2 class="mb-4">Atendimento Eletrônico</h2>
             <div class="mb-5">
-                <p>Se você busca esclarecimentos de dúvidas na área trabalhista, previdenciária, sobre legislação educacional ou sobre qualquer
-                assunto relacionado ao trabalho desenvolvido pelo Sindicato, utilize os campos abaixo para nos enviar sua mensagem. A resposta
-                será enviada o mais breve possível.</p>
+                <p>Seja bem-vinda e bem-vindo! Aqui você pode esclarecer dúvidas trabalhistas ou previdenciárias, denunciar escolas e IES, perguntar sobre serviços do SinproSP e fazer comentários, críticas e sugestões sobre o nosso trabalho.</p>
+                <p>Tranquilize-se quanto ao sigilo: ele está garantido para proteger as professoras e professores que entrarem em contato conosco.</p>
             </div>
 
             {{ Form::open(['route' => 'atendimento-eletronico.store']) }}
 
             @component('website.form-components._form_group',['field' => 'txtNome'])
-                {{ Form::label('txtNome', 'Nome', ['class' => 'control-label']) }}
-                {{ Form::text('txtNome', null, ['class' => 'form-control', 'maxlength' => 50, 'placeholder' => 'Informe seu nome']) }}
+                {{ Form::label('txtNome', 'Deixe seu nome aqui:', ['class' => 'control-label']) }}
+                {{ Form::text('txtNome', null, ['class' => 'form-control', 'maxlength' => 50]) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'txtEmail'])
-                {{ Form::label('txtEmail', 'E-mail', ['class' => 'control-label']) }}
+                {{ Form::label('txtEmail', 'Deixe um email para resposta:', ['class' => 'control-label']) }}
                 {{ Form::email('txtEmail', null, ['class' => 'form-control', 'maxlength' => 80, 'placeholder' => 'Informe um e-mail válido']) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'selDpto'])
-                {{ Form::label('selDpto', 'Selecione o assunto/departamento:', ['class' => 'control-label']) }}
-                {{ Form::select('selDpto', Website\Models\AtendimentoDptos::orderBy('ds_departamento')->pluck('ds_departamento', 'id_departamento'), null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control']) }}
+                {{ Form::label('selDpto', 'Escolha um assunto:', ['class' => 'control-label']) }}
+                {{ Form::select('selDpto', Website\Models\AtendimentoDptos::where('fl_status', 1)->orderBy('ds_departamento')->pluck('ds_departamento', 'id_departamento'), null, ['placeholder' => 'Escolha uma opção...', 'class' => 'form-control']) }}
             @endcomponent
 
             @component('website.form-components._form_group',['field' => 'txtMsg'])
-                {{ Form::label('txtMsg', 'Texto a ser enviado:', ['class' => 'control-label']) }}
+                {{ Form::label('txtMsg', 'Escreva a sua mensagem:', ['class' => 'control-label']) }}
                 {{ Form::textarea('txtMsg', null, ['class' => 'form-control', 'rows' => 5]) }}
             @endcomponent
 

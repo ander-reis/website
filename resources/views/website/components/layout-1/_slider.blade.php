@@ -9,7 +9,7 @@
             @foreach($sliders as $slider)
             <div class="carousel-item {{ $loop->index == 0 ? 'active' : ''}}">
                 <a href={!! $slider->ds_link !!}>
-                    <div class="gradient_img">
+                    <div class="{{($slider->ds_titulo != '') ? 'gradient_img' : ''}}">
                         <img class="d-block w-100" src="{{ asset('/storage/slider/' . $slider->id . '/' . $slider->ds_imagem) }}" alt="{!! $slider->ds_label !!}">
                     </div>
                     <div class="carousel-caption p-2">

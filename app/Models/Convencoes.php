@@ -29,7 +29,6 @@ class Convencoes extends Model
      */
     public function clausulas()
     {
-        return $this->hasMany(ConvencoesClausulas::class, 'id_convencao');
+        return $this->hasMany(ConvencoesClausulas::class, 'id_convencao')->where('fl_status', 1)->orderBy('num_clausula');
     }
-
 }

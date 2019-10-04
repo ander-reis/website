@@ -425,7 +425,7 @@ ul.timeline > li:before {
 
 .giz_corpo {
   font-family: Helvetica, Arial;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   line-height: 1.4em;
 }
 
@@ -513,6 +513,11 @@ ul.timeline > li:before {
       }
     }
   }
+}
+
+.owl-carousel .owl-item div {
+  padding-top: 8px;
+  line-height: 1.3;
 }
 
 /***

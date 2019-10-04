@@ -40,7 +40,7 @@
         <div class="row">
 
            @include('website.components.layout-1._icons_servicos', [
-                'route' => 'http://planoprofessor.com.br/',
+                'route' => route('paginas-principais', ['url-pagina' => 'plano-saude']),
                 'icon' => '<i class="fas fa-notes-medical fa-3x text-dark"></i>',
                 'class' => 'servicos2',
                 'title' => 'PLANO DE SAÚDE',
@@ -48,7 +48,7 @@
             ])
 
             @include('website.components.layout-1._icons_servicos', [
-                'route' => 'http://www.sinprosp.org.br/convenios.asp',
+                'route' => 'http://www1.sinprosp.org.br/convenios.asp',
                 'icon' => '<i class="fas fa-handshake fa-3x text-dark"></i>',
                 'class' => 'servicos2',
                 'title' => 'CONVÊNIOS<br/>E PARCERIAS',

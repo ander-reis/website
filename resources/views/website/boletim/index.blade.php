@@ -111,8 +111,10 @@
             <div class="col-md-4 col-lg-3 mb-3">
                 <div class="card">
                     <div class="card-header font-weight-bold p-2">
-                        <span class="float-left"> Boletim nº {!! $bol->id_boletim !!} </span>
-                        <span class="float-right">{!! $bol->dt_boletim_formatted !!}</span>
+                        <a href="{{$bol->ds_link }}" target="_blank" class="text-link">
+                            <span class="float-left"> Boletim nº {!! $bol->id_boletim !!} </span>
+                            <span class="float-right">{!! $bol->dt_boletim_formatted !!}</span>
+                        </a>
                     </div>
                     <div class="card-body card-bol p-2">
                         <div class="clearfix"></div>
