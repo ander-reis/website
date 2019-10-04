@@ -40,7 +40,7 @@
         <div class="row">
 
            @include('website.components.layout-1._icons_servicos', [
-                'route' => 'http://planoprofessor.com.br/',
+                'route' => route('paginas-principais', ['url-pagina' => 'plano-saude']),
                 'icon' => '<i class="fas fa-notes-medical fa-3x text-dark"></i>',
                 'class' => 'servicos2',
                 'title' => 'PLANO DE SAÚDE',

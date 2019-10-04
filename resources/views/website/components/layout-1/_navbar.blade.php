@@ -91,11 +91,11 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
-                            Atendimento Jurídico
+                            Departamento Jurídico
                         </a>
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'assistencia-previdenciaria'])}}">
-                            Atendimento Previdenciário
+                            Departamento Previdenciário
                         </a>
                         <a class="dropdown-item" href="{{route('fono.index')}}">
                             Fonoaudiologia
@@ -104,7 +104,7 @@
                             Colônia de Férias
                         </a>
 
-                        <a class="dropdown-item" href="http://planoprofessor.com.br/" target="_blank">
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'plano-saude'])}}">
                             Plano de Saúde
                         </a>
                         <a class="dropdown-item" href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
