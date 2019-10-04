@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/fonts
+public/fonts/vendor/@fortawesome/fontawesome-free/
 /storage/*.key
 /vendor
 /.idea
@@ -17,3 +18,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 deploy.php
+
