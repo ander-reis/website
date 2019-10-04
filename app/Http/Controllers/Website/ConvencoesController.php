@@ -25,9 +25,7 @@ class ConvencoesController extends Controller
          * lista convencoes através do relacionamento
          */
         $convencoes = $convencoes_entidade->convencoes()
-            ->where('fl_status', 1)
-            ->orderBy('dt_validade', 'desc')
-            ->paginate();
+            ->paginate(15);
 
         return view('website.convencoes.index', compact('convencoes', 'convencao_entidade'));
     }
@@ -45,7 +43,7 @@ class ConvencoesController extends Controller
          */
         $convencao_entidade = $convencoes_entidade;
 
-        $clausulas = $convencao->clausulas()->where('fl_status', 1)->orderBy('num_clausula')->get();
+        $clausulas = $convencao->clausulas()->get();
 
         return view('website.convencoes.show', compact('convencao', 'clausulas', 'convencao_entidade'));
     }
@@ -53,17 +51,7 @@ class ConvencoesController extends Controller
     public function lista()
     {
         $convencao = array();
-        $entidades = ConvencoesEntidade::orderBy('fl_ordem')->get();
-
-        foreach ($entidades as $entidade) {
-            array_push($convencao,
-                Convencoes::where('fl_entidade', $entidade->id)
-                    ->where('fl_status', 1)
-                    ->orderBy('dt_validade', 'desc')
-                    ->take(1)
-                    ->get()
-            );
-        }
+        $entidades = ConvencoesEntidade::orderBy('fl_ordem')->with('convencoes')->get(['id', 'ds_entidade']);
 
         return view('website.convencoes.lista', compact('entidades', 'convencao'));
     }
