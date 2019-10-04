@@ -99,7 +99,7 @@
 
             @include('website.components.layout-1._icons_servicos', [
             'route' => 'https://www.youtube.com/user/SINPROSP',
-            'icon' => '<i class="fas fa-folder-plus fa-3x text-dark"></i>',
+            'icon' => '<i class="fab fa-youtube fa-3x text-dark"></i>',
             'class' => 'servicos3',
             'title' => 'YOUTUBE',
             'target' => "_blank"
