@@ -96,7 +96,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 pt-1">
                 <div class="p-1 servicos1">
-                    <a href="http://www.sinprosp.org.br/convenios.asp" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="fas fa-handshake fa-3x text-dark"></i>
@@ -111,7 +111,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 pt-1">
                 <div class="p-1 servicos1">
-                    <a href="http://www.sinprosp.org.br" target="_blank">
+                    <a href="http://www1.sinprosp.org.br" target="_blank">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="fas fa-mobile-alt fa-3x text-dark"></i>
@@ -131,7 +131,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 pt-1">
                 <div class="p-1 servicos1">
-                    <a href="http://www.sinprosp.org.br/atendimento.asp" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/atendimento.asp" target="_blank">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="fas fa-comments fa-3x text-dark"></i>
@@ -146,7 +146,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 pt-1">
                 <div class="p-1 servicos1">
-                    <a href="http://www.sinprosp.org.br/boletim_eletronico.asp" target="_blank">
+                    <a href="http://www1.sinprosp.org.br/boletim_eletronico.asp" target="_blank">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="fas fa-envelope-open-text fa-3x text-dark"></i>
@@ -161,7 +161,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 pt-1">
                 <div class="p-1 servicos1">
-                    <a href="http://www.sinprosp.org.br" target="_blank">
+                    <a href="http://www1.sinprosp.org.br" target="_blank">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="fas fa-folder-plus fa-3x text-dark"></i>
