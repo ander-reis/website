@@ -23,6 +23,6 @@ class ConvencoesEntidade extends Model
      */
     public function convencoes()
     {
-        return $this->hasMany(Convencoes::class, 'fl_entidade');
+        return $this->hasMany(Convencoes::class, 'fl_entidade')->where('fl_status', 1)->orderBy('dt_validade', 'desc');
     }
 }
