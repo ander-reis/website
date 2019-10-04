@@ -10,8 +10,8 @@
 
             <div class="col-lg-3 col-md-6 mt-3">
                 <a href="http://www1.sinprosp.org.br/cadastro_login.asp" target="_blank">
-                    <img class="rounded mx-auto d-block w-100"
-                        src="{{ asset('images/layout-1/home/cadevoce.jpg') }}" alt="SinproSP">
+                    <img class="rounded mx-auto d-block w-100" src="{{ asset('images/layout-1/home/cadevoce.jpg') }}"
+                        alt="SinproSP">
                 </a>
             </div>
 
@@ -29,9 +29,9 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 mt-2">
-                                    <a href="{{ $noticias[7]->ds_link }}" target="_blank"
-                                        class="text-link">
-                                        <img src="{{ asset('/storage/revista_giz/' . $noticias[7]->id . '/' . $noticias[7]->ds_imagem) }}" alt="SinproSP" class="giz-img">
+                                    <a href="{{ $noticias[7]->ds_link }}" target="_blank" class="text-link">
+                                        <img src="{{ asset('/storage/revista_giz/' . $noticias[7]->id . '/' . $noticias[7]->ds_imagem) }}"
+                                            alt="SinproSP" class="giz-img">
                                     </a>
                                 </div>
                             </div>
@@ -39,19 +39,21 @@
                         <div class="col-12 col-sm-7">
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="{{ $noticias[7]->ds_link }}" target="_blank"
-                                        class="text-link">
-                                        <span class="text-dark font-weight-bold giz_titulo">{{ $noticias[7]->ds_titulo }}</span>
-                                    </a>
+                                    <span class="text-dark font-weight-bold giz_titulo">
+                                        <a href="{{ $noticias[7]->ds_link }}" target="_blank"
+                                            class="text-link">{{ $noticias[7]->ds_titulo }}
+                                        </a>
+                                    </span>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12">
-                                    <a href="{{ $noticias[7]->ds_link }}" target="_blank"
-                                        class="text-link">
-                                        <p class="text-dark giz_corpo text-justify mb-0">{{ $noticias[7]->ds_texto_noticia }}</p>
-                                    </a>
+                                    <p class="text-dark giz_corpo text-justify mb-0">
+                                        <a href="{{ $noticias[7]->ds_link }}" target="_blank" class="text-link">
+                                            {{ $noticias[7]->ds_texto_noticia }}
+                                        </a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
