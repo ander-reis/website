@@ -21,7 +21,7 @@ class ClausulasController extends Controller
     {
         $convencao_clausula->where('fl_status', 1)->orderBy('num_clausula');
 
-        $clausulas = $convencao->clausulas()->where('fl_status', 1)->orderBy('num_clausula')->get();
+        $clausulas = $convencao->clausulas()->where('fl_status', 1)->get();
 
         /**
          * previos e next pagina clausula
