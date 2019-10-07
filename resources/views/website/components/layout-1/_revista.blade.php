@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-sm-7">
-                            <div class="row">
+                            <div class="row text-justify">
                                 <div class="col-12">
                                     <span class="text-dark font-weight-bold giz_titulo">
                                         <a href="{{ $noticias[7]->ds_link }}" target="_blank"
