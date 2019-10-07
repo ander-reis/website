@@ -14,19 +14,29 @@ class Busca extends Model
     protected $table = 'tb_sinpro_busca_termos';
 
     /**
+     * set chave primaria
+     *
+     * @var null
+     */
+    protected $primaryKey = null;
+
+    /**
+     * set increment
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
     protected $fillable = ['txt_termo', 'dt_busca'];
 
+    /**
+     * set tiomestamps
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
-    /**
-     * set updtaed_at
-     */
-//    const CREATED_AT = 'dt_cadastro';
-
-    /**
-     * set updated_at
-     */
-//    const UPDATED_AT = false;
 }
