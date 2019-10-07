@@ -71,7 +71,7 @@
                             </div>
                             <div class="custom-control custom-checkbox">
                                 {{ Form::checkbox('lecionar[]', '3',false,['id'=>'lblOutro', 'class' => 'custom-control-input', 'disabled']) }}
-                                {{ Form::label('lblOutro', 'Leciono em escola particular.', ['class' => 'custom-control-label mb-0']) }}
+                                {{ Form::label('lblOutro', 'Outra atividade.', ['class' => 'custom-control-label mb-0']) }}
                             </div>
                             <div class="col-lg-12">
                                 <div id="lecionarMessage"></div>
