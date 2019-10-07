@@ -8,15 +8,16 @@ use Illuminate\Support\Str;
 class ConvencoesClausulas extends Model
 {
     /**
-     * Table
+     * table
      *
      * @var string
      */
-
-    protected $connection = 'sqlsrv-website';
-
     protected $table = 'tb_sinpro_convencoes_clausulas';
 
+    /**set chave primaria
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_clausula';
 
     /**

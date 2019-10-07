@@ -9,10 +9,15 @@ class Slider extends Model
 {
     use SliderPaths;
 
-    protected $connection = 'sqlsrv-website';
-
+    /**
+     * table
+     * @var string
+     */
     protected $table = 'tb_sinpro_slider';
 
+    /**
+     * @return mixed
+     */
     public static function slider()
     {
         return Slider::where('fl_ativo', 1)->orderBy('fl_ordem')->get();

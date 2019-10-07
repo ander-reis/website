@@ -7,10 +7,16 @@ use Website\Traits\SliderPaths;
 
 class Intro extends Model
 {
-    protected $connection = 'sqlsrv-website';
-
+    /**
+     * table
+     *
+     * @var string
+     */
     protected $table = 'tb_sinpro_intro';
 
+    /**
+     * @return mixed
+     */
     public static function intro()
     {
         return Intro::where('dt_de', '<=', date('Y-m-d H:i:s'))

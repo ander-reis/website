@@ -6,19 +6,36 @@ use Illuminate\Database\Eloquent\Model;
 
 class BoletimInsc extends Model
 {
-    protected $connection = 'sqlsrv-website';
 
+    /**
+     * table
+     *
+     * @var string
+     */
     protected $table = 'tb_sinpro_email_boletim';
 
     /**
-     * configura CREATED_AT
+     * set created_at
      */
     const CREATED_AT = 'dt_cadastro';
 
+    /**
+     * set updated_at
+     */
     const UPDATED_AT = 'dt_alteracao';
 
+    /**
+     * set chave primaria
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_email';
 
+    /**
+     * set fillable
+     *
+     * @var array
+     */
     protected $fillable = [
         'num_matricula',
         'num_cpf',
