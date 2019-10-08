@@ -29,4 +29,20 @@ class Noticias extends Model
     {
         return $this->belongsTo(NoticiasCategoria::class, 'id_categoria');
     }
+
+    /**
+     * Mutators formata data
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function getDtNoticiaFormattedAttribute()
+    {
+        return (new \DateTime($this->dt_noticia))->format('d/m/Y H:i');
+    }
+
+    public function getDtCadastroFormattedAttribute()
+    {
+        return (new \DateTime($this->dt_cadastro))->format('d/m/Y H:i');
+    }
 }
