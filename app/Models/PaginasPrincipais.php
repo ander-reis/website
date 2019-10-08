@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaginasPrincipais extends Model
 {
+    /**
+     * table
+     *
+     * @var string
+     */
     protected $table =  'tb_sinpro_conteudo_paginas_principais';
-
-    protected $connection = 'sqlsrv-website';
 
     /**
      * Mutators formata status da página

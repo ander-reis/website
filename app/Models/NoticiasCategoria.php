@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class NoticiasCategoria extends Model
 {
     /**
-     * Table
+     * table
      *
      * @var $table string
      */
-
-    protected $connection = 'sqlsrv-website';
-
     protected $table = 'tb_sinpro_noticias_categorias';
 
+    /**
+     * set chave primaria
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_categoria';
 }

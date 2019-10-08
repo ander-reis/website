@@ -1,8 +1,8 @@
 <?php
 namespace Website\Http\Controllers\Website;
 
-use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
+use Website\Models\Busca;
 use Website\Models\Noticias;
 use Illuminate\Support\Facades\DB;
 
@@ -16,27 +16,6 @@ class BuscaController extends Controller
     public function index()
     {
         return view('website.busca.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -54,31 +33,42 @@ class BuscaController extends Controller
         $text = trim(str_replace($comAcentos, $semAcentos, mb_strtoupper($termo))) ." ";
         $word = "";
         $words = array();
-        
+
         while (strlen($text) != 0):
-        
+
             $word = substr($text,0,strpos($text," "));
-            
+
             if(strlen($word) > 2 && !in_array($word,$ig)) {
                 $words[] = $word;
             }
-        
+
             $text = ltrim(str_replace($word,"",$text));
-            
+
             $word = "";
-        
+
         endwhile;
 
+        /**
+         * insert tb_sinpro_busca_termos
+         */
+        $busca = new Busca();
         foreach ($words as $i => $value) {
-            DB::connection('sqlsrv-site')->insert('INSERT INTO tb_sinpro_busca_termos (txt_termo) values (?)', [$words[$i]]);
+            $busca->txt_termo = $words[$i];
+            $busca->save();
         }
 
+        /**
+         * select tb_sinpro_noticias
+         */
         $noticias = Noticias::where('ds_palavra_chave','like','%'. $termo .'%')
         ->orderBy('id_noticia','desc')->get();
-        
-        $clausulas = DB::connection('sqlsrv-site')->table('tb_sinpro_convencoes_clausulas')
+
+        /**
+         * select tb_sinpro_convencoes, tb_sinpro_convencoes_clausulas, tb_sinpro_convencoes_entidades
+         */
+        $clausulas = DB::table('tb_sinpro_convencoes_clausulas')
                     ->leftjoin('tb_sinpro_convencoes','tb_sinpro_convencoes.id_convencao','=','tb_sinpro_convencoes_clausulas.id_convencao')
-                    ->leftjoin('tb_sinpro_convencoes_entidades','tb_sinpro_convencoes_entidades.id','=','tb_sinpro_convencoes.fl_entidade')  
+                    ->leftjoin('tb_sinpro_convencoes_entidades','tb_sinpro_convencoes_entidades.id','=','tb_sinpro_convencoes.fl_entidade')
                     ->select('tb_sinpro_convencoes.fl_entidade',
                     'tb_sinpro_convencoes_clausulas.id_convencao',
                     'tb_sinpro_convencoes_clausulas.id_clausula',
@@ -93,38 +83,4 @@ class BuscaController extends Controller
 
         return view('website.busca.index', compact('noticias','clausulas','termo'));
    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \Website\Busca  $busca
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Busca $busca)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Website\Busca  $busca
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Busca $busca)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Website\Busca  $busca
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Busca $busca)
-    {
-        //
-    }
 }

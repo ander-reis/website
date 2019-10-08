@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ConvencoesEntidade extends Model
 {
     /**
-     * Table
+     * table
      *
      * @var string
      */
-
-    protected $connection = 'sqlsrv-website';
-
     protected $table = 'tb_sinpro_convencoes_entidades';
 
     /**

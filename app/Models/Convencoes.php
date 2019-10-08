@@ -11,15 +11,17 @@ class Convencoes extends Model
     use ConvencaoPaths;
 
     /**
-     * Table
+     * table
      *
      * @var string
      */
-
-    protected $connection = 'sqlsrv-website';
-
     protected $table = 'tb_sinpro_convencoes';
 
+    /**
+     * set chave primaria
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_convencao';
 
     /**

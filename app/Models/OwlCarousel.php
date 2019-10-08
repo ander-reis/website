@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class OwlCarousel extends Model
 {
 
-    protected $connection = 'sqlsrv-website';
-
+    /**
+     * table
+     *
+     * @var string
+     */
     protected $table = 'tb_sinpro_owl_carousel';
 }
