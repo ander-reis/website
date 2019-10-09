@@ -90,4 +90,8 @@ $(document).ready(function () {
             $("#lecionar :checkbox").prop("disabled", false);
         }
     })
+
+    $('#carousel-sinpro').carousel({
+        interval: 3500
+      })
 });
