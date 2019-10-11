@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-3 col-md-6 mt-3">
-                <a href="http://www1.sinprosp.org.br/sindicalizacao.asp" target="_blank">
+                <a href="{{ route('paginas-principais', ['url-pagina' => 'sindicalizacao']) }}">
                     <img class="rounded mx-auto d-block w-100"
                         src="{{ asset('images/layout-1/home/sindicalizese.jpg') }}" alt="SinproSP">
                 </a>
