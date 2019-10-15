@@ -11,5 +11,4 @@
     @if(isset($noticia))
         @component('website.noticias._noticia-page', ['noticia' => $noticia])@endcomponent
     @endif
-
 @endsection

@@ -13,7 +13,7 @@
                     @component('website.components.layout-1._social-share', ['noticia' => $noticia])@endcomponent
                 </div>
                 <div class="col-12 col-md-6 text-sm-left text-md-right time">
-                    Atualizada em {!! $noticia->dt_noticia_formatted !!}
+                    Atualizada em {{ dataHoraFormatted($noticia->dt_noticia) }}
                 </div>
             </div>
             <span class="noticia_interna_corpo1"> {!! $noticia->ds_texto !!}</span>

@@ -18,8 +18,8 @@ class NoticiasController extends Controller
         $notdestaque = NoticiasOrdem::orderBy('ordem_noticia')->select('id_noticia')->get();
 
         $noticias = Noticias::where('fl_status', 1)
-                                ->whereNotIN('id_noticia',$notdestaque)
-                                ->orderBy('id_noticia','desc')
+                                ->whereNotIN('id', $notdestaque)
+                                ->orderBy('id','desc')
                                 ->paginate(12);
 
         return view('website.noticias.index', compact('notdestaque', 'noticias'));

@@ -54,33 +54,13 @@ Breadcrumbs::register('cadastro', function ($breadcrumbs) {
     $breadcrumbs->push('Cadastro');
 });
 
+Breadcrumbs::register('relacao-escolas', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Relação de Escolas');
+});
 
-//Breadcrumbs::register('quem-somos', function ($breadcrumbs) {
-//    $breadcrumbs->parent('home');
-//    $breadcrumbs->push('Quem somos', route('quem-somos'));
-//});
-//
+// exemplo
 //Breadcrumbs::register('ranking-salarios', function ($breadcrumbs) {
 //    $breadcrumbs->parent('home');
 //    $breadcrumbs->push('Ranking de Salários', route('ranking-salarios'));
-//});
-//
-//Breadcrumbs::register('direitos-professores', function ($breadcrumbs) {
-//    $breadcrumbs->parent('home');
-//    $breadcrumbs->push('Direitos dos Professores', route('direitos-professores'));
-//});
-//
-//Breadcrumbs::register('reajustes-piso-salarial', function ($breadcrumbs) {
-//    $breadcrumbs->parent('home');
-//    $breadcrumbs->push('Reajustes e Pisos Salarial', route('reajustes-piso-salarial'));
-//});
-//
-//Breadcrumbs::register('campanha-salarial', function ($breadcrumbs) {
-//    $breadcrumbs->parent('home');
-//    $breadcrumbs->push('Campanha Salarial', route('campanha-salarial'));
-//});
-//
-//Breadcrumbs::register('congressos-cursos', function ($breadcrumbs) {
-//    $breadcrumbs->parent('home');
-//    $breadcrumbs->push('Congressos e Cursos', route('congressos-cursos'));
 //});

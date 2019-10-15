@@ -13,12 +13,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-//        $noticias = Noticias::noticiasRand();
-
-//        $destaque = Noticias::destaque();
-
-//        $owlItems = OwlCarousel::all();
-
         $sliders = Slider::slider();
         $noticias = Home::get();
         $intro = Intro::intro();

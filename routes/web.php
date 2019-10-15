@@ -27,10 +27,11 @@ Route::name('oculta')->get('/oculta/{id}', 'Website\NoticiasController@oculta');
  */
 Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
-// /**
-//  * páginas principais
-//  */
-// Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
+
+/**
+ * relacao escolas
+ */
+Route::resource('relacao-escolas', 'Website\CadastroEscolasController');
 
 /**
  * busca
