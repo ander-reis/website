@@ -54,9 +54,22 @@ Breadcrumbs::register('cadastro', function ($breadcrumbs) {
     $breadcrumbs->push('Cadastro');
 });
 
-Breadcrumbs::register('relacao-escolas', function ($breadcrumbs) {
+Breadcrumbs::register('relacao-escolas.group', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Relação de Escolas');
+});
+
+Breadcrumbs::register('relacao-escolas.nivel', function ($breadcrumbs, $id_nivel, $nome_breadcrumb) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Relação de Escolas', route('relacao-escolas.index'));
+    $breadcrumbs->push($nome_breadcrumb, route('relacao-escolas.nivel', ['id_nivel' => $id_nivel]));
+});
+
+Breadcrumbs::register('relacao-escolas.escola', function ($breadcrumbs, $id_nivel, $nome_breadcrumb) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Relação de Escolas', route('relacao-escolas.index'));
+    $breadcrumbs->push($nome_breadcrumb, route('relacao-escolas.nivel', ['id_nivel' => $id_nivel]));
+    $breadcrumbs->push('Dados da Escola');
 });
 
 // exemplo

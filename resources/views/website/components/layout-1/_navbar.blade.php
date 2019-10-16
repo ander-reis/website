@@ -126,9 +126,9 @@
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'app'])}}">
                             Aplicativo do SinproSP
                         </a>
-{{--                        <a class="dropdown-item" href="{{route('relacao-escolas.index')}}">--}}
-{{--                            Relação de Escolas--}}
-{{--                        </a>--}}
+                        <a class="dropdown-item" href="{{route('relacao-escolas.index')}}">
+                            Relação de Escolas
+                        </a>
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'whatsapp'])}}">
                             Whatsapp
                         </a>

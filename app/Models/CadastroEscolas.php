@@ -11,7 +11,8 @@ class CadastroEscolas extends Model
      *
      * @var string
      */
-    protected $connection = 'pgsql-cadastro';
+//    protected $connection = 'pgsql-cadastro';
+    protected $connection = 'sqlsrv-sinpro';
 
     /**
      * table

@@ -27,12 +27,6 @@ Route::name('oculta')->get('/oculta/{id}', 'Website\NoticiasController@oculta');
  */
 Route::resource('fono', 'Website\FonoAudiologiaController', ['only' => ['index']]);
 
-
-/**
- * relacao escolas
- */
-Route::resource('relacao-escolas', 'Website\CadastroEscolasController');
-
 /**
  * busca
  */
@@ -81,4 +75,14 @@ Route::group(['prefix' => 'convencoes-e-acordo', 'as' => 'convencao.', 'namespac
     Route::name('index')->get('{convencoes_entidade}', 'ConvencoesController@index');
     Route::name('show')->get('{convencoes_entidade}/{convencao}', 'ConvencoesController@show');
     Route::name('clausulas.show')->get('{convencoes_entidade}/{convencao}/{convencao_clausula}', 'ClausulasController@show');
+});
+
+/**
+ * relacao escolas
+ */
+Route::group(['prefix' => 'relacao-escolas', 'as' => 'relacao-escolas.', 'namespace' => 'Website'], function (){
+    Route::name('index')->get('/grupos', 'CadastroEscolasController@index');
+    Route::name('nivel')->get('/grupos/nivel/{id_nivel}', 'CadastroEscolasController@nivel')->where('id_nivel', '[0-9]');
+    Route::name('regiao')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}', 'CadastroEscolasController@regiao')->where(['id_nivel' => '[0-9]', 'id_regiao' => '[0-9]']);
+    Route::name('escola')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}/escola', 'CadastroEscolasController@escola');
 });
