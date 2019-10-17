@@ -89,6 +89,27 @@
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="https://www.youtube.com/user/SINPROSP" target="_blank">
+                            Acervo
+                        </a>
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'app'])}}">
+                            Aplicativo do SinproSP
+                        </a>
+                        <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
+                            Atendimento Eletrônico
+                        </a>
+                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/curriculo.asp" target="_blank">
+                            Banco de currículos
+                        </a>
+                        <a class="dropdown-item" href="{{route('boletim.index')}}">
+                            Boletim do SinproSP
+                        </a>
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'colonia'])}}">
+                            Colônia de Férias
+                        </a>
+                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
+                            Convênios e Parcerias
+                        </a>
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
                             Departamento Jurídico
@@ -100,31 +121,15 @@
                         <a class="dropdown-item" href="{{route('fono.index')}}">
                             Fonoaudiologia
                         </a>
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'colonia'])}}">
-                            Colônia de Férias
-                        </a>
-
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'plano-saude'])}}">
-                            Plano de Saúde
-                        </a>
-                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
-                            Convênios e Parcerias
-                        </a>
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'homologacao'])}}">
                             Homologação
                         </a>
-                        <a class="dropdown-item" href="https://www.youtube.com/user/SINPROSP" target="_blank">
-                            Acervo
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'plano-saude'])}}">
+                            Plano de Saúde
                         </a>
-                        <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
-                            Atendimento Eletrônico
-                        </a>
-                        <a class="dropdown-item" href="{{route('boletim.index')}}">
-                            Boletim do SinproSP
-                        </a>
-                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'app'])}}">
-                            Aplicativo do SinproSP
+                        <a class="dropdown-item" href="https://ranking.sinprosp.org.br" target="_blank">
+                            Ranking de Salários
                         </a>
                         <a class="dropdown-item" href="{{route('relacao-escolas.index')}}">
                             Relação de Escolas
