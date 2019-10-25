@@ -42,6 +42,6 @@ class NoticiasController extends Controller
     {
         $noticia = Noticias::where('fl_status', 0)->findOrFail($id);
 
-        return view('website.noticias._noticia-page', compact('noticia'));
+        return view('website.noticias._noticia-oculta-page', compact('noticia'));
     }
 }
