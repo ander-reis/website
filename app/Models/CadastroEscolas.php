@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class CadastroEscolas extends Model
 {
     /**
-     * conexao local
+     * conexao database
      *
      * @var string
      */
-//    protected $connection = 'pgsql-cadastro';
+//    protected $connection = 'pgsql';
     protected $connection = 'sqlsrv-sinpro';
 
     /**

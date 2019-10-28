@@ -72,6 +72,17 @@ Breadcrumbs::register('relacao-escolas.escola', function ($breadcrumbs, $id_nive
     $breadcrumbs->push('Dados da Escola');
 });
 
+Breadcrumbs::register('cursos.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cursos');
+});
+
+Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cursos', route('cursos.index'));
+    $breadcrumbs->push('Curso');
+});
+
 // exemplo
 //Breadcrumbs::register('ranking-salarios', function ($breadcrumbs) {
 //    $breadcrumbs->parent('home');

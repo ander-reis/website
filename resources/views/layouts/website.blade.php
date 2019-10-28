@@ -68,6 +68,13 @@
             $('#icon-popover7').popover();
             $('#icon-popover8').popover();
             $('#icon-popover9').popover();
+
+            // preload cursos
+            $(window).on('load', function () {
+                $('#preloader .inner').fadeOut();
+                $('#preloader').delay(350).fadeOut('slow');
+                $('body').delay(350).css({'overflow': 'visible'});
+            });
         })
     </script>
 
@@ -76,7 +83,7 @@
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     @stack('boletim-script')
-    @stack('relacao-escolas-script')
+    @stack('cursos-script')
 </body>
 
 </html>

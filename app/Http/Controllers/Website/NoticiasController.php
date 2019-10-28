@@ -18,9 +18,9 @@ class NoticiasController extends Controller
         $notdestaque = NoticiasOrdem::orderBy('ordem_noticia')->select('id_noticia')->get();
 
         $noticias = Noticias::where('fl_status', 1)
-                                ->whereNotIN('id', $notdestaque)
-                                ->orderBy('id','desc')
-                                ->paginate(12);
+            ->whereNotIN('id', $notdestaque)
+            ->orderBy('id', 'desc')
+            ->paginate(12);
 
         return view('website.noticias.index', compact('notdestaque', 'noticias'));
     }
@@ -28,7 +28,7 @@ class NoticiasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
