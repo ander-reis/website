@@ -2,9 +2,11 @@
 
 namespace Website\Http\Controllers\Website;
 
-use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Models\NovaSindicalizacao;
+
+use Illuminate\Http\Request;
+use Website\Http\Requests\NovaSindicalizacaoRequest;
 
 class NovaSindicalizacaoController extends Controller
 {
@@ -34,53 +36,15 @@ class NovaSindicalizacaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NovaSindicalizacaoRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Website\NovaSindicalizacao  $novaSindicalizacao
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NovaSindicalizacao $novaSindicalizacao)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \Website\NovaSindicalizacao  $novaSindicalizacao
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NovaSindicalizacao $novaSindicalizacao)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Website\NovaSindicalizacao  $novaSindicalizacao
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NovaSindicalizacao $novaSindicalizacao)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Website\NovaSindicalizacao  $novaSindicalizacao
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NovaSindicalizacao $novaSindicalizacao)
-    {
-        //
+        try {
+            dd('ok');
+        } catch (\Exception $e) {
+            //dd($e);
+            toastr()->error('Não foi possível cadastrar o e-mail');
+            // dd($e->getMessage());
+            return redirect()->back();
+        }
     }
 }

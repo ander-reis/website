@@ -55,6 +55,7 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script> --}}
     <script src="{{ asset('js/FormValidation.js') }}"></script>
     <script src="{{ asset('js/plugins/Bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/pesquisacep.js') }}"></script>
 
     <script>
         $(document).ready(function () {
@@ -68,6 +69,7 @@
             $('#icon-popover7').popover();
             $('#icon-popover8').popover();
             $('#icon-popover9').popover();
+            
         })
     </script>
 
@@ -77,6 +79,7 @@
     </script>
     @stack('boletim-script')
     @stack('relacao-escolas-script')
+    @stack('pesquisacep')
 </body>
 
 </html>
