@@ -4,27 +4,26 @@ namespace Website\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CadastroEscolas extends Model
+class PagamentoDocente extends Model
 {
     /**
      * conexao database
      *
      * @var string
      */
-//    protected $connection = 'pgsql';
     protected $connection = 'sqlsrv-sinpro';
-
+//    protected $connection = 'pgsql-cadastro';
     /**
      * table
      *
      * @var string
      */
-    protected $table = 'Cadastro_Escolas';
+    protected $table = 'tb_cur_pagamento_docente';
 
     /**
      * chave primaria
      *
-     * @var null
+     * @var string
      */
     protected $primaryKey = null;
 
@@ -36,12 +35,16 @@ class CadastroEscolas extends Model
     public $incrementing = false;
 
     /**
-     * set created_at
+     * datetime
+     *
+     * @var bool
      */
-    const CREATED_AT = 'dt_inicio';
+    public $timestamps = false;
 
     /**
-     * set updated_at
+     * set dates
+     *
+     * @var array
      */
-    const UPDATED_AT = 'Data_Alteracao';
+    protected $dates = ['cur_pag_dt_vencimento', 'cur_pag_dt_pagamento', 'cur_pag_dt_geracao'];
 }

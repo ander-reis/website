@@ -56,7 +56,17 @@ Route::get('/atendimento-eletronico/{id}','Website\AtendimentoEletronicoControll
 Route::resource('boletim', 'Website\BoletimController', ['only' => ['index','store','destroy']]);
 
 /**
+ * cursos
+ */
+Route::name('cursos.index')->get('/cursos', 'Website\CursosController@index');
+Route::name('cursos.show')->get('/curso/{id}', 'Website\CursosController@show');
+Route::name('cursos.list')->get('/cursos/listar', 'Website\CursosController@initSelect');
+Route::name('cursos.list-select')->get('/cursos/selecionar', 'Website\CursosController@changeSelect');
+
+/**
  * páginas principais
+ *
+ * rota que verifica a pagina e em caso de erro configura pagina personalizada de erro
  */
 Route::name('paginas-principais')->get('/{url_pagina}', 'Website\PaginasPrincipaisController@show', ['only' => ['show']]);
 
