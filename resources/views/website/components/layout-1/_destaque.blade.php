@@ -3,7 +3,7 @@
     <meta property="og:url" content="http://www.sinprosp.org.br" />
     <meta property="og:description" content="SinproSP" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="http://www.sinprosp.org.br/images/layout-1/sinpro_300x200s.jpg" />
+    <meta property="og:image" content="http://www.sinprosp.org.br/images/layout-1/og/sinpro_300x200s.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="300" />
     <meta property="og:image:height" content="200" />
