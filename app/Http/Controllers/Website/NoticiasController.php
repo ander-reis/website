@@ -9,8 +9,6 @@ use Website\Http\Controllers\Controller;
 use Website\Models\Noticias;
 use Website\Models\NoticiasOrdem;
 
-use Barryvdh\Debugbar\Facade as Debugbar;
-
 class NoticiasController extends Controller
 {
     /**

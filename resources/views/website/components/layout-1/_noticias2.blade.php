@@ -1,3 +1,15 @@
+@section('og')
+    <meta property="og:title" content="SinproSP" />
+    <meta property="og:url" content="http://www.sinprosp.org.br" />
+    <meta property="og:description" content="SinproSP" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="http://www.sinprosp.org.br/images/layout-1/sinpro_300x200s.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:image:alt" content="SinproSP" />
+@endsection
+
 <div class="row">
     @foreach ($noticias->slice(3, 4) as $noticia)
         <div class="col-sm-6 col-md-3 mt-2">

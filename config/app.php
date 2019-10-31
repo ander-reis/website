@@ -153,7 +153,6 @@ return [
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         geekcom\ValidatorDocs\ValidatorProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
