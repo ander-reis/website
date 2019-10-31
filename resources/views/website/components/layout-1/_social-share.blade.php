@@ -5,7 +5,7 @@
         </a>
     </li>
     <li class="d-sm-none">
-        <a href='https://api.whatsapp.com/send?text={{$noticia->ds_resumo}}. Segue o link: {{url()->full()}}'>
+        <a href='whatsapp://send?text={{$noticia->ds_resumo}}. Segue o link: {{url()->full()}}'>
             <img src="{{asset('images/icons/whats.png')}}" alt="compartilhar no whatsapp">
         </a>
     </li>

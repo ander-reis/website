@@ -4,7 +4,7 @@
      <a href='https://www.facebook.com/sharer/sharer.php?u={{$noticias[$id]->ds_link}}' target='_blank'>
      <img class='icon-img' src='{{asset('images/icons/facebook.png')}}' alt='compartilhar no facebook'>
      </a>
-     <a href='https://api.whatsapp.com/send?text={{$noticias[$id]->ds_titulo}}. Segue o link: {{$noticias[$id]->ds_link}}'>
+     <a href='whatsapp://send?text={{$noticias[$id]->ds_titulo}}. Segue o link: {{$noticias[$id]->ds_link}}'>
      <img class='icon-img d-sm-none' src='{{asset('images/icons/whats.png')}}' alt='compartilhar no whatsapp'>
      </a>
      <a href='https://twitter.com/intent/tweet?text=a&amp;url={{$noticias[$id]->ds_link}} &amp;via=Sinpro Website' target='_blank'>
