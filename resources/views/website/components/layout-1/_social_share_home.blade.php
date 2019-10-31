@@ -1,17 +1,17 @@
 <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24"
      id={{ $name }} data-toggle="popover" title="Compartilhar" data-placement="bottom" data-html="true"
      data-content="
-     <a href='https://www.facebook.com/sharer/sharer.php?u={{url()->full()}}'' target='_blank'>
-     <img class='icon-img' src='{{asset('fonts/icons/facebook.svg')}}' alt='compartilhar no facebook'>
+     <a href='https://www.facebook.com/sharer/sharer.php?u={{$noticias[$id]->ds_link}}' target='_blank'>
+     <img class='icon-img' src='{{asset('images/icons/facebook.png')}}' alt='compartilhar no facebook'>
      </a>
-     <a href='whatsapp://send?text={{url()->full()}}'>
-     <img class='icon-img d-sm-none' src='{{asset('fonts/icons/whatsapp.svg')}}' alt='compartilhar no whatsapp'>
+     <a href='https://api.whatsapp.com/send?text={{$noticias[$id]->ds_titulo}}. Segue o link: {{$noticias[$id]->ds_link}}'>
+     <img class='icon-img d-sm-none' src='{{asset('images/icons/whats.png')}}' alt='compartilhar no whatsapp'>
      </a>
-     <a href='https://twitter.com/intent/tweet?text=a&amp;url={{url()->full()}}&amp;via=Sinpro Website' target='_blank'>
-        <img class='icon-img' src='{{asset('fonts/icons/twitter.svg')}}' alt='compartilhar no twitter'>
+     <a href='https://twitter.com/intent/tweet?text=a&amp;url={{$noticias[$id]->ds_link}} &amp;via=Sinpro Website' target='_blank'>
+        <img class='icon-img' src='{{asset('images/icons/twitter.png')}}' alt='compartilhar no twitter'>
     </a>
-    <a href='https://www.linkedin.com/shareArticle?mini=true&amp;url={{url()->full()}}&amp;title=a' target='_blank'>
-        <img class='icon-img' src='{{asset('fonts/icons/linkedin.svg')}}' alt='compartilhar no linkedin'>
+    <a href='https://www.linkedin.com/shareArticle?mini=true&amp;url={{$noticias[$id]->ds_link}}&amp;title=a' target='_blank'>
+        <img class='icon-img' src='{{asset('images/icons/linked.png')}}' alt='compartilhar no linkedin'>
     </a>
         "
      class="icon icon--share icon-color">

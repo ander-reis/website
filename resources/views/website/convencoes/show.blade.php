@@ -2,10 +2,10 @@
 
 @section('content')
 
-    {{ Breadcrumbs::render('convencao.show', $convencao_entidade) }}
+    {{ Breadcrumbs::render('convencao.show', $convencao_entidade, $convencao) }}
 
     <p>
-    <h1>{{ $convencao->ds_titulo }}</h1>
+    <h4>{{ $convencao->ds_titulo }}</h4>
     @if($convencao->url_arquivo)
         <a href="{{ $convencao->convencao_web_asset }}" class="btn btn-secondary m-3" target="_blank">Abrir Convenção
             PDF</a>

@@ -14,6 +14,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SinproSP">
+
+    <!-- OG -->
+    @yield('og')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -78,7 +82,7 @@
             $('#icon-popover7').popover();
             $('#icon-popover8').popover();
             $('#icon-popover9').popover();
-            
+
 
             // preload cursos
             $(window).on('load', function () {
