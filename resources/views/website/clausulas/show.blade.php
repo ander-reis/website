@@ -5,8 +5,10 @@
 {{ Breadcrumbs::render('convencao.clausula.show', $convencoes_entidade, $convencao, $convencao_clausula) }}
 
     <div class="row">
+
         <div class="col-md-8">
-            <h1>{{ $convencao_clausula->ds_titulo }}</h1>
+            <h4>{{$convencao->ds_titulo}}</h4>
+            <p><h5> {{ $convencao_clausula->num_clausula }}. {{ $convencao_clausula->ds_titulo }}</h5></p>
             <p> {!! $convencao_clausula->ds_texto !!}</p>
 
             <div class="text-center mt-3 mb-3">

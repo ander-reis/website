@@ -14,6 +14,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SinproSP">
+
+    <!-- OG -->
+    @yield('og')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -82,13 +86,19 @@
             $('#icon-popover7').popover();
             $('#icon-popover8').popover();
             $('#icon-popover9').popover();
-            
 
             // preload cursos
             $(window).on('load', function () {
                 $('#preloader .inner').fadeOut();
                 $('#preloader').delay(350).fadeOut('slow');
                 $('body').delay(350).css({'overflow': 'visible'});
+            });
+
+            //fechar o popover, apos clicar em outra parte do site
+            $(document).click(function(e) {
+                if ($(e.target).data('toggle') !== 'popover' && $(e.target).parents('.popover.in').length === 0) {
+                    $('[data-toggle="popover"]').popover('hide');
+                }
             });
         })
     </script>
