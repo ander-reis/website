@@ -83,12 +83,18 @@
             $('#icon-popover8').popover();
             $('#icon-popover9').popover();
 
-
             // preload cursos
             $(window).on('load', function () {
                 $('#preloader .inner').fadeOut();
                 $('#preloader').delay(350).fadeOut('slow');
                 $('body').delay(350).css({'overflow': 'visible'});
+            });
+
+            //fechar o popover, apos clicar em outra parte do site
+            $(document).click(function(e) {
+                if ($(e.target).data('toggle') !== 'popover' && $(e.target).parents('.popover.in').length === 0) {
+                    $('[data-toggle="popover"]').popover('hide');
+                }
             });
         })
     </script>
