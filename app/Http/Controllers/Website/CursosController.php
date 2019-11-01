@@ -5,8 +5,10 @@ namespace Website\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Models\CadastroCursos;
+use Website\Models\DataCursos;
 use Website\Models\EscolaMeses;
 use Carbon\Carbon;
+use Website\Models\PaginasPrincipais;
 
 class CursosController extends Controller
 {
@@ -17,7 +19,15 @@ class CursosController extends Controller
      */
     public function index()
     {
+        $model = PaginasPrincipais::where(['id_pagina' => 14, 'fl_status' => 1])->first(['ds_texto']);
+//        return view('website.curso.index', compact('model'));
+
         return view('website.curso.index');
+    }
+
+    public function cursos()
+    {
+        return view('website.curso.cursos-programacao');
     }
 
     /**
@@ -35,13 +45,11 @@ class CursosController extends Controller
             'cur_cur_ds_objetivo', 'cur_cur_ds_conteudo', 'cur_cur_hr_inicio', 'cur_cur_hr_final',
             'cur_cur_dt_vencimento', 'cur_cur_vl_sind', 'cur_cur_vl_nsind', 'cur_cur_nr_vaga', 'cur_cur_ds_ch']);
 
-
-        $carbon = Carbon::parse($model_curso->cur_cur_dt_vencimento);
         $model_curso->cur_cur_hr_inicio = (new \DateTime($model_curso->cur_cur_hr_inicio))->format('H');
         $model_curso->cur_cur_hr_final = (new \DateTime($model_curso->cur_cur_hr_final))->format('H');
-        $model_curso->cur_cur_dt_vencimento = $carbon->translatedFormat('d \de F Y');
-        $model_curso->cur_cur_vl_sind = number_format($model_curso->cur_cur_vl_sind,2,",",".");
-        $model_curso->cur_cur_vl_nsind = number_format($model_curso->cur_cur_vl_nsind,2,",",".");
+        $model_curso->cur_cur_dt_vencimento = $this->getMonthsCourse($id);
+        $model_curso->cur_cur_vl_sind = number_format($model_curso->cur_cur_vl_sind, 2, ",", ".");
+        $model_curso->cur_cur_vl_nsind = number_format($model_curso->cur_cur_vl_nsind, 2, ",", ".");
 
         return view('website.curso.show', compact('model_docente', 'model_curso'));
     }
@@ -55,16 +63,20 @@ class CursosController extends Controller
     {
         // meses
         $meses = $this->getMonthsSelect();
-        $dataAutal = explode('/', $meses[0]['value']);
+
+        $dataAtual = explode('/', $meses[0]['value']);
+        $mes = $dataAtual[0];
+        $ano = $dataAtual[1];
 
         // lista cursos do mes corrente
-        $collection =  CadastroCursos::getCursos($dataAutal[0], $dataAutal[1]);
+        $collection = CadastroCursos::getCadastroCursos($mes, $ano);
 
-        $model_cursos = $collection->map(function($item) {
-            $carbon = Carbon::parse($item->DATA);
-            $item->cur_cur_hr_inicio =  (new \DateTime($item->cur_cur_hr_inicio))->format('H');
+        $model_cursos = $collection->map(function ($item, $key) use ($mes) {
+            $item->cur_cur_hr_inicio = (new \DateTime($item->cur_cur_hr_inicio))->format('H');
             $item->cur_cur_hr_final = (new \DateTime($item->cur_cur_hr_final))->format('H');
-            $item->DATA = $carbon->translatedFormat('d \de F Y');
+            $item->cur_dt_dt_data = $this->getMonthsCourse($item->cur_cur_cd_curso);
+            $item->cur_docente = $this->getDocente($item->cur_cur_cd_curso);
+
             return $item;
         });
 
@@ -82,15 +94,17 @@ class CursosController extends Controller
         // mes selecionado
         $mesSelected = $request->only(array_keys($request->all()))['id'];
         $dataSeleced = explode('/', $mesSelected);
+        $mes = $dataSeleced[0];
+        $ano = $dataSeleced[1];
 
         // lista cursos do mes corrente
-        $collection = CadastroCursos::getCursos($dataSeleced[0], $dataSeleced[1]);
+        $collection = CadastroCursos::getCadastroCursos($mes, $ano);
 
-        $model_cursos = $collection->map(function($item, $key){
-            $carbon = Carbon::parse($item->DATA);
-            $item->cur_cur_hr_inicio =  (new \DateTime($item->cur_cur_hr_inicio))->format('H');
+        $model_cursos = $collection->map(function ($item) use ($mes) {
+            $item->cur_cur_hr_inicio = (new \DateTime($item->cur_cur_hr_inicio))->format('H');
             $item->cur_cur_hr_final = (new \DateTime($item->cur_cur_hr_final))->format('H');
-            $item->DATA = $carbon->translatedFormat('d \de F Y');
+            $item->cur_dt_dt_data = $this->getMonthsCourse($item->cur_cur_cd_curso);
+            $item->cur_docente = $this->getDocente($item->cur_cur_cd_curso);
             return $item;
         });
 
@@ -117,9 +131,100 @@ class CursosController extends Controller
             ->get();
 
         foreach ($meses as $key => $item) {
-            $carbon = Carbon::createFromDate(null, $item->num_mes, null);
-            $array[$key]['option'] = ucfirst($carbon->isoFormat('MMMM')) . ' ' . $item->num_ano;
-            $array[$key]['value'] = $carbon->isoFormat('M') . '/' . $item->num_ano;
+            $meses = $this->configMonth($item->num_mes);
+            $array[$key]['option'] = $meses['option'] . ' ' . $item->num_ano;
+            $array[$key]['value'] = $meses['value'] . '/' . $item->num_ano;
+        }
+        return $array;
+    }
+
+    /**
+     * return months course
+     *
+     * @param $id
+     * @return string
+     */
+    private function getMonthsCourse($id)
+    {
+        $collection = DataCursos::where('cur_dt_cd_curso', $id)->orderBy('cur_dt_dt_data')->get(['cur_dt_dt_data']);
+
+        $mes = '';
+        $array = [];
+
+        foreach ($collection as $key => $item) {
+            $mes_sql = substr($item->cur_dt_dt_data, 5, 2);
+            $mes_data = substr($item->cur_dt_dt_data, 5, 2);
+            if ($mes_data == $mes_sql) {
+                $array[$mes_data][] = substr($item->cur_dt_dt_data, 8, 2);
+            } else {
+                $array[$mes_data][] = substr($item->cur_dt_dt_data, 8, 2);
+            }
+        }
+
+        foreach ($array as $k => $item) {
+            $valor = count($array[$k]) - 1;
+            $index = 0;
+            foreach ($item as $j => $value) {
+                if ($index != $valor) {
+                    $mes .= $value . ', ';
+                } else {
+                    $mes .= "{$value} de {$this->configMonth($k)['option']}, ";
+                }
+                $index++;
+            }
+        }
+        return $mes;
+    }
+
+    /**
+     * retona nome do docente em listar cursos
+     *
+     * @param $id
+     * @return string
+     */
+    private function getDocente($id)
+    {
+        $data = CadastroCursos::getCadastroDocente($id);
+        $docente = '';
+        foreach ($data as $key => $value){
+            if($key >= 1){
+                $docente .= ', ' . $value->cur_doc_ds_apelido;
+            } else {
+                $docente = $value->cur_doc_ds_apelido;
+            }
+        }
+        return $docente;
+    }
+
+    /**
+     * set config months
+     *
+     * @param $num_mes
+     * @return array
+     */
+    private function configMonth($num_mes)
+    {
+        $array[] = '';
+        $meses = [
+            1 => 'Janeiro',
+            2 => 'Fevereiro',
+            3 => 'Março',
+            4 => 'Abril',
+            5 => 'Maio',
+            6 => 'Junho',
+            7 => 'Julho',
+            8 => 'Agosto',
+            9 => 'Setembro',
+            10 => 'Outubro',
+            11 => 'Novembro',
+            12 => 'Dezembro'
+        ];
+
+        foreach ($meses as $key => $value) {
+            if ($num_mes == $key) {
+                $array['option'] = $value;
+                $array['value'] = $key;
+            }
         }
         return $array;
     }

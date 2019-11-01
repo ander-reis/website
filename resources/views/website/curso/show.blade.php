@@ -9,22 +9,35 @@
             <h1 class="mb-5">{{ $model_curso->cur_cur_ds_tema }}</h1>
 
             <p>
-                <strong>Público Alvo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_publico }}
+                <strong>Público Alvo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_publico }}.
             </p>
             <p>
-                <strong>Objetivo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_objetivo }}
+                <strong>Objetivo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_objetivo }}.
             </p>
             <p>
-                <strong>Conteúdo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_conteudo }}
+                <strong>Conteúdo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_conteudo }}.
             </p>
+
+            @isset($model_docente)
+                @foreach($model_docente as $value)
+                    @if($value->cur_doc_fl_sexo)
+                        <p>
+                            <strong>Professora:&nbsp;</strong>
+                            {{ $value->cur_doc_ds_apelido }}<br>
+                            {{ $value->cur_doc_ds_qualificacao }}
+                        </p>
+                    @else
+                        <p>
+                            <strong>Professor:&nbsp;</strong>
+                            {{ $value->cur_doc_ds_apelido }}<br>
+                            {{ $value->cur_doc_ds_qualificacao }}
+                        </p>
+                    @endif
+                @endforeach
+            @endisset
+
             <p>
-                @if($model_docente->cur_doc_fl_sexo) <strong>Professora:&nbsp;</strong> @else
-                    <strong>Professor:&nbsp;</strong> @endif
-                {{ $model_docente->cur_doc_ds_apelido }}<br>
-                {{ $model_docente->cur_doc_ds_qualificacao }}
-            </p>
-            <p>
-                <strong>Período:&nbsp;</strong>{{ $model_curso->cur_cur_dt_vencimento }},
+                <strong>Período:&nbsp;</strong>{{ $model_curso->cur_cur_dt_vencimento }}
                 das {{ $model_curso->cur_cur_hr_inicio }}h às {{ $model_curso->cur_cur_hr_final }}h
             </p>
             <p>

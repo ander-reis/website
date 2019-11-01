@@ -60,7 +60,7 @@ body {
 
 /** header **/
 .breadcrumb {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
 
 /** content **/
@@ -84,6 +84,19 @@ body {
 }
 
 .text-link:hover {
+  color: #e30742;
+  text-decoration: none;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+  transition-delay: initial;
+}
+
+.link-active {
+  color: #00B0E8;
+  text-decoration: none;
+}
+
+.link-active:hover {
   color: #e30742;
   text-decoration: none;
   transition-duration: 500ms;

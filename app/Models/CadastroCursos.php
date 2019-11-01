@@ -55,11 +55,12 @@ class CadastroCursos extends Model
     public static function getCadastroDocente($id)
     {
         return DB::connection('sqlsrv-sinpro')
-            ->table('tb_cur_pagamento_docente')
+            ->table('tb_cur_cadastro_cursos')
             ->distinct()
-            ->leftJoin('tb_cur_cadastro_docente', 'cur_pag_cd_docente', 'cur_doc_cd_docente')
-            ->where('cur_pag_cd_curso', $id)
-            ->first(['cur_doc_ds_apelido', 'cur_doc_ds_qualificacao', 'cur_doc_fl_sexo']);
+            ->join('tb_cur_pagamento_docente', 'cur_cur_cd_curso', 'cur_pag_cd_curso')
+            ->join('tb_cur_cadastro_docente', 'cur_pag_cd_docente', 'cur_doc_cd_docente')
+            ->where('cur_cur_cd_curso', $id)
+            ->get(['cur_doc_fl_sexo', 'cur_doc_ds_apelido', 'cur_doc_ds_qualificacao']);
     }
 
     /**
@@ -69,7 +70,7 @@ class CadastroCursos extends Model
      * @param $ano
      * @return \Illuminate\Support\Collection
      */
-    public static function getCursos($mes, $ano)
+    public static function getCadastroCursos($mes, $ano)
     {
         // data de hoje
         $carbon = \Carbon\Carbon::parse(now());

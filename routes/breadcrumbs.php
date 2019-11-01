@@ -74,12 +74,18 @@ Breadcrumbs::register('relacao-escolas.escola', function ($breadcrumbs, $id_nive
 
 Breadcrumbs::register('cursos.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cursos e Congressos');
+});
+
+Breadcrumbs::register('cursos.programacao', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cursos e Congressos', route('cursos.index'));
     $breadcrumbs->push('Cursos');
 });
 
 Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Cursos', route('cursos.index'));
+    $breadcrumbs->push('Cursos', route('cursos.programacao'));
     $breadcrumbs->push('Curso');
 });
 

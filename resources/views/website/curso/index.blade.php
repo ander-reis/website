@@ -6,99 +6,67 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1>Programação de Cursos</h1>
-            <div class="form-group">
-                <label for="mes">Selecione um Mês</label>
-                <select class="form-control" id="mes"></select>
-            </div>
-
-            <div>
-                <p>
-                    Confira o conteúdo de cada curso nos links. A inscrição pode ser feita por telefone (5080-5974 ou
-                    5080-5988) ou na sede do Sindicato (rua Borges Lagoa, 208, Vila Clementino), de segunda a sexta, das
-                    8h30 às 17h30.
+            <section>
+                <div class="alert alert-dark" role="alert">
+                    <h5>Cursos</h5>
+                </div>
+                <p class="mt-4 mb-4">
+                    O SinproSP promove cursos e atividades para professores durante todo o ano, dos quais diferentes
+                    assuntos e áreas do conhecimento, com condições especiais para quem é sindicalizado. Os eventos são
+                    realizados no Sindicato.
                 </p>
-                <p>
-                    As inscrições podem ser feitas até às 15h do próprio dia do curso, de acordo com a disponibilidade
-                    de vagas. Neste caso, o pagamento deverá ser efetuado, pessoalmente no SinproSP, em dinheiro ou
-                    cartão. Já para pagamentos em boleto bancário, a inscrição somente poderá ser feita até, no máximo,
-                    2 dias antes do início do curso.
+                <p class="mt-4 mb-4">
+                    <a href="{{ route('cursos.programacao') }}" class="btn btn-outline-dark">Conheça a agenda dos
+                        cursos</a>
                 </p>
-            </div>
-            <hr>
-            <h5 id="mes-titulo" class="mb-5"></h5>
-
-            @include('website.components.layout-1._preloader')
-
-            <div id="cursos"></div>
-
+            </section>
+            <section>
+                <div class="alert alert-dark" role="alert">
+                    <h5>Congressos</h5>
+                </div>
+                <p class="mt-4 mb-4">
+                    Desde 2011, o SinproSP promove o seu Congresso de Pesquisa do Ensino (Conpe) trazendo profissionais
+                    de renome e aproximando a pesquisa científica e os sabers construídos nas salas de aulas, nas mais
+                    diferenets áreas do conhecimento.
+                </p>
+                <h5>ANAIS DOS CONGRESSOS DE PESQUISA DO ENSINO</h5>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/congresso_matematica/index.asp"
+                       class="link-active" target="_blank"><strong>Conpe 7 (2018)</strong> - 7º Congresso de Pesquisa do Ensino -
+                        Inovação e Educação - o tempo do professores.</a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/conpeb/" class="link-active" target="_blank">
+                        <strong>Conpe 6 (2017)</strong> - 6º Congresso de Pesquisa do Ensino - Educação e Tecnologia - revisitando a
+                        sala de aula.
+                    </a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/conpe5/" class="link-active" target="_blank">
+                        <strong>Conpe 5 (2016)</strong> - 5º Congresso de Pesquisa do Ensino - Física e Química e no mundo Acadêmico - o desafio interdisciplinar.
+                    </a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/conpe4/index.asp" class="link-active" target="_blank">
+                        <strong>Conpe 4 (2015)</strong> - 4º Congresso de Pesquisa do Ensino - As Ciências a Educação.
+                    </a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/conpe3/index.asp" class="link-active" target="_blank">
+                        <strong>Conpe 3 (2014)</strong> - 3º Congresso de Pesquisa do Ensino - O Ensino Infantil e Fundamental I: Reflexões e Desafios.
+                    </a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/conpeb/" class="link-active" target="_blank">
+                        <strong>Conpe 2 (2013)</strong> - 2º Congresso de Pesquisa do Ensino em Ciências Naturais e Biologia.
+                    </a>
+                </p>
+                <p class="mt-4 mb-4">
+                    <a href="http://www1.sinprosp.org.br/congresso_matematica/index.asp" class="link-active" target="_blank">
+                        <strong>Conpe 1 (2011)</strong> - 1º Congresso Brasileiro de Matemática.
+                    </a>
+                </p>
+            </section>
         </div>
     </div>
-
-    @push('cursos-script')
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // lista cursos mes atual
-                $.ajax({
-                    url: "{{ url('/cursos/listar') }}",
-                    method: 'get',
-                    dataType: 'json',
-                    data: { },
-                    success: function (data) {
-                        // configura mes inicial
-                        $('#mes-titulo').append(data.meses[0].option);
-                        // preenche select
-                        for (var i in data.meses){
-                            let options = "<option value=" + data.meses[i].value + ">" + data.meses[i].option + "</option>";
-                            $('#mes').append(options);
-                        }
-                        // preenche cursos
-                        let cursos = data.model;
-                        for (var i in cursos){
-                            let curso = `
-                            <h6><a href="/curso/${cursos[i].cur_cur_cd_curso}" class="text-link">${cursos[i].cur_cur_ds_tema}</a></h6>
-                            <div class="mb-4">${cursos[i].DATA}, das ${cursos[i].cur_cur_hr_inicio}h - ${cursos[i].cur_cur_hr_final}h</div>`;
-                            $('#cursos').append(curso);
-                        }
-                    }
-                });
-                // evento select change
-                $('#mes').change(function (e) {
-                    // loading start
-                    $(document).ajaxStart(() => {
-                        $('#preloader').delay(1).fadeIn();
-                    });
-                    // reset cursos
-                    $('#cursos').html('');
-                    // pega mes do select
-                    let text = $("#mes option:selected").text();
-                    //configura mes selecionado
-                    $('#mes-titulo').text('');
-                    $('#mes-titulo').append(text);
-                    // ajax select data source
-                    e.preventDefault();
-                    $.ajax({
-                        url: "{{ url('/cursos/selecionar') }}",
-                        method: 'get',
-                        dataType: 'json',
-                        data: { id: $(this).val() },
-                        success: function (data) {
-                            // preenche cursos
-                            let cursos = data.model;
-                            for (var i in cursos){
-                                let curso = `
-                                <h6><a href="/curso/${cursos[i].cur_cur_cd_curso}" class="text-link">${cursos[i].cur_cur_ds_tema}</a></h6>
-                                <div class="mb-4">${cursos[i].DATA}, das ${cursos[i].cur_cur_hr_inicio}h - ${cursos[i].cur_cur_hr_final}h</div>`;
-                                $('#cursos').append(curso);
-                            }
-                        }
-                    });
-                    // loading stop
-                    $(document).ajaxComplete(() => {
-                        $('#preloader').hide();
-                    });
-                });
-            });
-        </script>
-    @endpush
 @endsection
