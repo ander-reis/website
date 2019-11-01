@@ -19,10 +19,9 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $model = PaginasPrincipais::where(['id_pagina' => 14, 'fl_status' => 1])->first(['ds_texto']);
-//        return view('website.curso.index', compact('model'));
-
-        return view('website.curso.index');
+        $model_cursos = PaginasPrincipais::where(['id_pagina' => 14, 'fl_status' => 1])->first(['ds_texto', 'txt_titulo']);
+        $model_congresso = PaginasPrincipais::where(['id_pagina' => 15, 'fl_status' => 1])->first(['ds_texto', 'txt_titulo']);
+        return view('website.curso.index', compact('model_cursos', 'model_congresso'));
     }
 
     public function cursos()

@@ -6,8 +6,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mb-5">{{ $model_curso->cur_cur_ds_tema }}</h1>
-
+            <h3 class="mb-5">{{ $model_curso->cur_cur_ds_tema }}</h3>
             <p>
                 <strong>Público Alvo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_publico }}.
             </p>
@@ -17,7 +16,6 @@
             <p>
                 <strong>Conteúdo:&nbsp;</strong>{{ $model_curso->cur_cur_ds_conteudo }}.
             </p>
-
             @isset($model_docente)
                 @foreach($model_docente as $value)
                     @if($value->cur_doc_fl_sexo)
@@ -35,7 +33,6 @@
                     @endif
                 @endforeach
             @endisset
-
             <p>
                 <strong>Período:&nbsp;</strong>{{ $model_curso->cur_cur_dt_vencimento }}
                 das {{ $model_curso->cur_cur_hr_inicio }}h às {{ $model_curso->cur_cur_hr_final }}h
