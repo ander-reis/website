@@ -12,7 +12,7 @@
                 </div>
                 {!! $model_cursos->ds_texto !!}
                 <p class="mt-4 mb-4">
-                    <a href="{{ route('cursos.programacao') }}" class="btn btn-outline-dark">Conheça a agenda dos
+                    <a href="{{ route('cursos.programacao') }}" class="btn btn-info">Conheça a agenda dos
                         cursos</a>
                 </p>
             </section>

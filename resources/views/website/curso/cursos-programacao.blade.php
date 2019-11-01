@@ -58,7 +58,7 @@
                         let cursos = data.model;
                         for (var i in cursos){
                             let curso = `
-                            <h6><a href="/cursos/programacao/${cursos[i].cur_cur_cd_curso}" class="text-link">${cursos[i].cur_cur_ds_tema}</a></h6>
+                            <h6><a href="/cursos/programacao/${cursos[i].cur_cur_cd_curso}" class="link-active">${cursos[i].cur_cur_ds_tema}</a></h6>
                             <div class="mb-4">${cursos[i].cur_dt_dt_data} das ${cursos[i].cur_cur_hr_inicio}h - ${cursos[i].cur_cur_hr_final}h
                             <p>Docente: ${cursos[i].cur_docente}</p>
                             </div>`;
@@ -96,7 +96,7 @@
                             let cursos = data.model;
                             for (var i in cursos){
                                 let curso = `
-                                <h6><a href="/cursos/programacao/${cursos[i].cur_cur_cd_curso}" class="text-link">${cursos[i].cur_cur_ds_tema}</a></h6>
+                                <h6><a href="/cursos/programacao/${cursos[i].cur_cur_cd_curso}" class="link-active">${cursos[i].cur_cur_ds_tema}</a></h6>
                                 <div class="mb-4">${cursos[i].cur_dt_dt_data} das ${cursos[i].cur_cur_hr_inicio}h - ${cursos[i].cur_cur_hr_final}h
                                 <p>Docente: ${cursos[i].cur_docente}</p>
                                 </div>`;

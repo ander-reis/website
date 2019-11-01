@@ -85,6 +85,7 @@ Breadcrumbs::register('cursos.programacao', function ($breadcrumbs) {
 
 Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cursos e Congressos', route('cursos.index'));
     $breadcrumbs->push('Cursos', route('cursos.programacao'));
     $breadcrumbs->push('Curso');
 });
