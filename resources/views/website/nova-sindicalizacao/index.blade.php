@@ -12,118 +12,120 @@
                 {{ Form::open(['id' => 'formSindicalizacao', 'route' => 'nova-sindicalizacao.store', 'method' => 'POST']) }}
                     <div class="p-1 mb-2 rounded bg-secondary text-white">Dados Pessoais</div>
 
-                    <div class="form-group fl {{ $errors->has('Nome') ?'has-error' : '' }}">
-                        {{ Form::label('Nome', 'Nome completo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                        {{ Form::text('Nome', null, ['id' => 'Nome','class' => 'form-control']) }}
-                        @include('website.components.form-components._help_block',['field' => 'Nome'])
+                    <div class="form-group fl {{ $errors->has('nome') ?'has-error' : '' }}">
+                        {{ Form::label('nome', 'Nome completo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                        {{ Form::text('nome', null, ['id' => 'nome','class' => 'form-control','maxlength' => '50']) }}
+                        @include('website.components.form-components._help_block',['field' => 'nome'])
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-4 fl {{ $errors->has('CPF') ?'has-error' : '' }}">
-                            {{ Form::label('CPF', 'CPF', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('CPF', null, ['id' => 'CPF','class' => 'form-control', 'placeholder' => '000.000.00-00']) }}
-                            @include('website.components.form-components._help_block',['field' => 'CPF'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('cpf') ?'has-error' : '' }}">
+                            {{ Form::label('cpf', 'CPF', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('cpf', null, ['id' => 'cpf','class' => 'form-control', 'placeholder' => '000.000.00-00','maxlength' => '14']) }}
+                            @include('website.components.form-components._help_block',['field' => 'cpf'])
                         </div>
-                        <div class="form-group col-md-4 fl {{ $errors->has('Nascimento') ?'has-error' : '' }}">
-                            {{ Form::label('Nascimento', 'Nascimento', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('Nascimento', null, ['id' => 'Nascimento','class' => 'form-control', 'placeholder' => 'DD/MM/AAAA']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Nascimento'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('nascimento') ?'has-error' : '' }}">
+                            {{ Form::label('nascimento', 'Nascimento', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::date('nascimento', null, ['id' => 'nascimento','class' => 'form-control', 'placeholder' => 'DD/MM/AAAA','maxlength' => '10']) }}
+                            @include('website.components.form-components._help_block',['field' => 'nascimento'])
                         </div>
-                        <div class="form-group col-md-4 fl {{ $errors->has('Sexo') ?'has-error' : '' }}">
-                            {{ Form::label('Sexo', 'Sexo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::select('Sexo', ['1' => 'Feminino', '0' => 'Masculino'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Sexo'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('sexo') ?'has-error' : '' }}">
+                            {{ Form::label('sexo', 'Sexo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::select('sexo', ['1' => 'Feminino', '0' => 'Masculino'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
+                            @include('website.components.form-components._help_block',['field' => 'sexo'])
                         </div>
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-4 fl {{ $errors->has('RG') ?'has-error' : '' }}">
-                            {{ Form::label('RG', 'RG', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('RG', null, ['id' => 'RG','class' => 'form-control', 'placeholder' => 'Apenas números']) }}
-                            @include('website.components.form-components._help_block',['field' => 'RG'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('rg') ?'has-error' : '' }}">
+                            {{ Form::label('rg', 'RG', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('rg', null, ['id' => 'rg','class' => 'form-control', 'placeholder' => 'Apenas números','maxlength' => '12']) }}
+                            @include('website.components.form-components._help_block',['field' => 'rg'])
                         </div>
-                        <div class="form-group col-md-4 fl {{ $errors->has('EstadoCivil') ?'has-error' : '' }}">
-                            {{ Form::label('EstadoCivil', 'Estado Civil', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::select('EstadoCivil', ['0' => 'Casada(o)', '1' => 'Divorciada(o)', '2' => 'Separada(o)', '3' => 'Solteira(o)', '4' => 'Viúva(o)', '5' => 'Outros'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'EstadoCivil'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('estadocivil') ?'has-error' : '' }}">
+                            {{ Form::label('estadocivil', 'Estado Civil', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::select('estadocivil', ['0' => 'Casada(o)', '1' => 'Divorciada(o)', '2' => 'Separada(o)', '3' => 'Solteira(o)', '4' =>'Viúva(o)', '5' => 'Outros'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
+                            @include('website.components.form-components._help_block',['field' => 'estadocivil'])
                         </div>
-                        <div class="form-group col-md-4 fl {{ $errors->has('Nacionalidade') ?'has-error' : '' }}">
-                            {{ Form::label('Nacionalidade', 'Nacionalidade', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('Nacionalidade', null, ['id' => 'Nacionalidade','class' => 'form-control']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Nacionalidade'])
+                        <div class="form-group col-md-4 fl {{ $errors->has('nacionalidade') ?'has-error' : '' }}">
+                            {{ Form::label('nacionalidade', 'Nacionalidade', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('nacionalidade', null, ['id' => 'nacionalidade','class' => 'form-control','maxlength' => '20']) }}
+                            @include('website.components.form-components._help_block',['field' => 'nacionalidade'])
                         </div>
                     </div>
 
                     <div class="p-1 mb-2 rounded bg-secondary text-white">Dados de contato</div>
 
-                    <div class="form-group fl {{ $errors->has('Email') ?'has-error' : '' }}">
-                        {{ Form::label('Email', 'E-mail', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                        {{ Form::text('Email', null, ['id' => 'Email','class' => 'form-control', 'placeholder' => 'email@email.com']) }}
-                        @include('website.components.form-components._help_block',['field' => 'Email'])
+                    <div class="form-group fl {{ $errors->has('email') ?'has-error' : '' }}">
+                        {{ Form::label('email', 'E-mail', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                        {{ Form::text('email', null, ['id' => 'email','class' => 'form-control', 'placeholder' => 'email@email.com','maxlength' => '120']) }}
+                        @include('website.components.form-components._help_block',['field' => 'email'])
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-6 fl {{ $errors->has('Telefone1') ?'has-error' : '' }}">
-                            {{ Form::label('Telefone1', 'Telefone principal', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('Telefone1', null, ['id' => 'Telefone1','class' => 'form-control', 'placeholder' => '(XX) XXXXX-XXXX']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Telefone1'])
+                        <div class="form-group col-md-6 fl {{ $errors->has('celular') ?'has-error' : '' }}">
+                            {{ Form::label('celular', 'Telefone celular', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('celular', null, ['id' => 'celular','class' => 'form-control', 'placeholder' => '(XX) XXXXX-XXXX','maxlength' => '15']) }}
+                            @include('website.components.form-components._help_block',['field' => 'celular'])
                         </div>
-                        <div class="form-group col-md-6">
-                            {{ Form::label('Telefone2', 'Telefone secundário', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('Telefone2', null, ['id' => 'Telefone2','class' => 'form-control', 'placeholder' => '(XX) XXXXX-XXXX']) }}
+                        <div class="form-group col-md-6 fl {{ $errors->has('telefoneresidencial') ?'has-error' : '' }}">
+                            {{ Form::label('telefoneresidencial', 'Telefone residencial', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('telefoneresidencial', null, ['id' => 'telefoneresidencial','class' => 'form-control', 'placeholder' => '(XX) XXXX-XXXX','maxlength' => '14']) }}
+                            @include('website.components.form-components._help_block',['field' => 'telefoneresidencial'])
                         </div>
                     </div>
                     <div class="form-group row mt-2 align-items-center">
-                        <div class="col-md-1">
-                            {{ Form::label('CEP', 'CEP', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                        <div class="col-md-1 fl {{ $errors->has('cep') ?'has-error' : '' }}">
+                            {{ Form::label('cep', 'CEP', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                         </div>
-                        <div class="col-md-3 fl {{ $errors->has('CEP') ?'has-error' : '' }}">
-                            {{ Form::text('CEP', null, ['id' => 'CEP','class' => 'form-control', 'placeholder' => '00000-000']) }}
-                            @include('website.components.form-components._help_block',['field' => 'CEP'])
+                        <div class="col-md-3 fl {{ $errors->has('cep') ?'has-error' : '' }}">
+                            {{ Form::text('cep', null, ['id' => 'cep','class' => 'form-control', 'placeholder' => '00000-000','maxlength' => '9']) }}
+                            @include('website.components.form-components._help_block',['field' => 'cep'])
                         </div>
                         <div class="col-md-8 mt-2 mt-md-0">
-                            <button type="button" class="btn btn-primary" onclick="pesquisacep(cep.value)">Pesquisar</button>
+                            {{ Form::button('Pesquisar', ['id' => 'btPesquisaCep','class' => 'btn btn-primary']) }}
                         </div>
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-7">
-                            {{ Form::label('Endereco', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('Endereco', null, ['id' => 'Endereco','class' => 'form-control','readonly']) }}
+                        <div class="form-group col-md-7 fl {{ $errors->has('endereco') ?'has-error' : '' }}">
+                            {{ Form::label('endereco', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('endereco', null, ['id' => 'endereco','class' => 'form-control','readonly']) }}
+                            @include('website.components.form-components._help_block',['field' => 'endereco'])
                         </div>
-                        <div class="form-group col-md-2 fl {{ $errors->has('Numero') ?'has-error' : '' }}">
-                            {{ Form::label('Numero', 'Nº', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('Numero', null, ['id' => 'Numero','class' => 'form-control']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Numero'])
+                        <div class="form-group col-md-2 fl {{ $errors->has('numero') ?'has-error' : '' }}">
+                            {{ Form::label('numero', 'Nº', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('numero', null, ['id' => 'numero','class' => 'form-control','maxlength' => '6']) }}
+                            @include('website.components.form-components._help_block',['field' => 'numero'])
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="Complemento" class="control-label font-weight-bold">Complemento</label>
-                            <input type="text" id="Complemento" name="Complemento" class="form-control" maxlength="13">
+                            {{ Form::label('complemento', 'Complemento', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('complemento', null, ['id' => 'complemento','class' => 'form-control','maxlength' => '50']) }}
                         </div>
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-5">
-                            {{ Form::label('Bairro', 'Bairro', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('Bairro', null, ['id' => 'Bairro','class' => 'form-control','readonly']) }}
+                            {{ Form::label('bairro', 'Bairro', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('bairro', null, ['id' => 'bairro','class' => 'form-control','readonly']) }}
                         </div>
                         <div class="form-group col-md-5">
-                            {{ Form::label('Cidade', 'Cidade', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('Cidade', null, ['id' => 'Cidade','class' => 'form-control','readonly']) }}
+                            {{ Form::label('cidade', 'Cidade', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('cidade', null, ['id' => 'cidade','class' => 'form-control','readonly']) }}
                         </div>
                         <div class="form-group col-md-2">
-                            {{ Form::label('Estado', 'Estado', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('Estado', null, ['id' => 'Estado','class' => 'form-control','readonly']) }}
+                            {{ Form::label('estado', 'Estado', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::text('estado', null, ['id' => 'estado','class' => 'form-control','readonly']) }}
                         </div>
                     </div>
 
                     <div class="p-1 mb-2 rounded bg-secondary text-white">Informações acadêmicas</div>
 
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-6 fl {{ $errors->has('Disciplina') ?'has-error' : '' }}">
-                            {{ Form::label('Disciplina', 'Disciplinas que leciona ', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('Disciplina', null, ['id' => 'Disciplina','class' => 'form-control']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Disciplina'])
+                        <div class="form-group col-md-6 fl {{ $errors->has('disciplina') ?'has-error' : '' }}">
+                            {{ Form::label('disciplina', 'Disciplinas que leciona ', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::text('disciplina', null, ['id' => 'disciplina','class' => 'form-control','maxlength' => '150']) }}
+                            @include('website.components.form-components._help_block',['field' => 'disciplina'])
                         </div>
-                        <div class="form-group col-md-6 fl {{ $errors->has('Situacao') ?'has-error' : '' }}">
-                            {{ Form::label('Situacao', 'Situação', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::select('Situacao', ['Em atividade' => 'Em atividade', 'Aposentada(o)' => 'Aposentada(o)', 'Aposentada(o) em atividade na escola' => 'Aposentada(o) em atividade na escola'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Situacao'])
+                        <div class="form-group col-md-6 fl {{ $errors->has('situacao') ?'has-error' : '' }}">
+                            {{ Form::label('situacao', 'Situação', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+                            {{ Form::select('situacao', ['Em atividade' => 'Em atividade', 'Aposentada(o)' => 'Aposentada(o)', 'Aposentada(o) em atividade na escola' => 'Aposentada(o) em atividade na escola'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
+                            @include('website.components.form-components._help_block',['field' => 'situacao'])
                         </div>
                     </div>
                     
@@ -131,36 +133,36 @@
 
                     <div class="form-group">
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('Infantil', '1', false, ['class' => 'custom-control-input', 'id' => 'Infantil']) }}
-                            {{ Form::label('Infantil', 'Educação Infantil', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optInfantil', '1', false, ['class' => 'custom-control-input', 'id' => 'optInfantil']) }}
+                            {{ Form::label('optInfantil', 'Educação Infantil', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('FundI', '1', false, ['class' => 'custom-control-input', 'id' => 'FundI']) }}
-                            {{ Form::label('FundI', 'Ensino Fundamental (1ª a 5ª)', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optFundI', '1', false, ['class' => 'custom-control-input', 'id' => 'optFundI']) }}
+                            {{ Form::label('optFundI', 'Ensino Fundamental (1ª a 5ª)', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('FundII', '1', false, ['class' => 'custom-control-input', 'id' => 'FundII']) }}
-                            {{ Form::label('FundII', 'Ensino Fundamental (6ª a 9ª)', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optFundII', '1', false, ['class' => 'custom-control-input', 'id' => 'optFundII']) }}
+                            {{ Form::label('optFundII', 'Ensino Fundamental (6ª a 9ª)', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('Medio', '1', false, ['class' => 'custom-control-input', 'id' => 'Medio']) }}
-                            {{ Form::label('Medio', 'Ensino Médio', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optMedio', '1', false, ['class' => 'custom-control-input', 'id' => 'optMedio']) }}
+                            {{ Form::label('optMedio', 'Ensino Médio', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('Superior', '1', false, ['class' => 'custom-control-input', 'id' => 'Superior']) }}
-                            {{ Form::label('Superior', 'Ensino Superior', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optSuperior', '1', false, ['class' => 'custom-control-input', 'id' => 'optSuperior']) }}
+                            {{ Form::label('optSuperior', 'Ensino Superior', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('Supletivo', '1', false, ['class' => 'custom-control-input', 'id' => 'Supletivo']) }}
-                            {{ Form::label('Supletivo', 'Ensino Supletivo', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optSupletivo', '1', false, ['class' => 'custom-control-input', 'id' => 'optSupletivo']) }}
+                            {{ Form::label('optSupletivo', 'Ensino Supletivo', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('CursosLivres', '1', false, ['class' => 'custom-control-input', 'id' => 'CursosLivres']) }}
-                            {{ Form::label('CursosLivres', 'Cursos livres', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optCursosLivres', '1', false, ['class' => 'custom-control-input', 'id' => 'optCursosLivres']) }}
+                            {{ Form::label('optCursosLivres', 'Cursos livres', ['class' => 'custom-control-label']) }}
                         </div>
                         <div class="custom-control custom-checkbox custom-control-inline">
-                            {{ Form::checkbox('Tecnico', '1', false, ['class' => 'custom-control-input', 'id' => 'Tecnico']) }}
-                            {{ Form::label('Tecnico', 'Ensino Técnico', ['class' => 'custom-control-label']) }}
+                            {{ Form::checkbox('optTecnico', '1', false, ['class' => 'custom-control-input', 'id' => 'optTecnico']) }}
+                            {{ Form::label('optTecnico', 'Ensino Técnico', ['class' => 'custom-control-label']) }}
                         </div>
                     </div>
 
@@ -168,66 +170,78 @@
 
                     <div class="form-group fl {{ $errors->has('NomeInstI') ?'has-error' : '' }}">
                         {{ Form::label('NomeInstI', 'Nome da instituição', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                        {{ Form::text('NomeInstI', null, ['id' => 'NomeInstI','class' => 'form-control']) }}
+                        {{ Form::text('NomeInstI', null, ['id' => 'NomeInstI','class' => 'form-control','maxlength' => '50']) }}
                         @include('website.components.form-components._help_block',['field' => 'NomeInstI'])
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-8 fl {{ $errors->has('EndInstI') ?'has-error' : '' }}">
                             {{ Form::label('EndInstI', 'Endereço', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('EndInstI', null, ['id' => 'EndInstI','class' => 'form-control']) }}
+                            {{ Form::text('EndInstI', null, ['id' => 'EndInstI','class' => 'form-control','maxlength' => '63']) }}
                             @include('website.components.form-components._help_block',['field' => 'EndInstI'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('TelInstI') ?'has-error' : '' }}">
                             {{ Form::label('TelInstI', 'Telefone', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('TelInstI', null, ['id' => 'TelInstI','class' => 'form-control']) }}
+                            {{ Form::text('TelInstI', null, ['id' => 'TelInstI','class' => 'form-control','maxlength' => '9']) }}
                             @include('website.components.form-components._help_block',['field' => 'TelInstI'])
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
                         {{ Form::label('NomeInstII', 'Nome da instituição', ['class' => 'control-label font-weight-bold']) }}
-                        {{ Form::text('NomeInstII', null, ['id' => 'NomeInstII','class' => 'form-control']) }}
+                        {{ Form::text('NomeInstII', null, ['id' => 'NomeInstII','class' => 'form-control','maxlength' => '50']) }}
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-8">
                             {{ Form::label('EndInstII', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('EndInstII', null, ['id' => 'EndInstII','class' => 'form-control']) }}
+                            {{ Form::text('EndInstII', null, ['id' => 'EndInstII','class' => 'form-control','maxlength' => '63']) }}
                         </div>
                         <div class="form-group col-md-4">
                             {{ Form::label('TelInstII', 'Telefone', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('TelInstII', null, ['id' => 'TelInstII','class' => 'form-control']) }}
+                            {{ Form::text('TelInstII', null, ['id' => 'TelInstII','class' => 'form-control','maxlength' => '9']) }}
                         </div>
                     </div>
 
                     <div class="form-group mt-3">
                         {{ Form::label('NomeInstIII', 'Nome da instituição', ['class' => 'control-label font-weight-bold']) }}
-                        {{ Form::text('NomeInstIII', null, ['id' => 'NomeInstIII','class' => 'form-control']) }}
+                        {{ Form::text('NomeInstIII', null, ['id' => 'NomeInstIII','class' => 'form-control','maxlength' => '50']) }}
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-8">
                             {{ Form::label('EndInstIII', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('EndInstIII', null, ['id' => 'EndInstIII','class' => 'form-control']) }}
+                            {{ Form::text('EndInstIII', null, ['id' => 'EndInstIII','class' => 'form-control','maxlength' => '63']) }}
                         </div>
                         <div class="form-group col-md-4">
                             {{ Form::label('TelInstIII', 'Telefone', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('TelInstIII', null, ['id' => 'TelInstIII','class' => 'form-control']) }}
+                            {{ Form::text('TelInstIII', null, ['id' => 'TelInstIII','class' => 'form-control','maxlength' => '9']) }}
                         </div>
                     </div>
 
                     <div class="p-1 mt-3 mb-2 rounded bg-secondary text-white">Termo de aceite</div>
 
-                    <div class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox" value="1" id="optAutorizacao">
-                        <label class="custom-control-label" for="optAutorizacao">Autorizo o desconto em folha de pagamento da contribuição associativa, no valor e forma determinados pela Assembleia Geral dos Professores.</label>
-                    </div>
+                    @component('website.form-components._form_group',['field' => 'optAutorizacao'])
+                        <div class="custom-control custom-checkbox">
+                            {{ Form::checkbox('optAutorizacao', '1', false, ['class' => 'custom-control-input', 'id' => 'optAutorizacao']) }}
+                            {{ Form::label('optAutorizacao', 'Autorizo o desconto em folha de pagamento da contribuição associativa, no valor e forma determinados pela Assembleia Geral dos Professores.', ['class' => 'custom-control-label']) }}
+                        </div>
+                    @endcomponent
 
                     <div class="mt-4">
                         {{ Form::submit('Enviar informações',['name' => 'btnSubmit', 'id' => 'btnSubmit', 'class' => 'btn btn-primary']) }}
                     </div>                        
-
                 {{ Form::close() }}
             </div>
         </div>
         @component('website.components.layout-1._column_right')@endcomponent
     </div>
+
+    @push('pesquisacep')
+        <script>
+            $(document).ready(function () {
+                $("#btPesquisaCep").on("click", function (){
+                    pesquisacep(cep.value);
+                });
+            });
+        </script>
+    @endpush
+
 @endsection

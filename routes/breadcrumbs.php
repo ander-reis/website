@@ -31,18 +31,18 @@ Breadcrumbs::register('convencao.index', function($breadcrumbs, $convencao_entid
     $breadcrumbs->push($convencao_entidade->ds_entidade);
 });
 
-Breadcrumbs::register('convencao.show', function($breadcrumbs, $convencao_entidade){
+Breadcrumbs::register('convencao.show', function($breadcrumbs, $convencao_entidade, $convencao){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Níveis',route('convencao.lista'));
     $breadcrumbs->push($convencao_entidade->ds_entidade, route('convencao.index', ['convencao' => $convencao_entidade->id]));
-    $breadcrumbs->push('Convenção');
+    $breadcrumbs->push(str_replace("/"," - ",$convencao->dt_validade));
 });
 
 Breadcrumbs::register('convencao.clausula.show', function($breadcrumbs, $convencoes_entidade, $convencao, $convencao_clausula){
     $breadcrumbs->parent('home');
     $breadcrumbs->push('lista',route('convencao.lista'));
     $breadcrumbs->push($convencoes_entidade->ds_entidade, route('convencao.index', ['convencao' => $convencoes_entidade->id]));
-    $breadcrumbs->push('Convenção', route('convencao.show', [
+    $breadcrumbs->push(str_replace("/"," - ",$convencao->dt_validade), route('convencao.show', [
         'convencao_entidade' => $convencoes_entidade->id,
         'convencao' => $convencao->id_convencao
     ]));

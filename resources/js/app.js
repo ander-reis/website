@@ -5,6 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./pesquisacep');
 require('./bootstrap');
 require('./bootstrap-maxlength');
 require('./layout');

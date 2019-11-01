@@ -14,6 +14,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SinproSP">
+
+    <!-- OG -->
+    @yield('og')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -64,10 +68,15 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script> --}}
     <script src="{{ asset('js/FormValidation.js') }}"></script>
     <script src="{{ asset('js/plugins/Bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/pesquisacep.js') }}"></script>
 
     <script>
         $(document).ready(function () {
             $('#num_cpf').mask('000.000.000-00', {reverse: true});
+            $('#cpf').mask('000.000.000-00', {reverse: true});
+            $('#cep').mask('00000-000');
+            $('#celular').mask('(00) 00000-0000');
+            $('#telefoneresidencial').mask('(00) 0000-0000');
             $('#icon-popover1').popover();
             $('#icon-popover2').popover();
             $('#icon-popover3').popover();
@@ -84,6 +93,13 @@
                 $('#preloader').delay(350).fadeOut('slow');
                 $('body').delay(350).css({'overflow': 'visible'});
             });
+
+            //fechar o popover, apos clicar em outra parte do site
+            $(document).click(function(e) {
+                if ($(e.target).data('toggle') !== 'popover' && $(e.target).parents('.popover.in').length === 0) {
+                    $('[data-toggle="popover"]').popover('hide');
+                }
+            });
         })
     </script>
 
@@ -93,6 +109,8 @@
     </script> --}}
     @stack('boletim-script')
     @stack('cursos-script')
+    @stack('relacao-escolas-script')
+    @stack('pesquisacep')
 </body>
 
 </html>

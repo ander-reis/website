@@ -20,8 +20,9 @@
                     <a href="{{ route('convencao.show', ['convencoes_entidade' => $convencao->fl_entidade, 'convencao' => $convencao->id_convencao]) }}"
                         class="text-link">{{ $convencao->ds_titulo }}</a>
                 </p>
-                <a href="{{ $convencao->convencao_web_asset }}" class="btn btn-secondary" target="_blank">Abrir
-                    Convenção PDF</a>
+                {{-- <a href="{{ $convencao->convencao_web_asset }}" class="btn btn-secondary" target="_blank">Abrir
+                    Convenção PDF
+                </a> --}}
             </div>
         </div>
     </div>

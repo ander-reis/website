@@ -5,12 +5,12 @@
         </a>
     </li>
     <li class="d-sm-none">
-        <a href="whatsapp://send?text={{url()->full()}}">
+        <a href='whatsapp://send?text={{$noticia->ds_resumo}}. Segue o link: {{url()->full()}}'>
             <img src="{{asset('images/icons/whats.png')}}" alt="compartilhar no whatsapp">
         </a>
     </li>
     <li>
-        <a href="https://twitter.com/intent/tweet?text={{$noticia->ds_resumo}}&amp;url={{url()->full()}}&amp;via=Sinpro Website"
+        <a href="https://twitter.com/intent/tweet?text={{$noticia->ds_resumo}}.&amp;url={{url()->full()}}&amp;via=Sinpro Website"
            target="_blank">
             <img src="{{asset('images/icons/twitter.png')}}" alt="compartilhar no twitter">
         </a>

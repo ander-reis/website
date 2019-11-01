@@ -704,6 +704,32 @@ ul.timeline > li:before {
 .checkbox-container.has-danger .custom-control-label { color: #dc3545; }
 .checkbox-container.has-success .custom-control-label { color: #28a745; }
 
+/***** Pagina de noticias por ano *****/
+#btn_ano {
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+}
+
+.not_ano_roxo {
+    font-family: Tahoma;
+    font-size: 1.3em;
+    font-weight: none;
+    color: #330080;
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+}
+
+.not_data_laranja {
+    font-family: Tahoma;
+    font-size: 0.9em;
+    font-weight: none;
+    color: #ff6700;
+}
+
+.not_link {
+    font-family: Tahoma;
+    font-size: 0.9em;
+}
 
 /** media queries **/
 /* bloqueio de tela minima */

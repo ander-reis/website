@@ -182,5 +182,13 @@ return [
         'txtMsg'                => 'Texto',
         'optPrivacidade'        => 'Privacidade',
         'g-recaptcha-response'  => 'reCaptcha',
+        'estadocivil'           => 'estado civil',
+        'email'                 => 'e-mail',
+        'celular'               => 'telefone celular',
+        'situacao'              => 'situação',
+        'NomeInstI'             => 'nome da instituição',
+        'EndInstI'              => 'endereço',
+        'TelInstI'              => 'telefone',
+        'optAutorizacao'        => 'autorização',
     ],
 ];
