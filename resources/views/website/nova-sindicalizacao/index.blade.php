@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('nascimento') ?'has-error' : '' }}">
                             {{ Form::label('nascimento', 'Nascimento', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
-                            {{ Form::text('nascimento', null, ['id' => 'nascimento','class' => 'form-control', 'placeholder' => 'DD/MM/AAAA','maxlength' => '10']) }}
+                            {{ Form::date('nascimento', null, ['id' => 'nascimento','class' => 'form-control', 'placeholder' => 'DD/MM/AAAA','maxlength' => '10']) }}
                             @include('website.components.form-components._help_block',['field' => 'nascimento'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('sexo') ?'has-error' : '' }}">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="form-group row mt-2 align-items-center">
-                        <div class="col-md-1 {{ $errors->has('cep') ?'has-error' : '' }}">
+                        <div class="col-md-1 fl {{ $errors->has('cep') ?'has-error' : '' }}">
                             {{ Form::label('cep', 'CEP', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                         </div>
                         <div class="col-md-3 fl {{ $errors->has('cep') ?'has-error' : '' }}">
@@ -84,14 +84,15 @@
                         </div>
                     </div>
                     <div class="form-group row mb-0">
-                        <div class="form-group col-md-7">
+                        <div class="form-group col-md-7 fl {{ $errors->has('endereco') ?'has-error' : '' }}">
                             {{ Form::label('endereco', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
                             {{ Form::text('endereco', null, ['id' => 'endereco','class' => 'form-control','readonly']) }}
+                            @include('website.components.form-components._help_block',['field' => 'endereco'])
                         </div>
-                        <div class="form-group col-md-2 fl {{ $errors->has('Numero') ?'has-error' : '' }}">
+                        <div class="form-group col-md-2 fl {{ $errors->has('numero') ?'has-error' : '' }}">
                             {{ Form::label('numero', 'Nº', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('numero', null, ['id' => 'numero','class' => 'form-control','maxlength' => '6']) }}
-                            @include('website.components.form-components._help_block',['field' => 'Numero'])
+                            @include('website.components.form-components._help_block',['field' => 'numero'])
                         </div>
                         <div class="form-group col-md-3">
                             {{ Form::label('complemento', 'Complemento', ['class' => 'control-label font-weight-bold']) }}
@@ -202,16 +203,16 @@
 
                     <div class="form-group mt-3">
                         {{ Form::label('NomeInstIII', 'Nome da instituição', ['class' => 'control-label font-weight-bold']) }}
-                        {{ Form::text('NomeInstIII', null, ['id' => 'NomeInstIII','class' => 'form-control']) }}
+                        {{ Form::text('NomeInstIII', null, ['id' => 'NomeInstIII','class' => 'form-control','maxlength' => '50']) }}
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-8">
                             {{ Form::label('EndInstIII', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('EndInstIII', null, ['id' => 'EndInstIII','class' => 'form-control']) }}
+                            {{ Form::text('EndInstIII', null, ['id' => 'EndInstIII','class' => 'form-control','maxlength' => '63']) }}
                         </div>
                         <div class="form-group col-md-4">
                             {{ Form::label('TelInstIII', 'Telefone', ['class' => 'control-label font-weight-bold']) }}
-                            {{ Form::text('TelInstIII', null, ['id' => 'TelInstIII','class' => 'form-control']) }}
+                            {{ Form::text('TelInstIII', null, ['id' => 'TelInstIII','class' => 'form-control','maxlength' => '9']) }}
                         </div>
                     </div>
 
