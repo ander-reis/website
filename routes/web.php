@@ -11,6 +11,23 @@
 |
 */
 
+//Auth::routes();
+Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login');
+Route::name('logout')->post('logout', 'Auth\LoginController@logout');
+
+/**
+ * Register Route(s)
+ */
+Route::get('curriculo/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+/**
+ * curriculo
+ */
+Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
+Route::name('curriculo.edit')->get('curriculo/edit', 'Website\CurriculoController@editar')->middleware('auth');
+
 /**
  * rota home
  */
@@ -97,3 +114,5 @@ Route::group(['prefix' => 'relacao-escolas', 'as' => 'relacao-escolas.', 'namesp
     Route::name('regiao')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}', 'CadastroEscolasController@regiao')->where(['id_nivel' => '[0-9]', 'id_regiao' => '[0-9]']);
     Route::name('escola')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}/escola', 'CadastroEscolasController@escola');
 });
+
+//Route::get('/home', 'HomeController@index')->name('home');

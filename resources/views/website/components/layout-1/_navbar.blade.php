@@ -98,7 +98,7 @@
                         <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
                             Atendimento Eletrônico
                         </a>
-                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/curriculo.asp" target="_blank">
+                        <a class="dropdown-item" href="{{ route('curriculo.index') }}">
                             Banco de currículos
                         </a>
                         <a class="dropdown-item" href="{{route('boletim.index')}}">
