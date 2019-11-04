@@ -128,7 +128,7 @@
                             @include('website.components.form-components._help_block',['field' => 'situacao'])
                         </div>
                     </div>
-                    
+
                     <div class="font-weight-bold">Níveis de ensino <span class="text-danger">*</span></div>
 
                     <div class="form-group">
@@ -227,7 +227,7 @@
 
                     <div class="mt-4">
                         {{ Form::submit('Enviar informações',['name' => 'btnSubmit', 'id' => 'btnSubmit', 'class' => 'btn btn-primary']) }}
-                    </div>                        
+                    </div>
                 {{ Form::close() }}
             </div>
         </div>
@@ -237,6 +237,11 @@
     @push('pesquisacep')
         <script>
             $(document).ready(function () {
+                $('#cpf').mask('000.000.000-00', {reverse: true});
+                $('#cep').mask('00000-000');
+                $('#celular').mask('(00) 00000-0000');
+                $('#telefoneresidencial').mask('(00) 0000-0000');
+
                 $("#btPesquisaCep").on("click", function (){
                     pesquisacep(cep.value);
                 });
