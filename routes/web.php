@@ -64,6 +64,13 @@ Route::name('cursos.list')->get('/cursos/listar', 'Website\CursosController@init
 Route::name('cursos.list-select')->get('/cursos/selecionar', 'Website\CursosController@changeSelect');
 
 /**
+ * rota calculo salario
+ */
+Route::name('salario.index')->get('/salario', function () {
+    return view('website.salario.index');
+ });
+
+/**
  * páginas principais
  *
  * rota que verifica a pagina e em caso de erro configura pagina personalizada de erro

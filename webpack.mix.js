@@ -14,6 +14,8 @@ let mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .copy('resources/icons', 'public/fonts/icons')
+    .copy('node_modules/bootstrap-submenu/dist/js/bootstrap-submenu.min.js', 'public/js')
+    .copy('node_modules/bootstrap-submenu/dist/css/bootstrap-submenu.min.css', 'public/css')
     //.copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts')
     .sourceMaps();
 

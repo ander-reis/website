@@ -36,6 +36,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/formValidation.min.css">
+
+    {{-- Bootstrap-submenu --}}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-submenu.min.css') }}">
+    <script src="{{ asset('js/bootstrap-submenu.min.js') }}" defer></script>
 </head>
 
 <body>
@@ -96,6 +100,9 @@
                     $('[data-toggle="popover"]').popover('hide');
                 }
             });
+
+            //bootstrap-submenu
+            $('[data-submenu]').submenupicker();
         })
     </script>
 
@@ -107,6 +114,7 @@
     @stack('cursos-script')
     @stack('relacao-escolas-script')
     @stack('pesquisacep')
+    @stack('salario_calcular')
 </body>
 
 </html>
