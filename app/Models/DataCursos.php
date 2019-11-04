@@ -51,11 +51,4 @@ class DataCursos extends Model
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     * set dates
-     *
-     * @var array
-     */
-    protected $dates = ['cur_dt_dt_data'];
 }

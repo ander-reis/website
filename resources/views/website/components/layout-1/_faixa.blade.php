@@ -2,7 +2,7 @@
     <div class="owl-carousel owl-theme pt-3">
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <a href="http://www1.sinprosp.org.br/escola.asp?mn=2" class="black faixa_size" target="_blank">Cursos e <br>congressos</a>
+            <a href="{{ route('cursos.index') }}" class="black faixa_size">Cursos e <br>congressos</a>
         </div>
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>

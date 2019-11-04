@@ -126,6 +126,9 @@
                         <a class="dropdown-item" href="http://www1.sinprosp.org.br/convenios.asp" target="_blank">
                             Convênios e Parcerias
                         </a>
+                        <a class="dropdown-item" href="{{ route('cursos.index') }}">
+                            Cursos
+                        </a>
                         <a class="dropdown-item"
                             href="{{route('paginas-principais', ['url-pagina' => 'assistencia-juridica'])}}">
                             Departamento Jurídico

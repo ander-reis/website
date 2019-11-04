@@ -77,6 +77,10 @@
     <script>
         $(document).ready(function () {
             $('#num_cpf').mask('000.000.000-00', {reverse: true});
+            $('#cpf').mask('000.000.000-00', {reverse: true});
+            $('#cep').mask('00000-000');
+            $('#celular').mask('(00) 00000-0000');
+            $('#telefoneresidencial').mask('(00) 0000-0000');
             $('#icon-popover1').popover();
             $('#icon-popover2').popover();
             $('#icon-popover3').popover();
