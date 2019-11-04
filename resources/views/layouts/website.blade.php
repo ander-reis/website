@@ -76,15 +76,6 @@
 
     <script>
         $(document).ready(function () {
-            $('#icon-popover1').popover();
-            $('#icon-popover2').popover();
-            $('#icon-popover3').popover();
-            $('#icon-popover4').popover();
-            $('#icon-popover5').popover();
-            $('#icon-popover6').popover();
-            $('#icon-popover7').popover();
-            $('#icon-popover8').popover();
-            $('#icon-popover9').popover();
 
             // preload cursos
             $(window).on('load', function () {
@@ -114,6 +105,7 @@
     @stack('relacao-escolas-script')
     @stack('pesquisacep')
     @stack('salario_calcular')
+    @stack('noticias')
 </body>
 
 </html>
