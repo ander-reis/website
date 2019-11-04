@@ -24,7 +24,7 @@
     <div class="row mt-2">
         <div class="col">
                 <a href="http://www1.sinprosp.org.br/cadastro_login.asp" target="_blank">
-                    <img class="mg-fluid rounded"
+                    <img class="img-fluid rounded"
                         src="{{ asset('images/layout-1/images-coluna/cadastro.png') }}" alt="SinproSP">
                 </a>
         </div>

@@ -32,7 +32,7 @@
             <p class="text-justify">Todo o trabalho realizado a partir das 22 horas deve ser remunerado com acréscimo de 20%. A Convenção
                 Coletiva dos professores do ensino superior garante adicional de 25%.</p>
 
-            <p>Escola uma das opções e preencha os campos indicados.</p>
+            <p>Escolha uma das opções e preencha os campos necessários.</p>
         </div>
 
         <div class="row">
