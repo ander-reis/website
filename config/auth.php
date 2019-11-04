@@ -1,5 +1,7 @@
 <?php
 
+use Website\Models\CurriculoProfessor;
+
 return [
 
     /*
@@ -15,7 +17,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'novo',
     ],
 
     /*
@@ -38,7 +40,8 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+//            'provider' => 'users',
+            'provider' => 'custom-user',
         ],
 
         'api' => [
@@ -73,6 +76,10 @@ return [
              'driver' => 'database',
              'table' => 'users',
          ],
+        'custom-user' => [
+            'driver' => 'eloquent',
+            'model' => Website\Models\CurriculoProfessor::class,
+        ],
     ],
 
     /*
@@ -91,11 +98,15 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+//        'users' => [
+//            'provider' => 'users',
+//            'table' => 'password_resets',
+//            'expire' => 60,
+//        ],
+        'novo' => [
+            'provider' => 'ds_mail',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
+        ]
     ],
-
 ];

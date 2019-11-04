@@ -16,7 +16,7 @@ class CurriculoController extends Controller
     {
         // /curriculo => listar curriculo / buscar curriculos => CurriculoController
         // /curriculo/create => cadastrar curriculo => RegisterController
-        // /curriculo/login => acessar area do cliente => LoginController
+        // /curriculo/login => acessar area do cliente => LoginController {ds_cpf, ds_pass}
         // /curriculo/edit => atualizar curriculo => LoginController
         // /curriculo/logout => sair area cliente => LoginController
 

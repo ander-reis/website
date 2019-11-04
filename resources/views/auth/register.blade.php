@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.website')
 
 @section('content')
 <div class="container">
@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="ds_nome" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="ds_nome" type="text" class="form-control @error('ds_nome') is-invalid @enderror" name="ds_nome" value="{{ old('ds_nome') }}" required autocomplete="ds_nome" autofocus>
 
-                                @error('name')
+                                @error('ds_nome')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -26,13 +26,27 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="ds_mail" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="ds_mail" type="ds_mail" class="form-control @error('ds_mail') is-invalid @enderror" name="ds_mail" value="{{ old('ds_mail') }}" required autocomplete="ds_mail">
 
-                                @error('email')
+                                @error('ds_mail')
                                     <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="ds_cpf" class="col-md-4 col-form-label text-md-right">{{ __('ds_cpf') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="ds_cpf" type="ds_cpf" class="form-control @error('ds_cpf') is-invalid @enderror" name="ds_cpf" value="{{ old('ds_cpf') }}" required autocomplete="ds_cpf">
+
+                                @error('ds_cpf')
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

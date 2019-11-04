@@ -20,7 +20,15 @@ Route::name('logout')->post('logout', 'Auth\LoginController@logout');
  * Register Route(s)
  */
 Route::get('curriculo/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('curriculo/create', 'Auth\RegisterController@register');
+
+/**
+ * Password Reset Route(S)
+ */
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 /**
  * curriculo

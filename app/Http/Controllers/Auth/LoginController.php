@@ -39,10 +39,27 @@ class LoginController extends Controller
     }
 
     /**
-     * @param string $redirectTo
+     * Valida request user
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function setRedirectTo(string $redirectTo): void
+    protected function validateLogin(Request $request)
     {
-        $this->redirectTo = $redirectTo;
+        $this->validate($request, [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+
+    /**
+     * Método responsável por retornar o tipo de usuário
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'ds_cpf';
     }
 }
