@@ -81,16 +81,18 @@
                                     href="{{ route('salario.index')}}">Como calcular o seu salário</a> --}}
 
                         <div class="dropdown dropright dropdown-submenu">
-                            <button class="dropdown-item dropdown-toggle" type="button"
-                                data-toggle="dropdown">Salários e reajustes</button>
+                            <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Salários
+                                e reajustes</button>
 
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
-                                    href="{{route('paginas-principais', ['url-pagina' => 'seriehistorica'])}}">Reajuste - série histórica</a>
+                                    href="{{route('paginas-principais', ['url-pagina' => 'seriehistorica'])}}">Reajuste
+                                    - série histórica</a>
                                 <a class="dropdown-item"
-                                href="{{route('paginas-principais', ['url-pagina' => 'pisoeb'])}}">Piso salarial (educ. básica)</a>
-                                <a class="dropdown-item"
-                                    href="{{ route('salario.index')}}">Como calcular o seu salário</a>
+                                    href="{{route('paginas-principais', ['url-pagina' => 'pisoeb'])}}">Piso salarial
+                                    (educ. básica)</a>
+                                <a class="dropdown-item" href="{{ route('salario.index')}}">Como calcular o seu
+                                    salário</a>
                                 </a>
                             </div>
                         </div>
@@ -112,6 +114,9 @@
                         </a>
                         <a class="dropdown-item" href="{{route('atendimento-eletronico.index')}}">
                             Atendimento Eletrônico
+                        </a>
+                        <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'presencial'])}}">
+                            Atendimento Presencial
                         </a>
                         <a class="dropdown-item" href="http://www1.sinprosp.org.br/curriculo.asp" target="_blank">
                             Banco de currículos
