@@ -77,24 +77,23 @@
                         <a class="dropdown-item" href="http://www1.sinprosp.org.br/guia_consultas.asp" target="_blank">
                             Guia de Consultas
                         </a>
-                        <a class="dropdown-item"
-                                    href="{{ route('salario.index')}}">Como calcular o seu salário</a>
+                        {{-- <a class="dropdown-item"
+                                    href="{{ route('salario.index')}}">Como calcular o seu salário</a> --}}
 
-                        {{-- <div class="dropdown dropright dropdown-submenu">
+                        <div class="dropdown dropright dropdown-submenu">
                             <button class="dropdown-item dropdown-toggle" type="button"
                                 data-toggle="dropdown">Salários e reajustes</button>
 
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
-                                    href="#">Reajuste - série histórica</a>
+                                    href="{{route('paginas-principais', ['url-pagina' => 'seriehistorica'])}}">Reajuste - série histórica</a>
                                 <a class="dropdown-item"
-                                    href="#">Piso salarial (educ. básica)</a>
+                                href="{{route('paginas-principais', ['url-pagina' => 'pisoeb'])}}">Piso salarial (educ. básica)</a>
                                 <a class="dropdown-item"
-                                    href="http://www1.sinprosp.org.br/guia_consultas.asp#salario" target="_blank">
-                                    Salário do Professor
+                                    href="{{ route('salario.index')}}">Como calcular o seu salário</a>
                                 </a>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </li>
 

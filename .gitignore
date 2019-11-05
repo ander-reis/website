@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/fonts
+/public/upl
 public/fonts/vendor/@fortawesome/fontawesome-free/
 /storage/*.key
 /vendor
