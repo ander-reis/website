@@ -34,7 +34,7 @@ class NoticiasController extends Controller
         $noticias = Noticias::where('fl_status', 1)
             ->whereYear('dt_noticia', '=', $ano)
             ->whereNotIN('id', $notdestaque)
-            ->orderBy('id', 'desc')
+            ->orderBy('dt_noticia', 'desc')
             ->get(['id', 'dt_noticia', 'ds_resumo']);
             //->paginate(12);
 

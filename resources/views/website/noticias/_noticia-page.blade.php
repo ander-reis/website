@@ -1,11 +1,10 @@
 @extends('layouts.website')
-
 @section('og')
     <meta property="og:title" content="SinproSP" />
     <meta property="og:url" content="{{url()->full()}}" />
     <meta property="og:description" content="{!! $noticia->ds_resumo !!}" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="http://www.sinprosp.org.br/images/layout-1/og/sinpro_300x200s.jpg" />
+    <meta property="og:image" content="{{( $noticia->ds_social == '' ? 'http://www.sinprosp.org.br/images/layout-1/og/sinpro_300x200s.jpg' : $noticia->ds_social)}}"/>
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="300" />
     <meta property="og:image:height" content="200" />
