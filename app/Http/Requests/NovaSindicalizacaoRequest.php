@@ -23,6 +23,8 @@ class NovaSindicalizacaoRequest extends FormRequest
      */
     public function rules()
     {
+        $this->sanitize();
+
         return [
             'nome'                  => 'required|max:50',
             'cpf'                   => 'required|max:14',
@@ -55,4 +57,31 @@ class NovaSindicalizacaoRequest extends FormRequest
             'optAutorizacao'        => 'accepted',
         ];
     }
+
+    public function sanitize()
+    {
+        $input = $this->all();
+        $input['nome'] = mb_strtoupper(trim(filter_var($input['nome'], FILTER_SANITIZE_STRING)));
+        $input['nacionalidade'] = mb_strtoupper(trim(filter_var($input['nacionalidade'], FILTER_SANITIZE_STRING)));
+        $input['endereco'] = mb_strtoupper($input['endereco']);
+        $input['numero'] = mb_strtoupper(trim(filter_var($input['numero'], FILTER_SANITIZE_STRING)));
+        $input['complemento'] = mb_strtoupper(trim(filter_var($input['complemento'], FILTER_SANITIZE_STRING)));
+        $input['bairro'] = mb_strtoupper($input['bairro']);
+        $input['cidade'] = mb_strtoupper($input['cidade']);
+        $input['estado'] = mb_strtoupper($input['estado']);        
+        $input['email'] = mb_strtolower($input['email']);
+        $input['disciplina'] = mb_strtoupper(trim(filter_var($input['disciplina'], FILTER_SANITIZE_STRING)));
+        $input['NomeInstI'] = mb_strtoupper(trim(filter_var($input['NomeInstI'], FILTER_SANITIZE_STRING)));
+        $input['EndInstI'] = mb_strtoupper(trim(filter_var($input['EndInstI'], FILTER_SANITIZE_STRING)));
+        $input['TelInstI'] = mb_strtoupper(trim(filter_var($input['TelInstI'], FILTER_SANITIZE_STRING)));
+        $input['NomeInstII'] = mb_strtoupper(trim(filter_var($input['NomeInstII'], FILTER_SANITIZE_STRING)));
+        $input['EndInstII'] = mb_strtoupper(trim(filter_var($input['EndInstII'], FILTER_SANITIZE_STRING)));
+        $input['TelInstII'] = mb_strtoupper(trim(filter_var($input['TelInstII'], FILTER_SANITIZE_STRING)));
+        $input['NomeInstIII'] = mb_strtoupper(trim(filter_var($input['NomeInstIII'], FILTER_SANITIZE_STRING)));
+        $input['EndInstIII'] = mb_strtoupper(trim(filter_var($input['EndInstIII'], FILTER_SANITIZE_STRING)));
+        $input['TelInstIII'] = mb_strtoupper(trim(filter_var($input['TelInstIII'], FILTER_SANITIZE_STRING)));
+
+        $this->replace($input);
+    }
+
 }

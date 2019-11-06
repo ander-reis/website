@@ -245,8 +245,12 @@
                 $("#btPesquisaCep").on("click", function (){
                     pesquisacep(cep.value);
                 });
+
+                $("#formSindicalizacao").submit(function( event ) {
+                    $("#btnSubmit").prop("value", "Enviando...");
+                    $("#btnSubmit").prop("disabled", true);
+                });
             });
         </script>
     @endpush
-
 @endsection
