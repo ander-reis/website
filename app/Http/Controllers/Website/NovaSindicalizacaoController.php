@@ -82,7 +82,7 @@ class NovaSindicalizacaoController extends Controller
 
             $contador = DB::table('tb_sinpro_admin_conta_registros')->update(['id_sindicalizacao' => $id_sind]);
 
-            Mail::to('sinprosp@sinprosp.org.br')->send(new NovaSindicalizacaoEmail($request,$id_sind));
+            Mail::to('cadastro@sinprosp.org.br')->send(new NovaSindicalizacaoEmail($request,$id_sind));
 
             toastr()->success('Sindicalização enviada com sucesso!');
             return redirect()->route('paginas-principais',['url_pagina' => 'sindicalizacao']);
