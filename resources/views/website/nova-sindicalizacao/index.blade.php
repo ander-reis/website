@@ -15,40 +15,40 @@
                     <div class="form-group fl {{ $errors->has('nome') ?'has-error' : '' }}">
                         {{ Form::label('nome', 'Nome completo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                         {{ Form::text('nome', null, ['id' => 'nome','class' => 'form-control','maxlength' => '50']) }}
-                        @include('website.components.form-components._help_block',['field' => 'nome'])
+                        @include('website.form-components._help_block',['field' => 'nome'])
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-4 fl {{ $errors->has('cpf') ?'has-error' : '' }}">
                             {{ Form::label('cpf', 'CPF', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('cpf', null, ['id' => 'cpf','class' => 'form-control', 'placeholder' => '000.000.00-00','maxlength' => '14']) }}
-                            @include('website.components.form-components._help_block',['field' => 'cpf'])
+                            @include('website.form-components._help_block',['field' => 'cpf'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('nascimento') ?'has-error' : '' }}">
                             {{ Form::label('nascimento', 'Nascimento', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::date('nascimento', null, ['id' => 'nascimento','class' => 'form-control', 'placeholder' => 'DD/MM/AAAA','maxlength' => '10']) }}
-                            @include('website.components.form-components._help_block',['field' => 'nascimento'])
+                            @include('website.form-components._help_block',['field' => 'nascimento'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('sexo') ?'has-error' : '' }}">
                             {{ Form::label('sexo', 'Sexo', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::select('sexo', ['1' => 'Feminino', '0' => 'Masculino'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'sexo'])
+                            @include('website.form-components._help_block',['field' => 'sexo'])
                         </div>
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-4 fl {{ $errors->has('rg') ?'has-error' : '' }}">
                             {{ Form::label('rg', 'RG', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('rg', null, ['id' => 'rg','class' => 'form-control', 'placeholder' => 'Apenas números','maxlength' => '12']) }}
-                            @include('website.components.form-components._help_block',['field' => 'rg'])
+                            @include('website.form-components._help_block',['field' => 'rg'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('estadocivil') ?'has-error' : '' }}">
                             {{ Form::label('estadocivil', 'Estado Civil', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::select('estadocivil', ['0' => 'Casada(o)', '1' => 'Divorciada(o)', '2' => 'Separada(o)', '3' => 'Solteira(o)', '4' =>'Viúva(o)', '5' => 'Outros'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'estadocivil'])
+                            @include('website.form-components._help_block',['field' => 'estadocivil'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('nacionalidade') ?'has-error' : '' }}">
                             {{ Form::label('nacionalidade', 'Nacionalidade', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('nacionalidade', null, ['id' => 'nacionalidade','class' => 'form-control','maxlength' => '20']) }}
-                            @include('website.components.form-components._help_block',['field' => 'nacionalidade'])
+                            @include('website.form-components._help_block',['field' => 'nacionalidade'])
                         </div>
                     </div>
 
@@ -57,18 +57,18 @@
                     <div class="form-group fl {{ $errors->has('email') ?'has-error' : '' }}">
                         {{ Form::label('email', 'E-mail', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                         {{ Form::text('email', null, ['id' => 'email','class' => 'form-control', 'placeholder' => 'email@email.com','maxlength' => '120']) }}
-                        @include('website.components.form-components._help_block',['field' => 'email'])
+                        @include('website.form-components._help_block',['field' => 'email'])
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-6 fl {{ $errors->has('celular') ?'has-error' : '' }}">
                             {{ Form::label('celular', 'Telefone celular', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('celular', null, ['id' => 'celular','class' => 'form-control', 'placeholder' => '(XX) XXXXX-XXXX','maxlength' => '15']) }}
-                            @include('website.components.form-components._help_block',['field' => 'celular'])
+                            @include('website.form-components._help_block',['field' => 'celular'])
                         </div>
                         <div class="form-group col-md-6 fl {{ $errors->has('telefoneresidencial') ?'has-error' : '' }}">
                             {{ Form::label('telefoneresidencial', 'Telefone residencial', ['class' => 'control-label font-weight-bold']) }}
                             {{ Form::text('telefoneresidencial', null, ['id' => 'telefoneresidencial','class' => 'form-control', 'placeholder' => '(XX) XXXX-XXXX','maxlength' => '14']) }}
-                            @include('website.components.form-components._help_block',['field' => 'telefoneresidencial'])
+                            @include('website.form-components._help_block',['field' => 'telefoneresidencial'])
                         </div>
                     </div>
                     <div class="form-group row mt-2 align-items-center">
@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-3 fl {{ $errors->has('cep') ?'has-error' : '' }}">
                             {{ Form::text('cep', null, ['id' => 'cep','class' => 'form-control', 'placeholder' => '00000-000','maxlength' => '9']) }}
-                            @include('website.components.form-components._help_block',['field' => 'cep'])
+                            @include('website.form-components._help_block',['field' => 'cep'])
                         </div>
                         <div class="col-md-8 mt-2 mt-md-0">
                             {{ Form::button('Pesquisar', ['id' => 'btPesquisaCep','class' => 'btn btn-primary']) }}
@@ -87,12 +87,12 @@
                         <div class="form-group col-md-7 fl {{ $errors->has('endereco') ?'has-error' : '' }}">
                             {{ Form::label('endereco', 'Endereço', ['class' => 'control-label font-weight-bold']) }}
                             {{ Form::text('endereco', null, ['id' => 'endereco','class' => 'form-control','readonly']) }}
-                            @include('website.components.form-components._help_block',['field' => 'endereco'])
+                            @include('website.form-components._help_block',['field' => 'endereco'])
                         </div>
                         <div class="form-group col-md-2 fl {{ $errors->has('numero') ?'has-error' : '' }}">
                             {{ Form::label('numero', 'Nº', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('numero', null, ['id' => 'numero','class' => 'form-control','maxlength' => '6']) }}
-                            @include('website.components.form-components._help_block',['field' => 'numero'])
+                            @include('website.form-components._help_block',['field' => 'numero'])
                         </div>
                         <div class="form-group col-md-3">
                             {{ Form::label('complemento', 'Complemento', ['class' => 'control-label font-weight-bold']) }}
@@ -120,15 +120,15 @@
                         <div class="form-group col-md-6 fl {{ $errors->has('disciplina') ?'has-error' : '' }}">
                             {{ Form::label('disciplina', 'Disciplinas que leciona ', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('disciplina', null, ['id' => 'disciplina','class' => 'form-control','maxlength' => '150']) }}
-                            @include('website.components.form-components._help_block',['field' => 'disciplina'])
+                            @include('website.form-components._help_block',['field' => 'disciplina'])
                         </div>
                         <div class="form-group col-md-6 fl {{ $errors->has('situacao') ?'has-error' : '' }}">
                             {{ Form::label('situacao', 'Situação', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::select('situacao', ['Em atividade' => 'Em atividade', 'Aposentada(o)' => 'Aposentada(o)', 'Aposentada(o) em atividade na escola' => 'Aposentada(o) em atividade na escola'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
-                            @include('website.components.form-components._help_block',['field' => 'situacao'])
+                            @include('website.form-components._help_block',['field' => 'situacao'])
                         </div>
                     </div>
-                    
+
                     <div class="font-weight-bold">Níveis de ensino <span class="text-danger">*</span></div>
 
                     <div class="form-group">
@@ -171,18 +171,18 @@
                     <div class="form-group fl {{ $errors->has('NomeInstI') ?'has-error' : '' }}">
                         {{ Form::label('NomeInstI', 'Nome da instituição', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                         {{ Form::text('NomeInstI', null, ['id' => 'NomeInstI','class' => 'form-control','maxlength' => '50']) }}
-                        @include('website.components.form-components._help_block',['field' => 'NomeInstI'])
+                        @include('website.form-components._help_block',['field' => 'NomeInstI'])
                     </div>
                     <div class="form-group row mb-0">
                         <div class="form-group col-md-8 fl {{ $errors->has('EndInstI') ?'has-error' : '' }}">
                             {{ Form::label('EndInstI', 'Endereço', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('EndInstI', null, ['id' => 'EndInstI','class' => 'form-control','maxlength' => '63']) }}
-                            @include('website.components.form-components._help_block',['field' => 'EndInstI'])
+                            @include('website.form-components._help_block',['field' => 'EndInstI'])
                         </div>
                         <div class="form-group col-md-4 fl {{ $errors->has('TelInstI') ?'has-error' : '' }}">
                             {{ Form::label('TelInstI', 'Telefone', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
                             {{ Form::text('TelInstI', null, ['id' => 'TelInstI','class' => 'form-control','maxlength' => '9']) }}
-                            @include('website.components.form-components._help_block',['field' => 'TelInstI'])
+                            @include('website.form-components._help_block',['field' => 'TelInstI'])
                         </div>
                     </div>
 
@@ -227,15 +227,15 @@
 
                     <div class="mt-4">
                         {{ Form::submit('Enviar informações',['name' => 'btnSubmit', 'id' => 'btnSubmit', 'class' => 'btn btn-primary']) }}
-                    </div>                        
+                    </div>
                 {{ Form::close() }}
             </div>
         </div>
         @component('website.components.layout-1._column_right')@endcomponent
     </div>
 
-    @push('pesquisacep')
-        <script>
+    @push('pesquisa-cep-script')
+        <script type="text/javascript">
             $(document).ready(function () {
                 $("#btPesquisaCep").on("click", function (){
                     pesquisacep(cep.value);

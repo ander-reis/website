@@ -35,6 +35,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
  */
 Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
 Route::name('curriculo.edit')->get('curriculo/edit', 'Website\CurriculoController@editar')->middleware('auth');
+Route::name('curriculo.update')->put('curriculo/update/{curriculo}', 'Website\CurriculoController@update')->middleware('auth');
+Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoController@show');
+
 
 /**
  * rota home

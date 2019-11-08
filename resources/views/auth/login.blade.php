@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('ds_cpf') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ds_cpf" type="text" class="form-control @error('ds_cpf') is-invalid @enderror" name="ds_cpf" value="{{ old('ds_cpf') }}" required autofocus>
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
 
-                                @error('ds_cpf')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

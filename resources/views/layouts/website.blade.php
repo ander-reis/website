@@ -110,7 +110,9 @@
     @stack('boletim-script')
     @stack('cursos-script')
     @stack('relacao-escolas-script')
-    @stack('pesquisacep')
+    @stack('pesquisa-cep-script')
+    @stack('create-curriculo-script')
+    @stack('update-curriculo-script')
 </body>
 
 </html>

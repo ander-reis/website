@@ -90,6 +90,11 @@ Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
     $breadcrumbs->push('Curso');
 });
 
+Breadcrumbs::register('curriculos', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos');
+});
+
 // exemplo
 //Breadcrumbs::register('ranking-salarios', function ($breadcrumbs) {
 //    $breadcrumbs->parent('home');

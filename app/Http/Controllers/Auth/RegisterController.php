@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/curriculo/edit';
+    protected $redirectTo = '/curriculo';
 
     /**
      * Create a new controller instance.
@@ -50,10 +50,31 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'ds_nome' => ['required', 'string', 'max:255'],
-            'ds_mail' => ['required', 'string', 'email', 'max:255', 'unique:tb_sinpro_curriculos_professores'],
-            'ds_cpf' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'ds_nome' => ['required', 'string', 'max:50'],
+            'ds_cpf' => ['required', 'string', 'max:14'],
+            'dt_data_nasc' => ['required', 'date_format:Y-m-d'],
+            'int_estado_civil' => ['required'],
+            'ds_cep' => ['required', 'string', 'max:9'],
+            'ds_endereco' => ['required', 'string', 'max:100'],
+            'ds_bairro' => ['required', 'string', 'max:50'],
+            'ds_cidade' => ['required', 'string', 'max:30'],
+            'ds_estado' => ['required', 'string', 'max:2'],
+            'ds_pais' => ['required', 'string', 'max:30'],
+            'ds_fone' => ['required', 'string', 'max:20'],
+            'ds_celular' => ['required', 'string', 'max:20'],
+            'ds_salario' => ['required', 'string', 'max:13'],
+            'int_empregado' => ['required', 'numeric'],
+            'int_disp_horario' => ['required', 'numeric'],
+            'int_disp_cidade' => ['required', 'numeric'],
+            'int_formacao' => ['required', 'numeric'],
+            'int_disciplina' => ['required', 'numeric'],
+            'int_nivel_atuacao' => ['required', 'numeric'],
+            'ds_objetivo' => ['required', 'string'],
+            'ds_qualificacao' => ['required', 'string'],
+            'ds_experiencia' => ['required', 'string'],
+
+            'email' => ['required', 'string', 'email', 'max:255', 'confirmed', 'unique:tb_sinpro_curriculos_professores'],
+            'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
 
@@ -61,48 +82,45 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Website\Models\CurriculoProfessor
      */
     protected function create(array $data)
     {
         return CurriculoProfessor::create([
             'ds_nome' => $data['ds_nome'],
-            'ds_mail' => $data['ds_mail'],
             'ds_cpf' => $data['ds_cpf'],
+            'ds_sexo' => $data['ds_sexo'],
+            'dt_data_nasc' => $data['dt_data_nasc'],
+            'int_estado_civil' => $data['int_estado_civil'],
+            'ds_cep' => $data['ds_cep'],
+            'ds_endereco' => $data['ds_endereco'],
+            'ds_bairro' => $data['ds_bairro'],
+            'ds_cidade' => $data['ds_cidade'],
+            'ds_estado' => $data['ds_estado'],
+            'ds_pais' => $data['ds_pais'],
+            'ds_fone' => $data['ds_fone'],
+            'ds_celular' => $data['ds_celular'],
+            'ds_salario' => $data['ds_salario'],
+            'int_empregado' => $data['int_empregado'],
+            'int_disp_horario' => $data['int_disp_horario'],
+            'int_disp_cidade' => $data['int_disp_cidade'],
+            'int_formacao' => $data['int_formacao'],
+            'int_disciplina' => $data['int_disciplina'],
+            'int_nivel_atuacao' => $data['int_nivel_atuacao'],
+            'ds_objetivo' => $data['ds_objetivo'],
+            'ds_qualificacao' => $data['ds_qualificacao'],
+            'ds_experiencia' => $data['ds_experiencia'],
+
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+
             'ds_matricula' => '1100',
-            'ds_sexo' => 0,
-            'int_estado_civil' => 0,
-            'dt_data_nasc' => '1997-01-20 00:00:00',
-            'ds_endereco' => 'endereco',
-            'ds_bairro' => 'bairro',
-            'ds_cidade' => 'cidade',
-            'ds_estado' => 'sp',
-            'ds_cep' => 'cep',
-            'ds_pais' => 'pais',
-            'ds_fone' => 'fone',
-            'ds_celular' => 'celular',
             'ds_fax' => 'fax',
-            'ds_salario' => 'salario',
-            'int_empregado' => 1,
-            'int_disp_horario' => 1,
-            'int_disp_cidade' => 1,
-            'int_formacao' => 1,
             'ds_outra_formacao' => 'outra',
-            'int_disciplina' => 1,
-            'int_nivel_atuacao' => 1,
-            'ds_objetivo' => 'objetivo',
-            'ds_qualificacao' => 'qualificacao',
-            'ds_experiencia' => 'experiencia',
             'ds_user' => 'user',
             'ds_pass' => 'pass',
             'int_ativo' => 1,
-            'password' => Hash::make($data['password']),
         ]);
 
-//        return User::create([
-//            'name' => $data['name'],
-//            'email' => $data['email'],
-//            'password' => Hash::make($data['password']),
-//        ]);
     }
 }

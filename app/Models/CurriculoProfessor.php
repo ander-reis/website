@@ -2,14 +2,17 @@
 
 namespace Website\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * @method static create(array $array)
  */
 class CurriculoProfessor extends Authenticatable
 {
+
+    use Notifiable;
+
     /**
      * table
      *
@@ -50,7 +53,7 @@ class CurriculoProfessor extends Authenticatable
         'ds_estado',
         'ds_cep',
         'ds_pais',
-        'ds_mail',
+        'email',
         'ds_fone',
         'ds_celular',
         'ds_fax',
@@ -73,9 +76,13 @@ class CurriculoProfessor extends Authenticatable
         'password',
     ];
 
-//    public function getEmailForPasswordReset()
-//    {
-//        return 'ds_mail';
-//    }
-
+    /**
+     * configura email na tabela password resets
+     *
+     * @return mixed|string
+     */
+    public function getEmailForPasswordReset()
+    {
+        return $this->email;
+    }
 }

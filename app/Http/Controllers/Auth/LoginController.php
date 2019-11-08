@@ -39,27 +39,13 @@ class LoginController extends Controller
     }
 
     /**
-     * Valida request user
+     * The user has logged out of the application.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return void
-     * @throws \Illuminate\Validation\ValidationException
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
      */
-    protected function validateLogin(Request $request)
+    protected function loggedOut(Request $request)
     {
-        $this->validate($request, [
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
-    }
-
-    /**
-     * Método responsável por retornar o tipo de usuário
-     *
-     * @return string
-     */
-    public function username()
-    {
-        return 'ds_cpf';
+        return redirect('/curriculo');
     }
 }
