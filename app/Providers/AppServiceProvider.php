@@ -3,7 +3,6 @@
 namespace Website\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Code\Validator\Cpf;
 
 class AppServiceProvider extends ServiceProvider
 {

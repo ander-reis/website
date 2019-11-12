@@ -90,9 +90,15 @@ Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
     $breadcrumbs->push('Curso');
 });
 
-Breadcrumbs::register('curriculos', function ($breadcrumbs) {
+Breadcrumbs::register('curriculos.index', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Currículos');
+});
+
+Breadcrumbs::register('curriculos.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos', route('curriculo.index'));
+    $breadcrumbs->push('Alterar currículo');
 });
 
 // exemplo

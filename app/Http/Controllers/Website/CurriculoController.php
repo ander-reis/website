@@ -2,7 +2,7 @@
 
 namespace Website\Http\Controllers\Website;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\CurriculoUpdateRequest;
@@ -17,36 +17,7 @@ class CurriculoController extends Controller
      */
     public function index()
     {
-        // /curriculo => listar curriculo / buscar curriculos => CurriculoController
-        // /curriculo/{id} => mostrar curriculo => CurriculoController
-        // /curriculo/create => cadastrar curriculo => RegisterController
-        // /curriculo/login => acessar area do cliente => LoginController {ds_cpf, ds_pass}
-        // /curriculo/edit => form para atualizar curriculo => LoginController
-        // /curriculo/update => action para update curriculo => LoginController
-        // /curriculo/logout => sair area cliente => LoginController
-
         return view('website.curriculo.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -61,23 +32,61 @@ class CurriculoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * edit
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
-    {
-        //
-    }
-
     public function editar()
     {
+        /**
+         * id user logado
+         */
         $id = \Auth::user()->id_curriculo;
+        /**
+         * model select
+         */
+        $model = CurriculoProfessor::where('id_curriculo', $id)->first([
+            'ds_cpf',
+            'ds_matricula',
+            'ds_nome',
+            'ds_sexo',
+            'int_estado_civil',
+            'dt_data_nasc',
+            'ds_endereco',
+            'ds_bairro',
+            'ds_cidade',
+            'ds_estado',
+            'ds_cep',
+            'ds_pais',
+            'email',
+            'ds_fone',
+            'ds_celular',
+            'ds_fax',
+            'ds_salario',
+            'int_empregado',
+            'int_disp_horario',
+            'int_disp_cidade',
+            'int_formacao',
+            'ds_outra_formacao',
+            'int_disciplina',
+            'int_nivel_atuacao',
+            'ds_objetivo',
+            'ds_qualificacao',
+            'ds_experiencia',
+            'ds_user',
+            'int_ativo']);
 
-        $model = CurriculoProfessor::where('id_curriculo', $id)->first();
+        /**
+         * array estados
+         */
+        $estados = self::estados();
 
-        return view('website.curriculo.edit', compact('model'));
+        /**
+         * configura estado no model
+         */
+        $model->ds_estado = array_search($model->ds_estado, $estados);
+
+        return view('website.curriculo.edit', compact('model', 'id'));
     }
 
     /**
@@ -87,42 +96,101 @@ class CurriculoController extends Controller
      * @param CurriculoProfessor $curriculo
      * @return \Illuminate\Http\Response
      */
-    public function update(CurriculoUpdateRequest $request, CurriculoProfessor $curriculo)
+    public function update(CurriculoUpdateRequest $request, $id, CurriculoProfessor $curriculo)
     {
-        /**
-         *  se o campo senha não estiver preechido não fazer atualização
-         *
-         *
-         *
-         */
-
-
         try {
             $data = $request->only(array_keys($request->all()));
 
-            $data['password'] = Hash::make($data['password']);
+            unset($data['_method']);
+            unset($data['_token']);
+            unset($data['email_confirmation']);
+            unset($data['password_confirmation']);
 
-            $curriculo->update($data);
+            /**
+             * verifica email
+             */
+            if(empty($data['password'])){
+                unset($data['password']);
+            } else {
+                $data['password'] = Hash::make($data['password']);
+            }
+
+            /**
+             * configura estado para de integer para string
+             */
+            $estados = CurriculoController::estados();
+            $data['ds_estado'] = Arr::get($estados, $data['ds_estado']);
+
+            /**
+             * update
+             */
+            $curriculo->where('id_curriculo', $id)->update($data);
 
             toastr()->success('Cadastro alterado com sucesso!');
 
             return redirect()->route('curriculo.index');
         } catch (\Exception $e) {
 
-            toastr()->error("Não foi possível alterar o cadastro" . $e->getMessage());
+            toastr()->error("Não foi possível alterar o cadastro");
 
             return redirect()->route('curriculo.edit');
         }
     }
 
     /**
-     * Remove the specified resource from storage.
+     * select estado civil
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function destroy($id)
+    static function estadoCivil()
     {
-        //
+        return [
+            'Selecione Estado Civil',
+            'Casado',
+            'Convivência Marital',
+            'Divorciado',
+            'Separado',
+            'Solteiro',
+            'Viúvo'
+        ];
+    }
+
+    /**
+     * select estados
+     *
+     * @return array
+     */
+    static function estados()
+    {
+        return [
+            'Seleciona um Estado',
+            'AC',
+            'AL',
+            'AP',
+            'AM',
+            'BA',
+            'CE',
+            'DF',
+            'ES',
+            'GO',
+            'MA',
+            'MT',
+            'MS',
+            'MG',
+            'PA',
+            'PB',
+            'PR',
+            'PE',
+            'PI',
+            'RJ',
+            'RN',
+            'RS',
+            'RO',
+            'RR',
+            'SC',
+            'SP',
+            'SE',
+            'TO'
+        ];
     }
 }

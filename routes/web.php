@@ -11,7 +11,9 @@
 |
 */
 
-//Auth::routes();
+/**
+ * Auth Routes(s)
+ */
 Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login');
 Route::name('logout')->post('logout', 'Auth\LoginController@logout');
@@ -29,15 +31,6 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
-/**
- * curriculo
- */
-Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
-Route::name('curriculo.edit')->get('curriculo/edit', 'Website\CurriculoController@editar')->middleware('auth');
-Route::name('curriculo.update')->put('curriculo/update/{curriculo}', 'Website\CurriculoController@update')->middleware('auth');
-Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoController@show');
-
 
 /**
  * rota home
@@ -93,6 +86,16 @@ Route::name('cursos.list')->get('/cursos/listar', 'Website\CursosController@init
 Route::name('cursos.list-select')->get('/cursos/selecionar', 'Website\CursosController@changeSelect');
 
 /**
+ * curriculo
+ */
+Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
+Route::group(['middleware' => 'auth', 'namespace' => 'Website\\'], function(){
+    Route::name('curriculo.edit')->get('curriculo/edit', 'CurriculoController@editar');
+    Route::name('curriculo.update')->put('curriculo/update/{id}', 'CurriculoController@update');
+});
+Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoController@show');
+
+/**
  * páginas principais
  *
  * rota que verifica a pagina e em caso de erro configura pagina personalizada de erro
@@ -125,5 +128,3 @@ Route::group(['prefix' => 'relacao-escolas', 'as' => 'relacao-escolas.', 'namesp
     Route::name('regiao')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}', 'CadastroEscolasController@regiao')->where(['id_nivel' => '[0-9]', 'id_regiao' => '[0-9]']);
     Route::name('escola')->get('/grupos/nivel/{id_nivel}/regiao/{id_regiao}/escola', 'CadastroEscolasController@escola');
 });
-
-//Route::get('/home', 'HomeController@index')->name('home');

@@ -2,6 +2,7 @@
 
 namespace Website\Models;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -84,5 +85,15 @@ class CurriculoProfessor extends Authenticatable
     public function getEmailForPasswordReset()
     {
         return $this->email;
+    }
+
+    /**
+     * mutators formata data para o form de edição -> 2000-12-30
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDtCadastroUTCFormattedAttribute()
+    {
+        return Carbon::parse($this->dt_data_nasc)->format('Y-m-d');
     }
 }

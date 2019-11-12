@@ -2,13 +2,15 @@
 
 @section('content')
     <div class="container">
+
+        {{ Breadcrumbs::render('curriculos.edit') }}
+
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <h1 class="mb-md-3">Cadastro de Currículo</h1>
                 <hr>
                 {{ Form::open(['route' => 'register', 'id' => 'curriculoForm']) }}
                 @include('website.curriculo._form')
-                {{--                <button type="submit" class="btn btn-primary" disabled>Cadastrar</button>--}}
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                 {{ Form::close() }}
             </div>
@@ -19,7 +21,6 @@
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function (e) {
                 const curriculoForm = document.getElementById('curriculoForm');
-                const submitButton = curriculoForm.querySelector('[type="submit"]');
                 FormValidation.formValidation(
                     curriculoForm,
                     {
@@ -138,7 +139,7 @@
                                     },
                                     greaterThan: {
                                         message: 'Selecione um Estado',
-                                        min: 'SP',
+                                        min: 1,
                                     }
                                 }
                             },
@@ -326,13 +327,6 @@
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
                             bootstrap: new FormValidation.plugins.Bootstrap(),
-                            // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-                            // fieldStatus: new FormValidation.plugins.FieldStatus({
-                            //     onStatusChanged: function (areFieldsValid) {
-                            //         areFieldsValid ? submitButton.removeAttribute('disabled')
-                            //             : submitButton.setAttribute('disabled', 'disabled');
-                            //     }
-                            // }),
                             submitButton: new FormValidation.plugins.SubmitButton(),
                             defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
                             icon: new FormValidation.plugins.Icon({
@@ -344,6 +338,7 @@
                     }
                 );
             });
+
         </script>
     @endpush
 @endsection

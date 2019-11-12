@@ -22,12 +22,13 @@
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_data_nasc', 'Data de Nascimento', ['class' => 'control-label']) }}<span
                     class="text-danger font-weight-bold">*</span>
-            {{ Form::date('dt_data_nasc', '1970-01-01', ['class' => 'form-control']) }}
+            {{ Form::date('dt_data_nasc', (isset($model->dt_cadastro_utc_formatted) ? $model->dt_cadastro_utc_formatted : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
+
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_estado_civil', 'Estado Civil', ['class' => 'control-label']) }}<span
                     class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_estado_civil', ['0' => 'Selecione Estado Civil', '1' => 'Casado', '2' => 'Convivência Marital', '3' => 'Divorciado', '4' => 'Separado', '5' => 'Solteiro', '6' => 'Viúvo'], null, ['class' => 'form-control']) }}
+            {{ Form::select('int_estado_civil', \Website\Http\Controllers\Website\CurriculoController::estadoCivil(), null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
 </section>
@@ -58,10 +59,12 @@
                     class="text-danger font-weight-bold">*</span>
             {{ Form::text('ds_cidade', null, ['class' => 'form-control']) }}
         @endcomponent
+
         @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
             {{ Form::label('ds_estado', 'Estado', ['class' => 'control-label']) }}<span
                     class="text-danger font-weight-bold">*</span>
-            {{ Form::select('ds_estado', [0 => 'Selecione Estado', 'SP' => 'SP'], null, ['class' => 'form-control']) }}
+            {{ Form::select('ds_estado', \Website\Http\Controllers\Website\CurriculoController::estados(), (isset($model->ds_estado) ? $model->ds_estado : null), ['class' => 'form-control']) }}
+
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
             {{ Form::label('ds_pais', 'País', ['class' => 'control-label']) }}<span
@@ -105,24 +108,24 @@
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_disp_cidade', 'Disponibilidade para mudar de cidade?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_disp_cidade', ['1' => 'Sim', '0' => 'Não'], null, ['class' => 'form-control']) }}
+            {{ Form::select('int_disp_cidade', [0 => 'Não', 1 => 'Sim'], null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
     <div class="row">
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_formacao', 'Qual sua formação?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_formacao', ['0' => 'Selecione sua formação', '1' => 'Doutor'], null, ['class' => 'form-control']) }}
+            {{ Form::select('int_formacao', \Website\Models\CurriculoFormacao::orderBy('id_formacao')->pluck('ds_formacao', 'id_formacao'), null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_disciplina', 'Qual disciplina leciona?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_disciplina', ['0' => 'Selecione uma disciplina', '1' => 'ADMINISTRAÇÃO'], null, ['class' => 'form-control']) }}
+            {{ Form::select('int_disciplina', \Website\Models\CurriculoDisciplina::orderBy('id_disciplina')->pluck('ds_disciplina', 'id_disciplina'), null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_nivel_atuacao', 'Qual o nível de atuação?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_nivel_atuacao', ['0' => 'Selecione o nível de atuação', '1' => 'Educação Infantil'], null, ['class' => 'form-control']) }}
+            {{ Form::select('int_nivel_atuacao', \Website\Models\CurriculoAtuacao::orderBy('id_nivel_atuacao')->pluck('ds_nivel_atuacao', 'id_nivel_atuacao'), null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
 </section>
@@ -156,29 +159,54 @@
 <section>
     <h3>Dados de Acesso</h3>
     <hr class="line">
-    <div class="row">
-        @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-            {{ Form::label('email', 'Email', ['class' => 'control-label']) }}<span class="text-danger font-weight-bold">*</span>
-            {{ Form::text('email', null, ['class' => 'form-control']) }}
-        @endcomponent
-        @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-            {{ Form::label('email_confirmation', 'Confirme o Email', ['class' => 'control-label']) }}<span
-                    class="text-danger font-weight-bold">*</span>
-            {{ Form::text('email_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Confirme o Email']) }}
-        @endcomponent
-    </div>
-    <div class="row">
-        @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-            {{ Form::label('password', 'Senha', ['class' => 'control-label']) }}<span
-                    class="text-danger font-weight-bold">*</span>
-            {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Digite a Senha']) }}
-        @endcomponent
-        @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-            {{ Form::label('password_confirmation', 'Confirme a Senha', ['class' => 'control-label']) }}<span
-                    class="text-danger font-weight-bold">*</span>
-            {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirme a Senha']) }}
-        @endcomponent
-    </div>
+
+    @if(!\Auth::user())
+        <div class="row">
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('email', 'Email', ['class' => 'control-label']) }}<span class="text-danger font-weight-bold">*</span>
+                {{ Form::text('email', null, ['class' => 'form-control']) }}
+            @endcomponent
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('email_confirmation', 'Confirme o Email', ['class' => 'control-label']) }}<span
+                        class="text-danger font-weight-bold">*</span>
+                {{ Form::text('email_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Confirme o Email']) }}
+            @endcomponent
+        </div>
+        <div class="row">
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('password', 'Senha', ['class' => 'control-label']) }}<span
+                        class="text-danger font-weight-bold">*</span>
+                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Digite a Senha']) }}
+            @endcomponent
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('password_confirmation', 'Confirme a Senha', ['class' => 'control-label']) }}<span
+                        class="text-danger font-weight-bold">*</span>
+                {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirme a Senha']) }}
+            @endcomponent
+        </div>
+    @else
+        <div class="row">
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('email', 'Email', ['class' => 'control-label']) }}
+                {{ Form::text('email', null, ['class' => 'form-control']) }}
+            @endcomponent
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('email_confirmation', 'Confirme o Email', ['class' => 'control-label']) }}
+                {{ Form::text('email_confirmation', $model->email, ['class' => 'form-control', 'placeholder' => 'Confirme o Email']) }}
+            @endcomponent
+        </div>
+        <div class="row">
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('password', 'Senha', ['class' => 'control-label']) }}
+                <span class="text-danger font-weight-bold">&nbsp;(caso deseje atualizar a senha)</span>
+                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Digite a Senha']) }}
+            @endcomponent
+            @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
+                {{ Form::label('password_confirmation', 'Confirme a Senha', ['class' => 'control-label']) }}
+                {{ Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirme a Senha']) }}
+            @endcomponent
+        </div>
+    @endif
 </section>
 
 @if($errors->any())
