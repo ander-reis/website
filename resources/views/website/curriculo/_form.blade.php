@@ -115,17 +115,17 @@
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_formacao', 'Qual sua formação?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_formacao', \Website\Models\CurriculoFormacao::orderBy('id_formacao')->pluck('ds_formacao', 'id_formacao'), null, ['class' => 'form-control']) }}
+            {{ Form::select('int_formacao', selectFormacaoFormatted(1), null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_disciplina', 'Qual disciplina leciona?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_disciplina', \Website\Models\CurriculoDisciplina::orderBy('id_disciplina')->pluck('ds_disciplina', 'id_disciplina'), null, ['class' => 'form-control']) }}
+            {{ Form::select('int_disciplina', selectDisciplinaFormatted(1), null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('int_nivel_atuacao', 'Qual o nível de atuação?', ['class' => 'control-label']) }}
             <span class="text-danger font-weight-bold">*</span>
-            {{ Form::select('int_nivel_atuacao', \Website\Models\CurriculoAtuacao::orderBy('id_nivel_atuacao')->pluck('ds_nivel_atuacao', 'id_nivel_atuacao'), null, ['class' => 'form-control']) }}
+            {{ Form::select('int_nivel_atuacao', selectAtuacaoFormatted(1), null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
 </section>

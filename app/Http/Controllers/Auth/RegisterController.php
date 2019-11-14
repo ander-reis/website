@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Website\Http\Controllers\Website\CurriculoController;
+use Website\Models\CurriculoFormacao;
 use Website\Models\CurriculoProfessor;
 use Website\Models\User;
 
@@ -44,6 +45,16 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param array $data
@@ -74,7 +85,7 @@ class RegisterController extends Controller
             'ds_objetivo' => ['required', 'string'],
             'ds_qualificacao' => ['required', 'string'],
             'ds_experiencia' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'max:255', 'confirmed', 'unique:tb_sinpro_curriculos_professores'],
+            'email' => ['required', 'string', 'email', 'max:255', 'confirmed', 'rfc,dns', 'unique:tb_sinpro_curriculos_professores'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }

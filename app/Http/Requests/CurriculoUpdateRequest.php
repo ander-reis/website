@@ -48,7 +48,7 @@ class CurriculoUpdateRequest extends FormRequest
             'ds_objetivo' => ['required', 'string'],
             'ds_qualificacao' => ['required', 'string'],
             'ds_experiencia' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'max:255', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'rfc,dns', 'max:255', 'confirmed'],
         ];
     }
 

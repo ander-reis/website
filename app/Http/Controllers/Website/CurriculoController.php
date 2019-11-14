@@ -2,10 +2,14 @@
 
 namespace Website\Http\Controllers\Website;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\CurriculoBuscaRequest;
 use Website\Http\Requests\CurriculoUpdateRequest;
+use Website\Models\CurriculoFormacao;
 use Website\Models\CurriculoProfessor;
 
 class CurriculoController extends Controller
@@ -23,7 +27,7 @@ class CurriculoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -109,7 +113,7 @@ class CurriculoController extends Controller
             /**
              * verifica email
              */
-            if(empty($data['password'])){
+            if (empty($data['password'])) {
                 unset($data['password']);
             } else {
                 $data['password'] = Hash::make($data['password']);
@@ -135,6 +139,74 @@ class CurriculoController extends Controller
 
             return redirect()->route('curriculo.edit');
         }
+    }
+
+    public function busca(CurriculoBuscaRequest $request)
+    {
+        $data = $request->only(array_keys($request->all()));
+
+        $uf = $data['uf'];
+        $atuacao = $data['int_nivel_atuacao'];
+        $formacao = $data['int_formacao'];
+        $disciplina = $data['int_disciplina'];
+
+//        if($uf != 0){
+//            $collection = DB::table('tb_sinpro_curriculos_professores')
+//                ->where('int_ativo', 1)
+//                ->where('int_nivel_atuacao', $atuacao)
+//                ->where('int_formacao', $formacao)
+//                ->where('int_disciplina', $disciplina)
+//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+//                ->get();
+//        }
+//
+//        if($atuacao != 0){
+//            $collection = DB::table('tb_sinpro_curriculos_professores')
+//                ->where('int_ativo', 1)
+//                ->where('ds_estado', $uf)
+//                ->where('int_formacao', $formacao)
+//                ->where('int_disciplina', $disciplina)
+//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+//                ->get();
+//        }
+//
+//        if($formacao != 0){
+//            $collection = DB::table('tb_sinpro_curriculos_professores')
+//                ->where('int_ativo', 1)
+//                ->where('ds_estado', $uf)
+//                ->where('int_nivel_atuacao', $atuacao)
+//                ->where('int_disciplina', $disciplina)
+//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+//                ->get();
+//        }
+//
+//        if($disciplina != 0){
+//            $collection = DB::table('tb_sinpro_curriculos_professores')
+//                ->where('int_ativo', 1)
+//                ->where('ds_estado', $uf)
+//                ->where('int_nivel_atuacao', $atuacao)
+//                ->where('int_formacao', $formacao)
+//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+//                ->get();
+//        }
+//
+//        if($uf == 0 && $atuacao == 0 && $formacao == 0 && $disciplina == 0){
+//            $collection = DB::table('tb_sinpro_curriculos_professores')
+//                ->where('int_ativo', 1)
+//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+//                ->get();
+//        }
+
+        $collection = DB::table('tb_sinpro_curriculos_professores')
+            ->where('int_ativo', 1)
+            ->where('ds_estado', $uf)
+            ->where('int_nivel_atuacao', $atuacao)
+            ->where('int_formacao', $formacao)
+            ->where('int_disciplina', $disciplina)
+            ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
+            ->get();
+
+        dd($collection);
     }
 
     /**
@@ -191,6 +263,45 @@ class CurriculoController extends Controller
             'SP',
             'SE',
             'TO'
+        ];
+    }
+
+    /**
+     * select estados
+     *
+     * @return array
+     */
+    static function siglaEstados()
+    {
+        return [
+            "0" => "Todos",
+            "AC" => "Acre",
+            "AL" => "Alagoas",
+            "AP" => "Amapá",
+            "AM" => "Amazonas",
+            "BA" => "Bahia",
+            "CE" => "Ceará",
+            "DF" => "Distrito Federal",
+            "ES" => "Espírito Santo",
+            "GO" => "Goiás",
+            "MA" => "Maranhão",
+            "MT" => "Mato Grosso",
+            "MS" => "Mato Grosso do Sul",
+            "MG" => "Minas Gerais",
+            "PA" => "Pará",
+            "PB" => "Paraíba",
+            "PR" => "Paraná",
+            "PE" => "Pernambuco",
+            "PI" => "Piauí",
+            "RJ" => "Rio de Janeiro",
+            "RN" => "Rio Grande do Norte",
+            "RS" => "Rio Grande do Sul",
+            "RO" => "Rondônia",
+            "RR" => "Roraima",
+            "SC" => "Santa Catarina",
+            "SP" => "São Paulo",
+            "SE" => "Sergipe",
+            "TO" => "Tocantins"
         ];
     }
 }

@@ -113,6 +113,7 @@
     @stack('pesquisa-cep-script')
     @stack('create-curriculo-script')
     @stack('update-curriculo-script')
+    @stack('busca-curriculo-script')
 </body>
 
 </html>

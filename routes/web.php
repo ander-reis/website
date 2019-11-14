@@ -94,6 +94,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Website\\'], function(){
     Route::name('curriculo.update')->put('curriculo/update/{id}', 'CurriculoController@update');
 });
 Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoController@show');
+Route::name('curriculo.busca')->post('curriculo/busca', 'Website\CurriculoController@busca');
 
 /**
  * páginas principais

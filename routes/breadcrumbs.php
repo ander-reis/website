@@ -101,6 +101,12 @@ Breadcrumbs::register('curriculos.edit', function ($breadcrumbs) {
     $breadcrumbs->push('Alterar currículo');
 });
 
+Breadcrumbs::register('curriculos.show', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos', route('curriculo.index'));
+    $breadcrumbs->push('Curriculo');
+});
+
 // exemplo
 //Breadcrumbs::register('ranking-salarios', function ($breadcrumbs) {
 //    $breadcrumbs->parent('home');
