@@ -29,6 +29,21 @@ $(document).ready(function () {
     }
 });
     /**
+     * search-bar
+     */
+    /**
+     * search-bar
+     */
+    $(".search-toggle").on("click", function (e) {
+        e.preventDefault(),
+            $(".search-bar").toggleClass("active");
+    });
+    $('#button-find-search').on('click', function (e) {
+        e.preventDefault(),
+            $(".search-bar").removeClass("active");
+    });
+
+    /**
      * Scroll to Top
      */
     $(window).scroll(function () {
@@ -42,21 +57,6 @@ $(document).ready(function () {
         $('body,html').animate({
             scrollTop: 0
         }, 500);
-    });
-
-    /**
-     * dropdown submenu navbar
-     */
-    $('.dropdown-submenu > a').on("click", function(e) {
-        var submenu = $(this);
-        $('.dropdown-submenu .dropdown-menu').removeClass('show');
-        submenu.next('.dropdown-menu').addClass('show');
-        e.stopPropagation();
-    });
-
-    $('.dropdown').on("hidden.bs.dropdown", function() {
-        // hide any open menus when parent closes
-        $('.dropdown-menu.show').removeClass('show');
     });
 
     $('input[name="boletimSind"]').change(function($x) {
@@ -79,13 +79,4 @@ $(document).ready(function () {
     $('#carousel-sinpro').carousel({
         interval: 3500
       })
-
-    /**
-     * mascara form cadastro curriculo
-     */
-    $('#ds_cpf').mask('000.000.000-00', {reverse: true});
-    $('#ds_cep').mask('00000-000');
-    $('#ds_fone').mask('(00) 0000-0000');
-    $('#ds_celular').mask('(00) 00000-0000');
-    $('#ds_salario').mask('000.000.000.000.000,00', {reverse: true});
 });

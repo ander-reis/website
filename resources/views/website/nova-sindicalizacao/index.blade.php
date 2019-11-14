@@ -237,11 +237,20 @@
     @push('pesquisa-cep-script')
         <script type="text/javascript">
             $(document).ready(function () {
+                $('#cpf').mask('000.000.000-00', {reverse: true});
+                $('#cep').mask('00000-000');
+                $('#celular').mask('(00) 00000-0000');
+                $('#telefoneresidencial').mask('(00) 0000-0000');
+
                 $("#btPesquisaCep").on("click", function (){
                     pesquisacep(cep.value);
+                });
+
+                $("#formSindicalizacao").submit(function( event ) {
+                    $("#btnSubmit").prop("value", "Enviando...");
+                    $("#btnSubmit").prop("disabled", true);
                 });
             });
         </script>
     @endpush
-
 @endsection

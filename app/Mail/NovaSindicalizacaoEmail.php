@@ -33,7 +33,8 @@ class NovaSindicalizacaoEmail extends Mailable
     public function build()
     {
         return $this->view('website.emails.nova-sindicalizacao')
-                    ->subject('[SINDICALIZAÇÃO] '. $this->dados->nome)
+                    ->subject('[SINDICALIZAÇÃO] '. mb_strtoupper($this->dados->nome))
+                    ->cc('webmaster@sinprosp.org.br')
                     ->with([
                         'ticket'                => $this->ticket,
                         'nome'                  => $this->dados->nome,
@@ -74,6 +75,5 @@ class NovaSindicalizacaoEmail extends Mailable
                         'EndInstIII'            => $this->dados->EndInstIII,
                         'TelInstIII'            => $this->dados->TelInstIII,
                     ]);
-                    //->cc('webmaster@sinprosp.org.br');
     }
 }

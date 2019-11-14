@@ -135,6 +135,9 @@
 
 @push('boletim-script')
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#num_cpf').mask('000.000.000-00', {reverse: true});
+    })
     function TestaCPF(strCPF) {
         var Soma;
         var Resto;

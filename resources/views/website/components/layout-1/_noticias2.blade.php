@@ -49,3 +49,14 @@
         </div>
     @endforeach
 </div>
+
+@push('noticias')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#icon-popover4').popover();
+        $('#icon-popover5').popover();
+        $('#icon-popover6').popover();
+        $('#icon-popover7').popover();
+    })
+</script>
+@endpush

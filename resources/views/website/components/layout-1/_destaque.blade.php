@@ -76,3 +76,13 @@
         </div>
     </div>
 </div>
+
+@push('noticias')
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#icon-popover1').popover();
+        $('#icon-popover2').popover();
+        $('#icon-popover3').popover();
+    })
+</script>
+@endpush

@@ -97,6 +97,13 @@ Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoControlle
 Route::name('curriculo.busca')->post('curriculo/busca', 'Website\CurriculoController@busca');
 
 /**
+ * rota calculo salario
+ */
+Route::name('salario.index')->get('/salario', function () {
+    return view('website.salario.index');
+ });
+
+/**
  * páginas principais
  *
  * rota que verifica a pagina e em caso de erro configura pagina personalizada de erro

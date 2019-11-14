@@ -36,6 +36,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/formValidation.min.css">
+
+    {{-- Bootstrap-submenu --}}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-submenu.min.css') }}">
+    <script src="{{ asset('js/bootstrap-submenu.min.js') }}" defer></script>
 </head>
 
 <body>
@@ -72,20 +76,6 @@
 
     <script>
         $(document).ready(function () {
-            $('#num_cpf').mask('000.000.000-00', {reverse: true});
-            $('#cpf').mask('000.000.000-00', {reverse: true});
-            $('#cep').mask('00000-000');
-            $('#celular').mask('(00) 00000-0000');
-            $('#telefoneresidencial').mask('(00) 0000-0000');
-            $('#icon-popover1').popover();
-            $('#icon-popover2').popover();
-            $('#icon-popover3').popover();
-            $('#icon-popover4').popover();
-            $('#icon-popover5').popover();
-            $('#icon-popover6').popover();
-            $('#icon-popover7').popover();
-            $('#icon-popover8').popover();
-            $('#icon-popover9').popover();
 
             // preload cursos
             $(window).on('load', function () {
@@ -100,6 +90,9 @@
                     $('[data-toggle="popover"]').popover('hide');
                 }
             });
+
+            //bootstrap-submenu
+            $('[data-submenu]').submenupicker();
         })
     </script>
 
@@ -114,6 +107,8 @@
     @stack('create-curriculo-script')
     @stack('update-curriculo-script')
     @stack('busca-curriculo-script')
+    @stack('salario_calcular')
+    @stack('noticias')
 </body>
 
 </html>
