@@ -76,7 +76,6 @@
 
     <script>
         $(document).ready(function () {
-
             // preload cursos
             $(window).on('load', function () {
                 $('#preloader .inner').fadeOut();
@@ -110,5 +109,4 @@
     @stack('salario_calcular')
     @stack('noticias')
 </body>
-
 </html>

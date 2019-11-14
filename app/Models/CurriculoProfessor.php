@@ -5,6 +5,7 @@ namespace Website\Models;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Website\Http\Controllers\Website\CurriculoController;
 
 /**
  * @method static create(array $array)
@@ -95,5 +96,41 @@ class CurriculoProfessor extends Authenticatable
     public function getDtCadastroUTCFormattedAttribute()
     {
         return Carbon::parse($this->dt_data_nasc)->format('Y-m-d');
+    }
+
+    /**
+     * mutators formata ds_sexo
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDsSexoFormattedAttribute()
+    {
+        return $this->ds_sexo === 'M' ? 'Masculino' : 'Feminino';
+    }
+
+    /**
+     * mutators estado civil
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDsEstadoCivilFormattedAttribute()
+    {
+        $data = CurriculoController::estadoCivil();
+
+        foreach ($data as $key => $item) {
+            if($this->int_estado_civil == $key){
+                return $item;
+            }
+        }
+    }
+
+    /**
+     * mutators formata int_empregado
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDsEmpregadoFormattedAttribute()
+    {
+        return $this->int_empregado ? 'Sim' : 'Não';
     }
 }

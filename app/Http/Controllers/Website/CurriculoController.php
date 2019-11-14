@@ -32,7 +32,8 @@ class CurriculoController extends Controller
      */
     public function show($id)
     {
-        return view('website.curriculo.show', compact('id'));
+        $model = CurriculoProfessor::findOrFail($id);
+        return view('website.curriculo.show', compact('model'));
     }
 
     /**
@@ -143,70 +144,28 @@ class CurriculoController extends Controller
 
     public function busca(CurriculoBuscaRequest $request)
     {
-        $data = $request->only(array_keys($request->all()));
+        $uf = $request->uf;
+        $atuacao = $request->int_nivel_atuacao;
+        $formacao = $request->int_formacao;
+        $disciplina = $request->int_disciplina;
 
-        $uf = $data['uf'];
-        $atuacao = $data['int_nivel_atuacao'];
-        $formacao = $data['int_formacao'];
-        $disciplina = $data['int_disciplina'];
-
-//        if($uf != 0){
-//            $collection = DB::table('tb_sinpro_curriculos_professores')
-//                ->where('int_ativo', 1)
-//                ->where('int_nivel_atuacao', $atuacao)
-//                ->where('int_formacao', $formacao)
-//                ->where('int_disciplina', $disciplina)
-//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-//                ->get();
-//        }
-//
-//        if($atuacao != 0){
-//            $collection = DB::table('tb_sinpro_curriculos_professores')
-//                ->where('int_ativo', 1)
-//                ->where('ds_estado', $uf)
-//                ->where('int_formacao', $formacao)
-//                ->where('int_disciplina', $disciplina)
-//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-//                ->get();
-//        }
-//
-//        if($formacao != 0){
-//            $collection = DB::table('tb_sinpro_curriculos_professores')
-//                ->where('int_ativo', 1)
-//                ->where('ds_estado', $uf)
-//                ->where('int_nivel_atuacao', $atuacao)
-//                ->where('int_disciplina', $disciplina)
-//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-//                ->get();
-//        }
-//
-//        if($disciplina != 0){
-//            $collection = DB::table('tb_sinpro_curriculos_professores')
-//                ->where('int_ativo', 1)
-//                ->where('ds_estado', $uf)
-//                ->where('int_nivel_atuacao', $atuacao)
-//                ->where('int_formacao', $formacao)
-//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-//                ->get();
-//        }
-//
-//        if($uf == 0 && $atuacao == 0 && $formacao == 0 && $disciplina == 0){
-//            $collection = DB::table('tb_sinpro_curriculos_professores')
-//                ->where('int_ativo', 1)
-//                ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-//                ->get();
-//        }
-
-        $collection = DB::table('tb_sinpro_curriculos_professores')
-            ->where('int_ativo', 1)
-            ->where('ds_estado', $uf)
-            ->where('int_nivel_atuacao', $atuacao)
-            ->where('int_formacao', $formacao)
-            ->where('int_disciplina', $disciplina)
+        $collection = CurriculoProfessor::where('int_ativo', 1)
+            ->when($uf, function ($q, $uf) {
+                return $q->where('ds_estado', $uf);
+            })
+            ->when($atuacao, function ($q, $atuacao) {
+                return $q->where('int_nivel_atuacao', $atuacao);
+            })
+            ->when($formacao, function ($q, $formacao) {
+                return $q->where('int_formacao', $formacao);
+            })
+            ->when($disciplina, function ($q, $disciplina) {
+                return $q->where('int_disciplina', $disciplina);
+            })
             ->whereRaw('DATEDIFF(MONTH, dt_data_ult_atualizacao, GETDATE()) < 18')
-            ->get();
+            ->get(['id_curriculo', 'ds_nome', 'ds_cidade', 'ds_estado']);
 
-        dd($collection);
+        return response()->json(['data' => $collection]);
     }
 
     /**
