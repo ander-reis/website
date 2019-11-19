@@ -2,15 +2,8 @@
 
 namespace Website\Http\Controllers\Auth;
 
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
 use Website\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Website\Models\CurriculoProfessor;
 
 class ResetPasswordController extends Controller
 {
@@ -42,5 +35,14 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:6',
+        ];
     }
 }

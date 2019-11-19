@@ -1,12 +1,14 @@
 {
-  "ds_cpf": "CPF",
-  "Password": "Senha",
-  "Confirm Password": "Confirmar Senha",
-  "Remember Me": "Lembre-se",
-  "Forgot Your Password?": "Esqueceu a Senha?",
-  "Enter": "Entrar",
-  "Register": "Cadastrar",
-  "Name": "Nome",
-  "E-Mail Address": "E-mail",
-  "Logout": "Sair"
+    "ds_cpf": "CPF",
+    "Password": "Senha",
+    "Confirm Password": "Confirmar Senha",
+    "Remember Me": "Lembre-se",
+    "Forgot Your Password?": "Esqueceu a Senha?",
+    "Enter": "Entrar",
+    "Register": "Cadastrar",
+    "Name": "Nome",
+    "E-Mail Address": "E-mail",
+    "Logout": "Sair",
+    "Reset Password": "Alterar Senha",
+    "Send Password Reset Link": "Enviar Link"
 }
