@@ -28,20 +28,6 @@ $(document).ready(function () {
         }
     }
 });
-    /**
-     * search-bar
-     */
-    /**
-     * search-bar
-     */
-    $(".search-toggle").on("click", function (e) {
-        e.preventDefault(),
-            $(".search-bar").toggleClass("active");
-    });
-    $('#button-find-search').on('click', function (e) {
-        e.preventDefault(),
-            $(".search-bar").removeClass("active");
-    });
 
     /**
      * Scroll to Top

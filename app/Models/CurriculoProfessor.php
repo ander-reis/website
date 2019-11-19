@@ -101,7 +101,7 @@ class CurriculoProfessor extends Authenticatable
     /**
      * mutators formata ds_sexo
      *
-     * @return \Carbon\Carbon
+     * @return string
      */
     public function getDsSexoFormattedAttribute()
     {
@@ -111,7 +111,7 @@ class CurriculoProfessor extends Authenticatable
     /**
      * mutators estado civil
      *
-     * @return \Carbon\Carbon
+     * @return mixed
      */
     public function getDsEstadoCivilFormattedAttribute()
     {
@@ -127,10 +127,69 @@ class CurriculoProfessor extends Authenticatable
     /**
      * mutators formata int_empregado
      *
-     * @return \Carbon\Carbon
+     * @return string
      */
     public function getDsEmpregadoFormattedAttribute()
     {
         return $this->int_empregado ? 'Sim' : 'Não';
+    }
+
+    /**
+     * mutators formata int_disp_cidade
+     *
+     * @return string
+     */
+    public function getDsDispCidadeFormattedAttribute()
+    {
+        return $this->int_disp_cidade ? 'Sim' : 'Não';
+    }
+
+    /**
+     * mutators formata int_disp_horario
+     *
+     * @return \Carbon\Carbon
+     */
+    public function getDsDispHorarioFormattedAttribute()
+    {
+        $collection = collect([0 => 'Integral', 1 => 'Manhã', 2 => 'Tarde', 3 => 'Noite']);
+        $key = $collection->filter(function($value, $key){
+            if($this->int_disp_horario == $key){
+                return $value;
+            }
+        });
+        return $key->first();
+    }
+
+    /**
+     * mutators formata int_formacao
+     *
+     * @return mixed
+     */
+    public function getDsFormacaoFormattedAttribute()
+    {
+        $model = CurriculoFormacao::where('id_formacao', $this->int_formacao)->first('ds_formacao');
+        return $model->ds_formacao;
+    }
+
+    /**
+     * mutators formata int_disciplina
+     *
+     * @return mixed
+     */
+    public function getDsDisciplinaFormattedAttribute()
+    {
+        $model = CurriculoDisciplina::where('id_disciplina', $this->int_disciplina)->first('ds_disciplina');
+        return $model->ds_disciplina;
+    }
+
+    /**
+     * mutators formata int_atuacao
+     *
+     * @return mixed
+     */
+    public function getDsAtuacaoFormattedAttribute()
+    {
+        $model = CurriculoAtuacao::where('id_nivel_atuacao', $this->int_nivel_atuacao)->first('ds_nivel_atuacao');
+        return $model->ds_nivel_atuacao;
     }
 }

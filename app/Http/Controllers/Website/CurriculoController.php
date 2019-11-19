@@ -33,7 +33,7 @@ class CurriculoController extends Controller
     public function show($id)
     {
         $model = CurriculoProfessor::findOrFail($id);
-        return view('website.curriculo.show', compact('model'));
+        return view('website.curriculo._body-modal', compact('model'));
     }
 
     /**

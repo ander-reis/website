@@ -69,11 +69,27 @@
                 <span id="curriculo_none"></span>
             </div>
             <div class="col-12">
-                <div id="qtd_curriculo" class="alert alert-info" style="display: none"></div>
+                <div id="qtd_curriculo" class="alert alert-dark" style="display: none"></div>
                 <div id="curriculo"></div>
             </div>
         </div>
-        @component('website.components.layout-1._column_right')@endcomponent
+
+    @component('website.components.layout-1._column_right')@endcomponent
+
+    <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Curriculo"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        @component('website.curriculo._body-modal')@endcomponent
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     @push('busca-curriculo-script')
@@ -103,12 +119,12 @@
                             $('#preloader-circulo').show();
                         },
                         success: function (data) {
-                            console.log(data);
+                            // console.log(data.data);
                             let curriculos = data.data;
                             let data_curriculo = "";
                             let text = "";
 
-                            if(curriculos.length <= 1){
+                            if (curriculos.length <= 1) {
                                 text = `Foi encotrado ${curriculos.length} profissional.`
                             } else {
                                 text = `Foram encotrados ${curriculos.length} profissionais.`
@@ -123,7 +139,9 @@
                             for (let i in curriculos) {
                                 data_curriculo = `
                                 <div class="mb-4">
-                                <a href="/curriculo/${curriculos[i].id_curriculo}" class="link-active">${curriculos[i].ds_nome}</a>
+                                <a href="#" class="link-active" data-url="/curriculo/${curriculos[i].id_curriculo}" data-target="#modal">
+                                     ${curriculos[i].ds_nome}
+                                </a>
                                 <div>${curriculos[i].ds_cidade} - ${curriculos[i].ds_estado}</div></div>`;
                                 $('#curriculo').append(data_curriculo);
                             }
@@ -133,6 +151,25 @@
                             });
                         }
                     });
+                });
+
+                //modal get
+                $(document).on('click', '.link-active', function (e) {
+                    e.preventDefault();
+                    let url = $(this).data('url');
+                    $('.modal-body').html('');
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'html',
+                        success: (data) => {
+                            $('.modal-body').html(data);
+                            $('#modal').modal('show');
+                        },
+                        error: () => {
+                            $('#modal').hide();
+                        }
+                    })
                 });
             });
         </script>
