@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Website\Http\Controllers\Website\CurriculoController;
+use Website\Notifications\ResetPassword;
 
 /**
  * @method static create(array $array)
@@ -79,13 +80,13 @@ class CurriculoProfessor extends Authenticatable
     ];
 
     /**
-     * configura email na tabela password resets
+     * personalizacao e-mail password reset
      *
-     * @return mixed|string
+     * @param string $token
      */
-    public function getEmailForPasswordReset()
+    public function sendPasswordResetNotification($token)
     {
-        return $this->email;
+        $this->notify(new ResetPassword($token));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace Website\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CurriculoUpdateRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class CurriculoUpdateRequest extends FormRequest
     public function rules()
     {
         $this->sanitize();
-
+//        dd($this->user());
         return [
             'ds_nome' => ['required', 'string', 'max:50'],
             'ds_cpf' => ['required', 'cpf', 'string', 'max:14'],
@@ -48,7 +49,7 @@ class CurriculoUpdateRequest extends FormRequest
             'ds_objetivo' => ['required', 'string'],
             'ds_qualificacao' => ['required', 'string'],
             'ds_experiencia' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', 'max:255', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'confirmed', Rule::unique('tb_sinpro_curriculos_professores')->ignore($this->user('web')->id_curriculo, 'id_curriculo')],
         ];
     }
 
