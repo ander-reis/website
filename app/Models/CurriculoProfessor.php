@@ -84,10 +84,10 @@ class CurriculoProfessor extends Authenticatable implements MustVerifyEmail
     /**
      * personalizacao e-mail verify notification
      */
-//    public function sendEmailVerificationNotification()
-//    {
-//        $this->notify(new EmailVerification());
-//    }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new EmailVerification());
+    }
 
     /**
      * personalizacao e-mail password reset
