@@ -82,24 +82,6 @@ class CurriculoProfessor extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * personalizacao e-mail verify notification
-     */
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new EmailVerification());
-    }
-
-    /**
-     * personalizacao e-mail password reset
-     *
-     * @param string $token
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPassword($token));
-    }
-
-    /**
      * mutators formata data para o form de edição -> 2000-12-30
      *
      * @return \Carbon\Carbon
