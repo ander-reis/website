@@ -3,15 +3,17 @@
 namespace Website\Models;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Website\Http\Controllers\Website\CurriculoController;
+use Website\Notifications\EmailVerification;
 use Website\Notifications\ResetPassword;
 
 /**
  * @method static create(array $array)
  */
-class CurriculoProfessor extends Authenticatable
+class CurriculoProfessor extends Authenticatable implements MustVerifyEmail
 {
 
     use Notifiable;
@@ -78,6 +80,14 @@ class CurriculoProfessor extends Authenticatable
         'dt_data_ult_atualizacao',
         'password',
     ];
+
+    /**
+     * personalizacao e-mail verify notification
+     */
+//    public function sendEmailVerificationNotification()
+//    {
+//        $this->notify(new EmailVerification());
+//    }
 
     /**
      * personalizacao e-mail password reset

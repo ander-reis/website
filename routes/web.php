@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
 
 /**
  * Auth Routes(s)
@@ -89,7 +90,7 @@ Route::name('cursos.list-select')->get('/cursos/selecionar', 'Website\CursosCont
  * curriculo
  */
 Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
-Route::group(['middleware' => 'auth', 'namespace' => 'Website\\'], function(){
+Route::group(['middleware' => ['auth', 'verified'], 'namespace' => 'Website\\'], function(){
     Route::name('curriculo.edit')->get('curriculo/edit', 'CurriculoController@editar');
     Route::name('curriculo.update')->put('curriculo/update/{id}', 'CurriculoController@update');
 });

@@ -32,7 +32,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/curriculo';
+    protected $redirectTo = '/curriculo/edit';
 
     /**
      * Create a new controller instance.
@@ -130,6 +130,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'ds_pass' => '',
         ]);
+
+        $created->sendEmailVerificationNotification();
 
         toastr()->success('Cadastro criado com sucesso!');
 
