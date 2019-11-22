@@ -129,6 +129,7 @@ class CurriculoController extends Controller
             /**
              * update
              */
+
             $curriculo->where('id_curriculo', $id)->update($data);
 
             toastr()->success('Cadastro alterado com sucesso!');
@@ -195,6 +196,7 @@ class CurriculoController extends Controller
     {
         return [
             'Seleciona um Estado',
+            'SP',
             'AC',
             'AL',
             'AP',
@@ -219,7 +221,6 @@ class CurriculoController extends Controller
             'RO',
             'RR',
             'SC',
-            'SP',
             'SE',
             'TO'
         ];
@@ -234,6 +235,7 @@ class CurriculoController extends Controller
     {
         return [
             "0" => "Todos",
+            "SP" => "São Paulo",
             "AC" => "Acre",
             "AL" => "Alagoas",
             "AP" => "Amapá",
@@ -258,7 +260,6 @@ class CurriculoController extends Controller
             "RO" => "Rondônia",
             "RR" => "Roraima",
             "SC" => "Santa Catarina",
-            "SP" => "São Paulo",
             "SE" => "Sergipe",
             "TO" => "Tocantins"
         ];

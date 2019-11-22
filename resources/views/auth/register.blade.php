@@ -24,7 +24,7 @@
             $('#ds_cpf').mask('000.000.000-00', {reverse: true});
             $('#ds_fone').mask('(00) 0000-0000');
             $('#ds_celular').mask('(00) 00000-0000');
-            $('#ds_salario').mask("#.##0,00", {reverse: true});
+           // $('#ds_salario').mask("#.##0,00", {reverse: true});
 
             document.addEventListener('DOMContentLoaded', function (e) {
                 const curriculoForm = document.getElementById('curriculoForm');
