@@ -4,7 +4,6 @@
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-6">
-            <p><strong>ID:&nbsp;</strong>{{ $model->id_curriculo }}</p>
             <p><strong>Estado Civil:&nbsp;</strong>{{ $model->ds_estado_civil_formatted }}</p>
             <p><strong>Cidade:&nbsp;</strong>{{ $model->ds_cidade }}</p>
             <p><strong>E-mail:&nbsp;</strong>{{ $model->email }}</p>
