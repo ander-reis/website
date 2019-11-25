@@ -41,11 +41,11 @@
                     <div class="row p-2">
                         <div class="col-12 col-lg-6 mb-2 fl {{ $errors->has('num_matricula') ?'has-error' : '' }}">
                             {{ Form::text('num_matricula', null, ['id' => 'num_matricula','class' => 'form-control', 'placeholder' => 'Matrícula', 'disabled']) }}
-                            @include('website.components.form-components._help_block',['field' => 'num_matricula'])
+                            @include('website.form-components._help_block',['field' => 'num_matricula'])
                         </div>
                         <div class="col-12 col-lg-6 mb-2 fl {{ $errors->has('num_cpf') ?'has-error' : '' }}">
                             {{ Form::text('num_cpf', null, ['id' => 'num_cpf', 'class' => 'form-control', 'placeholder' => 'CPF', 'disabled']) }}
-                            @include('website.components.form-components._help_block',['field' => 'num_cpf'])
+                            @include('website.form-components._help_block',['field' => 'num_cpf'])
                         </div>
                     </div>
                     <div class="row p-2 ">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-12 mb-2 fl {{ $errors->has('ds_email') ?'has-error' : '' }}">
                             {{ Form::email('ds_email', null, ['id' => 'ds_email', 'class' => 'form-control', 'placeholder' => 'E-mail', 'disabled']) }}
-                            @include('website.components.form-components._help_block',['field' => 'ds_email'])
+                            @include('website.form-components._help_block',['field' => 'ds_email'])
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
                     <div class="row p-2 align-items-center">
                         <div class="col-11 mb-2 fl {{ $errors->has('ds_email_excluir') ?'has-error' : '' }}">
                             {{ Form::email('ds_email_excluir', null, ['id' => 'ds_email_excluir', 'class' => 'form-control', 'placeholder' => 'E-mail para excluir']) }}
-                            @include('website.components.form-components._help_block',['field' => 'ds_email_excluir'])
+                            @include('website.form-components._help_block',['field' => 'ds_email_excluir'])
                         </div>
                         <div class="col-1 mb-2 text-center">
                             {{ Form::submit('Ok',['class' => 'btn btn-danger']) }}
