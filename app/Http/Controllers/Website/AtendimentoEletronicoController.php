@@ -62,6 +62,7 @@ class AtendimentoEletronicoController extends Controller
     public function rating(AtendimentoEletronicoRatingRequest $request)
     {
         try {
+
             $rating = AtendimentoEletronico::find($request['chamado']);
             $rating->rating_a = $request['rating1'];
             $rating->rating_b = $request['rating2'];
@@ -73,6 +74,7 @@ class AtendimentoEletronicoController extends Controller
             toastr()->success('Avaliação cadastrada com sucesso!');
             return redirect()->route('atendimento-eletronico.index');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             toastr()->error('Não foi possível cadastrar a avaliação!');
             return redirect()->back();
         }

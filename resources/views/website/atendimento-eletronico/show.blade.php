@@ -33,7 +33,7 @@
                         {{ Form::label('txtEmail', 'Confirme seu e-mail:', ['class' => 'control-label']) }}
                         {{ Form::email('txtEmail', null, ['class' => 'form-control', 'maxlength' => 80, 'placeholder' => 'Informe o e-mail utilizado neste atendimento']) }}
                         @endcomponent
-                        
+
                         <p>1) De modo geral, como você avalia a qualidade deste atendimento?</p> 
 
                         <div class="rating">
@@ -50,7 +50,7 @@
                             <input type="radio" id="rating14" name="rating1" value="4" class="form-control" {{ (old('rating1') == '4') ? 'checked' : ''}}>
 
                             <label for="rating15" class="control-label"><i class="fa"></i></label>
-                            <input type="radio" id="rating15" name="rating1" value="5" class="form-control" {{ (old('rating1') == '5') ? 'checked' : ''}}>
+                            <input type="radio" id="rating15" name="rating1" value="5" class="form-control" {{ (old('rating1') == '5' || old('rating1') == '') ? 'checked' : ''}}>
                         </div>
 
                         <p>2) Nossos atendentes conseguiram captar adequadamente suas dúvidas e preocupações?</p>
@@ -69,7 +69,7 @@
                             <input type="radio" id="rating24" name="rating2" value="4" class="form-control" {{ (old('rating2') == '4') ? 'checked' : ''}}>
 
                             <label for="rating25" class="control-label"><i class="fa"></i></label>
-                            <input type="radio" id="rating25" name="rating2" value="5" class="form-control" {{ (old('rating2') == '5') ? 'checked' : ''}}>
+                            <input type="radio" id="rating25" name="rating2" value="5" class="form-control" {{ (old('rating2') == '5' || old('rating2') == '') ? 'checked' : ''}}>
                         </div>
 
                         <p>3) Quanto tempo foi necessário esperar para que suas dúvidas e problemas fossem resolvidos?</p>
@@ -88,7 +88,7 @@
                             <input type="radio" id="rating34" name="rating3" value="4" class="form-control" {{ (old('rating3') == '4') ? 'checked' : ''}}>
 
                             <label for="rating35" class="control-label"><i class="fa"></i></label>
-                            <input type="radio" id="rating35" name="rating3" value="5" class="form-control" {{ (old('rating3') == '5') ? 'checked' : ''}}>
+                            <input type="radio" id="rating35" name="rating3" value="5" class="form-control" {{ (old('rating3') == '5' || old('rating3') == '') ? 'checked' : ''}}>
                         </div>
 
                         <div>
