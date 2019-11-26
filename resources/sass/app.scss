@@ -288,6 +288,17 @@ ul.timeline > li:before {
     height: 100%;
 }
 
+/******
+***** RATING
+******/
+.rating input[type="radio"]{
+	display:none;
+}.rating label i.fa:before{
+	content: '\f005';
+	color: #fc0;
+}.rating input[type="radio"]:checked ~ label i.fa:before{
+	color: #ccc;
+}
 
 /******
 *
