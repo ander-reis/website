@@ -1,23 +1,19 @@
 <section class="mb-2">
     <nav class="navbar navbar-expand-lg navbar-light pl-0">
-
         <button class="navbar-toggler  text-center" type="button" data-toggle="collapse" data-target="#navbarSite"
             aria-controls="navbarSite" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <a class="navbar-brand pl-1 mr-0" href="/">
             <img src="{{asset('images/logo_fonte_preta2.png')}}" alt="SinproSP" class="d-lg-none">
         </a>
-
         <div class="collapse navbar-collapse" id="navbarSite">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown pr-45">
                     <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-                        <span class="font-weight-bold menu">O SinproSP </span>
+                        <span class="font-weight-bold menu">O SinproSP</span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
-
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'quem-somos'])}}">
                             Quem Somos
@@ -34,25 +30,21 @@
                         </a>
                     </div>
                 </li>
-
                 <li class="nav-item pr-45">
                     <a class="nav-link" href="{{route('noticias.index')}}">
                         <span class="font-weight-bold menu">Notícias</span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
                 </li>
-
                 <li class="nav-item dropdown pr-45">
                     <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                         <span class="font-weight-bold menu">Direitos </span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
-
                     <div class="dropdown-menu">
                         <div class="dropdown dropright dropdown-submenu">
                             <button class="dropdown-item dropdown-toggle" type="button"
                                 data-toggle="dropdown">Convenções e Acordos</button>
-
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
                                     href="{{ route('convencao.index', ['convencao' => 2]) }}">Educação Básica</a>
@@ -79,11 +71,9 @@
                         </a>
                         {{-- <a class="dropdown-item"
                                     href="{{ route('salario.index')}}">Como calcular o seu salário</a> --}}
-
                         <div class="dropdown dropright dropdown-submenu">
                             <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Salários
                                 e reajustes</button>
-
                             <div class="dropdown-menu">
                                 <a class="dropdown-item"
                                     href="{{route('paginas-principais', ['url-pagina' => 'seriehistorica'])}}">Reajuste
@@ -98,13 +88,11 @@
                         </div>
                     </div>
                 </li>
-
                 <li class="nav-item dropdown pr-45">
                     <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                         <span class="font-weight-bold menu">Serviços</span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
-
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="https://www.youtube.com/user/SINPROSP" target="_blank">
                             Acervo
@@ -163,7 +151,6 @@
                         </a>
                     </div>
                 </li>
-
                 <li class="nav-item pr-45">
                     <a class="nav-item nav-link font-weight-bold" href="{{route('atendimento-eletronico.index')}}"
                         style="color:rgb(51, 51, 51)">
@@ -171,7 +158,6 @@
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
                 </li>
-
                 <li class="nav-item pr-45">
                     <a class="nav-item nav-link font-weight-bold" href="{{route('busca.executa')}}"
                         style="color:rgb(51, 51, 51)">
