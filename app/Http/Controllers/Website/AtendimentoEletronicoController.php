@@ -6,6 +6,7 @@ use Website\Mail\AtendimentoEletronicoEmail;
 use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\AtendimentoEletronicoRequest;
+use Website\Http\Requests\AtendimentoEletronicoRatingRequest;
 use Website\Models\AtendimentoEletronico;
 use Website\Models\AtendimentoDptos;
 
@@ -48,6 +49,31 @@ class AtendimentoEletronicoController extends Controller
             return redirect()->route('atendimento-eletronico.index');
         } catch (\Exception $e) {
             toastr()->error('Não foi possível enviar a mensagem!');
+            return redirect()->back();
+        }
+    }
+
+     /**
+     * Salva avaliação do atendimento
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function rating(AtendimentoEletronicoRatingRequest $request)
+    {
+        try {
+            $rating = AtendimentoEletronico::find($request['chamado']);
+            $rating->rating_a = $request['rating1'];
+            $rating->rating_b = $request['rating2'];
+            $rating->rating_c = $request['rating3'];
+            $rating->dt_rating = date('Y/m/d H:i:s');
+            $rating->ip_rating = $request->ip();
+            $rating->save();
+
+            toastr()->success('Avaliação cadastrada com sucesso!');
+            return redirect()->route('atendimento-eletronico.index');
+        } catch (\Exception $e) {
+            toastr()->error('Não foi possível cadastrar a avaliação!');
             return redirect()->back();
         }
     }

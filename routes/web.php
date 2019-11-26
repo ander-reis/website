@@ -48,6 +48,7 @@ Route::post('/nova-sindicalizacao','Website\NovaSindicalizacaoController@store')
  */
 Route::get('/atendimento-eletronico','Website\AtendimentoEletronicoController@index')->name('atendimento-eletronico.index');
 Route::post('/atendimento-eletronico','Website\AtendimentoEletronicoController@store')->name('atendimento-eletronico.store');
+Route::post('/atendimento-eletronico/rating','Website\AtendimentoEletronicoController@rating')->name('atendimento-eletronico.rating');
 Route::get('/atendimento-eletronico/{id}','Website\AtendimentoEletronicoController@show')->name('atendimento-eletronico.show');
 
 /**
