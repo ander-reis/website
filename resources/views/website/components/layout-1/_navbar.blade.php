@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSite">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown pr-45">
-                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" style="cursor: pointer;">
                         <span class="font-weight-bold menu">O SinproSP </span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="nav-item dropdown pr-45">
-                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" style="cursor: pointer;">
                         <span class="font-weight-bold menu">Direitos </span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
@@ -100,7 +100,7 @@
                 </li>
 
                 <li class="nav-item dropdown pr-45">
-                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                    <a class="nav-link" tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" style="cursor: pointer;">
                         <span class="font-weight-bold menu">Serviços</span>
                         <i class="fa fa-angle-double-right font-weight-bold drop_icon" aria-hidden="true"></i>
                     </a>
@@ -118,7 +118,7 @@
                         <a class="dropdown-item" href="{{route('paginas-principais', ['url-pagina' => 'presencial'])}}">
                             Atendimento Presencial
                         </a>
-                        <a class="dropdown-item" href="http://www1.sinprosp.org.br/curriculo.asp" target="_blank">
+                        <a class="dropdown-item" href="{{ route('curriculo.index') }}">
                             Banco de currículos
                         </a>
                         <a class="dropdown-item" href="{{route('boletim.index')}}">

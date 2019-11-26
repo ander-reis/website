@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'custom-passwords',
     ],
 
     /*
@@ -38,7 +38,8 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+//            'provider' => 'users',
+            'provider' => 'custom-user',
         ],
 
         'api' => [
@@ -69,10 +70,16 @@ return [
             'driver' => 'eloquent',
             'model' => Website\Models\User::class,
         ],
-         'users' => [
-             'driver' => 'database',
-             'table' => 'users',
-         ],
+
+//         'users' => [
+//             'driver' => 'database',
+//             'table' => 'users',
+//         ],
+
+        'custom-user' => [
+            'driver' => 'eloquent',
+            'model' => Website\Models\CurriculoProfessor::class,
+        ],
     ],
 
     /*
@@ -96,6 +103,10 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+        'custom-passwords' => [
+            'provider' => 'custom-user',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ]
     ],
-
 ];

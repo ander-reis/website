@@ -90,6 +90,23 @@ Breadcrumbs::register('cursos.show', function ($breadcrumbs) {
     $breadcrumbs->push('Curso');
 });
 
+Breadcrumbs::register('curriculos.index', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos');
+});
+
+Breadcrumbs::register('curriculos.edit', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos', route('curriculo.index'));
+    $breadcrumbs->push('Alterar currículo');
+});
+
+Breadcrumbs::register('curriculos.show', function ($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Currículos', route('curriculo.index'));
+    $breadcrumbs->push('Curriculo');
+});
+
 // exemplo
 //Breadcrumbs::register('ranking-salarios', function ($breadcrumbs) {
 //    $breadcrumbs->parent('home');

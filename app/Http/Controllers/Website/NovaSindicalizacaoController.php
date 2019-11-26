@@ -6,10 +6,7 @@ use Website\Mail\NovaSindicalizacaoEmail;
 use Illuminate\Support\Facades\Mail;
 use Website\Http\Controllers\Controller;
 use Website\Models\NovaSindicalizacao;
-
-use Illuminate\Http\Request;
 use Website\Http\Requests\NovaSindicalizacaoRequest;
-
 use Illuminate\Support\Facades\DB;
 
 class NovaSindicalizacaoController extends Controller

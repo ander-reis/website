@@ -10,6 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['verify' => true]);
+
+/**
+ * Auth Routes(s)
+ */
+Route::name('login')->get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login');
+Route::name('logout')->post('logout', 'Auth\LoginController@logout');
+
+/**
+ * Register Route(s)
+ */
+Route::get('curriculo/create', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('curriculo/create', 'Auth\RegisterController@register');
+
+/**
+ * Password Reset Route(S)
+ */
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 /**
  * rota home
@@ -64,6 +86,17 @@ Route::name('cursos.programacao')->get('/cursos/programacao', 'Website\CursosCon
 Route::name('cursos.show')->get('/cursos/programacao/{id}', 'Website\CursosController@show');
 Route::name('cursos.list')->get('/cursos/listar', 'Website\CursosController@initSelect');
 Route::name('cursos.list-select')->get('/cursos/selecionar', 'Website\CursosController@changeSelect');
+
+/**
+ * curriculo
+ */
+Route::name('curriculo.index')->get('curriculo', 'Website\CurriculoController@index');
+Route::group(['middleware' => ['auth', 'verified'], 'namespace' => 'Website\\'], function(){
+    Route::name('curriculo.edit')->get('curriculo/edit', 'CurriculoController@editar');
+    Route::name('curriculo.update')->put('curriculo/update/{id}', 'CurriculoController@update');
+});
+Route::name('curriculo.show')->get('curriculo/{id}', 'Website\CurriculoController@show');
+Route::name('curriculo.busca')->post('curriculo/busca', 'Website\CurriculoController@busca');
 
 /**
  * rota calculo salario

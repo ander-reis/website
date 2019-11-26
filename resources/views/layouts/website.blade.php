@@ -33,8 +33,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/formValidation.min.css">
 
     {{-- Bootstrap-submenu --}}
@@ -76,7 +74,6 @@
 
     <script>
         $(document).ready(function () {
-
             // preload cursos
             $(window).on('load', function () {
                 $('#preloader .inner').fadeOut();
@@ -103,9 +100,11 @@
     @stack('boletim-script')
     @stack('cursos-script')
     @stack('relacao-escolas-script')
-    @stack('pesquisacep')
+    @stack('pesquisa-cep-script')
+    @stack('create-curriculo-script')
+    @stack('update-curriculo-script')
+    @stack('busca-curriculo-script')
     @stack('salario_calcular')
     @stack('noticias')
 </body>
-
 </html>
