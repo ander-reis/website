@@ -112,6 +112,7 @@ return [
     'uploaded'             => 'Falha no Upload do arquivo :attribute.',
     'url'                  => 'O formato da URL informada para o campo :attribute é inválido.',
     'uuid'                 => 'O campo :attribute deve ser um UUID válido.',
+    'year_invalid'         => 'Data de nascimento inválido',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,6 +129,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+//        'data' => [
+//            'required' => 'teste valor'
+//        ]
     ],
 
     /*

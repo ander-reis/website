@@ -11,5 +11,5 @@ class PaginasPrincipais extends Model
      *
      * @var string
      */
-    protected $table =  'tb_sinpro_paginas_principais';
+    protected $table =  'tb_sinpro_conteudo_paginas_principais';
 }

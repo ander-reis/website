@@ -106,6 +106,11 @@ Route::name('salario.index')->get('/salario', function () {
  });
 
 /**
+ * rota processos
+ */
+Route::resource('processos', 'Website\ProcessosController');
+
+/**
  * páginas principais
  *
  * rota que verifica a pagina e em caso de erro configura pagina personalizada de erro
