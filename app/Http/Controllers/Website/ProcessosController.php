@@ -3,8 +3,6 @@
 namespace Website\Http\Controllers\Website;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\MessageBag;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\ProcessosIndexRequest;
 use Website\Models\FichaProfessor;
@@ -49,7 +47,7 @@ class ProcessosController extends Controller
             })
             ->join('Cadastro_Professores', 'jur_fip_cd_professor', '=', 'Codigo_Professor')
             ->join('tb_jur_ficha_consulta', 'jur_fic_nr_ficha', '=', 'jur_fip_nr_ficha')
-            ->select(['jur_fic_nr_pasta', 'CPF', 'Data_Aniversario'])
+            ->select(['jur_fic_nr_pasta', 'CPF', 'Data_Aniversario', 'jur_fip_cd_professor'])
             ->get();
 
         if (count($model) === 0) {
@@ -57,9 +55,6 @@ class ProcessosController extends Controller
             Em caso de dúvida, solicitamos que entre em contato com o nosso departamento juríco de segunda a sexta,
             das 8h30 às 18h, através do telefone: (11)5080-5989.");
         }
-
-//        SELECT id_processo, ds_processo FROM tb_sinpro_processos
-//        WHERE nr_pasta IN ('020/2013', '226/2017')
 
         $pastas = $model->map(function($item, $value){
             return $item->jur_fic_nr_pasta;

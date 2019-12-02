@@ -54,9 +54,7 @@ class CadastroCursos extends Model
      */
     public static function getCadastroDocente($id)
     {
-        return DB::connection('sqlsrv-sinpro')
-            ->table('tb_cur_cadastro_cursos')
-            ->distinct()
+        return CadastroCursos::distinct()
             ->join('tb_cur_pagamento_docente', 'cur_cur_cd_curso', 'cur_pag_cd_curso')
             ->join('tb_cur_cadastro_docente', 'cur_pag_cd_docente', 'cur_doc_cd_docente')
             ->where('cur_cur_cd_curso', $id)
@@ -76,17 +74,15 @@ class CadastroCursos extends Model
         $carbon = \Carbon\Carbon::parse(now());
         $data = $carbon->format('Y/m/d');
 
-        return DB::connection('sqlsrv-sinpro')
-            ->table(DB::raw('tb_cur_cadastro_cursos TB1'))
-            ->selectRaw('TB1.cur_cur_cd_curso, TB1.cur_cur_ds_tema, TB1.cur_cur_hr_inicio, TB1.cur_cur_hr_final, DATA.DATA')
-            ->join(DB::raw('(SELECT DISTINCT cur_dt_cd_curso, MIN(cur_dt_dt_data) DATA FROM tb_cur_data_cursos GROUP BY cur_dt_cd_curso) DATA'), 'cur_dt_cd_curso', '=', 'TB1.cur_cur_cd_curso')
-            ->whereRaw('(TB1.cur_cur_nr_vaga >= (SELECT COUNT(1) FROM tb_cur_agendamento TB2 WHERE TB2.cur_agt_fl_situacao <> 1 AND TB2.cur_agt_cd_curso = TB1.cur_cur_cd_curso))')
+        return CadastroCursos::selectRaw('tb_cur_cadastro_cursos.cur_cur_cd_curso, tb_cur_cadastro_cursos.cur_cur_ds_tema, tb_cur_cadastro_cursos.cur_cur_hr_inicio, tb_cur_cadastro_cursos.cur_cur_hr_final, DATA.DATA')
+            ->join(DB::raw('(SELECT DISTINCT cur_dt_cd_curso, MIN(cur_dt_dt_data) DATA FROM tb_cur_data_cursos GROUP BY cur_dt_cd_curso) DATA'), 'cur_dt_cd_curso', '=', 'tb_cur_cadastro_cursos.cur_cur_cd_curso')
+            ->whereRaw('(tb_cur_cadastro_cursos.cur_cur_nr_vaga >= (SELECT COUNT(1) FROM tb_cur_agendamento TB2 WHERE TB2.cur_agt_fl_situacao <> 1 AND TB2.cur_agt_cd_curso = tb_cur_cadastro_cursos.cur_cur_cd_curso))')
             ->where('cur_cur_fl_situacao', 0)
             ->whereRaw(DB::raw("(DATA.DATA >= '{$data}')"))
             ->whereRaw(DB::raw("(MONTH(DATA.DATA) = {$mes})"))
             ->whereRaw(DB::raw("(YEAR(DATA.DATA) = {$ano})"))
-            ->groupBy(['TB1.cur_cur_cd_curso', 'TB1.cur_cur_ds_tema', 'TB1.cur_cur_hr_inicio', 'TB1.cur_cur_hr_final', 'DATA.DATA'])
+            ->groupBy(['tb_cur_cadastro_cursos.cur_cur_cd_curso', 'tb_cur_cadastro_cursos.cur_cur_ds_tema', 'tb_cur_cadastro_cursos.cur_cur_hr_inicio', 'tb_cur_cadastro_cursos.cur_cur_hr_final', 'DATA.DATA'])
             ->orderByRaw('DATA.DATA')
-            ->get(['TB1.cur_cur_cd_curso', 'TB1.cur_cur_ds_tema', 'TB1.cur_cur_hr_inicio', 'TB1.cur_cur_hr_final', 'DATA.DATA']);
+            ->get(['tb_cur_cadastro_cursos.cur_cur_cd_curso', 'tb_cur_cadastro_cursos.cur_cur_ds_tema', 'tb_cur_cadastro_cursos.cur_cur_hr_inicio', 'tb_cur_cadastro_cursos.cur_cur_hr_final', 'DATA.DATA']);
     }
 }

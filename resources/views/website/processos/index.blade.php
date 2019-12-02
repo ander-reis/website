@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{ Form::submit('Entrar', ['class' => 'btn btn-success']) }}
+                        {{ Form::submit('Prosseguir', ['class' => 'btn btn-success']) }}
                         {{ Form::close() }}
                     </div>
                 </div>

@@ -4,7 +4,7 @@ namespace Website\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CadastroProfessores extends Model
+class CadastroBanco extends Model
 {
     /**
      * conexao database
@@ -18,34 +18,36 @@ class CadastroProfessores extends Model
      *
      * @var string
      */
-    protected $table = 'Cadastro_Professores';
+    protected $table = 'Cadastro_Banco';
 
     /**
      * chave primaria
      *
-     * @var null
+     * @var string
      */
-    protected $primaryKey = 'Codigo_Professor';
+    protected $primaryKey = null;
+
+    /**
+     * set autoincrement
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     /**
      * set created_at
      */
-    const CREATED_AT = null;
+    const CREATED_AT = false;
 
     /**
      * set updated_at
      */
-    const UPDATED_AT = null;
+    const UPDATED_AT = false;
 
     /**
-     * set timestamps
+     * datetime
      *
      * @var bool
      */
     public $timestamps = false;
-
-    public function banco()
-    {
-        return $this->hasOne(CadastroBanco::class, 'CodBanco', 'Banco');
-    }
 }

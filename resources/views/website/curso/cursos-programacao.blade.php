@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Programação de Cursos</h1>
+
             <div class="form-group">
                 <label for="mes">Selecione um Mês</label>
                 <select class="form-control" id="mes"></select>
             </div>
-
             <div>
                 <p>
                     Confira o conteúdo de cada curso nos links. A inscrição pode ser feita por telefone (5080-5974 ou
@@ -25,6 +25,7 @@
                     2 dias antes do início do curso.
                 </p>
             </div>
+
             <hr>
             <h5 id="mes-titulo" class="mb-5"></h5>
             @include('website.components.layout-1._preloader')

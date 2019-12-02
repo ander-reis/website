@@ -2,7 +2,6 @@
 
 namespace Website\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class FichaProfessor extends Model
@@ -45,8 +44,55 @@ class FichaProfessor extends Model
      */
     public $timestamps = false;
 
+    public static function fichaProfessor($cpf, $dataAniversario)
+    {
+        return FichaProfessor::where('CPF', $cpf)
+            ->where(function ($q) use ($dataAniversario) {
+                $q->where('Data_Aniversario', $dataAniversario)
+                    ->orWhere('Data_Aniversario', '1900-01-01');
+            })
+            ->join('Cadastro_Professores', 'jur_fip_cd_professor', '=', 'Codigo_Professor')
+            ->join('tb_jur_ficha_consulta', 'jur_fic_nr_ficha', '=', 'jur_fip_nr_ficha')
+            ->select(['jur_fic_nr_pasta', 'CPF', 'Data_Aniversario', 'jur_fip_cd_professor'])
+            ->get();
+    }
+
+    /**
+     * relacao Cadastro_Professores
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function professor()
     {
-        return $this->hasOne(CadastroProfessores::class, 'jur_fip_cd_professor');
+        return $this->hasOne(CadastroProfessores::class, 'Codigo_Professor', 'jur_fip_cd_professor')->select([
+            'Codigo_Professor',
+            'Nome',
+            'Sexo',
+            'CPF',
+            'RG',
+            'Data_Aniversario',
+            'PIS',
+            'Nome_Mae',
+            'CEP',
+            'Endereco',
+            'Numero',
+            'Complemento',
+            'Bairro',
+            'Cidade',
+            'Estado',
+            'Email',
+            'DDD_Telefone_Residencial',
+            'Telefone_Residencial',
+            'DDD_Telefone_Comercial',
+            'Telefone_Comercial',
+            'DDD_Telefone_Celular',
+            'Telefone_Celular',
+            'Banco',
+            'Agencia',
+            'Conta',
+            'Poupanca',
+            'Conjunta',
+
+        ]);
     }
 }
