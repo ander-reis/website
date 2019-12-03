@@ -30,7 +30,7 @@
 
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 mt-4 text-center">
-                    <img class="img-fluid" alt="" src="{{ asset('images/fonoaudiologia/bemestar.jpg') }}">
+                    <!--<img class="img-fluid" alt="" src="{{ asset('images/fonoaudiologia/bemestar.jpg') }}"> -->
 
                     <a href="http://www.sinprosp.org.br/arquivos/voz/bem_estar_vocal2016.pdf" target="_blank">
                         <img src="img/servicos/voz/img_bemestar.jpg" alt=""
