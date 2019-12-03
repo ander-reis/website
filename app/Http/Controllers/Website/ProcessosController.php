@@ -62,7 +62,7 @@ class ProcessosController extends Controller
 
         $processos = Processos::whereIn('nr_pasta', $pastas)->get(['id_processo', 'ds_processo']);
 
-        return view('website.processos.show', compact('processos', 'model'));
+        return view('website.processos.edit', compact('processos', 'model'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ProcessosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('website.processos.show', compact('id'));
     }
 
     /**

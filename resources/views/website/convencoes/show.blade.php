@@ -4,17 +4,18 @@
 
     {{ Breadcrumbs::render('convencao.show', $convencao_entidade, $convencao) }}
 
-    <p>
     <h4>{{ $convencao->ds_titulo }}</h4>
     @if($convencao->url_arquivo)
-        <a href="{{ $convencao->convencao_web_asset }}" class="btn btn-secondary m-3" target="_blank">Abrir Convenção
-            PDF</a>
+        <a href="{{ $convencao->convencao_web_asset }}" class="btn btn-secondary m-3" target="_blank">
+            Abrir Convenção PDF
+        </a>
     @endif
 
     @if($convencao->url_aditamento)
         <p>
-            <a href="{{ $convencao->aditamento_web_asset }}" class="btn btn-warning m-3" target="_blank">Abrir
-                Aditamento PDF</a>
+            <a href="{{ $convencao->aditamento_web_asset }}" class="btn btn-warning m-3" target="_blank">
+                Abrir Aditamento PDF
+            </a>
         </p>
     @endif
 
