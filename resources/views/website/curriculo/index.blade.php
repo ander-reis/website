@@ -82,7 +82,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        @component('website.curriculo._body-modal')@endcomponent
+                        @component('website.curriculo._body_modal')@endcomponent
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -149,6 +149,11 @@
                             $(document).ajaxComplete(() => {
                                 $('#preloader-circulo').hide();
                             });
+                        },
+                        error: function(error) {
+                            if(error){
+                                $('#preloader-circulo').hide();
+                            }
                         }
                     });
                 });

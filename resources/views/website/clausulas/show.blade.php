@@ -8,8 +8,8 @@
 
         <div class="col-md-8">
             <h4>{{$convencao->ds_titulo}}</h4>
-            <p><h5> {{ $convencao_clausula->num_clausula }}. {{ $convencao_clausula->ds_titulo }}</h5></p>
-            <p> {!! $convencao_clausula->ds_texto !!}</p>
+            <h5> {{ $convencao_clausula->num_clausula }}. {{ $convencao_clausula->ds_titulo }}</h5>
+            <p>{!! $convencao_clausula->ds_texto !!}</p>
 
             <div class="text-center mt-3 mb-3">
                 @isset($previous)

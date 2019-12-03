@@ -104,6 +104,7 @@
     @stack('create-curriculo-script')
     @stack('update-curriculo-script')
     @stack('busca-curriculo-script')
+    @stack('index-processos-script')
     @stack('salario_calcular')
     @stack('noticias')
 </body>

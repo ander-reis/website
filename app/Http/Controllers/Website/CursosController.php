@@ -15,7 +15,7 @@ class CursosController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -33,7 +33,7 @@ class CursosController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
      */
     public function show($id)
@@ -64,6 +64,7 @@ class CursosController extends Controller
         $meses = $this->getMonthsSelect();
 
         $dataAtual = explode('/', $meses[0]['value']);
+
         $mes = $dataAtual[0];
         $ano = $dataAtual[1];
 
@@ -123,17 +124,22 @@ class CursosController extends Controller
         $ano = $date->isoFormat('G');
 
         $meses = EscolaMeses::where('num_mes', '>=', $mes)
-            ->where('num_ano', '>=', $ano)
+            ->where('num_ano', $ano)
             ->where('fl_status', 1)
             ->orderBy('num_ano', 'asc')
             ->orderBy('num_mes', 'asc')
             ->get();
+
+        if(!$meses->isNotEmpty()) {
+            $meses[0] = (object) ['num_mes' => $mes, 'num_ano' => $ano];
+        }
 
         foreach ($meses as $key => $item) {
             $meses = $this->configMonth($item->num_mes);
             $array[$key]['option'] = $meses['option'] . ' ' . $item->num_ano;
             $array[$key]['value'] = $meses['value'] . '/' . $item->num_ano;
         }
+
         return $array;
     }
 
