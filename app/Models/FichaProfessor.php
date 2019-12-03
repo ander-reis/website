@@ -53,7 +53,7 @@ class FichaProfessor extends Model
             })
             ->join('Cadastro_Professores', 'jur_fip_cd_professor', '=', 'Codigo_Professor')
             ->join('tb_jur_ficha_consulta', 'jur_fic_nr_ficha', '=', 'jur_fip_nr_ficha')
-            ->select(['jur_fic_nr_pasta', 'CPF', 'Data_Aniversario', 'jur_fip_cd_professor'])
+            ->select(['jur_fic_nr_pasta', 'CPF', 'Data_Aniversario', 'jur_fip_cd_professor', 'Nome'])
             ->get();
     }
 

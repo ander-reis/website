@@ -76,7 +76,7 @@
 
     @component('website.components.layout-1._column_right')@endcomponent
 
-    <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="Curriculo"
              aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
