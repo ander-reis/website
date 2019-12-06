@@ -4,21 +4,21 @@ namespace Website\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Processos extends Model
+class ProcessosProfessores extends Model
 {
     /**
      * table
      *
      * @var string
      */
-    protected $table = 'tb_sinpro_processos';
+    protected $table = 'tb_sinpro_processos_professores';
 
     /**
      * chave primaria
      *
      * @var null
      */
-    protected $primaryKey = 'id_processos';
+    protected $primaryKey = 'id_cadastro';
 
     /**
      * set created_at
@@ -28,5 +28,5 @@ class Processos extends Model
     /**
      * set updated_at
      */
-    const UPDATED_AT = null;
+    const UPDATED_AT = 'dt_alteracao';
 }

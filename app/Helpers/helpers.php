@@ -6,3 +6,5 @@ include __DIR__.'/setActiveClass.php';
 include __DIR__.'/selectFormacaoFormatted.php';
 include __DIR__.'/selectDisciplinaFormatted.php';
 include __DIR__.'/selectAtuacaoFormatted.php';
+include __DIR__.'/cpfFormatted.php';
+include __DIR__.'/dataInputFormatted.php';

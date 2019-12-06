@@ -5,8 +5,10 @@ namespace Website\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\ProcessosIndexRequest;
+use Website\Models\CadastroProfessores;
 use Website\Models\FichaProfessor;
 use Website\Models\Processos;
+use Website\Models\ProcessosProfessores;
 
 class ProcessosController extends Controller
 {
@@ -48,14 +50,70 @@ class ProcessosController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+//        dd($request->all());
+
+        $cadastro = new CadastroProfessores;
+        $cadastro->saveOrFail($data);
+
+        toastr()->success('Cadastro alterado com sucesso!');
+        return redirect()->route('processos.index');
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        return view('website.processos.edit', compact('id'));
+        $data = $request->all();
+
+        // opcao 0 => Inventariante; opcao 1 => Beneficiario
+        if ($data['ds_opcao']) {
+            // beneficiario
+            $model = CadastroProfessores::where('CPF', $data['ds_cpf'])
+                ->where('Situacao', '<>', 3)
+                ->where('Situacao', '<>', 4)
+                ->where('Situacao', '<>', 8)
+                ->first();
+//            dd('Beneficiario: ', $model);
+
+            // Nome_Mae='FAVOR INFORMAR'
+            // Endereco = 'R BORGES LAGOA'
+            // Numero = '208'
+        } else {
+            // inventariante
+            $model = ProcessosProfessores::where('CPF_beneficiario', $data['ds_cpf'])->first();
+
+            if(empty($model)) {
+                return view('website.processos.create', compact('data'));
+            }
+            dd('inventariante: ' . $model);
+        }
+
+
+        $opcao = $this->opcaoAcesso($data['ds_opcao']);
+
+        return view('website.processos.edit', compact('model', 'opcao'));
     }
 
     /**
@@ -67,7 +125,7 @@ class ProcessosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id, $request);
     }
 
     private function errorMessage()
@@ -79,6 +137,6 @@ class ProcessosController extends Controller
 
     private function opcaoAcesso($opcao)
     {
-        return $opcao ? 'Beneficiário' : 'Inventariante';
+        return $opcao ? ['name' => 'Beneficiário', 'option' => 1] : ['name' => 'Inventariante', 'option' => 0];
     }
 }

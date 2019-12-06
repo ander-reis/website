@@ -43,9 +43,4 @@ class CadastroProfessores extends Model
      * @var bool
      */
     public $timestamps = false;
-
-    public function banco()
-    {
-        return $this->hasOne(CadastroBanco::class, 'CodBanco', 'Banco');
-    }
 }
