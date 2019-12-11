@@ -109,11 +109,13 @@ Route::name('salario.index')->get('/salario', function () {
  * rota processos
  */
 Route::group(['namespace' => 'Website'], function(){
-    Route::name('processos.index')->get('processos', 'ProcessosController@index');
-    Route::name('processos.list')->post('processos', 'ProcessosController@list');
-    Route::name('processos.store')->post('processos/store', 'ProcessosController@store');
-    Route::name('processos.edit')->post('processos/beneficio', 'ProcessosController@edit');
-    Route::name('processos.update')->put('processos/{id}', 'ProcessosController@update');
+//    Route::resource('processos', 'ProcessosController');
+
+    Route::name('processos.index')->get('/processos', 'ProcessosController@index');
+    Route::name('processos.list')->post('/processos/list', 'ProcessosController@list');
+    Route::name('processos.store')->post('/processos/store', 'ProcessosController@store');
+    Route::name('processos.edit')->post('/processos/beneficio', 'ProcessosController@edit');
+    Route::name('processos.update')->put('/processos/{id}', 'ProcessosController@update');
 });
 
 /**

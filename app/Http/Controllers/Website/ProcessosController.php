@@ -4,7 +4,9 @@ namespace Website\Http\Controllers\Website;
 
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\ProcessosCreateRequest;
 use Website\Http\Requests\ProcessosIndexRequest;
+use Website\Models\CadastroBanco;
 use Website\Models\CadastroProfessores;
 use Website\Models\FichaProfessor;
 use Website\Models\Processos;
@@ -40,7 +42,7 @@ class ProcessosController extends Controller
             return $this->errorMessage();
         }
 
-        $pastas = $model->map(function($item){
+        $pastas = $model->map(function ($item) {
             return $item->jur_fic_nr_pasta;
         });
 
@@ -62,65 +64,82 @@ class ProcessosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ProcessosCreateRequest $request)
     {
-        $data = $request->all();
-//        dd($request->all());
+        try {
+            $data = $request->all();
 
-        $cadastro = new CadastroProfessores;
-        $cadastro->saveOrFail($data);
+            $data['Endereco'] = $data['endereco'];
+            $data['Bairro'] = $data['bairro'];
+            $data['Cidade'] = $data['cidade'];
+            $data['Estado'] = $data['estado'];
+            $data['num_ip'] = $request->ip();
+            $data['CPF_Beneficiario'] = $data['CPF'];
+            $data['Email'] = $this->getEmail($data['Email']);
+            $data['Conta'] = $this->getContaAgencia($data['Conta'], $data['contaDV']);
+            $data['Agencia'] = $this->getContaAgencia($data['Agencia'], $data['agenciaDV']);
 
-        toastr()->success('Cadastro alterado com sucesso!');
-        return redirect()->route('processos.index');
+            ProcessosProfessores::create($data);
+
+            toastr()->success('Cadastro criado com sucesso!');
+
+            return redirect()->route('processos.index');
+        } catch (\Exception $exception) {
+            return toastr()->error('Não foi possível criar o cadastro');
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Request $request)
     {
         $data = $request->all();
 
-        // opcao 0 => Inventariante; opcao 1 => Beneficiario
-        if ($data['ds_opcao']) {
-            // beneficiario
-            $model = CadastroProfessores::where('CPF', $data['ds_cpf'])
-                ->where('Situacao', '<>', 3)
-                ->where('Situacao', '<>', 4)
-                ->where('Situacao', '<>', 8)
-                ->first();
-//            dd('Beneficiario: ', $model);
+        // opcao 0 => Inventariante;
+        // opcao 1 => Beneficiario
 
-            // Nome_Mae='FAVOR INFORMAR'
-            // Endereco = 'R BORGES LAGOA'
-            // Numero = '208'
-        } else {
-            // inventariante
-            $model = ProcessosProfessores::where('CPF_beneficiario', $data['ds_cpf'])->first();
+        switch ($data['ds_opcao']) {
+            case 0:
+                // Inventariante
+                $model = ProcessosProfessores::where('CPF_beneficiario', $data['ds_cpf'])->first();
 
-            if(empty($model)) {
-                return view('website.processos.create', compact('data'));
-            }
-            dd('inventariante: ' . $model);
+                /**
+                 * if model empty is insert
+                 */
+                if (empty($model)) {
+                    return view('website.processos.create', compact('data'));
+                }
+
+                /**
+                 * if model is update
+                 */
+                return view('website.processos.edit', compact('model'));
+                break;
+            case 1:
+                // Beneficiario
+                $model = CadastroProfessores::where('CPF', $data['ds_cpf'])
+                    ->where('Situacao', '<>', 3)
+                    ->where('Situacao', '<>', 4)
+                    ->where('Situacao', '<>', 8)
+                    ->first();
+
+                return view('website.processos.edit', compact('model'));
+                break;
         }
-
-
-        $opcao = $this->opcaoAcesso($data['ds_opcao']);
-
-        return view('website.processos.edit', compact('model', 'opcao'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,6 +147,35 @@ class ProcessosController extends Controller
         dd($id, $request);
     }
 
+    /**
+     * transforma email array em string, e.g: email1; email2; email;
+     *
+     * @param $email
+     * @return string
+     */
+    private function getEmail($email)
+    {
+        $array_filter = array_filter($email);
+        return implode('; ', $array_filter);
+    }
+
+    /**
+     * concatena conta de dv
+     *
+     * @param $conta
+     * @param $dv
+     * @return string
+     */
+    private function getContaAgencia($conta, $dv)
+    {
+        return $dv ? $conta . '-' . $dv : $conta;
+    }
+
+    /**
+     * error message caso não conste processo
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function errorMessage()
     {
         return back()->withInput()->withErrors('O seu nome não consta em nenhum processo.
@@ -135,6 +183,12 @@ class ProcessosController extends Controller
             das 8h30 às 18h, através do telefone: (11)5080-5989.');
     }
 
+    /**
+     * configura opcao de acesso
+     *
+     * @param $opcao
+     * @return array
+     */
     private function opcaoAcesso($opcao)
     {
         return $opcao ? ['name' => 'Beneficiário', 'option' => 1] : ['name' => 'Inventariante', 'option' => 0];

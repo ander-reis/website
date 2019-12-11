@@ -5,11 +5,12 @@
         <h1>Processos Judiciais</h1>
 
         {{ Form::open(['route' => 'processos.edit', 'id' => 'listProcessoForm']) }}
-
         <div class="alert {{($opcao['option'] === 1) ? 'alert-info' : 'alert-danger'}}">
             <p><span class="font-weight-bold">Nome:&nbsp;</span>{{ $model->first()->Nome }}</p>
             <p><span class="font-weight-bold">CPF:&nbsp;</span>{{ $model->first()->CPF }}</p>
+            @if(dataFormatted($model->first()->Data_Aniversario) !== '01/01/1900')
             <p><span class="font-weight-bold">Nascimento:&nbsp;</span>{{ dataFormatted($model->first()->Data_Aniversario) }}</p>
+            @endif
             <p><span class="font-weight-bold">Acesso:&nbsp;</span>{{ $opcao['name'] }}</p>
         </div>
 
@@ -17,7 +18,7 @@
         {{ Form::hidden('ds_opcao', $opcao['option'], ['class' => 'form-control']) }}
 
         <div class="form-group">
-            {{ Form::select('ds_processo', $processos->pluck('ds_processo', 'id_processo')->prepend('Selecione um processo', '0'), null, ['class' => 'form-control']) }}
+            {{ Form::select('id_processo', $processos->pluck('ds_processo', 'id_processo')->prepend('Selecione um processo', '0'), null, ['class' => 'form-control']) }}
         </div>
 
         {{ Form::submit('Prosseguir', ['class' => 'btn btn-primary']) }}
@@ -33,7 +34,7 @@
                     form,
                     {
                         fields: {
-                            ds_processo: {
+                            id_processo: {
                                 validators: {
                                     choice: {
                                         min: 1,

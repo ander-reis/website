@@ -6,7 +6,7 @@
 
         {{ Form::open(['route' => 'processos.store', 'id' => 'processoForm']) }}
 
-        @component('website.processos._form', ['cpf' => $data['ds_cpf']])@endcomponent
+        @component('website.processos._form', ['cpf' => $data['ds_cpf'], 'id_processo' => $data['id_processo']])@endcomponent
 
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
 

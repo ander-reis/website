@@ -64,7 +64,6 @@
             {{ Form::label('ds_estado', 'Estado', ['class' => 'control-label']) }}<span
                     class="text-danger font-weight-bold">*</span>
             {{ Form::select('ds_estado', \Website\Http\Controllers\Website\CurriculoController::estados(), (isset($model->ds_estado) ? $model->ds_estado : null), ['class' => 'form-control']) }}
-
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
             {{ Form::label('ds_pais', 'País', ['class' => 'control-label']) }}<span
