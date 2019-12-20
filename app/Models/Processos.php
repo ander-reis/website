@@ -29,4 +29,9 @@ class Processos extends Model
      * set updated_at
      */
     const UPDATED_AT = null;
+
+    public function ficha()
+    {
+
+    }
 }

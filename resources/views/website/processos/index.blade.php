@@ -21,7 +21,7 @@
                             </ul>
                         @endif
 
-                        {{ Form::open(['route' => 'processos.store', 'id' => 'processForm']) }}
+                        {{ Form::open(['route' => 'processos.list', 'id' => 'processForm']) }}
                         <div class="form-group">
                             {{ Form::label('cpf', 'CPF', ['class' => 'control-label']) }}
                             {{ Form::text('cpf', null, ['class' => 'form-control']) }}

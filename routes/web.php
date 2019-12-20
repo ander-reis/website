@@ -108,7 +108,12 @@ Route::name('salario.index')->get('/salario', function () {
 /**
  * rota processos
  */
-Route::resource('processos', 'Website\ProcessosController');
+Route::group(['namespace' => 'Website'], function(){
+    Route::name('processos.index')->get('processos', 'ProcessosController@index');
+    Route::name('processos.list')->post('processos', 'ProcessosController@list');
+    Route::name('processos.edit')->get('processos/{id}', 'ProcessosController@edit');
+    Route::name('processos.update')->put('processos/{id}', 'ProcessosController@update');
+});
 
 /**
  * páginas principais

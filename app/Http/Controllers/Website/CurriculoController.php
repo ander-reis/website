@@ -28,12 +28,12 @@ class CurriculoController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
         $model = CurriculoProfessor::findOrFail($id);
-        return view('website.curriculo._body-modal', compact('model'));
+        return view('website.curriculo._body_modal', compact('model'));
     }
 
     /**
