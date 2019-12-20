@@ -108,13 +108,19 @@ Route::name('salario.index')->get('/salario', function () {
 /**
  * rota processos
  */
-Route::group(['namespace' => 'Website'], function(){
-//    Route::resource('processos', 'ProcessosController');
-
+Route::group(['namespace' => 'Website'], function() {
     Route::name('processos.index')->get('/processos', 'ProcessosController@index');
-    Route::name('processos.list')->post('/processos/list', 'ProcessosController@list');
-    Route::name('processos.store')->post('/processos/store', 'ProcessosController@store');
-    Route::name('processos.edit')->post('/processos/beneficio', 'ProcessosController@edit');
+    Route::name('processos.store')->post('/processos', 'ProcessosController@store');
+    Route::name('processos.create')->get('/processos/create', 'ProcessosController@create');
+    Route::name('processos.list')->post('/processos/listar', 'ProcessosController@list');
+    Route::name('processos.select')->get('/processos/{id_processo}', 'ProcessosController@select');
+
+    Route::name('processos.inventeriante')->get('/processos/inventariante', 'ProcessosController@inventariante');
+
+//    Route::name('processos.edit')->get('/processos/inventariante/{id_processo}', 'ProcessosController@edit');
+
+
+
     Route::name('processos.update')->put('/processos/{id}', 'ProcessosController@update');
 });
 

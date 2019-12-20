@@ -23,10 +23,6 @@ class BoletimStoreRequest extends FormRequest
      */
     public function rules()
     {
-
-        $input = $this->all();
-
-        //'num_cpf'       => 'cpf',
         return [
             'ds_email'      => 'email:rfc,dns'
         ];

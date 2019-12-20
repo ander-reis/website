@@ -9,6 +9,7 @@
                         <h3>Processos Judiciais</h3>
                     </div>
                     <div class="card-body">
+
                         @if($errors->any())
                             <ul class="alert alert-danger alert-dismissible fade show">
                                 @foreach($errors->all() as $error)
