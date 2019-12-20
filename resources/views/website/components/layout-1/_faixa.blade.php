@@ -6,7 +6,7 @@
         </div>
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <a href="http://www1.sinprosp.org.br/guia_consultas.asp#salario" class="black faixa_size" target="_blank">Salários e<br/>reajustes</a>
+            <a href="http://www.sinprosp.org.br/noticias/3541" class="black faixa_size">Salários e<br/>reajustes</a>
         </div>
         <div class="item text-center">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
