@@ -2,9 +2,12 @@
 
 namespace Website\Http\Controllers\Website;
 
+use http\Env\Request;
 use Website\Http\Controllers\Controller;
+use Website\Http\Requests\ProcessosBeneficiarioUpdateRequest;
 use Website\Http\Requests\ProcessosCreateRequest;
 use Website\Http\Requests\ProcessosIndexRequest;
+use Website\Http\Requests\ProcessosInventarianteUpdateRequest;
 use Website\Http\Requests\ProcessosUpdateRequest;
 use Website\Models\CadastroProfessores;
 use Website\Models\FichaProfessor;
@@ -34,15 +37,20 @@ class ProcessosController extends Controller
     {
         $data = $request->all();
 
+        $model = FichaProfessor::fichaProfessor($data['cpf'], $data['nascimento']);
+
+        /**
+         * cria session
+         */
         session(['cpf' => $data['cpf']]);
         session(['opcao' => $data['opcao']]);
         session(['nascimento' => $data['nascimento']]);
-
-        $model = FichaProfessor::fichaProfessor($data['cpf'], $data['nascimento']);
+        session(['professor' => $model[0]->jur_fip_cd_professor ?? null]);
 
         $opcao = $this->opcaoAcesso($data['opcao']);
 
         if (count($model) === 0) {
+            $request->session()->invalidate();
             return $this->errorMessage();
         }
 
@@ -53,6 +61,51 @@ class ProcessosController extends Controller
         $processos = Processos::whereIn('nr_pasta', $pastas)->paginate(10, ['id_processo', 'ds_processo']);
 
         return view('website.processos.list', compact('processos', 'model', 'opcao'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function select($id_processo)
+    {
+        $cpf = session('cpf');
+        $opcao = session('opcao');
+
+        $processo = Processos::where('id_processo', $id_processo)->first(['ds_processo']);
+
+        $cadastroProfessores = CadastroProfessores::getCadastroProfessores($cpf);
+
+        // opcao 0 => Inventariante;
+        // opcao 1 => Beneficiario
+        switch ($opcao) {
+            case 0:
+                // Inventariante
+                $model = ProcessosProfessores::where('CPF_beneficiario', $cpf)->first();
+
+                /**
+                 * if model empty is insert
+                 */
+                if (is_null($model)) {
+                    $cadastroProfessores = $this->setFormatDataInventariante($cadastroProfessores);
+                    return view('website.processos.create', compact('cpf', 'id_processo', 'cadastroProfessores'));
+                }
+
+                $model = $this->setFormatDataInventariante($model);
+
+                /**
+                 * if model is update
+                 */
+                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao', 'processo', 'cadastroProfessores'));
+                break;
+            case 1:
+                // Beneficiario
+                $model = $this->setFormatDataBeneficiario($cadastroProfessores);
+                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo'));
+                break;
+        }
     }
 
     /**
@@ -75,8 +128,21 @@ class ProcessosController extends Controller
     {
         try {
             $data = $this->getFormatDataInventariante($request);
-            dd($data);
+
+            /**
+             * create tb_sinpro_processos_professores
+             */
             ProcessosProfessores::create($data);
+
+            /**
+             * update Cadastro_Professores
+             */
+            $this->updateCadastroProfessor($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
+
+            /**
+             * deleta session
+             */
+            $request->session()->invalidate();
 
             toastr()->success('Cadastro criado com sucesso!');
 
@@ -87,91 +153,79 @@ class ProcessosController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * update benefeciario
      *
-     * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param ProcessosBeneficiarioUpdateRequest $request
+     * @param $codigo_professor
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function select($id_processo)
+    public function updateBeneficiario(ProcessosBeneficiarioUpdateRequest $request, $codigo_professor)
     {
-        $cpf = session('cpf');
-        $opcao = session('opcao');
+        $model = $this->getFormatDataBeneficiario($request);
 
-        // opcao 0 => Inventariante;
-        // opcao 1 => Beneficiario
-        switch ($opcao) {
-            case 0:
-                // Inventariante
-                $model = ProcessosProfessores::where('CPF_beneficiario', $cpf)->first();
+        /**
+         * tb_professor_email.
+         */
+        $this->createProfessorEmail($codigo_professor, $request);
 
-                /**
-                 * if model empty is insert
-                 */
-                if (is_null($model)) {
-                    return view('website.processos.create-inventariante', compact('cpf', 'id_processo', 'opcao'));
-                }
+        /**
+         * Cadastro_Professores
+         */
+        CadastroProfessores::where('Codigo_Professor', $codigo_professor)->update($model);
 
-                $model = $this->setFormatDataInventariante($model);
+        /**
+         * deleta session
+         */
+        $request->session()->invalidate();
 
-                /**
-                 * if model is update
-                 */
-                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao'));
-                break;
-            case 1:
-                // Beneficiario
-                $model = CadastroProfessores::getCadastroProfessores($cpf);
+        toastr()->success('Cadastro alterado com sucesso!');
 
-                $model = $this->setFormatDataBeneficiario($model);
-
-                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao'));
-                break;
-        }
+        return redirect()->route('processos.index');
     }
 
     /**
-     * Update the specified resource in storage.
+     * update inventariante
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param ProcessosInventarianteUpdateRequest $request
+     * @param $codigo_professor
+     * @param $id_cadastro
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProcessosUpdateRequest $request, $id)
+    public function updateInventariante(ProcessosInventarianteUpdateRequest $request, $codigo_professor, $id_cadastro)
     {
-        // opcao 0 => Inventariante;
-        // opcao 1 => Beneficiario
-        $opcao = session('opcao');
+        $model = $this->getFormatDataInventariante($request);
 
-        switch ($opcao) {
-            case 0:
-                // Inventariante
-                $model = $this->getFormatDataInventariante($request);
+//        dd($model);
 
-                ProcessosProfessores::where('id_cadastro', $id)->update($model);
+        /**
+         * update tb_sinpro_processos_professores
+         */
+        ProcessosProfessores::where('id_cadastro', $id_cadastro)->update($model);
 
-                toastr()->success('Cadastro alterado com sucesso!');
+        /**
+         * update Cadastro_Professores
+         */
+        $this->updateCadastroProfessor($codigo_professor, ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
 
-                return redirect()->route('processos.index');
-                break;
-            case 1:
-                // Beneficiario
-                $model = $this->getFormatDataBeneficiario($request);
+        /**
+         * deleta session
+         */
+        $request->session()->invalidate();
 
-                /**
-                 * tb_professor_email.
-                 */
-                $this->createProfessorEmail($id, $request);
+        toastr()->success('Cadastro alterado com sucesso!');
 
-                /**
-                 * Cadastro_Professores
-                 */
-                CadastroProfessores::where('Codigo_Professor', $id)->update($model);
+        return redirect()->route('processos.index');
+    }
 
-                toastr()->success('Cadastro alterado com sucesso!');
-
-                return redirect()->route('processos.index');
-                break;
-        }
+    /**
+     * deleta session e redireciona para index
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function sair()
+    {
+       request()->session()->invalidate();
+       return redirect('/processos');
     }
 
     /**
@@ -197,6 +251,12 @@ class ProcessosController extends Controller
         $professorEmail->save();
     }
 
+    private function updateCadastroProfessor($id, $data = null)
+    {
+        $data = CadastroProfessores::where('Codigo_Professor', $id)->update($data);
+        return $data;
+    }
+
     /**
      * get data para cadastro inventariante
      *
@@ -206,13 +266,14 @@ class ProcessosController extends Controller
     private function getFormatDataInventariante($request)
     {
         $data = $request->all();
+        $cpf = session('cpf');
+
         $data['Endereco'] = $data['endereco'];
         $data['Bairro'] = $data['bairro'];
         $data['Cidade'] = $data['cidade'];
         $data['Estado'] = $data['estado'];
         $data['num_ip'] = $request->ip();
-        $data['CPF_Beneficiario'] = $data['CPF'];
-        $data['Email'] = $this->getEmailInventariante($data['pro_ema_ds_email1'], $data['pro_ema_ds_email2'], $data['pro_ema_ds_email3']);
+        $data['CPF_Beneficiario'] = $cpf;
         $data['Conta'] = $this->getContaAgencia($data['Conta'], $data['contaDV']);
         $data['Agencia'] = $this->getContaAgencia($data['Agencia'], $data['agenciaDV']);
 
@@ -224,9 +285,10 @@ class ProcessosController extends Controller
             $data['estado'],
             $data['agenciaDV'],
             $data['contaDV'],
-            $data['pro_ema_ds_email1'],
-            $data['pro_ema_ds_email2'],
-            $data['pro_ema_ds_email3']);
+            $data['Nome_Mae'],
+            $data['PIS'],
+            $data['professor']);
+
         return $data;
     }
 
@@ -274,10 +336,6 @@ class ProcessosController extends Controller
         $model['bairro'] = $model->Bairro;
         $model['cidade'] = $model->Cidade;
         $model['estado'] = $model->Estado;
-        $emails = explode(';', $model['Email']);
-        $model['pro_ema_ds_email1'] = $emails[0] ?? null;
-        $model['pro_ema_ds_email2'] = $emails[1] ?? null;
-        $model['pro_ema_ds_email3'] = $emails[2] ?? null;
         $agencia = explode('-', $model['Agencia']);
         $model['Agencia'] = $agencia[0] ?? null;
         $model['agenciaDV'] = $agencia[1] ?? null;
@@ -285,7 +343,16 @@ class ProcessosController extends Controller
         $model['Conta'] = $conta[0] ?? null;
         $model['contaDV'] = $conta[1] ?? null;
 
-        unset($model->Endereco, $model->Bairro, $model->Cidade, $model->Estado, $model->Email);
+        if ($model['Nome_Mae'] === 'FAVOR INFORMAR') {
+            $model['Nome_Mae'] = '';
+        }
+
+        if ($model['endereco'] === 'R BORGES LAGOA' && $model->Numero === '208') {
+            $model['endereco'] = '';
+            $model['Numero'] = '';
+        }
+
+        unset($model->Endereco, $model->Bairro, $model->Cidade, $model->Estado);
 
         return $model;
     }
@@ -316,8 +383,9 @@ class ProcessosController extends Controller
             $model['Nome_Mae'] = '';
         }
 
-        if ($model['endereco'] === 'R BORGES LAGOA') {
+        if ($model['endereco'] === 'R BORGES LAGOA' && $model->Numero === '208') {
             $model['endereco'] = '';
+            $model['Numero'] = '';
         }
 
         unset($model->Endereco, $model->Bairro, $model->Cidade, $model->Estado, $model->Email);
@@ -331,12 +399,12 @@ class ProcessosController extends Controller
      * @param $email
      * @return string
      */
-    private function getEmailInventariante($email1, $email2, $email3)
-    {
-        $array = [$email1, $email2, $email3];
-        $array_filter = array_filter($array);
-        return implode(';', $array_filter);
-    }
+//    private function getEmailInventariante($email1, $email2, $email3)
+//    {
+//        $array = [$email1, $email2, $email3];
+//        $array_filter = array_filter($array);
+//        return implode(';', $array_filter);
+//    }
 
     /**
      * concatena conta de dv

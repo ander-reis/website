@@ -28,7 +28,7 @@ class ProcessosUpdateRequest extends FormRequest
         return [
             'Nome' => 'required|string|max:100',
             'Sexo' => 'required',
-            'CPF' => 'required|string|cpf|max:14',
+//            'CPF' => 'required|string|cpf|max:14',
             'RG' => 'required|string|max:12',
             'Data_Aniversario' => 'required|date|date_format:Y-m-d|year_invalid',
             'PIS' => 'required|string|max:15',
@@ -40,8 +40,6 @@ class ProcessosUpdateRequest extends FormRequest
             'bairro' => 'required|string|max:59',
             'cidade' => 'required|string|max:21',
             'estado' => 'required|string|max:2',
-
-//            'Email.0' => 'required|email:rfc,dns|max:120',
 
             'pro_ema_ds_email1' => 'required|email:rfc,dns|max:120',
             'pro_ema_ds_email2' => 'email:rfc,dns|max:120|nullable',
@@ -80,8 +78,14 @@ class ProcessosUpdateRequest extends FormRequest
         $input['cidade'] = trim(filter_var($input['cidade'], FILTER_SANITIZE_STRING));
         $input['estado'] = trim(filter_var($input['estado'], FILTER_SANITIZE_STRING));
         $input['pro_ema_ds_email1'] = trim(filter_var($input['pro_ema_ds_email1'], FILTER_SANITIZE_STRING));
-        $input['pro_ema_ds_email2'] = trim(filter_var($input['pro_ema_ds_email2'], FILTER_SANITIZE_STRING));
-        $input['pro_ema_ds_email3'] = trim(filter_var($input['pro_ema_ds_email3'], FILTER_SANITIZE_STRING));
+
+        if (isset($input['pro_ema_ds_email2'])) {
+            $input['pro_ema_ds_email2'] = trim(filter_var($input['pro_ema_ds_email2'], FILTER_SANITIZE_STRING));
+        }
+        if (isset($input['pro_ema_ds_email3'])) {
+            $input['pro_ema_ds_email3'] = trim(filter_var($input['pro_ema_ds_email3'], FILTER_SANITIZE_STRING));
+        }
+
         $input['DDD_Telefone_Residencial'] = trim(filter_var($input['DDD_Telefone_Residencial'], FILTER_SANITIZE_STRING));
         $input['Telefone_Residencial'] = trim(filter_var($input['Telefone_Residencial'], FILTER_SANITIZE_STRING));
         $input['DDD_Telefone_Celular'] = trim(filter_var($input['DDD_Telefone_Celular'], FILTER_SANITIZE_STRING));
@@ -104,6 +108,16 @@ class ProcessosUpdateRequest extends FormRequest
         $input['bairro'] = dataUpperCase($input['bairro']);
         $input['cidade'] = dataUpperCase($input['cidade']);
         $input['estado'] = dataUpperCase($input['estado']);
+
+        $input['pro_ema_ds_email1'] = dataLowercase($input['pro_ema_ds_email1']);
+
+        if (isset($input['pro_ema_ds_email2'])) {
+            $input['pro_ema_ds_email2'] = dataLowercase($input['pro_ema_ds_email2']);
+        }
+        if (isset($input['pro_ema_ds_email3'])) {
+            $input['pro_ema_ds_email3'] = dataLowercase($input['pro_ema_ds_email3']);
+        }
+
 
         $this->replace($input);
     }

@@ -105,9 +105,8 @@
     @stack('update-curriculo-script')
     @stack('busca-curriculo-script')
     @stack('index-processos-script')
-    @stack('list-processos-script')
-    @stack('form-processos-script')
     @stack('salario_calcular')
     @stack('noticias')
+    @stack('form-processos-script')
 </body>
 </html>

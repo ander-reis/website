@@ -18,7 +18,7 @@ class Processos extends Model
      *
      * @var null
      */
-    protected $primaryKey = 'id_processos';
+    protected $primaryKey = 'id_processo';
 
     /**
      * set created_at

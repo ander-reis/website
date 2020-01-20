@@ -207,5 +207,8 @@ return [
         'pro_ema_ds_email1'     => 'email 1',
         'pro_ema_ds_email2'     => 'email 2',
         'pro_ema_ds_email3'     => 'email 3',
+        'CPF_beneficiario'      => 'CPF beneficiário',
+        'PIS_beneficiario'      => 'PIS beneficiário',
+        'Nome_Mae_beneficiario' => 'nome da mãe beneficiário',
     ],
 ];

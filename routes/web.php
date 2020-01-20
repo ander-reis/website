@@ -107,21 +107,17 @@ Route::name('salario.index')->get('/salario', function () {
 
 /**
  * rota processos
+ *
  */
 Route::group(['namespace' => 'Website'], function() {
     Route::name('processos.index')->get('/processos', 'ProcessosController@index');
-    Route::name('processos.store')->post('/processos', 'ProcessosController@store');
-    Route::name('processos.create')->get('/processos/create', 'ProcessosController@create');
+    Route::name('processos.sair')->get('/processos/sair', 'ProcessosController@sair');
     Route::name('processos.list')->post('/processos/listar', 'ProcessosController@list');
     Route::name('processos.select')->get('/processos/{id_processo}', 'ProcessosController@select');
-
-    Route::name('processos.inventeriante')->get('/processos/inventariante', 'ProcessosController@inventariante');
-
-//    Route::name('processos.edit')->get('/processos/inventariante/{id_processo}', 'ProcessosController@edit');
-
-
-
-    Route::name('processos.update')->put('/processos/{id}', 'ProcessosController@update');
+    Route::name('processos.store')->post('/processos', 'ProcessosController@store');
+    Route::name('processos.create')->get('/processos/create', 'ProcessosController@create');
+    Route::name('processos.update.beneficiario')->put('/processos/beneficiario/{codigo_professor}', 'ProcessosController@updateBeneficiario');
+    Route::name('processos.update.inventariante')->put('/processos/inventariante/{codigo_professor}/{id_cadastro}', 'ProcessosController@updateInventariante');
 });
 
 /**

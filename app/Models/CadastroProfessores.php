@@ -94,7 +94,6 @@ class CadastroProfessores extends Model
                 'Codigo_Professor',
                 'Nome',
                 'Sexo',
-                'CPF',
                 'RG',
                 'Data_Aniversario',
                 'PIS',

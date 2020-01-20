@@ -1,5 +1,5 @@
-<div>
-    {{ link_to_route('processos.index', 'Sair', null, ['class' => 'btn btn-danger']) }}
+<div class="float-right">
+    {{ link_to_route('processos.sair', 'Sair', null, ['class' => 'btn btn-danger btn-sm']) }}
 </div>
 
 <h5>Informações Pessoais</h5>
@@ -17,7 +17,7 @@
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
-        {{ Form::text('CPF', $cpf ?? null, ['class' => 'form-control']) }}
+        <p class="form-control text-danger font-weight-bold">{{ $cpf }}</p>
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('RG', 'RG', ['class' => 'control-label']) }}
@@ -28,6 +28,7 @@
         {{ Form::date('Data_Aniversario', (isset($model->Data_Aniversario) ? dataInputFormatted($model->Data_Aniversario) : null), ['class' => 'form-control']) }}
     @endcomponent
 </div>
+
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-6'])
         {{ Form::label('PIS', 'PIS', ['class' => 'control-label']) }}
@@ -38,6 +39,7 @@
         {{ Form::text('Nome_Mae', null, ['class' => 'form-control text-uppercase']) }}
     @endcomponent
 </div>
+
 <h5>Endereço</h5>
 <hr class="line">
 <div class="row">
@@ -47,6 +49,7 @@
             <div class="input-group-prepend">
                 <button class="btn btn-outline-info" type="button" id="search-cep">
                     <i class="fas fa-search"></i>
+                    Buscar
                 </button>
             </div>
             {{ Form::text('CEP', null, ['class' => 'form-control', 'id' => 'CEP']) }}
@@ -74,11 +77,6 @@
         {{ Form::label('cidade', 'Cidade', ['class' => 'control-label']) }}
         {{ Form::text('cidade', null, ['class' => 'form-control text-uppercase']) }}
     @endcomponent
-    {{--    @component('website.form-components._form_col_group', ['class' => 'col-12 col-md-3'])--}}
-    {{--        {{ Form::label('estado', 'Estado', ['class' => 'control-label']) }}--}}
-    {{--        <span class="text-danger font-weight-bold">*</span>--}}
-    {{--        {{ Form::select('estado', \Website\Http\Controllers\Website\CurriculoController::estados(), (isset($model->Estado) ? $model->Estado : null), ['class' => 'form-control']) }}--}}
-    {{--    @endcomponent--}}
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-3'])
         {{ Form::label('estado', 'Estado', ['class' => 'control-label']) }}
         {{ Form::text('estado', null, ['class' => 'form-control text-uppercase', 'maxlength' => 2]) }}
@@ -221,18 +219,18 @@
                                 }
                             }
                         },
-                        CPF: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'CPF obrigatório'
-                                },
-                                stringLength: {
-                                    min: 14,
-                                    max: 14,
-                                    message: 'CPF inválido'
-                                },
-                            }
-                        },
+                        // CPF: {
+                        //     validators: {
+                        //         notEmpty: {
+                        //             message: 'CPF obrigatório'
+                        //         },
+                        //         stringLength: {
+                        //             min: 14,
+                        //             max: 14,
+                        //             message: 'CPF inválido'
+                        //         },
+                        //     }
+                        // },
                         RG: {
                             validators: {
                                 notEmpty: {

@@ -1,5 +1,5 @@
-<div>
-    {{ link_to_route('processos.index', 'Sair', null, ['class' => 'btn btn-danger']) }}
+<div class="float-right">
+    {{ link_to_route('processos.sair', 'Sair', null, ['class' => 'btn btn-danger btn-sm']) }}
 </div>
 
 <h5>Informações Pessoais</h5>
@@ -28,16 +28,7 @@
         {{ Form::date('Data_Aniversario', (isset($model->Data_Aniversario) ? dataInputFormatted($model->Data_Aniversario) : null), ['class' => 'form-control']) }}
     @endcomponent
 </div>
-<div class="row">
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-6'])
-        {{ Form::label('PIS', 'PIS', ['class' => 'control-label']) }}
-        {{ Form::text('PIS', null, ['class' => 'form-control']) }}
-    @endcomponent
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-6'])
-        {{ Form::label('Nome_Mae', 'Nome completo da Mãe', ['class' => 'control-label']) }}
-        {{ Form::text('Nome_Mae', null, ['class' => 'form-control text-uppercase']) }}
-    @endcomponent
-</div>
+
 <h5>Endereço</h5>
 <hr class="line">
 <div class="row">
@@ -47,6 +38,7 @@
             <div class="input-group-prepend">
                 <button class="btn btn-outline-info" type="button" id="search-cep">
                     <i class="fas fa-search"></i>
+                    Buscar
                 </button>
             </div>
             {{ Form::text('CEP', null, ['class' => 'form-control', 'id' => 'CEP']) }}
@@ -74,30 +66,18 @@
         {{ Form::label('cidade', 'Cidade', ['class' => 'control-label']) }}
         {{ Form::text('cidade', null, ['class' => 'form-control text-uppercase']) }}
     @endcomponent
-    {{--    @component('website.form-components._form_col_group', ['class' => 'col-12 col-md-3'])--}}
-    {{--        {{ Form::label('estado', 'Estado', ['class' => 'control-label']) }}--}}
-    {{--        <span class="text-danger font-weight-bold">*</span>--}}
-    {{--        {{ Form::select('estado', \Website\Http\Controllers\Website\CurriculoController::estados(), (isset($model->Estado) ? $model->Estado : null), ['class' => 'form-control']) }}--}}
-    {{--    @endcomponent--}}
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-3'])
         {{ Form::label('estado', 'Estado', ['class' => 'control-label']) }}
         {{ Form::text('estado', null, ['class' => 'form-control text-uppercase', 'maxlength' => 2]) }}
     @endcomponent
 </div>
+
 <h5>Contato</h5>
 <hr class="line">
 <div class="row">
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
-        {{ Form::label('Email[0]', 'E-mail 1', ['class' => 'control-label']) }}
-        {{ Form::text('Email[0]', null, ['class' => 'form-control', 'id' => 'email1']) }}
-    @endcomponent
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
-        {{ Form::label('Email[1]', 'E-mail 2', ['class' => 'control-label']) }}
-        {{ Form::text('Email[1]', null, ['class' => 'form-control', 'id' => 'email2']) }}
-    @endcomponent
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
-        {{ Form::label('Email[2]', 'E-mail 3', ['class' => 'control-label']) }}
-        {{ Form::text('Email[2]', null, ['class' => 'form-control', 'id' => 'email3']) }}
+    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-12'])
+        {{ Form::label('Email', 'E-mail', ['class' => 'control-label']) }}
+        {{ Form::text('Email', null, ['class' => 'form-control', 'id' => 'email1']) }}
     @endcomponent
 </div>
 <h5>Telefones</h5>
@@ -172,30 +152,30 @@
         </div>
     @endcomponent
 </div>
-
 <h5>Dados do Beneficiário</h5>
 <hr class="line">
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
-        {{ Form::label('cpf_beneficiario', 'CPF', ['class' => 'control-label']) }}
-        {{ Form::text('cpf_beneficiario', $cpf ?? null, ['class' => 'form-control']) }}
+        {{ Form::label('CPF_Beneficiario', 'CPF', ['class' => 'control-label']) }}
+        <p class="form-control text-danger font-weight-bold">{{ $cpf ?? null }}</p>
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-8'])
-        {{ Form::label('nome_beneficiario', 'Nome', ['class' => 'control-label']) }}
-        {{ Form::text('nome_beneficiario', null, ['class' => 'form-control text-uppercase']) }}
+        {{ Form::label('Nome_beneficiario', 'Nome', ['class' => 'control-label']) }}
+        <p class="form-control text-danger font-weight-bold">{{ $cadastroProfessores->Nome ?? null }}</p>
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-6'])
-        {{ Form::label('pis_beneficiario', 'PIS', ['class' => 'control-label']) }}
-        {{ Form::text('pis_beneficiario', null, ['class' => 'form-control']) }}
+        {{ Form::label('PIS', 'PIS', ['class' => 'control-label']) }}
+        {{ Form::text('PIS', $cadastroProfessores->PIS ?? null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-6'])
-        {{ Form::label('mae_beneficiario', 'Nome completo da Mãe', ['class' => 'control-label']) }}
-        {{ Form::text('mae_beneficiario', null, ['class' => 'form-control text-uppercase']) }}
+        {{ Form::label('Nome_Mae', 'Nome completo da Mãe', ['class' => 'control-label']) }}
+        {{ Form::text('Nome_Mae', $cadastroProfessores->Nome_Mae ?? null, ['class' => 'form-control text-uppercase']) }}
     @endcomponent
 </div>
 
 <div class="row">
     {{ Form::hidden('id_processo', $id_processo ?? null) }}
+    {{ Form::hidden('professor', $cadastroProfessores->Codigo_Professor ?? null) }}
     @if($errors->any())
         @component('website.form-components._form_col_group',['class' => 'col-12'])
             <ul class="alert alert-danger alert-dismissible fade show">
@@ -222,164 +202,140 @@
                 form,
                 {
                     fields: {
-                        // Nome: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Nome obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 100,
-                        //             message: 'Máximo 100 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // Sexo: {
-                        //     validators: {
-                        //         greaterThan: {
-                        //             message: 'Selecione Sexo',
-                        //             min: 0,
-                        //         }
-                        //     }
-                        // },
-                        // CPF: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'CPF obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 14,
-                        //             max: 14,
-                        //             message: 'CPF inválido'
-                        //         },
-                        //     }
-                        // },
-                        // RG: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'RG obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 12,
-                        //             message: 'Máximo 12 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // Data_Aniversario: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Data obrigatório'
-                        //         },
-                        //     },
-                        //     format: 'YYYY/DD/MM',
-                        //     message: 'Data obrigatório',
-                        // },
-                        // PIS: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'PIS obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 15,
-                        //             message: 'Máximo 15 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // Nome_Mae: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Nome obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 100,
-                        //             message: 'Máximo 100 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // CEP: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Cep obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 9,
-                        //             message: 'Máximo 9 caracteres'
-                        //         },
-                        //         regexp: {
-                        //             regexp: /^[0-9]{5}-[0-9]{3}$/,
-                        //             message: 'Cep inválido'
-                        //         }
-                        //     }
-                        // },
-                        // endereco: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Endereço obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 63,
-                        //             message: 'Endereço 63 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // Numero: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Número obrigatório'
-                        //         }
-                        //     }
-                        // },
-                        // Complemento: {
-                        //     validators: {
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 50,
-                        //             message: 'Máximo 50 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // bairro: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Bairro obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 59,
-                        //             message: 'Máximo 59 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // cidade: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Cidade obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 21,
-                        //             message: 'Máximo 21 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // estado: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Estado obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 2,
-                        //             message: 'Máximo 2 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        'Email[0]': {
+                        Nome: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Nome obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 100,
+                                    message: 'Máximo 100 caracteres'
+                                },
+                            }
+                        },
+                        Sexo: {
+                            validators: {
+                                greaterThan: {
+                                    message: 'Selecione Sexo',
+                                    min: 0,
+                                }
+                            }
+                        },
+                        CPF: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'CPF obrigatório'
+                                },
+                                stringLength: {
+                                    min: 14,
+                                    max: 14,
+                                    message: 'CPF inválido'
+                                },
+                            }
+                        },
+                        RG: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'RG obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 12,
+                                    message: 'Máximo 12 caracteres'
+                                },
+                            }
+                        },
+                        Data_Aniversario: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Data obrigatório'
+                                },
+                            },
+                            format: 'YYYY/DD/MM',
+                            message: 'Data obrigatório',
+                        },
+                        CEP: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Cep obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 9,
+                                    message: 'Máximo 9 caracteres'
+                                },
+                                regexp: {
+                                    regexp: /^[0-9]{5}-[0-9]{3}$/,
+                                    message: 'Cep inválido'
+                                }
+                            }
+                        },
+                        endereco: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Endereço obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 63,
+                                    message: 'Endereço 63 caracteres'
+                                },
+                            }
+                        },
+                        Numero: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Número obrigatório'
+                                }
+                            }
+                        },
+                        Complemento: {
+                            validators: {
+                                stringLength: {
+                                    min: 1,
+                                    max: 50,
+                                    message: 'Máximo 50 caracteres'
+                                }
+                            }
+                        },
+                        bairro: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Bairro obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 59,
+                                    message: 'Máximo 59 caracteres'
+                                }
+                            }
+                        },
+                        cidade: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Cidade obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 21,
+                                    message: 'Máximo 21 caracteres'
+                                }
+                            }
+                        },
+                        estado: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Estado obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 2,
+                                    message: 'Máximo 2 caracteres'
+                                }
+                            }
+                        },
+                        Email: {
                             validators: {
                                 notEmpty: {
                                     message: 'Email obrigatório'
@@ -391,160 +347,118 @@
                                 }
                             }
                         },
-                        'Email[1]': {
+                        DDD_Telefone_Residencial: {
                             validators: {
+                                notEmpty: {
+                                    message: 'DDD obrigatório'
+                                },
                                 stringLength: {
-                                    min: 1,
-                                    max: 120,
-                                    message: 'Máximo 120 caracteres'
+                                    min: 2,
+                                    max: 2,
+                                    message: 'Máximo 2 caracteres'
                                 }
                             }
                         },
-                        'Email[2]': {
+                        Telefone_Residencial: {
                             validators: {
+                                notEmpty: {
+                                    message: 'Telefone obrigatório'
+                                },
                                 stringLength: {
                                     min: 1,
-                                    max: 120,
-                                    message: 'Máximo 120 caracteres'
+                                    max: 20,
+                                    message: 'Máximo 20 caracteres'
                                 }
                             }
                         },
-                        // DDD_Telefone_Residencial: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'DDD obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 2,
-                        //             max: 2,
-                        //             message: 'Máximo 2 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // Telefone_Residencial: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Telefone obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 20,
-                        //             message: 'Máximo 20 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // DDD_Telefone_Celular: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'DDD obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 2,
-                        //             max: 2,
-                        //             message: 'Máximo 2 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // Telefone_Celular: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Celular obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 20,
-                        //             message: 'Máximo 15 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // Banco: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Banco obrigatório'
-                        //         },
-                        //         choice: {
-                        //             min: 1,
-                        //             max: 1,
-                        //             message: 'Banco obrigatório'
-                        //         },
-                        //         greaterThan: {
-                        //             message: 'Selecione um Banco',
-                        //             min: 1,
-                        //         }
-                        //     }
-                        // },
-                        // Agencia: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Agência obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 8,
-                        //             message: 'Máximo 8 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // Conta: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Conta obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 18,
-                        //             message: 'Máximo 18 caracteres'
-                        //         }
-                        //     }
-                        // },
-                        // cpf_beneficiario: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'CPF obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 14,
-                        //             max: 14,
-                        //             message: 'CPF inválido'
-                        //         },
-                        //     }
-                        // },
-                        // nome_beneficiario: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Nome obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 100,
-                        //             message: 'Máximo 100 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // pis_beneficiario: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'PIS obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 15,
-                        //             message: 'Máximo 15 caracteres'
-                        //         },
-                        //     }
-                        // },
-                        // mae_beneficiario: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'Nome obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 1,
-                        //             max: 100,
-                        //             message: 'Máximo 100 caracteres'
-                        //         },
-                        //     }
-                        // },
+                        DDD_Telefone_Celular: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'DDD obrigatório'
+                                },
+                                stringLength: {
+                                    min: 2,
+                                    max: 2,
+                                    message: 'Máximo 2 caracteres'
+                                }
+                            }
+                        },
+                        Telefone_Celular: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Celular obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 20,
+                                    message: 'Máximo 15 caracteres'
+                                }
+                            }
+                        },
+                        Banco: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Banco obrigatório'
+                                },
+                                choice: {
+                                    min: 1,
+                                    max: 1,
+                                    message: 'Banco obrigatório'
+                                },
+                                greaterThan: {
+                                    message: 'Selecione um Banco',
+                                    min: 1,
+                                }
+                            }
+                        },
+                        Agencia: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Agência obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 8,
+                                    message: 'Máximo 8 caracteres'
+                                }
+                            }
+                        },
+                        Conta: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Conta obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 18,
+                                    message: 'Máximo 18 caracteres'
+                                }
+                            }
+                        },
+                        PIS: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'PIS obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 15,
+                                    message: 'Máximo 15 caracteres'
+                                },
+                            }
+                        },
+                        Nome_Mae: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Nome obrigatório'
+                                },
+                                stringLength: {
+                                    min: 1,
+                                    max: 100,
+                                    message: 'Máximo 100 caracteres'
+                                },
+                            }
+                        },
                     },
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger(),

@@ -31,8 +31,6 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
             'CPF' => 'required|string|cpf|max:14',
             'RG' => 'required|string|max:12',
             'Data_Aniversario' => 'required|date|date_format:Y-m-d|year_invalid',
-            'PIS' => 'required|string|max:15',
-            'Nome_Mae' => 'required|string|max:100',
             'CEP' => 'required|string|max:9',
             'endereco' => 'required|string|max:63',
             'Numero' => 'required|string|max:6',
@@ -40,13 +38,7 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
             'bairro' => 'required|string|max:59',
             'cidade' => 'required|string|max:21',
             'estado' => 'required|string|max:2',
-
-//            'Email.0' => 'required|email:rfc,dns|max:120',
-
-            'pro_ema_ds_email1' => 'required|email:rfc,dns|max:120',
-            'pro_ema_ds_email2' => 'email:rfc,dns|max:120|nullable',
-            'pro_ema_ds_email3' => 'email:rfc,dns|max:120|nullable',
-
+            'Email' => 'required|email:rfc,dns|max:120',
             'DDD_Telefone_Residencial' => 'required|numeric|max:99',
             'Telefone_Residencial' => 'required|string|max:20',
             'DDD_Telefone_Celular' => 'required|numeric|max:99',
@@ -55,7 +47,9 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
             'Agencia' => 'required|string|max:8',
             'Conta' => 'required|string|max:18',
             'Poupanca' => 'required|boolean',
-            'Conjunta' => 'required|boolean'
+            'Conjunta' => 'required|boolean',
+            'PIS' => 'required|string|max:15',
+            'Nome_Mae' => 'required|string|max:100',
         ];
     }
 
@@ -70,8 +64,6 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
         $input['Nome'] = trim(filter_var($input['Nome'], FILTER_SANITIZE_STRING));
         $input['CPF'] = trim(filter_var($input['CPF'], FILTER_SANITIZE_STRING));
         $input['RG'] = trim(filter_var($input['RG'], FILTER_SANITIZE_STRING));
-        $input['PIS'] = trim(filter_var($input['PIS'], FILTER_SANITIZE_STRING));
-        $input['Nome_Mae'] = trim(filter_var($input['Nome_Mae'], FILTER_SANITIZE_STRING));
         $input['CEP'] = trim(filter_var($input['CEP'], FILTER_SANITIZE_STRING));
         $input['endereco'] = trim(filter_var($input['endereco'], FILTER_SANITIZE_STRING));
         $input['Numero'] = trim(filter_var($input['Numero'], FILTER_SANITIZE_STRING));
@@ -79,9 +71,7 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
         $input['bairro'] = trim(filter_var($input['bairro'], FILTER_SANITIZE_STRING));
         $input['cidade'] = trim(filter_var($input['cidade'], FILTER_SANITIZE_STRING));
         $input['estado'] = trim(filter_var($input['estado'], FILTER_SANITIZE_STRING));
-        $input['pro_ema_ds_email1'] = trim(filter_var($input['pro_ema_ds_email1'], FILTER_SANITIZE_STRING));
-        $input['pro_ema_ds_email2'] = trim(filter_var($input['pro_ema_ds_email2'], FILTER_SANITIZE_STRING));
-        $input['pro_ema_ds_email3'] = trim(filter_var($input['pro_ema_ds_email3'], FILTER_SANITIZE_STRING));
+        $input['Email'] = trim(filter_var($input['Email'], FILTER_SANITIZE_STRING));
         $input['DDD_Telefone_Residencial'] = trim(filter_var($input['DDD_Telefone_Residencial'], FILTER_SANITIZE_STRING));
         $input['Telefone_Residencial'] = trim(filter_var($input['Telefone_Residencial'], FILTER_SANITIZE_STRING));
         $input['DDD_Telefone_Celular'] = trim(filter_var($input['DDD_Telefone_Celular'], FILTER_SANITIZE_STRING));
@@ -91,8 +81,8 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
         $input['agenciaDV'] = trim(filter_var($input['agenciaDV'], FILTER_SANITIZE_STRING));
         $input['Conta'] = trim(filter_var($input['Conta'], FILTER_SANITIZE_STRING));
         $input['contaDV'] = trim(filter_var($input['contaDV'], FILTER_SANITIZE_STRING));
-        $input['Poupanca'] = trim(filter_var($input['Poupanca'], FILTER_SANITIZE_STRING));
-        $input['Conjunta'] = trim(filter_var($input['Conjunta'], FILTER_SANITIZE_STRING));
+        $input['PIS'] = trim(filter_var($input['PIS'], FILTER_SANITIZE_STRING));
+        $input['Nome_Mae'] = trim(filter_var($input['Nome_Mae'], FILTER_SANITIZE_STRING));
 
         /**
          * data uppercase
@@ -104,6 +94,11 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
         $input['bairro'] = dataUpperCase($input['bairro']);
         $input['cidade'] = dataUpperCase($input['cidade']);
         $input['estado'] = dataUpperCase($input['estado']);
+
+        /**
+         * data lowercase
+         */
+        $input['Email'] = dataLowercase($input['Email']);
 
         $this->replace($input);
     }
