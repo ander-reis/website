@@ -38,6 +38,14 @@ class NoticiasController extends Controller
             ->get(['id', 'dt_noticia', 'ds_resumo']);
             //->paginate(12);
 
+        if (count($noticias) == 0 ) {
+            $noticias = Noticias::where('fl_status', 1)
+                ->whereYear('dt_noticia', '=', $ano - 1)
+                ->whereNotIN('id', $notdestaque)
+                ->orderBy('dt_noticia', 'desc')
+                ->get(['id', 'dt_noticia', 'ds_resumo']);
+        }
+
         return view('website.noticias.index', compact('notdestaque', 'noticias', 'anos'));
     }
 
