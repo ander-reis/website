@@ -2,13 +2,11 @@
 
 namespace Website\Http\Controllers\Website;
 
-use http\Env\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\ProcessosBeneficiarioUpdateRequest;
 use Website\Http\Requests\ProcessosCreateRequest;
 use Website\Http\Requests\ProcessosIndexRequest;
 use Website\Http\Requests\ProcessosInventarianteUpdateRequest;
-use Website\Http\Requests\ProcessosUpdateRequest;
 use Website\Models\CadastroProfessores;
 use Website\Models\FichaProfessor;
 use Website\Models\Processos;
@@ -137,7 +135,7 @@ class ProcessosController extends Controller
             /**
              * update Cadastro_Professores
              */
-            $this->updateCadastroProfessor($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
+            CadastroProfessores::updateCadastroProfessores($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
 
             /**
              * deleta session
@@ -195,8 +193,6 @@ class ProcessosController extends Controller
     {
         $model = $this->getFormatDataInventariante($request);
 
-//        dd($model);
-
         /**
          * update tb_sinpro_processos_professores
          */
@@ -205,7 +201,7 @@ class ProcessosController extends Controller
         /**
          * update Cadastro_Professores
          */
-        $this->updateCadastroProfessor($codigo_professor, ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
+        CadastroProfessores::updateCadastroProfessores($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
 
         /**
          * deleta session
@@ -249,12 +245,6 @@ class ProcessosController extends Controller
         $professorEmail->pro_ema_ds_email2 = $request->input('pro_ema_ds_email2');
         $professorEmail->pro_ema_ds_email3 = $request->input('pro_ema_ds_email3');
         $professorEmail->save();
-    }
-
-    private function updateCadastroProfessor($id, $data = null)
-    {
-        $data = CadastroProfessores::where('Codigo_Professor', $id)->update($data);
-        return $data;
     }
 
     /**
@@ -392,19 +382,6 @@ class ProcessosController extends Controller
 
         return $model;
     }
-
-    /**
-     * transforma email array em string, e.g: email1; email2; email;
-     *
-     * @param $email
-     * @return string
-     */
-//    private function getEmailInventariante($email1, $email2, $email3)
-//    {
-//        $array = [$email1, $email2, $email3];
-//        $array_filter = array_filter($array);
-//        return implode(';', $array_filter);
-//    }
 
     /**
      * concatena conta de dv

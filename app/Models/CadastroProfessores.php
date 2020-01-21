@@ -84,6 +84,12 @@ class CadastroProfessores extends Model
         'Conjunta',
     ];
 
+    /**
+     * metodo static select professor
+     *
+     * @param $cpf
+     * @return mixed
+     */
     public static function getCadastroProfessores($cpf)
     {
         return CadastroProfessores::where('CPF', $cpf)
@@ -116,6 +122,18 @@ class CadastroProfessores extends Model
                 'Poupanca',
                 'Conjunta',
             ]);
+    }
+
+    /**
+     * metodo static update professor
+     *
+     * @param $id
+     * @param null $data
+     * @return mixed
+     */
+    public static function updateCadastroProfessores($id, $data = null)
+    {
+        return CadastroProfessores::where('Codigo_Professor', $id)->update($data);
     }
 
     /**
