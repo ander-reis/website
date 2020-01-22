@@ -21,7 +21,7 @@
                             </ul>
                         @endif
 
-                        {{ Form::open(['route' => 'processos.list', 'id' => 'processForm']) }}
+                        {{ Form::open(['route' => 'processos.list', 'id' => 'indexProcessForm']) }}
                         <div class="form-group">
                             {{ Form::label('cpf', 'CPF', ['class' => 'control-label']) }}
                             {{ Form::text('cpf', null, ['class' => 'form-control']) }}
@@ -55,7 +55,7 @@
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function (e) {
                 $('#cpf').mask('000.000.000-00', {reverse: true});
-                const form = document.getElementById('processForm');
+                const form = document.getElementById('indexProcessForm');
                 FormValidation.formValidation(
                     form,
                     {

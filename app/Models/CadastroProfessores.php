@@ -44,8 +44,105 @@ class CadastroProfessores extends Model
      */
     public $timestamps = false;
 
-    public function banco()
+    /**
+     * cast Codigo_Professor, por padrão id e int
+     *
+     * @var array
+     */
+    protected $casts = [
+        'Codigo_Professor' => 'string'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'Codigo_Professor',
+        'Nome',
+        'Sexo',
+        'CPF',
+        'RG',
+        'Data_Aniversario',
+        'PIS',
+        'Nome_Mae',
+        'CEP',
+        'Endereco',
+        'Numero',
+        'Complemento',
+        'Bairro',
+        'Cidade',
+        'Estado',
+        'Email',
+        'DDD_Telefone_Residencial',
+        'Telefone_Residencial',
+        'DDD_Telefone_Celular',
+        'Telefone_Celular',
+        'Banco',
+        'Agencia',
+        'Conta',
+        'Poupanca',
+        'Conjunta',
+    ];
+
+    /**
+     * metodo static select professor
+     *
+     * @param $cpf
+     * @return mixed
+     */
+    public static function getCadastroProfessores($cpf)
     {
-        return $this->hasOne(CadastroBanco::class, 'CodBanco', 'Banco');
+        return CadastroProfessores::where('CPF', $cpf)
+            ->where('Situacao', '<>', 3)
+            ->where('Situacao', '<>', 4)
+            ->where('Situacao', '<>', 8)
+            ->first([
+                'Codigo_Professor',
+                'Nome',
+                'Sexo',
+                'RG',
+                'Data_Aniversario',
+                'PIS',
+                'Nome_Mae',
+                'CEP',
+                'Endereco',
+                'Numero',
+                'Complemento',
+                'Bairro',
+                'Cidade',
+                'Estado',
+                'Email',
+                'DDD_Telefone_Residencial',
+                'Telefone_Residencial',
+                'DDD_Telefone_Celular',
+                'Telefone_Celular',
+                'Banco',
+                'Agencia',
+                'Conta',
+                'Poupanca',
+                'Conjunta',
+            ]);
+    }
+
+    /**
+     * metodo static update professor
+     *
+     * @param $id
+     * @param null $data
+     * @return mixed
+     */
+    public static function updateCadastroProfessores($id, $data = null)
+    {
+        return CadastroProfessores::where('Codigo_Professor', $id)->update($data);
+    }
+
+    /**
+     * relacionamento Cadastro_Professores / tb_sinpro_email
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function email()
+    {
+        return $this->hasOne(ProfessorEmail::class, 'pro_ema_cd_professor');
     }
 }

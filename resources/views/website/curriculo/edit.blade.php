@@ -296,8 +296,6 @@
                                     },
                                 }
                             },
-
-
                             email: {
                                 validators: {
                                     // notEmpty: {

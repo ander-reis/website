@@ -18,7 +18,7 @@ class Processos extends Model
      *
      * @var null
      */
-    protected $primaryKey = 'id_processos';
+    protected $primaryKey = 'id_processo';
 
     /**
      * set created_at
@@ -29,9 +29,4 @@ class Processos extends Model
      * set updated_at
      */
     const UPDATED_AT = null;
-
-    public function ficha()
-    {
-
-    }
 }
