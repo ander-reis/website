@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-3 col-md-6 mt-3">
-                <a href="{{ route('paginas-principais', ['url-pagina' => 'sindicalizacao']) }}">
+                <a href="{{route('nova-sindicalizacao.index')}}">
                     <img class="rounded mx-auto d-block w-100"
                         src="{{ asset('images/layout-1/home/sindicalizese.jpg') }}" alt="SinproSP">
                 </a>
