@@ -2,13 +2,17 @@
 
 namespace Website\Http\Controllers\Website;
 
+use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\ProcessosBeneficiarioUpdateRequest;
 use Website\Http\Requests\ProcessosCreateRequest;
 use Website\Http\Requests\ProcessosIndexRequest;
 use Website\Http\Requests\ProcessosInventarianteUpdateRequest;
+use Website\Http\Requests\ProcessosPagamentosRequest;
 use Website\Models\CadastroProfessores;
 use Website\Models\FichaProfessor;
+use Website\Models\ProcessoFinanceiro;
+use Website\Models\ProcessoFinanceiroIr;
 use Website\Models\Processos;
 use Website\Models\ProcessosProfessores;
 use Website\Models\ProfessorEmail;
@@ -72,7 +76,7 @@ class ProcessosController extends Controller
         $cpf = session('cpf');
         $opcao = session('opcao');
 
-        $processo = Processos::where('id_processo', $id_processo)->first(['ds_processo']);
+        $processo = Processos::where('id_processo', $id_processo)->first(['ds_processo', 'nr_pasta']);
 
         $cadastroProfessores = CadastroProfessores::getCadastroProfessores($cpf);
 
@@ -101,9 +105,41 @@ class ProcessosController extends Controller
             case 1:
                 // Beneficiario
                 $model = $this->setFormatDataBeneficiario($cadastroProfessores);
-                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo'));
+
+                $anoPagamento = ProcessoFinanceiro::getAnoPagamentos($processo->nr_pasta, $cpf);
+                $pagamentos = ProcessoFinanceiro::getPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
+                $total = ProcessoFinanceiro::getTotalPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
+                $anoImposto = ProcessoFinanceiroIr::getAnoImposto($processo->nr_pasta, $cpf);
+
+                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo', 'anoPagamento', 'pagamentos', 'total', 'anoImposto'));
                 break;
         }
+    }
+
+    /**
+     * retorna pagamentos
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getPagamento(ProcessosPagamentosRequest $request)
+    {
+        $cpf = session('cpf');
+        $ano = $request->input('ano');
+        $pasta = $request->input('pasta');
+        $data = ProcessoFinanceiro::getPagamentos($pasta, $cpf, $ano);
+        $total = ProcessoFinanceiro::getTotalPagamentos($pasta, $cpf, $ano);
+        return response()->json(['data' => $data, 'total' => $total]);
+    }
+
+    public function getImposto($ano, $pasta, $ano_pasta)
+    {
+        $cpf = session('cpf');
+        $pasta = "{$pasta}/{$ano_pasta}";
+
+        $model = ProcessoFinanceiroIr::getImposto($pasta, $cpf, $ano);
+
+        return view('website.processos.imposto-show', compact('model'));
     }
 
     /**
@@ -220,8 +256,8 @@ class ProcessosController extends Controller
      */
     public function sair()
     {
-       request()->session()->invalidate();
-       return redirect('/processos');
+        request()->session()->invalidate();
+        return redirect('/processos');
     }
 
     /**

@@ -116,6 +116,8 @@ Route::group(['namespace' => 'Website'], function() {
     Route::name('processos.select')->get('/processos/{id_processo}', 'ProcessosController@select');
     Route::name('processos.store')->post('/processos', 'ProcessosController@store');
     Route::name('processos.create')->get('/processos/create', 'ProcessosController@create');
+    Route::name('processos.pagamento')->post('/processos/pagamento', 'ProcessosController@getPagamento');
+    Route::name('processos.imposto')->get('/processos/imposto/{ano}/{pasta}/{ano_pasta}', 'ProcessosController@getImposto');
     Route::name('processos.update.beneficiario')->put('/processos/beneficiario/{codigo_professor}', 'ProcessosController@updateBeneficiario');
     Route::name('processos.update.inventariante')->put('/processos/inventariante/{codigo_professor}/{id_cadastro}', 'ProcessosController@updateInventariante');
 });

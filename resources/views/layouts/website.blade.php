@@ -108,5 +108,6 @@
     @stack('salario_calcular')
     @stack('noticias')
     @stack('form-processos-script')
+    @stack('pagamento-script')
 </body>
 </html>

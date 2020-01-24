@@ -219,18 +219,6 @@
                                 }
                             }
                         },
-                        // CPF: {
-                        //     validators: {
-                        //         notEmpty: {
-                        //             message: 'CPF obrigatório'
-                        //         },
-                        //         stringLength: {
-                        //             min: 14,
-                        //             max: 14,
-                        //             message: 'CPF inválido'
-                        //         },
-                        //     }
-                        // },
                         RG: {
                             validators: {
                                 notEmpty: {

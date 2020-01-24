@@ -44,6 +44,13 @@ class FichaProfessor extends Model
      */
     public $timestamps = false;
 
+    /**
+     * select ficha professor
+     *
+     * @param $cpf
+     * @param $dataAniversario
+     * @return mixed
+     */
     public static function fichaProfessor($cpf, $dataAniversario)
     {
         return FichaProfessor::where('CPF', $cpf)
