@@ -5,6 +5,10 @@
         <div class="col-12 col-sm-12 col-md-9">
             <h2 class="mb-4">Nova Sindicalização</h2>
             <div class="mb-5">
+                <div class="mb-4 bemvindo_sind">
+                    Seja bem-vinda, seja bem-vindo. Veja <a href="{{ route('paginas-principais', ['url-pagina' => 'sindicalizacao']) }}">aqui</a> por que é importante filiar-se ao SinproSP
+                </div>
+
                 <div class="mb-4">
                     <span class="text-danger">*</span> Campo Obrigatório
                 </div>
