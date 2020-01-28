@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
         <p>Prezado professor <strong>{{ $model->Nome ?? null }}</strong></p>
-        <p>Informamos os procedimentos para o preenchimento de suia declaração de imposto de renda referente ao
-            processo {{ $model->jur_prc_nr_processo ?? null }} conta a {{ $model->Razao_Social ?? null }},
-            CNPJ {{ $model->jur_fic_cd_cnpj ?? null }}, ano base {{ $model->jur_pfi_ds_ano }}.</p>
+        <p class="retreat">Informamos os procedimentos para o preenchimento de sua declaração de imposto de renda referente ao
+            processo <b>{{ $model->jur_prc_nr_processo ?? null }}</b> conta a <b>{{ $model->Razao_Social ?? null }}</b>,
+            CNPJ <b>{{ $model->jur_fic_cd_cnpj ?? null }}</b>, ano base <b>{{ $model->jur_pfi_ds_ano }}</b>.</p>
         <p>O tratamento tributário de diferenças salariais recebidas acumuladamente por força de decisão judicial será feito na ficha de:</p>
         <p><strong>Rendimentos Tributáveis de Pessoa Jurídica Recebidos Acumuladamente pelo Titular</strong></p>
         <ol>
@@ -22,12 +22,12 @@
             <span><strong>{{ moneyFormatted($model->jur_pfi_vl_inss) }}</strong></span>
             <li>Pensão alimentícia</li>
             <span><strong>Deixar em branco</strong></span>
-            <li>??? Imposto retido na fonte</li>
-            <span><strong>??? {{ moneyFormatted($model->jur_pfi_vl_inss) }}</strong></span>
+            <li>Imposto retido na fonte</li>
+            <span><strong>R$ 0,00</strong></span>
             <li>Mês de recebimento</li>
-            <span><strong>??? {{ moneyFormatted($model->jur_pfi_vl_inss) }}</strong></span>
+            <span><strong>Dezembro</strong></span>
             <li>Número de meses</li>
-            <span><strong>{{ moneyFormatted($model->jur_pfi_nr_parcela) }}</strong></span>
+            <span><strong>{{ $model->jur_pfi_nr_parcela }}</strong></span>
             <li>Clique em ok</li>
         </ol>
     </div>
