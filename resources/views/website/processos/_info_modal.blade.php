@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                @component('website.processos.texto')@endcomponent
+                @component('website.processos._texto_modal')@endcomponent
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
