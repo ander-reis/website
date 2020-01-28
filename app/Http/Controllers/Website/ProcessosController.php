@@ -442,7 +442,7 @@ class ProcessosController extends Controller
         return back()->withInput()->withErrors(
             'O seu nome não consta em nenhum processo.
             Em caso de dúvida, solicitamos que entre em contato com o nosso departamento juríco de segunda a sexta,
-            das 8h30 às 18h, através do telefone: (11)5080-5989.'
+            das 8h30 às 18h, através do telefone: (11) 5080-5989.'
         );
     }
 
