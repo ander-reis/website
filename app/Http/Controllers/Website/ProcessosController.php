@@ -14,6 +14,7 @@ use Website\Models\FichaProfessor;
 use Website\Models\ProcessoFinanceiro;
 use Website\Models\ProcessoFinanceiroIr;
 use Website\Models\Processos;
+use Website\Models\ProcessoSite;
 use Website\Models\ProcessosProfessores;
 use Website\Models\ProfessorEmail;
 
@@ -97,49 +98,30 @@ class ProcessosController extends Controller
 
                 $model = $this->setFormatDataInventariante($model);
 
+                $anoPagamento = ProcessoFinanceiro::getAnoPagamentos($processo->nr_pasta, $cpf);
+                $pagamentos = ProcessoFinanceiro::getPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
+                $total = ProcessoFinanceiro::getTotalPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
+                $anoImposto = ProcessoFinanceiroIr::getAnoImposto($processo->nr_pasta, $cpf);
+
                 /**
                  * if model is update
                  */
-                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao', 'processo', 'cadastroProfessores'));
+                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao', 'processo', 'cadastroProfessores', 'anoPagamento', 'pagamentos', 'total', 'anoImposto'));
                 break;
             case 1:
                 // Beneficiario
                 $model = $this->setFormatDataBeneficiario($cadastroProfessores);
+
+                $message = ProcessoSite::getMessage($processo->nr_pasta, $cpf);
 
                 $anoPagamento = ProcessoFinanceiro::getAnoPagamentos($processo->nr_pasta, $cpf);
                 $pagamentos = ProcessoFinanceiro::getPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
                 $total = ProcessoFinanceiro::getTotalPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
                 $anoImposto = ProcessoFinanceiroIr::getAnoImposto($processo->nr_pasta, $cpf);
 
-                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo', 'anoPagamento', 'pagamentos', 'total', 'anoImposto'));
+                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo', 'anoPagamento', 'pagamentos', 'total', 'anoImposto', 'message'));
                 break;
         }
-    }
-
-    /**
-     * retorna pagamentos
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getPagamento(ProcessosPagamentosRequest $request)
-    {
-        $cpf = session('cpf');
-        $ano = $request->input('ano');
-        $pasta = $request->input('pasta');
-        $data = ProcessoFinanceiro::getPagamentos($pasta, $cpf, $ano);
-        $total = ProcessoFinanceiro::getTotalPagamentos($pasta, $cpf, $ano);
-        return response()->json(['data' => $data, 'total' => $total]);
-    }
-
-    public function getImposto($ano, $pasta, $ano_pasta)
-    {
-        $cpf = session('cpf');
-        $pasta = "{$pasta}/{$ano_pasta}";
-
-        $model = ProcessoFinanceiroIr::getImposto($pasta, $cpf, $ano);
-
-        return view('website.processos.imposto-show', compact('model'));
     }
 
     /**
@@ -247,6 +229,32 @@ class ProcessosController extends Controller
         toastr()->success('Cadastro alterado com sucesso!');
 
         return redirect()->route('processos.index');
+    }
+
+    /**
+     * retorna pagamentos
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getPagamento(ProcessosPagamentosRequest $request)
+    {
+        $cpf = session('cpf');
+        $ano = $request->input('ano');
+        $pasta = $request->input('pasta');
+        $data = ProcessoFinanceiro::getPagamentos($pasta, $cpf, $ano);
+        $total = ProcessoFinanceiro::getTotalPagamentos($pasta, $cpf, $ano);
+        return response()->json(['data' => $data, 'total' => $total]);
+    }
+
+    public function getImposto($ano, $pasta, $ano_pasta)
+    {
+        $cpf = session('cpf');
+        $pasta = "{$pasta}/{$ano_pasta}";
+
+        $model = ProcessoFinanceiroIr::getImposto($pasta, $cpf, $ano);
+
+        return view('website.processos.imposto-show', compact('model'));
     }
 
     /**

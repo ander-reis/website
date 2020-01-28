@@ -12,5 +12,13 @@
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
 
         {{ Form::close() }}
+
+        @empty(!$anoPagamento->first())
+            @component('website.processos._pagamentos', ['ano' => $anoPagamento, 'pagamentos' => $pagamentos, 'total' => $total, 'pasta' => $processo->nr_pasta])@endcomponent
+        @endempty
+
+        @empty(!$anoImposto->first())
+            @component('website.processos._imposto', ['ano' => $anoImposto, 'pasta' => $processo->nr_pasta])@endcomponent
+        @endempty
     </div>
 @endsection
