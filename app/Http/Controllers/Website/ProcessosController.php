@@ -337,6 +337,7 @@ class ProcessosController extends Controller
     private function getFormatDataBeneficiario($request)
     {
         $data = $request->all();
+
         $data['Endereco'] = $data['endereco'];
         $data['Bairro'] = $data['bairro'];
         $data['Cidade'] = $data['cidade'];
@@ -439,7 +440,7 @@ class ProcessosController extends Controller
      */
     private function getContaAgencia($conta, $dv)
     {
-        return $dv ? $conta . '-' . $dv : $conta;
+        return !is_null($dv) ? $conta . '-' . $dv : $conta;
     }
 
     /**
