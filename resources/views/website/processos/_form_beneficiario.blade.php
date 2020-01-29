@@ -123,7 +123,7 @@
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4 col-lg-4'])
         {{ Form::label('Banco', 'Banco', ['class' => 'control-label']) }}
-        {{ Form::select('Banco', \Website\Models\CadastroBanco::all()->forget(0)->pluck('Banco', 'CodBanco')->prepend('Selecione o Banco', '0'), null, ['class' => 'form-control']) }}
+        {{ Form::select('Banco', \Website\Models\CadastroBanco::getBanco()->pluck('Banco', 'CodBanco')->prepend('Selecione o Banco', '0'), null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-sm-6 col-md-2 col-lg-2'])
         {{ Form::label('Agencia', 'Agência', ['class' => 'control-label']) }}

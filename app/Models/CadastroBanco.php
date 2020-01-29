@@ -50,4 +50,14 @@ class CadastroBanco extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * select banco, exceto CodBanco = ['000', '999']
+     *
+     * @return mixed
+     */
+    public static function getBanco()
+    {
+        return CadastroBanco::whereNotIn('CodBanco', ['000', '999'])->orderBy('Banco')->get(['CodBanco', 'Banco']);
+    }
 }
