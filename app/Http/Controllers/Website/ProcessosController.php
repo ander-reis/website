@@ -98,6 +98,8 @@ class ProcessosController extends Controller
 
                 $model = $this->setFormatDataInventariante($model);
 
+                $message = ProcessoSite::getMessage($processo->nr_pasta, $cpf);
+
                 $anoPagamento = ProcessoFinanceiro::getAnoPagamentos($processo->nr_pasta, $cpf);
                 $pagamentos = ProcessoFinanceiro::getPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
                 $total = ProcessoFinanceiro::getTotalPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
@@ -106,7 +108,7 @@ class ProcessosController extends Controller
                 /**
                  * if model is update
                  */
-                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao', 'processo', 'cadastroProfessores', 'anoPagamento', 'pagamentos', 'total', 'anoImposto'));
+                return view('website.processos.edit-inventariante', compact('model', 'cpf', 'opcao', 'processo', 'cadastroProfessores', 'anoPagamento', 'pagamentos', 'total', 'anoImposto', 'message'));
                 break;
             case 1:
                 // Beneficiario
