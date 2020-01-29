@@ -84,18 +84,18 @@
                         fields: {
                             cpf: {
                                 validators: {
-                            callback: {
-                                message: 'CPF inválido',
-                                callback: function(input) {
-                                    if (input.value !== '') {
-                                       return TestaCPF(input.value);
-                                    } else {
-                                        return true;
-                                    }
+                                    callback: {
+                                        message: 'CPF inválido',
+                                        callback: function (input) {
+                                            if (input.value !== '') {
+                                                return TestaCPF(input.value);
+                                            } else {
+                                                return true;
+                                            }
+                                        }
+                                    },
+                                    blank: {}
                                 }
-                            },
-                            blank: {}
-                        }
                             },
                             nascimento: {
                                 validators: {
