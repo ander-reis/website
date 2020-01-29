@@ -194,6 +194,8 @@
             $('#CPF').mask('000.000.000-00', {reverse: true});
             $("#search-cep").on("click", function () {
                 pesquisacep(CEP.value);
+                $('#Numero').val('');
+                $('#Complemento').val('');
             });
             FormValidation.formValidation(
                 form,
