@@ -16,13 +16,8 @@
 </div>
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
-        @if($model->CPF)
-            {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
-            {{ Form::text('CPF', null, ['class' => 'form-control', 'readonly']) }}
-        @else
-            {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
-            {{ Form::text('CPF', null, ['class' => 'form-control']) }}
-        @endif
+        {{ Form::label('CPF', 'CPF', ['class' => 'control-label']) }}
+        {{ Form::text('CPF', null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('RG', 'RG', ['class' => 'control-label']) }}

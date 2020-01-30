@@ -180,11 +180,17 @@ class ProcessosController extends Controller
     public function updateBeneficiario(ProcessosBeneficiarioUpdateRequest $request, $codigo_professor)
     {
         $model = $this->getFormatDataBeneficiario($request);
+        $cpf = session('cpf');
 
         /**
          * tb_professor_email.
          */
         $this->createProfessorEmail($codigo_professor, $request);
+
+        /**
+         * cadastrar CPF e CPF_Beneficiario em tb_sinpro_processos_professores
+         */
+        ProcessosProfessores::create(['CPF' => $cpf, 'CPF_Beneficiario' => $cpf]);
 
         /**
          * Cadastro_Professores
