@@ -2,7 +2,9 @@
 
 namespace Website\Http\Controllers\Website;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PhpParser\Node\Scalar\String_;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\ProcessosBeneficiarioUpdateRequest;
 use Website\Http\Requests\ProcessosCreateRequest;
@@ -17,6 +19,7 @@ use Website\Models\Processos;
 use Website\Models\ProcessoSite;
 use Website\Models\ProcessosProfessores;
 use Website\Models\ProfessorEmail;
+use Website\Models\ProfessorObservacoes;
 
 class ProcessosController extends Controller
 {
@@ -183,6 +186,11 @@ class ProcessosController extends Controller
         $cpf = session('cpf');
 
         /**
+         * Professor_Observacoes
+         */
+        $this->createProfessorObservacao($codigo_professor, $request);
+
+        /**
          * tb_professor_email.
          */
         $this->createProfessorEmail($codigo_professor, $request);
@@ -300,6 +308,51 @@ class ProcessosController extends Controller
     }
 
     /**
+     * insert Professor_Observacoes
+     *
+     * @param $codigoProfessor
+     * @param null $request
+     */
+    private function createProfessorObservacao($codigoProfessor, $request = null)
+    {
+        // beneficiario
+        $collection = CadastroProfessores::getCadastroProfessor($codigoProfessor);
+        $modelDatabase = $this->getFormatModel($collection);
+        $data = $this->getFormatDataBeneficiario($request);
+        $diffModel = array_diff_assoc($modelDatabase, $data);
+        $arrayKeysModel = array_keys($diffModel);
+        $implodeModel = implode(';', $arrayKeysModel);
+        $observacao = strtoupper($implodeModel);
+
+        // email
+        $email1 = $request->input('pro_ema_ds_email1');
+        $email2 = $request->input('pro_ema_ds_email2');
+        $email3 = $request->input('pro_ema_ds_email3');
+        $modelEmail = ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3'])->toArray();
+        $arrayEmails = ['pro_ema_ds_email1' => $email1, 'pro_ema_ds_email2' => $email2, 'pro_ema_ds_email3' => $email3];
+        $diffEmail = array_diff_assoc($modelEmail, $arrayEmails);
+        $arrayKeysEmail = array_keys($diffEmail);
+        $implodeEmail = implode(';', $arrayKeysEmail);
+        $email = strtoupper($implodeEmail);
+
+        $values = '';
+        if (!empty($observacao) && !empty($email)) {
+            $values = $observacao . ';' . $email;
+        } elseif (!empty($observacao) && empty($email)) {
+            $values = $observacao;
+        } elseif (empty($observacao) && !empty($email)) {
+            $values = $email;
+        }
+
+        $day = Carbon::now()->format('Y-m-d');
+        $hour = Carbon::now()->format('H:i:s');
+        if(!empty($values)){
+            // insert observacao
+            ProfessorObservacoes::create(['Codigo_Professor' => $codigoProfessor, 'Data' => "{$day} 00:00:00.000", 'Observacao' => $values, 'Login' => 'SITE/PROCESSOS', 'Hora' => "1900-01-01 {$hour}"]);
+        }
+    }
+
+    /**
      * get data para cadastro inventariante
      *
      * @param $request
@@ -364,6 +417,39 @@ class ProcessosController extends Controller
             $data['pro_ema_ds_email2'],
             $data['pro_ema_ds_email3']);
 
+        return $data;
+    }
+
+    /**
+     * normatiza data model para comparação com request form data
+     *
+     * @param $model
+     * @return mixed
+     */
+    private function getFormatModel($model)
+    {
+        $data['Nome'] = $model['Nome'];
+        $data['Sexo'] = $model['Sexo'];
+        $data['RG'] = $model['RG'];
+        $data['Data_Aniversario'] = substr($model['Data_Aniversario'], 0, -9);
+        $data['PIS'] = $model['PIS'];
+        $data['Nome_Mae'] = $model['Nome_Mae'];
+        $data['CEP'] = $model['CEP'];
+        $data['Numero'] = $model['Numero'];
+        $data['Complemento'] = $model['Complemento'];
+        $data['DDD_Telefone_Residencial'] = $model['DDD_Telefone_Residencial'];
+        $data['Telefone_Residencial'] = $model['Telefone_Residencial'];
+        $data['DDD_Telefone_Celular'] = $model['DDD_Telefone_Celular'];
+        $data['Telefone_Celular'] = $model['Telefone_Celular'];
+        $data['Banco'] = $model['Banco'];
+        $data['Agencia'] = $model['Agencia'];
+        $data['Conta'] = $model['Conta'];
+        $data['Poupanca'] = $model['Poupanca'];
+        $data['Conjunta'] = $model['Conjunta'];
+        $data['Endereco'] = $model['Endereco'];
+        $data['Bairro'] = $model['Bairro'];
+        $data['Cidade'] = $model['Cidade'];
+        $data['Estado'] = $model['Estado'];
         return $data;
     }
 

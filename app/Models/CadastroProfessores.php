@@ -125,6 +125,42 @@ class CadastroProfessores extends Model
     }
 
     /**
+     * metodo static select professor
+     *
+     * @param $codigoProfessor
+     * @return mixed
+     */
+    public static function getCadastroProfessor($codigoProfessor)
+    {
+        return CadastroProfessores::findOrFail($codigoProfessor)
+            ->first([
+                'Codigo_Professor',
+                'Nome',
+                'Sexo',
+                'RG',
+                'Data_Aniversario',
+                'PIS',
+                'Nome_Mae',
+                'CEP',
+                'Endereco',
+                'Numero',
+                'Complemento',
+                'Bairro',
+                'Cidade',
+                'Estado',
+                'DDD_Telefone_Residencial',
+                'Telefone_Residencial',
+                'DDD_Telefone_Celular',
+                'Telefone_Celular',
+                'Banco',
+                'Agencia',
+                'Conta',
+                'Poupanca',
+                'Conjunta',
+            ])->toArray();
+    }
+
+    /**
      * metodo static update professor
      *
      * @param $id
