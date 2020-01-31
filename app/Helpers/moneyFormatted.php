@@ -8,6 +8,6 @@ if (!function_exists('moneyFormatted')) {
      */
     function moneyFormatted($money)
     {
-        return "R$ " . number_format($money, 2, ',', '.');
+        return number_format($money, 2, ',', '.');
     }
 }
