@@ -64,4 +64,20 @@ class ProcessosProfessores extends Model
         'Conjunta',
         'num_ip',
     ];
+
+    /**
+     * metodo responsavel por criar e/ou atualizar tb_sinpro_processos_professores em beneficiario
+     *
+     * @param $request
+     * @param $cpf
+     */
+    public static function createOrUpdateProcessosProfessores($request, $cpf)
+    {
+        $processo = ProcessosProfessores::where('id_processo', $request->input('id_processo'))->where('CPF_Beneficiario', $cpf)->first(['id_cadastro']);
+        if(is_null($processo)){
+            ProcessosProfessores::create(['CPF' => $cpf, 'CPF_Beneficiario' => $cpf, 'id_processo' => $request->input('id_processo'), 'num_ip' => $request->ip(), 'fl_sas' => 0, 'fl_juridico' => 0]);
+        } else {
+            ProcessosProfessores::where('id_processo', $request->input('id_processo'))->where('CPF_Beneficiario', $cpf)->update(['num_ip' => $request->ip(), 'fl_sas' => 0, 'fl_juridico' => 0]);
+        }
+    }
 }

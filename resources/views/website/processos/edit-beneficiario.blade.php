@@ -15,7 +15,7 @@
 
         {{ Form::model($model, ['route' => ['processos.update.beneficiario', $model->id_cadastro ?? $model->Codigo_Professor], 'method' => 'PUT', 'id' => 'processoForm']) }}
 
-        @component('website.processos._form_beneficiario', ['model' => $model ?? null, 'cpf' => $cpf ?? null])@endcomponent
+        @component('website.processos._form_beneficiario', ['model' => $model ?? null, 'cpf' => $cpf ?? null, 'id_processo' => $id_processo ?? null])@endcomponent
 
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
 

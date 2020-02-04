@@ -124,7 +124,7 @@ class ProcessosController extends Controller
                 $total = ProcessoFinanceiro::getTotalPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
                 $anoImposto = ProcessoFinanceiroIr::getAnoImposto($processo->nr_pasta, $cpf);
 
-                return view('website.processos.edit-beneficiario', compact('model', 'cpf', 'opcao', 'processo', 'anoPagamento', 'pagamentos', 'total', 'anoImposto', 'message'));
+                return view('website.processos.edit-beneficiario', compact('model', 'id_processo', 'cpf', 'opcao', 'processo', 'anoPagamento', 'pagamentos', 'total', 'anoImposto', 'message'));
                 break;
         }
     }
@@ -198,7 +198,7 @@ class ProcessosController extends Controller
         /**
          * cadastrar CPF e CPF_Beneficiario em tb_sinpro_processos_professores
          */
-        ProcessosProfessores::create(['CPF' => $cpf, 'CPF_Beneficiario' => $cpf, 'num_ip' => $_SERVER['REMOTE_ADDR'], 'fl_sas' => 0, 'fl_juridico' => 0]);
+        ProcessosProfessores::createOrUpdateProcessosProfessores($request, $cpf);
 
         /**
          * Cadastro_Professores
