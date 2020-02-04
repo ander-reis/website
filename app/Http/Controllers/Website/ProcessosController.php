@@ -198,7 +198,7 @@ class ProcessosController extends Controller
         /**
          * cadastrar CPF e CPF_Beneficiario em tb_sinpro_processos_professores
          */
-        ProcessosProfessores::create(['CPF' => $cpf, 'CPF_Beneficiario' => $cpf]);
+        ProcessosProfessores::create(['CPF' => $cpf, 'CPF_Beneficiario' => $cpf, 'num_ip' => $_SERVER['REMOTE_ADDR'], 'fl_sas' => 0, 'fl_juridico' => 0]);
 
         /**
          * Cadastro_Professores
