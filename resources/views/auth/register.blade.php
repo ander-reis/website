@@ -314,13 +314,23 @@
                                 validators: {
                                     notEmpty: {
                                         message: 'Senha obrigatório'
-                                    }
+                                    },
+                                    stringLength: {
+                                        min: 6,
+                                        max: 30,
+                                        message: 'Máximo 30 carecteres'
+                                    },
                                 }
                             },
                             password_confirmation: {
                                 validators: {
                                     notEmpty: {
                                         message: 'Confirme Senha obrigatória'
+                                    },
+                                    stringLength: {
+                                        min: 6,
+                                        max: 30,
+                                        message: 'Máximo 30 carecteres'
                                     },
                                     identical: {
                                         compare: function () {

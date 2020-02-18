@@ -50,7 +50,7 @@ class CurriculoUpdateRequest extends FormRequest
             'ds_qualificacao' => ['required', 'string'],
             'ds_experiencia' => ['required', 'string'],
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'confirmed', Rule::unique('tb_sinpro_curriculos_professores')->ignore($this->user('web')->id_curriculo, 'id_curriculo')],
-            'password' => ['string', 'min:6', 'confirmed']
+            'password' => ['string', 'min:6', 'max:30', 'confirmed']
         ];
     }
 

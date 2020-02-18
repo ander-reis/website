@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'ds_qualificacao' => ['required', 'string'],
             'ds_experiencia' => ['required', 'string'],
             'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'confirmed', 'unique:tb_sinpro_curriculos_professores'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'max:30', 'confirmed'],
         ]);
     }
 
