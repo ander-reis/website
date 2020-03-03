@@ -128,8 +128,8 @@ class ProcessoFinanceiro extends Model
                 'jur_pcf_nr_pagamento' => $item->jur_pcf_nr_pagamento,
                 'jur_pcf_nr_parcela' => $item->jur_pcf_nr_parcela,
                 'jur_pcf_dt_vencimento' => dataFormatted($item->jur_pcf_dt_vencimento),
-                'jur_pcf_dt_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00') ? '' : dataFormatted($item->jur_pcf_dt_pagamento),
-                'jur_pcf_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00') ? '' : 'Pago',
+                'jur_pcf_dt_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00.000') ? '' : dataFormatted($item->jur_pcf_dt_pagamento),
+                'jur_pcf_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00.000') ? 'Em Andamento' : 'Pago',
             ];
         });
         return $model->all();
