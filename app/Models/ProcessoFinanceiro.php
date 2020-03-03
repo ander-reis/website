@@ -116,6 +116,7 @@ class ProcessoFinanceiro extends Model
                 'jur_pcf_nr_parcela',
                 'jur_pcf_dt_vencimento',
                 'jur_pcf_dt_pagamento',
+                'jur_pcf_ds_observacao',
             ])
             ->selectRaw('(jur_pcf_vl_parcela - jur_pcf_vl_taxa - jur_pcf_vl_honorario) AS jur_pcf_vl_total')
             ->orderBy('jur_pcf_dt_vencimento')
@@ -130,6 +131,7 @@ class ProcessoFinanceiro extends Model
                 'jur_pcf_dt_vencimento' => dataFormatted($item->jur_pcf_dt_vencimento),
                 'jur_pcf_dt_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00.000') ? '' : dataFormatted($item->jur_pcf_dt_pagamento),
                 'jur_pcf_pagamento' => ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00.000') ? 'Em Andamento' : 'Pago',
+                'jur_pcf_ds_observacao' => $item->jur_pcf_ds_observacao,
             ];
         });
         return $model->all();
