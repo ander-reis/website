@@ -43,7 +43,6 @@ class ProcessosBeneficiarioUpdateRequest extends FormRequest
             'pro_ema_ds_email2' => 'email:rfc,dns|max:120|nullable',
             'pro_ema_ds_email3' => 'email:rfc,dns|max:120|nullable',
             'DDD_Telefone_Residencial' => 'required|numeric|max:99',
-            'Telefone_Residencial' => 'required|string|max:20',
             'DDD_Telefone_Celular' => 'required|numeric|max:99',
             'Telefone_Celular' => 'required|string|max:15',
             'Banco' => 'required|string|max:3',
