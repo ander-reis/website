@@ -64,7 +64,7 @@ class ProcessoFinanceiro extends Model
             ->join('Cadastro_Professores', 'jur_fip_cd_professor', '=', 'Codigo_Professor')
             ->selectRaw('YEAR(jur_pcf_dt_vencimento) AS ano')
             ->distinct()
-            ->orderByRaw('YEAR(jur_pcf_dt_vencimento)')
+            ->orderByRaw('YEAR(jur_pcf_dt_vencimento) DESC')
             ->get('jur_pcf_dt_vencimento');
     }
 
@@ -88,7 +88,7 @@ class ProcessoFinanceiro extends Model
             ->get();
 
         $counted = $collection->map(function($item){
-            return ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00') ? 0 : $item->jur_pcf_vl_total;
+            return ($item->jur_pcf_dt_pagamento === '1900-01-01 00:00:00.000') ? 0 : $item->jur_pcf_vl_total;
         });
         $piped = $counted->pipe(function ($counted) {
             return $counted->sum();

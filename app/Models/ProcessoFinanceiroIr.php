@@ -67,7 +67,7 @@ class ProcessoFinanceiroIr extends Model
             ->join('Cadastro_Professores', 'jur_fip_cd_professor', '=', 'Codigo_Professor')
             ->join('tb_jur_processo', 'jur_pfi_nr_pasta', '=', 'jur_prc_nr_pasta')
             ->select('jur_pfi_ds_ano')
-            ->orderBy('jur_pfi_ds_ano')
+            ->orderBy('jur_pfi_ds_ano','desc')
             ->get();
     }
 
