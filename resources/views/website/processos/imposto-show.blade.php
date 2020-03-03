@@ -16,7 +16,7 @@
             <span><strong>{{ $model->jur_fic_cd_cnpj }}</strong></span>
             <li>Nome da fonte pagadora</li>
             <span><strong>{{ $model->Razao_Social }}</strong></span>
-            <li>Redimentos recebidos</li>
+            <li>Redimentos tributáveis</li>
             <span><strong>{{ moneyFormatted($model->jur_pfi_vl_rendimento) }}</strong></span>
             <li>Contribuição previdênciária oficial</li>
             <span><strong>{{ moneyFormatted($model->jur_pfi_vl_inss) }}</strong></span>
