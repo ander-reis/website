@@ -14,15 +14,10 @@
             </div>
             <div>
                 <p>
-                    Confira o conteúdo de cada curso nos links. A inscrição pode ser feita por telefone (5080-5974 ou
-                    5080-5988) ou na sede do Sindicato (rua Borges Lagoa, 208, Vila Clementino), de segunda a sexta, das
-                    8h30 às 17h30.
+                    Confira o conteúdo de cada curso nos links. A inscrição pode ser feita por telefone (5080-5974 ou 5080-5988) ou na sede do Sindicato (rua Borges Lagoa, 208, Vila Clementino), de segunda a sexta, das 8h00 às 17h00.
                 </p>
                 <p>
-                    As inscrições podem ser feitas até às 15h do próprio dia do curso, de acordo com a disponibilidade
-                    de vagas. Neste caso, o pagamento deverá ser efetuado, pessoalmente no SinproSP, em dinheiro ou
-                    cartão. Já para pagamentos em boleto bancário, a inscrição somente poderá ser feita até, no máximo,
-                    2 dias antes do início do curso.
+                    As inscrições podem ser feitas até às 15h do próprio dia do curso, de acordo com a disponibilidade de vagas. Neste caso, o pagamento deverá ser efetuado, pessoalmente no SinproSP, em dinheiro ou cartão. Já para pagamentos em boleto bancário, a inscrição somente poderá ser feita até, no máximo, 2 dias antes do início do curso, de acordo com a disponibilidade de vagas.
                 </p>
             </div>
 
