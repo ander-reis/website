@@ -106,6 +106,12 @@ Route::name('salario.index')->get('/salario', function () {
  });
 
 /**
+ * rota calculo reajuste
+ */
+Route::resource('calculo-reajuste', 'Website\CalculoReajusteController');
+Route::name('calculo.reajuste.busca')->post('calculo-reajuste/busca', 'Website\CalculoReajusteController@buscarCnpj');
+
+/**
  * rota processos
  *
  */
