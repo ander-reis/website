@@ -51,19 +51,21 @@
                                 <a class="dropdown-item"
                                     href="{{ route('convencao.index', ['convencao' => 1]) }}">Ensino Superior</a>
                                 <a class="dropdown-item"
-                                    href="{{ route('convencao.index', ['convencao' => 9]) }}">PUC-SP</a>
-                                <a class="dropdown-item"
-                                    href="{{ route('convencao.index', ['convencao' => 3]) }}">Sesi</a>
-                                <a class="dropdown-item"
                                     href="{{ route('convencao.index', ['convencao' => 4]) }}">Senai</a>
                                 <a class="dropdown-item" href="{{ route('convencao.index', ['convencao' => 5]) }}">Senai
                                     Superior</a>
                                 <a class="dropdown-item"
                                     href="{{ route('convencao.index', ['convencao' => 6]) }}">Senac</a>
                                 <a class="dropdown-item"
-                                    href="{{ route('convencao.index', ['convencao' => 8]) }}">Mackenzie</a>
+                                    href="{{ route('convencao.index', ['convencao' => 10]) }}">Senac - Ensino Médio</a>
                                 <a class="dropdown-item"
                                     href="{{ route('convencao.index', ['convencao' => 7]) }}">Ensino Supletivo</a>
+                                <a class="dropdown-item"
+                                    href="{{ route('convencao.index', ['convencao' => 9]) }}">PUC-SP</a>
+                                <a class="dropdown-item"
+                                    href="{{ route('convencao.index', ['convencao' => 8]) }}">Mackenzie</a>
+                                <a class="dropdown-item"
+                                    href="{{ route('convencao.index', ['convencao' => 3]) }}">Sesi</a>
                             </div>
                         </div>
                         <a class="dropdown-item" href="http://www1.sinprosp.org.br/guia_consultas.asp" target="_blank">

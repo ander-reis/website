@@ -40,7 +40,6 @@ class ProcessosInventarianteUpdateRequest extends FormRequest
             'estado' => 'required|string|max:2',
             'Email' => 'required|email:rfc,dns|max:120',
             'DDD_Telefone_Residencial' => 'required|numeric|max:99',
-            'Telefone_Residencial' => 'required|string|max:20',
             'DDD_Telefone_Celular' => 'required|numeric|max:99',
             'Telefone_Celular' => 'required|string|max:15',
             'Banco' => 'required|string|max:3',

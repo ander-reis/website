@@ -4,7 +4,7 @@
     <div class="container">
         <p>Prezado professor <strong>{{ $model->Nome ?? null }}</strong></p>
         <p class="retreat">Informamos os procedimentos para o preenchimento de sua declaração de imposto de renda referente ao
-            processo <b>{{ $model->jur_prc_nr_processo ?? null }}</b> conta a <b>{{ $model->Razao_Social ?? null }}</b>,
+            processo <b>{{ $model->jur_prc_nr_processo ?? null }}</b> contra a <b>{{ $model->Razao_Social ?? null }}</b>,
             CNPJ <b>{{ $model->jur_fic_cd_cnpj ?? null }}</b>, ano base <b>{{ $model->jur_pfi_ds_ano }}</b>.</p>
         <p>O tratamento tributário de diferenças salariais recebidas acumuladamente por força de decisão judicial será feito na ficha de:</p>
         <p><strong>Rendimentos Tributáveis de Pessoa Jurídica Recebidos Acumuladamente pelo Titular</strong></p>
@@ -16,7 +16,7 @@
             <span><strong>{{ $model->jur_fic_cd_cnpj }}</strong></span>
             <li>Nome da fonte pagadora</li>
             <span><strong>{{ $model->Razao_Social }}</strong></span>
-            <li>Redimentos recebidos</li>
+            <li>Redimentos tributáveis</li>
             <span><strong>{{ moneyFormatted($model->jur_pfi_vl_rendimento) }}</strong></span>
             <li>Contribuição previdênciária oficial</li>
             <span><strong>{{ moneyFormatted($model->jur_pfi_vl_inss) }}</strong></span>

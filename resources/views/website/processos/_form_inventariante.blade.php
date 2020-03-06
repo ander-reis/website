@@ -349,7 +349,7 @@
                                 }
                             }
                         },
-                        DDD_Telefone_Residencial: {
+                        /*DDD_Telefone_Residencial: {
                             validators: {
                                 notEmpty: {
                                     message: 'DDD obrigatório'
@@ -372,7 +372,7 @@
                                     message: 'Máximo 20 caracteres'
                                 }
                             }
-                        },
+                        },*/
                         DDD_Telefone_Celular: {
                             validators: {
                                 notEmpty: {

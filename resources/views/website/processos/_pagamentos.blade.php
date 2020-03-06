@@ -26,6 +26,7 @@
             <th scope="col">Data Vencimento</th>
             <th scope="col">Data Pagamento</th>
             <th scope="col">Pagamento</th>
+            <th scope="col">Observação</th>
         </tr>
         </thead>
         <tbody>
@@ -36,12 +37,15 @@
                 <td>{{ $item['jur_pcf_dt_vencimento'] }}</td>
                 <td>{{ $item['jur_pcf_dt_pagamento'] }}</td>
                 <td>{{ $item['jur_pcf_pagamento'] }}</td>
+                <td>{{ $item['jur_pcf_ds_observacao'] }}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
     @include('website.components.layout-1._preloader-circulo')
 </section>
+<div class="clearfix">
+</div>
 <div id="total" class="mt-3 mb-3">
     <span>Total Pago <strong class="text-danger">{{ $total }}</strong></span>
 </div>
@@ -76,6 +80,7 @@
                                     <td>${tr[i].jur_pcf_dt_vencimento}</td>
                                     <td>${tr[i].jur_pcf_dt_pagamento}</td>
                                     <td>${tr[i].jur_pcf_pagamento}</td>
+                                    <td>${tr[i].jur_pcf_ds_observacao}</td>
                                 </tr>`;
                         $('#pagamentos > tbody').append(table);
                     }

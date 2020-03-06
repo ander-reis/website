@@ -347,6 +347,7 @@ class ProcessosController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $hour = Carbon::now()->format('H:i:s');
         if(!empty($values)){
+            $values = str_replace(';', '; ', $values);
             // insert observacao
             ProfessorObservacoes::create(['Codigo_Professor' => $codigoProfessor, 'Data' => "{$day} 00:00:00.000", 'Observacao' => $values, 'Login' => 'SITE/PROCESSOS', 'Hora' => "1900-01-01 {$hour}"]);
         }
@@ -476,9 +477,12 @@ class ProcessosController extends Controller
             $model['Nome_Mae'] = '';
         }
 
-        if ($model['endereco'] === 'R BORGES LAGOA' && $model->Numero === '208') {
+        if (($model['endereco'] === 'R BORGES LAGOA' || $model['endereco'] === 'RUA BORGES LAGOA') && $model->Numero === '208') {
             $model['endereco'] = '';
             $model['Numero'] = '';
+            $model['bairro'] = '';
+            $model['cidade'] = '';
+            $model['estado'] = '';
         }
 
         unset($model->Endereco, $model->Bairro, $model->Cidade, $model->Estado);
@@ -512,9 +516,12 @@ class ProcessosController extends Controller
             $model['Nome_Mae'] = '';
         }
 
-        if ($model['endereco'] === 'R BORGES LAGOA' && $model->Numero === '208') {
+        if (($model['endereco'] === 'R BORGES LAGOA' || $model['endereco'] === 'RUA BORGES LAGOA') && $model->Numero === '208') {
             $model['endereco'] = '';
             $model['Numero'] = '';
+            $model['bairro'] = '';
+            $model['cidade'] = '';
+            $model['estado'] = '';
         }
 
         unset($model->Endereco, $model->Bairro, $model->Cidade, $model->Estado, $model->Email);
@@ -544,7 +551,7 @@ class ProcessosController extends Controller
     {
         return back()->withInput()->withErrors(
             'O seu nome não consta em nenhum processo.
-            Em caso de dúvida, solicitamos que entre em contato com o nosso departamento juríco de segunda a sexta,
+            Em caso de dúvida, solicitamos que entre em contato com o nosso departamento jurídico de segunda a sexta,
             das 8h30 às 18h, através do telefone: (11) 5080-5989.'
         );
     }
