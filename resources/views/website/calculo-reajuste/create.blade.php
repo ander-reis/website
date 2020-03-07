@@ -69,19 +69,51 @@
                 });
 
 
-                $('#vl_mar').focusout(function () {
-                    const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
-                    const vl_mar = document.getElementById('vl_mar').value.replace(',', '.');
-                    console.log('base: ' + valorBase, 'vl_mar: ' + vl_mar, 'result: ' + ((valorBase < vl_mar) ? true : false));
-                    ((valorBase < vl_mar) ? $('#icon-vl_mar').append('<i class="fas fa-check"></i>') : $('#icon-vl_mar').append('<i class="fas fa-times"></i>'))
+                const trInput = $('#table > tbody > tr');
+
+
+                $(trInput).focusout(function () {
+                    let $this = $(this);
+                    let spanInput = $this.find('span');
+                    let inputValue = $this.find('input');
+
+                    if (inputValue[0].id === 'vl_fev') {
+                        spanInput.html('');
+
+                        ((inputValue.val() !== '') ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                    }
+
+                    if (inputValue[0].id !== 'vl_fev') {
+                        spanInput.html('');
+
+                        const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
+                        const currentValue = inputValue.val().replace(',', '.');
+
+                        console.log('valorBase: ', valorBase, 'currentValue: ', currentValue);
+
+                        ((valorBase < currentValue) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                    }
                 });
 
-                $("#vl_abr").focusout(function () {
-                    const valorBase = document.getElementById('vl_fev').value.replace(',', '.') * 1.039;
-                    const vl_abr = document.getElementById('vl_abr').value.replace(',', '.');
-                    console.log('base: ' + valorBase, 'vl_abr: ' + vl_abr, 'result: ' + ((valorBase < vl_abr) ? true : false));
-                    ((valorBase < vl_abr) ? $('#icon-vl_abr').append('<i class="fas fa-check"></i>') : $('#icon-vl_abr').append('<i class="fas fa-times"></i>'))
-                });
+                // $(trInput).focusout(function() {
+                //     const $this = $(this);
+                //     let spanInput = $this.find('span');
+                //     let inputValue = $this.find('input').val();
+                //
+                //     const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
+                //     const currentValue = inputValue.replace(',', '.');
+                //
+                //     spanInput.html('');
+                //     ((valorBase < currentValue) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                // });
+
+                // $('#vl_mar').focusout(function () {
+                //         $('#icon-vl_mar').html('');
+                //         const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
+                //         const vl_mar = document.getElementById('vl_mar').value.replace(',', '.');
+                //         console.log('base: ' + valorBase, 'vl_mar: ' + vl_mar, 'result: ' + ((valorBase < vl_mar) ? true : false));
+                //         ((valorBase < vl_mar) ? $('#icon-vl_mar').append('<i class="fas fa-check"></i>') : $('#icon-vl_mar').append('<i class="fas fa-times"></i>'))
+                // });
 
 
                 FormValidation.formValidation(

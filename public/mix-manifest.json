@@ -1,6 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/bootstrap-submenu.min.js": "/js/bootstrap-submenu.min.js",
-    "/css/bootstrap-submenu.min.css": "/css/bootstrap-submenu.min.css"
+    "/css/app.css": "/css/app.css"
 }

@@ -22,7 +22,7 @@
         </div>
     @endcomponent
     <section class="col-12">
-        <table class="table">
+        <table class="table" id="table">
             <thead class="text-center">
             <tr>
                 <th scope="col">Mês</th>
