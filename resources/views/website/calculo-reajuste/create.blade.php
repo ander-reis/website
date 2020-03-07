@@ -86,12 +86,12 @@
                     if (inputValue[0].id !== 'vl_fev') {
                         spanInput.html('');
 
-                        const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
-                        const currentValue = inputValue.val().replace(',', '.');
+                        const valorBase = ($('#vl_fev').val().replace(',', '.') * 1.039).toFixed(2);
+                        const currentValue = (inputValue.val().replace(',', '.') * 1).toFixed(2);
 
                         console.log('valorBase: ', valorBase, 'currentValue: ', currentValue);
 
-                        ((valorBase < currentValue) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                        ((parseFloat(valorBase) < parseFloat(currentValue)) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
                     }
                 });
 
