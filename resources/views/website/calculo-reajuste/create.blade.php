@@ -84,7 +84,7 @@
                     let $this = $(this);
                     let span = $this.find('span');
                     let inputValue = $this.find('input');
-                    // console.log($this);
+
                     if (inputValue[0].id === 'vl_fev') {
                         span.html('');
                         ((inputValue.val() !== '') ? span.append('<i class="fas fa-check fa-2x text-success"></i>') : span.append('<i class="fas fa-times fa-2x text-danger"></i>'))
