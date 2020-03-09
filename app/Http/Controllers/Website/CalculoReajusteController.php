@@ -2,10 +2,12 @@
 
 namespace Website\Http\Controllers\Website;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Http\Requests\CalculoReajusteCreateRequest;
 use Website\Models\CadastroEscolas;
+use Website\Models\CalculoReajuste;
 
 class CalculoReajusteController extends Controller
 {
@@ -16,80 +18,53 @@ class CalculoReajusteController extends Controller
      */
     public function index()
     {
-        $mesesCalculo = $this->mesesCalculo();
-        return view('website.calculo-reajuste.create', compact('mesesCalculo'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $meses = $this->meses();
+        return view('website.calculo-reajuste.create', compact('meses'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CalculoReajusteCreateRequest $request)
     {
-        dd($request->all());
-
         try {
-            toastr()->success('Cadastrado com sucesso!');
+            $data = $request->all();
+            unset($data['_token']);
+
+            $valorBase = floatval($data['vl_fev']) * 1.039;
+
+            foreach ($data as $key => $value) {
+                if(strstr($key, 'vl_')) {
+                    $valorMes = floatval($value);
+                    if($valorBase < $valorMes) {
+                        $data['fl_diferenca'] = 1;
+                        break;
+                    }
+                    $data['fl_diferenca'] = 0;
+                }
+            }
+
+            foreach ($data as $key => $value) {
+                if(strstr($key, 'vl_')) {
+                    $valorMes = floatval($value);
+                    $data[$key] = $valorMes;
+                }
+            }
+
+            $data['vl_fev'] = $valorBase;
+            $data['ds_ano'] = '2019';
+
+            CalculoReajuste::create($data);
+
+            toastr()->success('Obrigado por suas informações!');
+
+            return redirect()->route('home');
         } catch (\Exception $e) {
             toastr()->error("Não foi possível alterar o cadastro");
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /**
@@ -97,22 +72,26 @@ class CalculoReajusteController extends Controller
      *
      * @return array
      */
-    public function mesesCalculo()
+    public function meses()
     {
+        $dt = Carbon::now();
+        $anoAtual = $dt->year - 1;
+        $anoPosterior = $dt->year;
+
         return [
-          'vl_fev' => 'Feveiro/2019',
-          'vl_mar' => 'Março/2019',
-          'vl_abr' => 'Abril/2019',
-          'vl_mai' => 'Maio/2019',
-          'vl_jun' => 'Junho/2019',
-          'vl_jul' => 'Julho/2019',
-          'vl_ago' => 'Agosto/2019',
-          'vl_set' => 'Setembro/2019',
-          'vl_out' => 'Outubro/2019',
-          'vl_nov' => 'Novembro/2019',
-          'vl_dez' => 'Dezembro/2019',
-          'vl_jan' => 'Janeiro/2020',
-          'vl_fev1' => 'Feveiro/2020',
+            'vl_fev' => "Feveiro/{$anoAtual}",
+            'vl_mar' => "Março/{$anoAtual}",
+            'vl_abr' => "Abril/{$anoAtual}",
+            'vl_mai' => "Maio/{$anoAtual}",
+            'vl_jun' => "Junho/{$anoAtual}",
+            'vl_jul' => "Julho/{$anoAtual}",
+            'vl_ago' => "Agosto/{$anoAtual}",
+            'vl_set' => "Setembro/{$anoAtual}",
+            'vl_out' => "Outubro/{$anoAtual}",
+            'vl_nov' => "Novembro/{$anoAtual}",
+            'vl_dez' => "Dezembro/{$anoAtual}",
+            'vl_jan' => "Janeiro/{$anoPosterior}",
+            'vl_fev1' => "Feveiro/{$anoPosterior}",
         ];
     }
 
@@ -125,9 +104,9 @@ class CalculoReajusteController extends Controller
     public function buscarCnpj(Request $request)
     {
         $cnpj = $request->input('cnpj');
-        if($cnpj != null) {
+        if ($cnpj != null) {
             $data = CadastroEscolas::where('CGC_Escola', $cnpj)->first(['Razao_Social']);
-            if($data) {
+            if ($data) {
                 return ['nome' => $data->Razao_Social];
             }
         }

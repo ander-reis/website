@@ -4,14 +4,24 @@
     <div class="col-12">
         <h1>Cálculo Reajuste</h1>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         {{ Form::open(['route' => 'calculo-reajuste.store', 'id' => 'createCalculoReajusteForm']) }}
 
-        @component('website.calculo-reajuste._form', ['mesesCalculo' => $mesesCalculo])@endcomponent
+        @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
 
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
 
         {{ Form::close() }}
+
     </div>
 
     @push('form-calculos-reajuste-script')
@@ -20,19 +30,19 @@
                 const form = document.getElementById('createCalculoReajusteForm');
 
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
-                $('#vl_fev').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_mar').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_abr').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_mai').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_jun').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_jul').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_ago').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_set').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_out').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_nov').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_dez').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_jan').mask('000.000.000.000.000,00', {reverse: true});
-                $('#vl_fev1').mask('000.000.000.000.000,00', {reverse: true});
+                $('#vl_fev').mask('00.000,00', {reverse: true});
+                $('#vl_mar').mask('00.000,00', {reverse: true});
+                $('#vl_abr').mask('00.000,00', {reverse: true});
+                $('#vl_mai').mask('00.000,00', {reverse: true});
+                $('#vl_jun').mask('00.000,00', {reverse: true});
+                $('#vl_jul').mask('00.000,00', {reverse: true});
+                $('#vl_ago').mask('00.000,00', {reverse: true});
+                $('#vl_set').mask('00.000,00', {reverse: true});
+                $('#vl_out').mask('00.000,00', {reverse: true});
+                $('#vl_nov').mask('00.000,00', {reverse: true});
+                $('#vl_dez').mask('00.000,00', {reverse: true});
+                $('#vl_jan').mask('00.000,00', {reverse: true});
+                $('#vl_fev1').mask('00.000,00', {reverse: true});
 
                 $("#fl_tipo_ativo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Hora Aula';
@@ -70,51 +80,34 @@
 
 
                 const trInput = $('#table > tbody > tr');
-
-
-                $(trInput).focusout(function () {
+                $(trInput).on('change', function() {
                     let $this = $(this);
-                    let spanInput = $this.find('span');
+                    let span = $this.find('span');
                     let inputValue = $this.find('input');
-
+                    // console.log($this);
                     if (inputValue[0].id === 'vl_fev') {
-                        spanInput.html('');
-
-                        ((inputValue.val() !== '') ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                        span.html('');
+                        ((inputValue.val() !== '') ? span.append('<i class="fas fa-check fa-2x text-success"></i>') : span.append('<i class="fas fa-times fa-2x text-danger"></i>'))
                     }
 
                     if (inputValue[0].id !== 'vl_fev') {
-                        spanInput.html('');
+                        span.html('');
 
                         const valorBase = ($('#vl_fev').val().replace(',', '.') * 1.039).toFixed(2);
                         const currentValue = (inputValue.val().replace(',', '.') * 1).toFixed(2);
 
                         console.log('valorBase: ', valorBase, 'currentValue: ', currentValue);
 
-                        ((parseFloat(valorBase) < parseFloat(currentValue)) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                        // ((parseFloat(valorBase) < parseFloat(currentValue)) ? span.append('<i class="fas fa-check fa-2x text-success"></i>') : span.append('<i class="fas fa-times fa-2x text-danger"></i>'))
+                        if(parseFloat(valorBase) < parseFloat(currentValue)) {
+                            span.append('<i class="fas fa-check fa-2x text-success"></i>');
+                            $('#fl_diferenca').val('');
+                        } else {
+                            span.append('<i class="fas fa-times fa-2x text-danger"></i>');
+                            $('#fl_diferenca').val(1);
+                        }
                     }
                 });
-
-                // $(trInput).focusout(function() {
-                //     const $this = $(this);
-                //     let spanInput = $this.find('span');
-                //     let inputValue = $this.find('input').val();
-                //
-                //     const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
-                //     const currentValue = inputValue.replace(',', '.');
-                //
-                //     spanInput.html('');
-                //     ((valorBase < currentValue) ? spanInput.append('<i class="fas fa-check fa-2x text-success"></i>') : spanInput.append('<i class="fas fa-times fa-2x text-danger"></i>'))
-                // });
-
-                // $('#vl_mar').focusout(function () {
-                //         $('#icon-vl_mar').html('');
-                //         const valorBase = (document.getElementById('vl_fev').value.replace(',', '.') * 1.039).toFixed(2);
-                //         const vl_mar = document.getElementById('vl_mar').value.replace(',', '.');
-                //         console.log('base: ' + valorBase, 'vl_mar: ' + vl_mar, 'result: ' + ((valorBase < vl_mar) ? true : false));
-                //         ((valorBase < vl_mar) ? $('#icon-vl_mar').append('<i class="fas fa-check"></i>') : $('#icon-vl_mar').append('<i class="fas fa-times"></i>'))
-                // });
-
 
                 FormValidation.formValidation(
                     form,

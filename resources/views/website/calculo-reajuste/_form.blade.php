@@ -10,7 +10,7 @@
         {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'disabled']) }}
     @endcomponent
     @component('website.form-components._form_group_inline',['field' => 'fl_status', 'class' => 'col-md-12'])
-        <div class="radio{{$errors->has('fl_tipo') ? ' text-danger' : ''}}">
+        <div class="radio">
             <div class="custom-control custom-radio custom-control-inline">
                 {{ Form::radio('fl_tipo', '0', true, ['class' => 'custom-control-input', 'id' => 'fl_tipo_ativo']) }}
                 {{ Form::label('fl_tipo_ativo', 'Aulista', ['class' => 'custom-control-label']) }}
@@ -31,16 +31,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($mesesCalculo as $mes => $meses)
+            @foreach($meses as $id => $mes)
                 <tr>
-                    <th scope="row">{{ $meses }}</th>
+                    <th scope="row">{{ $mes }}</th>
                     <td>
-                        {{ Form::text($mes, null, ['class' => 'form-control', 'id' => $mes]) }}
+                        {{ Form::text($id, null, ['class' => 'form-control', 'id' => $id]) }}
                     </td>
                     <td class="text-center">
-                        <span id="icon-{{$mes}}"></span>
-{{--                        <i class="fas fa-check"></i>--}}
-{{--                        <i class="fas fa-times"></i>--}}
+                        <span id="icon-{{$id}}"></span>
                     </td>
                 </tr>
             @endforeach
