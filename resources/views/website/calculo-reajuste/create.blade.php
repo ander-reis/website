@@ -273,12 +273,6 @@
                                     notEmpty: {
                                         message: 'Valor para Fev/2019 obrigatório'
                                     },
-                                    numeric: {
-                                        message: 'Valor para Fev/2019 inválido',
-                                        // The default separators
-                                        thousandsSeparator: '.',
-                                        decimalSeparator: ','
-                                    },
                                     callback: {
                                         message: 'Valor para Fev/2019 inválido',
                                         callback: function(input) {
