@@ -278,7 +278,7 @@
                             fl_nivel: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nível que leciona obrigatório'
+                                        message: 'Nível em que leciona obrigatório'
                                     }
                                 }
                             },
