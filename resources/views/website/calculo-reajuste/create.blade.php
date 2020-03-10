@@ -179,8 +179,10 @@
                             cnpj: $('#ds_cnpj').val(),
                         },
                         success: function (data) {
-                            document.getElementById('ds_fantasia').value = data.nome;
-                            $("#ds_fantasia").prop("disabled", false);
+                            if (data.nome != '') {
+                                document.getElementById('ds_fantasia').value = data.nome;
+                                $("#ds_fantasia").prop("disabled", false);
+                            }
                         },
                         error: function (error) {
                             if (error) {
