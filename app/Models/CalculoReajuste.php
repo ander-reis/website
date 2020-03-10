@@ -35,5 +35,6 @@ class CalculoReajuste extends Model
         'vl_fev1',
         'fl_diferenca',
         'fl_nivel',
+        'ds_ip'
     ];
 }
