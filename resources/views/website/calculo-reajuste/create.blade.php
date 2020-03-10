@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="col-12">
-        <h1>Cálculo Reajuste</h1>
+        <h1>Dissídio Coletivo 2019 - confira os seus salários</h1>
+        <p >
+            Use os seus holerites para verificar se você tem diferenças salariais retroativas a março de 2019 para receber. Você também conhecerá a base correta para o cálculo do reajuste de março/2020, que deve ser divulgado até o dia 23/03.
+        </p>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -156,12 +159,17 @@
                 $('#vl_jan').mask('00.000,00', {reverse: true});
                 $('#vl_fev1').mask('00.000,00', {reverse: true});
                 $("#fl_tipo_ativo").on("click", function () {
-                    document.getElementById('titulo').innerText = 'Hora Aula';
-                    document.getElementById('fevereiro').innerText = 'Hora Aula de Fev/2019';
+                    document.getElementById('titulo').innerText = 'Hora-aula';
+                    document.getElementById('fevereiro').innerText = 'Insira a hora-aula de fevereiro/2019';
+                    document.getElementById('instrucao').innerHTML = '';
+                    document.getElementById('instrucao1').innerHTML = 'Informe os valores da hora-aula paos mês a mês. Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
+
                 });
                 $("#fl_tipo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Salário Base';
-                    document.getElementById('fevereiro').innerText = 'Salário Base de Fev/2019';
+                    document.getElementById('fevereiro').innerText = 'Insira o salário base de feveveiro/2019';
+                    document.getElementById('instrucao').innerHTML = '(use apenas o salário base do holerite. Desconsidere a hora-atividade e demais parcelas da remuneração)';
+                    document.getElementById('instrucao1').innerHTML = 'Informe os valores do salário base pagos mês a mês (desconsidere a hora-atividade e demais parcelas da remuneração). Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
                 });
 
                 $("#ds_cnpj").focusout(function () {
@@ -270,7 +278,7 @@
                             fl_nivel: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nível de Ensino obrigatório'
+                                        message: 'Nível que leciona obrigatório'
                                     }
                                 }
                             },
