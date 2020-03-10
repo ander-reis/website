@@ -9,7 +9,7 @@
         <span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'disabled']) }}
     @endcomponent
-    @component('website.form-components._form_group_inline',['field' => 'fl_status', 'class' => 'col-md-6'])
+    @component('website.form-components._form_group_inline', ['field' => 'fl_status', 'class' => 'col-md-6 calculo-reajuste-radio'])
         <div class="radio">
             <div class="custom-control custom-radio custom-control-inline">
                 {{ Form::radio('fl_tipo', '0', true, ['class' => 'custom-control-input', 'id' => 'fl_tipo_ativo']) }}

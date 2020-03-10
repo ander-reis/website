@@ -710,6 +710,9 @@ ul.timeline > li:before {
     height: 103px;
 }
 
+/** calculo reajuste **/
+.calculo-reajuste-radio { display: flex; align-items: center }
+
 /**** ALTERAR A COR DE TODOS OS RADIOS / CHECKBOX NO FORMVALIDATION ***/
 .checkbox-container.has-danger .custom-control-label {
     color: #dc3545;
