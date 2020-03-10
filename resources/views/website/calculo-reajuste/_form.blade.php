@@ -1,11 +1,11 @@
 <div class="row">
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-        {{ Form::label('ds_cnpj', 'CNPJ Escola', ['class' => 'control-label']) }}
+        {{ Form::label('ds_cnpj', 'CNPJ Escola', ['class' => 'control-label font-weight-bold']) }}
         <span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_cnpj', null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-        {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label']) }}
+        {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}
         <span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'disabled']) }}
     @endcomponent
@@ -32,7 +32,7 @@
     @component('website.form-components._form_group_inline',['field' => 'base', 'class' => 'col-md-12'])
     <div class="form-group row mb-0">
         <div class="form-group col-md-6">
-            {{ Form::label('fevereiro', 'Hora Aula de Fev/2019', ['class' => 'control-label font-weight-bold', 'id' => 'fevereiro']) }}
+            {{ Form::label('fevereiro', 'Hora Aula de Fev/2019', ['class' => 'control-label font-weight-bold', 'id' => 'fevereiro']) }}<span class="text-danger font-weight-bold">*</span>
             {{ Form::text('vl_fev', null, ['class' => 'form-control', 'id' => 'vl_fev']) }}
         </div>
         <div class="form-group col-md-6">
