@@ -137,7 +137,7 @@
            }
 
             document.addEventListener('DOMContentLoaded', function (e) {
-                document.getElementById("ds_cnpj").focus();
+                document.getElementById("ds_fantasia").focus();
 
                 const form = document.getElementById('createCalculoReajusteForm');
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
