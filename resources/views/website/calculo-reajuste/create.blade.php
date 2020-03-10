@@ -162,7 +162,7 @@
                     document.getElementById('titulo').innerText = 'Hora-aula';
                     document.getElementById('fevereiro').innerText = 'Insira a hora-aula de fevereiro/2019';
                     document.getElementById('instrucao').innerHTML = '';
-                    document.getElementById('instrucao1').innerHTML = 'Informe os valores da hora-aula paos mês a mês. Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
+                    document.getElementById('instrucao1').innerHTML = 'Informe os valores da hora-aula pagos mês a mês. Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
 
                 });
                 $("#fl_tipo").on("click", function () {
