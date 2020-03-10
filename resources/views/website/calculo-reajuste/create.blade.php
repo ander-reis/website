@@ -3,7 +3,6 @@
 @section('content')
     <div class="col-12">
         <h1>Cálculo Reajuste</h1>
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -13,17 +12,11 @@
                 </ul>
             </div>
         @endif
-
         {{ Form::open(['route' => 'calculo-reajuste.store', 'id' => 'createCalculoReajusteForm']) }}
-
         @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
-
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
-
         {{ Form::close() }}
-
     </div>
-
     @push('form-calculos-reajuste-script')
         <script type="text/javascript">
             function FormatMoney(amount, currency_symbol_before,
@@ -86,10 +79,8 @@
                     comma_sep_pounds + (display_after_decimal_pt >= 1? (decimal_point + str_pence) : "") +
                     currency_symbol_after;
             }
-
             document.addEventListener('DOMContentLoaded', function (e) {
                 const form = document.getElementById('createCalculoReajusteForm');
-
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
                 $('#vl_fev').mask('00.000,00', {reverse: true});
                 $('#vl_resultado').mask('00.000,00', {reverse: true});
@@ -105,11 +96,9 @@
                 $('#vl_dez').mask('00.000,00', {reverse: true});
                 $('#vl_jan').mask('00.000,00', {reverse: true});
                 $('#vl_fev1').mask('00.000,00', {reverse: true});
-
                 $("#fl_tipo_ativo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Hora Aula';
                     document.getElementById('fevereiro').innerText = 'Hora Aula de Fev/2019';
-
                 });
                 $("#fl_tipo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Salário Base';
@@ -141,34 +130,24 @@
                         }
                     });
                 });
-
                 $("#vl_fev").focusout(function () {
                     e.preventDefault();
                     var reajustado = ($('#vl_fev').val().replace('.', '').replace(',', '.') * 1.039).toFixed(2);
                     $("#vl_reajustado").val(FormatMoney(reajustado,'','','.',',',2,2));
                 });
-
-
                 const trInput = $('#table > tbody > tr');
                 $(trInput).on('change', function() {
                     let $this = $(this);
                     let span = $this.find('span');
                     let inputValue = $this.find('input');
-
                     if (inputValue[0].id === 'vl_fev') {
                         span.html('');
                         ((inputValue.val() !== '') ? span.append('<i class="fas fa-check fa-2x text-success"></i>') : span.append('<i class="fas fa-times fa-2x text-danger"></i>'))
                     }
-
                     if (inputValue[0].id !== 'vl_fev') {
                         span.html('');
                         const valorBase = ($('#vl_fev').val().replace('.', '').replace(',', '.') * 1.039).toFixed(2);
-
                         const currentValue = (inputValue.val().replace('.', '').replace(',', '.') * 1).toFixed(2);
-
-                        //console.log('valorBase: ', valorBase, 'currentValue: ', currentValue);
-
-                        // ((parseFloat(valorBase) < parseFloat(currentValue)) ? span.append('<i class="fas fa-check fa-2x text-success"></i>') : span.append('<i class="fas fa-times fa-2x text-danger"></i>'))
                         if(parseFloat(valorBase) <= parseFloat(currentValue)) {
                             span.append('<i class="fas fa-check fa-2x text-success"></i>');
                             $('#fl_diferenca').val('');
@@ -178,7 +157,6 @@
                         }
                     }
                 });
-
                 FormValidation.formValidation(
                     form,
                     {
