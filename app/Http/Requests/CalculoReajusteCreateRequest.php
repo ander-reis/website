@@ -24,7 +24,6 @@ class CalculoReajusteCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'ds_cnpj' => 'required|min:18|max:18',
             'ds_fantasia' => 'required|string'
         ];
     }
