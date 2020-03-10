@@ -61,6 +61,7 @@ class CalculoReajusteController extends Controller
 
             $data['vl_fev'] = $valorBase;
             $data['ds_ano'] = '2019';
+            $data['ds_fantasia'] = mb_strtoupper($data['ds_fantasia']);
 
             CalculoReajuste::create($data);
 
