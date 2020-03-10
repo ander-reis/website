@@ -1,13 +1,12 @@
 <div class="row">
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
         {{ Form::label('ds_cnpj', 'CNPJ Escola', ['class' => 'control-label font-weight-bold']) }}
-        <span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_cnpj', null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
         {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}
         <span class="text-danger font-weight-bold">*</span>
-        {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'disabled']) }}
+        {{ Form::text('ds_fantasia', null, ['class' => 'form-control']) }}
     @endcomponent
     @component('website.form-components._form_group_inline',['field' => 'fl_status', 'class' => 'col-md-6'])
         <div class="radio">

@@ -35,6 +35,10 @@ class CalculoReajusteController extends Controller
             unset($data['_token']);
             unset($data['vl_reajustado']);
 
+            if (is_null($data['ds_cnpj'])) {
+                $data['ds_cnpj'] = '';
+            }
+
             $valorBase = floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039);
 
             foreach ($data as $key => $value) {

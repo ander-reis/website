@@ -83,7 +83,7 @@
             function TestaCNPJ(strCNPJ) {
                 cnpj = strCNPJ.replace(/[^\d]+/g,'');
 
-                if(cnpj == '') return false;
+                if(cnpj == '') return true;
 
                 if (cnpj.length != 14)
                     return false;
@@ -133,6 +133,8 @@
            }
 
             document.addEventListener('DOMContentLoaded', function (e) {
+                document.getElementById("ds_cnpj").focus();
+
                 const form = document.getElementById('createCalculoReajusteForm');
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
                 $('#vl_fev').mask('00.000,00', {reverse: true});
@@ -216,9 +218,6 @@
                         fields: {
                             ds_cnpj: {
                                 validators: {
-                                    notEmpty: {
-                                        message: 'CNPJ obrigatório'
-                                    },
                                     callback: {
                                         message: 'CNPJ inválido',
                                         callback: function(input) {
