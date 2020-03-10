@@ -79,6 +79,59 @@
                     comma_sep_pounds + (display_after_decimal_pt >= 1? (decimal_point + str_pence) : "") +
                     currency_symbol_after;
             }
+
+            function TestaCNPJ(strCNPJ) {
+                cnpj = strCNPJ.replace(/[^\d]+/g,'');
+
+                if(cnpj == '') return false;
+
+                if (cnpj.length != 14)
+                    return false;
+
+                // Elimina CNPJs invalidos conhecidos
+                if (cnpj == "00000000000000" ||
+                    cnpj == "11111111111111" ||
+                    cnpj == "22222222222222" ||
+                    cnpj == "33333333333333" ||
+                    cnpj == "44444444444444" ||
+                    cnpj == "55555555555555" ||
+                    cnpj == "66666666666666" ||
+                    cnpj == "77777777777777" ||
+                    cnpj == "88888888888888" ||
+                    cnpj == "99999999999999")
+                    return false;
+
+                // Valida DVs
+                tamanho = cnpj.length - 2
+                numeros = cnpj.substring(0,tamanho);
+                digitos = cnpj.substring(tamanho);
+                soma = 0;
+                pos = tamanho - 7;
+                for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                        pos = 9;
+                }
+                resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+                if (resultado != digitos.charAt(0))
+                    return false;
+
+                tamanho = tamanho + 1;
+                numeros = cnpj.substring(0,tamanho);
+                soma = 0;
+                pos = tamanho - 7;
+                for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                        pos = 9;
+                }
+                resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+                if (resultado != digitos.charAt(1))
+                    return false;
+
+                return true;
+           }
+
             document.addEventListener('DOMContentLoaded', function (e) {
                 const form = document.getElementById('createCalculoReajusteForm');
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
@@ -166,11 +219,17 @@
                                     notEmpty: {
                                         message: 'CNPJ obrigatório'
                                     },
-                                    stringLength: {
-                                        min: 18,
-                                        max: 18,
-                                        message: 'CNPJ inválido'
+                                    callback: {
+                                        message: 'CNPJ inválido',
+                                        callback: function(input) {
+                                            if (input.value !== '') {
+                                                return TestaCNPJ(input.value);
+                                            } else {
+                                                return true;
+                                            }
+                                        }
                                     },
+                                    blank: {}
                                 }
                             },
                             ds_fantasia: {
@@ -192,10 +251,21 @@
                                 validators: {
                                     notEmpty: {
                                         message: 'Valor para Fev/2019 obrigatório'
-                                    }
+                                    },
+                                    callback: {
+                                        message: 'Valor para Fev/2019 inválido',
+                                        callback: function(input) {
+                                            if (
+                                                parseFloat(
+                                                    (input.value.replace('.', '').replace(',', '.') * 1).toFixed(2)) < 10 ) {
+                                                return false;
+                                            }
+                                            return true;
+                                        }
+                                    },
                                 }
                             },
-                            fl_sexo: {
+                            fl_nivel: {
                                 validators: {
                                     notEmpty: {
                                         message: 'Nível de Ensino obrigatório'
