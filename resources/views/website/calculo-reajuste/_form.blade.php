@@ -23,7 +23,7 @@
     @endcomponent
     @component('website.form-components._form_group_inline',['field' => 'fl_nivel', 'class' => 'col-md-6'])
         <div>
-            {{ Form::label('nivel', 'Nível que leciona', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+            {{ Form::label('nivel', 'Nível em que leciona', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
             {{ Form::select('fl_nivel', ['0' => 'Educação Infantil', '1' => 'Fundamental I', '2' => 'Fundamental II', '3' => 'Médio', '4' => 'Técnico', '5' => 'Supletivo', '6' => 'Pré-vestibular'], null, ['class' => 'form-control', 'id' => 'fl_nivel', 'placeholder' => '']) }}
         </div>
     @endcomponent
@@ -40,6 +40,9 @@
         <div class="form-group col-md-6">
             {{ Form::label('reajustado', 'Valor com Reajuste de 3,90%', ['class' => 'control-label font-weight-bold']) }}
             {{ Form::text('vl_reajustado', null, ['class' => 'form-control','readonly', 'id' => 'vl_reajustado', 'onkeypress' => "return noenter()"]) }}
+            <p class="h6">
+                (este valor também será a base de cálculo para março/2020)
+            </p>
         </div>
     </div>
     @endcomponent
