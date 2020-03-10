@@ -70,7 +70,7 @@ class CalculoReajusteController extends Controller
 
             return redirect()->route('home');
         } catch (\Exception $e) {
-            toastr()->error("Não foi possível alterar o cadastro");
+            toastr()->error("Não foi possível efetuar o cadastro");
         }
     }
 

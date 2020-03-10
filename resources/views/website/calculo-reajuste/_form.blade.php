@@ -1,21 +1,21 @@
 <div class="row">
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
         {{ Form::label('ds_cnpj', 'CNPJ Escola', ['class' => 'control-label font-weight-bold']) }}
-        {{ Form::text('ds_cnpj', null, ['class' => 'form-control']) }}
+        {{ Form::text('ds_cnpj', null, ['class' => 'form-control', 'onkeypress' => "return noenter()"]) }}
     @endcomponent
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
         {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}
         <span class="text-danger font-weight-bold">*</span>
-        {{ Form::text('ds_fantasia', null, ['class' => 'form-control']) }}
+        {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'onkeypress' => "return noenter()"]) }}
     @endcomponent
     @component('website.form-components._form_group_inline', ['field' => 'fl_status', 'class' => 'col-md-6 calculo-reajuste-radio'])
         <div class="radio">
             <div class="custom-control custom-radio custom-control-inline">
-                {{ Form::radio('fl_tipo', '0', true, ['class' => 'custom-control-input', 'id' => 'fl_tipo_ativo']) }}
+                {{ Form::radio('fl_tipo', '0', true, ['class' => 'custom-control-input', 'id' => 'fl_tipo_ativo', 'onkeypress' => "return noenter()"]) }}
                 {{ Form::label('fl_tipo_ativo', 'Aulista', ['class' => 'custom-control-label']) }}
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                {{ Form::radio('fl_tipo', '1', false, ['class' => 'custom-control-input', 'id' => 'fl_tipo']) }}
+                {{ Form::radio('fl_tipo', '1', false, ['class' => 'custom-control-input', 'id' => 'fl_tipo', 'onkeypress' => "return noenter()"]) }}
                 {{ Form::label('fl_tipo', 'Mensalista', ['class' => 'custom-control-label']) }}
             </div>
         </div>
@@ -30,11 +30,11 @@
     <div class="form-group row mb-0">
         <div class="form-group col-md-6">
             {{ Form::label('fevereiro', 'Hora Aula de Fev/2019', ['class' => 'control-label font-weight-bold', 'id' => 'fevereiro']) }}<span class="text-danger font-weight-bold">*</span>
-            {{ Form::text('vl_fev', null, ['class' => 'form-control', 'id' => 'vl_fev']) }}
+            {{ Form::text('vl_fev', null, ['class' => 'form-control', 'id' => 'vl_fev', 'onkeypress' => "return noenter()"]) }}
         </div>
         <div class="form-group col-md-6">
             {{ Form::label('reajustado', 'Valor com Reajuste de 3,90%', ['class' => 'control-label font-weight-bold']) }}
-            {{ Form::text('vl_reajustado', null, ['class' => 'form-control','readonly', 'id' => 'vl_reajustado']) }}
+            {{ Form::text('vl_reajustado', null, ['class' => 'form-control','readonly', 'id' => 'vl_reajustado', 'onkeypress' => "return noenter()"]) }}
         </div>
     </div>
     @endcomponent
@@ -52,7 +52,7 @@
                 <tr>
                     <th scope="row">{{ $mes }}</th>
                     <td>
-                        {{ Form::text($id, null, ['class' => 'form-control', 'id' => $id]) }}
+                        {{ Form::text($id, null, ['class' => 'form-control', 'id' => $id, 'onkeypress' => "return noenter()"]) }}
                     </td>
                     <td class="text-center">
                         <span id="icon-{{$id}}"></span>

@@ -19,6 +19,10 @@
     </div>
     @push('form-calculos-reajuste-script')
         <script type="text/javascript">
+            function noenter() {
+                return !(window.event && window.event.keyCode == 13);
+            }
+
             function FormatMoney(amount, currency_symbol_before,
                 currency_symbol_after, thousands_separator, decimal_point,
                 significant_after_decimal_pt, display_after_decimal_pt)
@@ -248,9 +252,6 @@
                             },
                             vl_fev: {
                                 validators: {
-                                    notEmpty: {
-                                        message: 'Valor para Fev/2019 obrigatório'
-                                    },
                                     callback: {
                                         message: 'Valor para Fev/2019 inválido',
                                         callback: function(input) {
