@@ -34,5 +34,6 @@ class CalculoReajuste extends Model
         'vl_jan',
         'vl_fev1',
         'fl_diferenca',
+        'fl_nivel',
     ];
 }

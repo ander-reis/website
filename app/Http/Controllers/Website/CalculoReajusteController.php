@@ -33,12 +33,13 @@ class CalculoReajusteController extends Controller
         try {
             $data = $request->all();
             unset($data['_token']);
+            unset($data['vl_reajustado']);
 
-            $valorBase = floatval($data['vl_fev']) * 1.039;
+            $valorBase = floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039);
 
             foreach ($data as $key => $value) {
                 if(strstr($key, 'vl_')) {
-                    $valorMes = floatval($value);
+                    $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
                     if($valorBase < $valorMes) {
                         $data['fl_diferenca'] = 1;
                         break;
@@ -49,7 +50,7 @@ class CalculoReajusteController extends Controller
 
             foreach ($data as $key => $value) {
                 if(strstr($key, 'vl_')) {
-                    $valorMes = floatval($value);
+                    $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
                     $data[$key] = $valorMes;
                 }
             }
@@ -79,19 +80,18 @@ class CalculoReajusteController extends Controller
         $anoPosterior = $dt->year;
 
         return [
-            'vl_fev' => "Feveiro/{$anoAtual}",
-            'vl_mar' => "Março/{$anoAtual}",
-            'vl_abr' => "Abril/{$anoAtual}",
-            'vl_mai' => "Maio/{$anoAtual}",
-            'vl_jun' => "Junho/{$anoAtual}",
-            'vl_jul' => "Julho/{$anoAtual}",
-            'vl_ago' => "Agosto/{$anoAtual}",
-            'vl_set' => "Setembro/{$anoAtual}",
-            'vl_out' => "Outubro/{$anoAtual}",
-            'vl_nov' => "Novembro/{$anoAtual}",
-            'vl_dez' => "Dezembro/{$anoAtual}",
-            'vl_jan' => "Janeiro/{$anoPosterior}",
-            'vl_fev1' => "Feveiro/{$anoPosterior}",
+            'vl_mar' => "Mar/{$anoAtual}",
+            'vl_abr' => "Abr/{$anoAtual}",
+            'vl_mai' => "Mai/{$anoAtual}",
+            'vl_jun' => "Jun/{$anoAtual}",
+            'vl_jul' => "Jul/{$anoAtual}",
+            'vl_ago' => "Ago/{$anoAtual}",
+            'vl_set' => "Set/{$anoAtual}",
+            'vl_out' => "Out/{$anoAtual}",
+            'vl_nov' => "Nov/{$anoAtual}",
+            'vl_dez' => "Dez/{$anoAtual}",
+            'vl_jan' => "Jan/{$anoPosterior}",
+            'vl_fev1' => "Fev/{$anoPosterior}",
         ];
     }
 
