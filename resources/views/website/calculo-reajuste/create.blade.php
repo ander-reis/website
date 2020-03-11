@@ -17,7 +17,7 @@
         @endif
         {{ Form::open(['route' => 'calculo-reajuste.store', 'id' => 'createCalculoReajusteForm']) }}
         @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
-        {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
+        {{ Form::submit('Salvar', ['name' => 'btnSubmit', 'id' => 'btnSubmit','class' => 'btn btn-primary']) }}
         {{ Form::close() }}
     </div>
     @push('form-calculos-reajuste-script')
@@ -226,6 +226,7 @@
                         }
                     }
                 });
+
                 FormValidation.formValidation(
                     form,
                     {
@@ -291,7 +292,7 @@
                             defaultSubmit: new FormValidation.plugins.DefaultSubmit()
                         },
                     }
-                );
+                )
             });
         </script>
     @endpush

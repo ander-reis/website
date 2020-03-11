@@ -32,7 +32,10 @@ class CalculoReajusteController extends Controller
     {
         try {
 
+            $gravar = 0;
+
             $data = $request->all();
+
             unset($data['_token']);
             unset($data['vl_reajustado']);
 
@@ -59,6 +62,8 @@ class CalculoReajusteController extends Controller
                 if(strstr($key, 'vl_')) {
                     $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
                     $data[$key] = $valorMes;
+
+                    if (($key != 'vl_fev') && ($valorMes > 0)) { $gravar = 1;}
                 }
             }
 
@@ -66,7 +71,9 @@ class CalculoReajusteController extends Controller
             $data['ds_fantasia'] = mb_strtoupper($data['ds_fantasia']);
             $data['ds_ip'] =  $request->ip();
 
-            CalculoReajuste::create($data);
+            if ($gravar == 1 ) {
+                CalculoReajuste::create($data);
+            }
 
             toastr()->success('Obrigado por suas informações!');
 
