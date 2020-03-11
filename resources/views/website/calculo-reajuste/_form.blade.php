@@ -1,7 +1,6 @@
 <div class="row">
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-        {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}
-        <span class="text-danger font-weight-bold">*</span>
+        {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}<span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'onkeypress' => "return noenter()"]) }}
     @endcomponent
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
@@ -23,7 +22,7 @@
     @endcomponent
     @component('website.form-components._form_group_inline',['field' => 'fl_nivel', 'class' => 'col-md-6'])
         <div>
-            {{ Form::label('nivel', 'Nível em que leciona', ['class' => 'control-label font-weight-bold']) }} <span class="text-danger font-weight-bold">*</span>
+            {{ Form::label('nivel', 'Nível em que leciona', ['class' => 'control-label font-weight-bold']) }}<span class="text-danger font-weight-bold">*</span>
             {{ Form::select('fl_nivel', ['0' => 'Educação Infantil', '1' => 'Fundamental I', '2' => 'Fundamental II', '3' => 'Médio', '4' => 'Técnico', '5' => 'Supletivo', '6' => 'Pré-vestibular'], null, ['class' => 'form-control', 'id' => 'fl_nivel', 'placeholder' => '']) }}
         </div>
     @endcomponent

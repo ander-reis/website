@@ -31,6 +31,7 @@ class CalculoReajusteController extends Controller
     public function store(CalculoReajusteCreateRequest $request)
     {
         try {
+
             $data = $request->all();
             unset($data['_token']);
             unset($data['vl_reajustado']);
@@ -39,12 +40,14 @@ class CalculoReajusteController extends Controller
                 $data['ds_cnpj'] = '';
             }
 
-            $valorBase = floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039);
+            $valorBase = round(floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039),2);
 
             foreach ($data as $key => $value) {
-                if(strstr($key, 'vl_')) {
+                if(strstr($key, 'vl_') && $key != 'vl_fev') {
+
                     $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
-                    if($valorBase < $valorMes) {
+
+                    if( ($valorBase > $valorMes) && ($valorMes != 0) ) {
                         $data['fl_diferenca'] = 1;
                         break;
                     }
@@ -59,7 +62,6 @@ class CalculoReajusteController extends Controller
                 }
             }
 
-            $data['vl_fev'] = $valorBase;
             $data['ds_ano'] = '2019';
             $data['ds_fantasia'] = mb_strtoupper($data['ds_fantasia']);
             $data['ds_ip'] =  $request->ip();
