@@ -1,10 +1,10 @@
 <div class="row">
-    @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-        {{ Form::label('ds_fantasia', 'Escola', ['class' => 'control-label font-weight-bold']) }}<span class="text-danger font-weight-bold">*</span>
+    @component('website.form-components._form_col_group', ['class' => 'col-md-6 fl'])
+        {{ Form::label('ds_fantasia', 'Instituição', ['class' => 'control-label font-weight-bold']) }}<span class="text-danger font-weight-bold">*</span>
         {{ Form::text('ds_fantasia', null, ['class' => 'form-control', 'onkeypress' => "return noenter()"]) }}
     @endcomponent
     @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
-        {{ Form::label('ds_cnpj', 'CNPJ Escola', ['class' => 'control-label font-weight-bold']) }}
+        {{ Form::label('ds_cnpj', 'CNPJ da Instituição', ['class' => 'control-label font-weight-bold']) }}
         {{ Form::text('ds_cnpj', null, ['class' => 'form-control', 'onkeypress' => "return noenter()"]) }}
     @endcomponent
 

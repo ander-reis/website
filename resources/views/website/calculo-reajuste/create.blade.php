@@ -15,7 +15,7 @@
                 </ul>
             </div>
         @endif
-        {{ Form::open(['route' => 'calculo-reajuste.store', 'id' => 'createCalculoReajusteForm']) }}
+        {{ Form::open(['route' => 'calculo-reajuste.store', 'method' => 'POST', 'id' => 'createCalculoReajusteForm']) }}
         @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
         {{ Form::submit('Salvar', ['name' => 'btnSubmit', 'id' => 'btnSubmit','class' => 'btn btn-primary']) }}
         {{ Form::close() }}
@@ -143,6 +143,7 @@
                 document.getElementById("ds_fantasia").focus();
 
                 const form = document.getElementById('createCalculoReajusteForm');
+
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
                 $('#vl_fev').mask('00.000,00', {reverse: true});
                 $('#vl_resultado').mask('00.000,00', {reverse: true});
@@ -227,7 +228,7 @@
                     }
                 });
 
-                FormValidation.formValidation(
+                const fvDissidio = FormValidation.formValidation(
                     form,
                     {
                         fields: {
@@ -249,8 +250,9 @@
                             ds_fantasia: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nome obrigatório'
+                                        message: 'Instituição obrigatória'
                                     },
+                                    blank: {},
                                 }
                             },
                             ds_tipo: {
@@ -264,7 +266,7 @@
                             vl_fev: {
                                 validators: {
                                     callback: {
-                                        message: 'Valor para Fev/2019 inválido',
+                                        message: 'Valor para fevereiro/2019 inválido',
                                         callback: function(input) {
                                             if (
                                                 parseFloat(
@@ -283,16 +285,78 @@
                                     }
                                 }
                             },
-
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
                             bootstrap: new FormValidation.plugins.Bootstrap(),
-                            submitButton: new FormValidation.plugins.SubmitButton(),
-                            defaultSubmit: new FormValidation.plugins.DefaultSubmit()
+                            submitButton: new FormValidation.plugins.SubmitButton()
                         },
                     }
                 )
+                .on('core.form.invalid', function() {
+                        document.getElementById("ds_fantasia").focus();
+                    }
+                )
+                .on('core.form.valid', function() {
+
+                    e.preventDefault();
+
+                    if ($("#btnSubmit").prop("value") == "Ir para Home") {
+                        window.location.replace("http://www.sinprosp.org.br");
+                        return;
+                    }
+
+                    var formData = $("#createCalculoReajusteForm").serializeArray();
+
+                    var returnArray = {};
+                    for (var i = 0; i < formData.length; i++){
+                        returnArray[formData[i]['name']] = formData[i]['value'];
+                    }
+
+                    $("#btnSubmit").prop("disabled", true);
+                    $("#btnSubmit").prop("value", "Aguarde !!!");
+
+                    FormValidation.utils.fetch('', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        params: returnArray
+                    }).then(function(response) {
+                        if (response.errors) {
+                            for (const field in response.errors) {
+                                if ( field == "ds_fantasia") {
+                                    // Update the message option
+                                    fvCadastrar.updateValidatorOption(field, 'blank', 'message', response.errors['ds_fantasia'])
+
+                                    // Set the field as invalid
+                                    fvCadastrar.updateFieldStatus(field, 'Invalid', 'blank');
+                                }
+                            }
+
+                            $("#btnSubmit").prop("value", "Salvar");
+                            $("#btnSubmit").prop("disabled", false);
+                        } else {
+                            if (response.code == 1) {
+                                $("#btnSubmit").prop("value", "Ir para Home");
+                                $("#btnSubmit").prop("disabled", false);
+                                document.getElementById("ds_fantasia").focus();
+                                toastr.success(response.message);
+                            }
+                            else if (response.code == 2) {
+                                $("#btnSubmit").prop("value", "Salvar");
+                                $("#btnSubmit").prop("disabled", false);
+                                document.getElementById("vl_mar").focus();
+                                toastr.warning(response.message);
+                            }
+                            else {
+                                $("#btnSubmit").prop("value", "Ir para Home");
+                                $("#btnSubmit").prop("disabled", false);
+                                toastr.error(response.message);
+                            }
+                        }
+                    });
+                });
             });
         </script>
     @endpush

@@ -47,7 +47,6 @@ class BoletimController extends Controller
             return response()->json(['ok' => true]);
 
         } catch (\Exception $e) {
-            dd($e);
             toastr()->error('Não foi possível cadastrar o e-mail');
             // dd($e->getMessage());
             return redirect()->back();

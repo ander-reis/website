@@ -31,7 +31,6 @@ class CalculoReajusteController extends Controller
     public function store(CalculoReajusteCreateRequest $request)
     {
         try {
-
             $gravar = 0;
 
             $data = $request->all();
@@ -73,13 +72,13 @@ class CalculoReajusteController extends Controller
 
             if ($gravar == 1 ) {
                 CalculoReajuste::create($data);
+                return response()->json(['code' => 1, 'message' => 'Obrigado por suas informações']);
             }
-
-            toastr()->success('Obrigado por suas informações!');
-
-            return redirect()->route('home');
+            else {
+                return response()->json(['code' => 2, 'message' => 'Valores não informados nos meses após fevereiro/2019']);
+            }
         } catch (\Exception $e) {
-            toastr()->error("Não foi possível efetuar o cadastro");
+            return response()->json(['code' => 0, 'message' => 'Não foi possível enviar os dados para o SinproSP. Tente novamente mais tarde']);
         }
     }
 

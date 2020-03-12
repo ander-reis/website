@@ -210,5 +210,6 @@ return [
         'CPF_beneficiario'      => 'CPF beneficiário',
         'PIS_beneficiario'      => 'PIS beneficiário',
         'Nome_Mae_beneficiario' => 'nome da mãe beneficiário',
+        'ds_fantasia'           => 'Instituição'
     ],
 ];
