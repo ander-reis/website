@@ -1,91 +1,30 @@
 @extends('layouts.website')
 
 @section('content')
-    <div class="col-12">
-        <h1>Dissídio Coletivo 2019 - confira os seus salários</h1>
-        <p >
-            Use os seus holerites para verificar se você tem diferenças salariais retroativas a março de 2019 para receber. Você também conhecerá a base correta para o cálculo do reajuste de março/2020, que deve ser divulgado até o dia 23/03.
-        </p>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        {{ Form::open(['route' => 'calculo-reajuste.store', 'method' => 'POST', 'id' => 'createCalculoReajusteForm']) }}
-        @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
-        {{ Form::submit('Salvar', ['name' => 'btnSubmit', 'id' => 'btnSubmit','class' => 'btn btn-primary']) }}
-        {{ Form::close() }}
+    <div class="row">
+        <div class="col-md-9 mb-3 mb-md-5">
+            <h1>Dissídio Coletivo 2019 - confira os seus salários</h1>
+            <p >
+                Use os seus holerites para verificar se você tem diferenças salariais retroativas a março de 2019 para receber. Você também conhecerá a base correta para o cálculo do reajuste de março/2020, que deve ser divulgado até o dia 23/03.
+            </p>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            {{ Form::open(['route' => 'calculo-reajuste.store', 'method' => 'POST', 'id' => 'createCalculoReajusteForm']) }}
+            @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
+            {{ Form::submit('Salvar', ['name' => 'btnSubmit', 'id' => 'btnSubmit','class' => 'btn btn-primary']) }}
+            {{ Form::close() }}
+        </div>
+        @component('website.components.layout-1._column_right')@endcomponent
     </div>
     @push('form-calculos-reajuste-script')
         <script type="text/javascript">
-            function noenter() {
-                return !(window.event && window.event.keyCode == 13);
-            }
-
-            function FormatMoney(amount, currency_symbol_before,
-                currency_symbol_after, thousands_separator, decimal_point,
-                significant_after_decimal_pt, display_after_decimal_pt)
-            {
-                // 30JUL2008 MSPW  Fixed minus display by moving this line to the top
-                // We need to know how the significant digits will alter our displayed number
-                var significant_multiplier = Math.pow(10, significant_after_decimal_pt);
-
-                // Only display a minus if the final displayed value is going to be <= -0.01 (or equivalent)
-                var str_minus = (amount * significant_multiplier <= -0.5 ? "-" : "");
-
-                // Sanity check on the incoming amount value
-                amount = parseFloat(amount);
-
-                if( isNaN(amount) || Math.LOG10E * Math.log(Math.abs(amount)) +
-                        Math.max(display_after_decimal_pt, significant_after_decimal_pt) >= 21 )
-                {
-                    return str_minus + currency_symbol_before +
-                        (isNaN(amount)? "#" : "####################".substring(0, Math.LOG10E * Math.log(Math.abs(amount)))) +
-                        (display_after_decimal_pt >= 1?
-                            (decimal_point + "##################".substring(0, display_after_decimal_pt)) : "") +
-                        currency_symbol_after;
-                }
-
-                // Make +ve and ensure we round up/down properly later by adding half a penny now.
-                amount = Math.abs(amount) + (0.5 / significant_multiplier);
-
-                amount *= significant_multiplier;
-
-                var str_display = parseInt(
-                    parseInt(amount) * Math.pow(10, display_after_decimal_pt - significant_after_decimal_pt) ).toString();
-
-                // Prefix as many zeroes as is necessary and strip the leading 1
-                if( str_display.length <= display_after_decimal_pt )
-                    str_display = (Math.pow(10, display_after_decimal_pt - str_display.length + 1).toString() +
-                        str_display).substring(1);
-
-                var comma_sep_pounds = str_display.substring(0, str_display.length - display_after_decimal_pt);
-                var str_pence = str_display.substring(str_display.length - display_after_decimal_pt);
-
-                if( thousands_separator.length > 0 && comma_sep_pounds.length > 3 )
-                {
-                    comma_sep_pounds += ",";
-
-                    // We need to do this twice because the first time only inserts half the commas.  The reason is
-                    // the part of the lookahead ([0-9]{3})+ also consumes characters; embedding one lookahead (?=...)
-                    // within another doesn't seem to work, so (?=[0-9](?=[0-9]{3})+,)(.)(...) fails to match anything.
-                    if( comma_sep_pounds.length > 7 )
-                        comma_sep_pounds = comma_sep_pounds.replace(/(?=[0-9]([0-9]{3})+,)(.)(...)/g, "$2,$3");
-
-                    comma_sep_pounds = comma_sep_pounds.replace(/(?=[0-9]([0-9]{3})+,)(.)(...)/g, "$2,$3");
-
-                    // Remove the fake separator at the end, then replace all commas with the actual separator
-                    comma_sep_pounds = comma_sep_pounds.substring(0, comma_sep_pounds.length - 1).replace(/,/g, thousands_separator);
-                }
-
-                return str_minus + currency_symbol_before +
-                    comma_sep_pounds + (display_after_decimal_pt >= 1? (decimal_point + str_pence) : "") +
-                    currency_symbol_after;
-            }
 
             function TestaCNPJ(strCNPJ) {
                 cnpj = strCNPJ.replace(/[^\d]+/g,'');
