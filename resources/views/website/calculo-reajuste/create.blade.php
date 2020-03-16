@@ -100,14 +100,14 @@
                 $('#vl_fev1').mask('00.000,00', {reverse: true});
                 $("#fl_tipo_ativo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Hora-aula';
-                    document.getElementById('fevereiro').innerText = 'Insira a hora-aula de fevereiro/2019';
+                    document.getElementById('fevereiro').innerText = 'Insira a hora-aula de fev/2019';
                     document.getElementById('instrucao').innerHTML = '';
                     document.getElementById('instrucao1').innerHTML = 'Informe os valores da hora-aula pagos mês a mês. Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
 
                 });
                 $("#fl_tipo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Salário Base';
-                    document.getElementById('fevereiro').innerText = 'Insira o salário base de feveveiro/2019';
+                    document.getElementById('fevereiro').innerText = 'Insira o salário base de fev/2019';
                     document.getElementById('instrucao').innerHTML = '(use apenas o salário base do holerite. Desconsidere a hora-atividade e demais parcelas da remuneração)';
                     document.getElementById('instrucao1').innerHTML = 'Informe os valores do salário base pagos mês a mês (desconsidere a hora-atividade e demais parcelas da remuneração). Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
                 });
@@ -139,10 +139,14 @@
                         }
                     });
                 });
-                $("#vl_fev").focusout(function () {
+                $("#vl_fev").keyup(function () {
                     e.preventDefault();
                     var reajustado = ($('#vl_fev').val().replace('.', '').replace(',', '.') * 1.039).toFixed(2);
                     $("#vl_reajustado").val(FormatMoney(reajustado,'','','.',',',2,2));
+
+                    //reajustado = ($("#vl_reajustado").val().replace('.', '').replace(',', '.') * 1.0504).toFixed(2);
+                    //$("#vl_reajustado20").val(FormatMoney(reajustado,'','','.',',',2,2));
+
                 });
                 const trInput = $('#table > tbody > tr');
                 $(trInput).on('change', function() {

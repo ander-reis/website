@@ -29,7 +29,7 @@
     @component('website.form-components._form_group_inline',['field' => 'base', 'class' => 'col-md-12'])
     <div class="form-group row mb-0">
         <div class="form-group col-md-6">
-            {{ Form::label('fevereiro', 'Insira a hora-aula de fevereiro/2019', ['class' => 'control-label font-weight-bold', 'id' => 'fevereiro']) }}<span class="text-danger font-weight-bold">*</span>
+            {{ Form::label('fevereiro', 'Insira a hora-aula de fev/2019', ['class' => 'control-label font-weight-bold', 'id' => 'fevereiro']) }}<span class="text-danger font-weight-bold">*</span>
 
             {{ Form::text('vl_fev', null, ['class' => 'form-control', 'id' => 'vl_fev', 'onkeypress' => "return noenter()"]) }}
             <p class="h6"  id="instrucao">
@@ -37,12 +37,17 @@
             </p>
         </div>
         <div class="form-group col-md-6">
-            {{ Form::label('reajustado', 'Valor com Reajuste de 3,90%', ['class' => 'control-label font-weight-bold']) }}
+            {{ Form::label('reajustado', 'Reajuste de 3,90% em mar/2019', ['class' => 'control-label font-weight-bold']) }}
             {{ Form::text('vl_reajustado', null, ['class' => 'form-control','readonly', 'id' => 'vl_reajustado', 'onkeypress' => "return noenter()"]) }}
             <p class="h6">
                 (este valor também será a base de cálculo para março/2020)
             </p>
         </div>
+    <!--<div class="form-group col-md-4">
+            {{ Form::label('reajustado', 'Reajuste de 5,04% em mar/2020', ['class' => 'control-label font-weight-bold']) }}
+            {{ Form::text('vl_reajustado20', null, ['class' => 'form-control','readonly', 'id' => 'vl_reajustado20', 'onkeypress' => "return noenter()"]) }}
+        </div>
+    -->
     </div>
     @endcomponent
     @component('website.form-components._form_group_inline',['field' => 'ds_instrucao', 'class' => 'col-md-12'])
