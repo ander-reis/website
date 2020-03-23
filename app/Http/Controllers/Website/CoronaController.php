@@ -30,10 +30,10 @@ class CoronaController extends Controller
         try {
             $data = $request->all();
 
-            if($data['id_motivo'] !== 1){
-                $motivo = CoronaMotivos::findOrFail($data['id_motivo']);
-                $data['ds_descricao'] = $motivo->ds_descricao;
+            if($data['id_motivo'] === 1) {
+                $data['ds_descricao'] = $data['ds_descricao_motivo'];
             }
+
             CoronaDenuncia::create($data);
 
             toastr()->success('Obrigado por suas informações!');

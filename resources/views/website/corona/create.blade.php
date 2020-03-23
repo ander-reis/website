@@ -60,14 +60,20 @@
                                     }
                                 }
                             },
-                            ds_funcionario: {
+                            ds_descricao: {
                                 validators: {
                                     notEmpty: {
                                         message: 'Campo obrigatório'
                                     }
                                 }
                             },
-
+                            ds_funcionario: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Campo obrigatório'
+                                    }
+                                }
+                            }
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
