@@ -10,7 +10,7 @@
         </div>
         <div class="row align-middle pb-2 text-center">
             <div class="col-12 col-md-6 header_footer mb-3">
-                <span class="footer_size2">Copyright © 2019 SinproSP</span>
+                <span class="footer_size2">Copyright © {{date("Y")}} SinproSP</span>
             </div>
             <div class="col-12 col-md-6 header_footer">
                     <span class="footer_size2">Projeto Gráfico: <a href="https://pwiwebstudio.com.br/">Is Multimídia</a></span>

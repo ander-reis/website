@@ -1,84 +1,30 @@
 @extends('layouts.website')
 
 @section('content')
-    <div class="col-12">
-        <h1>Cálculo Reajuste</h1>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        {{ Form::open(['route' => 'calculo-reajuste.store', 'id' => 'createCalculoReajusteForm']) }}
-        @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
-        {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
-        {{ Form::close() }}
+    <div class="row">
+        <div class="col-md-9 mb-3 mb-md-5">
+            <h1>Dissídio Coletivo 2019 - confira os seus salários</h1>
+            <p >
+                Use os seus holerites para verificar se você tem diferenças salariais retroativas a março de 2019 para receber. Você também conhecerá a base correta para o cálculo do reajuste de março/2020, que deve ser divulgado até o dia 23/03.
+            </p>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            {{ Form::open(['route' => 'calculo-reajuste.store', 'method' => 'POST', 'id' => 'createCalculoReajusteForm']) }}
+            @component('website.calculo-reajuste._form', ['meses' => $meses])@endcomponent
+            {{ Form::submit('Salvar', ['name' => 'btnSubmit', 'id' => 'btnSubmit','class' => 'btn btn-primary']) }}
+            {{ Form::close() }}
+        </div>
+        @component('website.components.layout-1._column_right')@endcomponent
     </div>
     @push('form-calculos-reajuste-script')
         <script type="text/javascript">
-            function FormatMoney(amount, currency_symbol_before,
-                currency_symbol_after, thousands_separator, decimal_point,
-                significant_after_decimal_pt, display_after_decimal_pt)
-            {
-                // 30JUL2008 MSPW  Fixed minus display by moving this line to the top
-                // We need to know how the significant digits will alter our displayed number
-                var significant_multiplier = Math.pow(10, significant_after_decimal_pt);
-
-                // Only display a minus if the final displayed value is going to be <= -0.01 (or equivalent)
-                var str_minus = (amount * significant_multiplier <= -0.5 ? "-" : "");
-
-                // Sanity check on the incoming amount value
-                amount = parseFloat(amount);
-
-                if( isNaN(amount) || Math.LOG10E * Math.log(Math.abs(amount)) +
-                        Math.max(display_after_decimal_pt, significant_after_decimal_pt) >= 21 )
-                {
-                    return str_minus + currency_symbol_before +
-                        (isNaN(amount)? "#" : "####################".substring(0, Math.LOG10E * Math.log(Math.abs(amount)))) +
-                        (display_after_decimal_pt >= 1?
-                            (decimal_point + "##################".substring(0, display_after_decimal_pt)) : "") +
-                        currency_symbol_after;
-                }
-
-                // Make +ve and ensure we round up/down properly later by adding half a penny now.
-                amount = Math.abs(amount) + (0.5 / significant_multiplier);
-
-                amount *= significant_multiplier;
-
-                var str_display = parseInt(
-                    parseInt(amount) * Math.pow(10, display_after_decimal_pt - significant_after_decimal_pt) ).toString();
-
-                // Prefix as many zeroes as is necessary and strip the leading 1
-                if( str_display.length <= display_after_decimal_pt )
-                    str_display = (Math.pow(10, display_after_decimal_pt - str_display.length + 1).toString() +
-                        str_display).substring(1);
-
-                var comma_sep_pounds = str_display.substring(0, str_display.length - display_after_decimal_pt);
-                var str_pence = str_display.substring(str_display.length - display_after_decimal_pt);
-
-                if( thousands_separator.length > 0 && comma_sep_pounds.length > 3 )
-                {
-                    comma_sep_pounds += ",";
-
-                    // We need to do this twice because the first time only inserts half the commas.  The reason is
-                    // the part of the lookahead ([0-9]{3})+ also consumes characters; embedding one lookahead (?=...)
-                    // within another doesn't seem to work, so (?=[0-9](?=[0-9]{3})+,)(.)(...) fails to match anything.
-                    if( comma_sep_pounds.length > 7 )
-                        comma_sep_pounds = comma_sep_pounds.replace(/(?=[0-9]([0-9]{3})+,)(.)(...)/g, "$2,$3");
-
-                    comma_sep_pounds = comma_sep_pounds.replace(/(?=[0-9]([0-9]{3})+,)(.)(...)/g, "$2,$3");
-
-                    // Remove the fake separator at the end, then replace all commas with the actual separator
-                    comma_sep_pounds = comma_sep_pounds.substring(0, comma_sep_pounds.length - 1).replace(/,/g, thousands_separator);
-                }
-
-                return str_minus + currency_symbol_before +
-                    comma_sep_pounds + (display_after_decimal_pt >= 1? (decimal_point + str_pence) : "") +
-                    currency_symbol_after;
-            }
 
             function TestaCNPJ(strCNPJ) {
                 cnpj = strCNPJ.replace(/[^\d]+/g,'');
@@ -133,9 +79,10 @@
            }
 
             document.addEventListener('DOMContentLoaded', function (e) {
-                document.getElementById("ds_cnpj").focus();
+                document.getElementById("ds_fantasia").focus();
 
                 const form = document.getElementById('createCalculoReajusteForm');
+
                 $('#ds_cnpj').mask('00.000.000/0000-00', {reverse: true});
                 $('#vl_fev').mask('00.000,00', {reverse: true});
                 $('#vl_resultado').mask('00.000,00', {reverse: true});
@@ -152,12 +99,17 @@
                 $('#vl_jan').mask('00.000,00', {reverse: true});
                 $('#vl_fev1').mask('00.000,00', {reverse: true});
                 $("#fl_tipo_ativo").on("click", function () {
-                    document.getElementById('titulo').innerText = 'Hora Aula';
-                    document.getElementById('fevereiro').innerText = 'Hora Aula de Fev/2019';
+                    document.getElementById('titulo').innerText = 'Hora-aula';
+                    document.getElementById('fevereiro').innerText = 'Insira a hora-aula de fev/2019';
+                    document.getElementById('instrucao').innerHTML = '';
+                    document.getElementById('instrucao1').innerHTML = 'Informe os valores da hora-aula pagos mês a mês. Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
+
                 });
                 $("#fl_tipo").on("click", function () {
                     document.getElementById('titulo').innerText = 'Salário Base';
-                    document.getElementById('fevereiro').innerText = 'Salário Base de Fev/2019';
+                    document.getElementById('fevereiro').innerText = 'Insira o salário base de fev/2019';
+                    document.getElementById('instrucao').innerHTML = '(use apenas o salário base do holerite. Desconsidere a hora-atividade e demais parcelas da remuneração)';
+                    document.getElementById('instrucao1').innerHTML = 'Informe os valores do salário base pagos mês a mês (desconsidere a hora-atividade e demais parcelas da remuneração). Para enviar os dados ao SinproSP, clique no botão <b>Salvar</b>';
                 });
 
                 $("#ds_cnpj").focusout(function () {
@@ -175,8 +127,10 @@
                             cnpj: $('#ds_cnpj').val(),
                         },
                         success: function (data) {
-                            document.getElementById('ds_fantasia').value = data.nome;
-                            $("#ds_fantasia").prop("disabled", false);
+                            if (data.nome != '') {
+                                document.getElementById('ds_fantasia').value = data.nome;
+                                $("#ds_fantasia").prop("disabled", false);
+                            }
                         },
                         error: function (error) {
                             if (error) {
@@ -185,10 +139,14 @@
                         }
                     });
                 });
-                $("#vl_fev").focusout(function () {
+                $("#vl_fev").keyup(function () {
                     e.preventDefault();
                     var reajustado = ($('#vl_fev').val().replace('.', '').replace(',', '.') * 1.039).toFixed(2);
                     $("#vl_reajustado").val(FormatMoney(reajustado,'','','.',',',2,2));
+
+                    //reajustado = ($("#vl_reajustado").val().replace('.', '').replace(',', '.') * 1.0504).toFixed(2);
+                    //$("#vl_reajustado20").val(FormatMoney(reajustado,'','','.',',',2,2));
+
                 });
                 const trInput = $('#table > tbody > tr');
                 $(trInput).on('change', function() {
@@ -212,7 +170,8 @@
                         }
                     }
                 });
-                FormValidation.formValidation(
+
+                const fvDissidio = FormValidation.formValidation(
                     form,
                     {
                         fields: {
@@ -234,8 +193,9 @@
                             ds_fantasia: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nome obrigatório'
+                                        message: 'Instituição obrigatória'
                                     },
+                                    blank: {},
                                 }
                             },
                             ds_tipo: {
@@ -248,11 +208,8 @@
                             },
                             vl_fev: {
                                 validators: {
-                                    notEmpty: {
-                                        message: 'Valor para Fev/2019 obrigatório'
-                                    },
                                     callback: {
-                                        message: 'Valor para Fev/2019 inválido',
+                                        message: 'Valor para fevereiro/2019 inválido',
                                         callback: function(input) {
                                             if (
                                                 parseFloat(
@@ -267,25 +224,82 @@
                             fl_nivel: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nível de Ensino obrigatório'
+                                        message: 'Nível em que leciona obrigatório'
                                     }
                                 }
                             },
-
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
                             bootstrap: new FormValidation.plugins.Bootstrap(),
-                            submitButton: new FormValidation.plugins.SubmitButton(),
-                            defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-                            icon: new FormValidation.plugins.Icon({
-                                valid: 'fa fa-check',
-                                invalid: 'fa fa-times',
-                                validating: 'fa fa-refresh'
-                            }),
+                            submitButton: new FormValidation.plugins.SubmitButton()
                         },
                     }
-                );
+                )
+                .on('core.form.invalid', function() {
+                        document.getElementById("ds_fantasia").focus();
+                    }
+                )
+                .on('core.form.valid', function() {
+
+                    e.preventDefault();
+
+                    if ($("#btnSubmit").prop("value") == "Ir para Home") {
+                        window.location.replace("http://www.sinprosp.org.br");
+                        return;
+                    }
+
+                    var formData = $("#createCalculoReajusteForm").serializeArray();
+
+                    var returnArray = {};
+                    for (var i = 0; i < formData.length; i++){
+                        returnArray[formData[i]['name']] = formData[i]['value'];
+                    }
+
+                    $("#btnSubmit").prop("disabled", true);
+                    $("#btnSubmit").prop("value", "Aguarde !!!");
+
+                    FormValidation.utils.fetch('', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        params: returnArray
+                    }).then(function(response) {
+                        if (response.errors) {
+                            for (const field in response.errors) {
+                                if ( field == "ds_fantasia") {
+                                    // Update the message option
+                                    fvCadastrar.updateValidatorOption(field, 'blank', 'message', response.errors['ds_fantasia'])
+
+                                    // Set the field as invalid
+                                    fvCadastrar.updateFieldStatus(field, 'Invalid', 'blank');
+                                }
+                            }
+
+                            $("#btnSubmit").prop("value", "Salvar");
+                            $("#btnSubmit").prop("disabled", false);
+                        } else {
+                            if (response.code == 1) {
+                                $("#btnSubmit").prop("value", "Ir para Home");
+                                $("#btnSubmit").prop("disabled", false);
+                                document.getElementById("ds_fantasia").focus();
+                                toastr.success(response.message);
+                            }
+                            else if (response.code == 2) {
+                                $("#btnSubmit").prop("value", "Salvar");
+                                $("#btnSubmit").prop("disabled", false);
+                                document.getElementById("vl_mar").focus();
+                                toastr.warning(response.message);
+                            }
+                            else {
+                                $("#btnSubmit").prop("value", "Ir para Home");
+                                $("#btnSubmit").prop("disabled", false);
+                                toastr.error(response.message);
+                            }
+                        }
+                    });
+                });
             });
         </script>
     @endpush

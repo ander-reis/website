@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="col-12 mb-2">
-                            {{ Form::label('lbl_mens_atividade', 'Hora Atividade', ['class' => 'control-label font-weight-bold']) }}
+                            {{ Form::label('lbl_mens_atividade', 'Hora-atividade', ['class' => 'control-label font-weight-bold']) }}
                             {{ Form::text('mens_atividade',null, ['id' => 'mens_atividade', 'class' => 'form-control', 'placeholder' => 'R$ 0,00', 'disabled']) }}
                         </div>
                         <div class="col-12 mb-2">

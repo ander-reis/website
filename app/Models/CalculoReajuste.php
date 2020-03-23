@@ -19,6 +19,7 @@ class CalculoReajuste extends Model
     protected $fillable = [
         'ds_cnpj',
         'ds_fantasia',
+        'fl_tipo',
         'ds_ano',
         'vl_fev',
         'vl_mar',
@@ -35,5 +36,6 @@ class CalculoReajuste extends Model
         'vl_fev1',
         'fl_diferenca',
         'fl_nivel',
+        'ds_ip'
     ];
 }
