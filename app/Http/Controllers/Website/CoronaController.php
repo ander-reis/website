@@ -31,11 +31,16 @@ class CoronaController extends Controller
             $data = $request->all();
 
             if($data['id_motivo'] == '1') {
-                $descricaoMotivo['ds_descricao'] = $data['ds_descricao_motivo'];
+                $descricaoMotivo['ds_descricao'] = mb_strtoupper($data['ds_descricao_motivo']);
                 $motivo = CoronaMotivos::create($descricaoMotivo);
                 $data['id_motivo'] = $motivo->id;
-                $data['ds_descricao'] = $data['ds_descricao_motivo'];
+                $data['ds_descricao'] = $data['ds_descricao'];
             }
+
+            $data['ds_escola'] = mb_strtoupper($data['ds_escola']);
+            $data['ds_descricao'] = mb_strtoupper($data['ds_descricao']);
+            $data['ds_funcionario'] = mb_strtoupper($data['ds_funcionario']);
+
 
             CoronaDenuncia::create($data);
 

@@ -18,6 +18,7 @@ class CoronaDenuncia extends Model
      */
     protected $fillable = [
         'id_motivo',
+        'ds_escola',
         'ds_descricao',
         'ds_funcionario',
     ];
