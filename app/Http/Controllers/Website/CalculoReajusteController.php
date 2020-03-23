@@ -31,7 +31,10 @@ class CalculoReajusteController extends Controller
     public function store(CalculoReajusteCreateRequest $request)
     {
         try {
+            $gravar = 0;
+
             $data = $request->all();
+
             unset($data['_token']);
             unset($data['vl_reajustado']);
 
@@ -39,12 +42,14 @@ class CalculoReajusteController extends Controller
                 $data['ds_cnpj'] = '';
             }
 
-            $valorBase = floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039);
+            $valorBase = round(floatval(str_replace(',','.',str_replace('.','',$data['vl_fev'])) * 1.039),2);
 
             foreach ($data as $key => $value) {
-                if(strstr($key, 'vl_')) {
+                if(strstr($key, 'vl_') && $key != 'vl_fev') {
+
                     $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
-                    if($valorBase < $valorMes) {
+
+                    if( ($valorBase > $valorMes) && ($valorMes != 0) ) {
                         $data['fl_diferenca'] = 1;
                         break;
                     }
@@ -56,19 +61,24 @@ class CalculoReajusteController extends Controller
                 if(strstr($key, 'vl_')) {
                     $valorMes = floatval(str_replace(',','.',str_replace('.','',$value)));
                     $data[$key] = $valorMes;
+
+                    if (($key != 'vl_fev') && ($valorMes > 0)) { $gravar = 1;}
                 }
             }
 
-            $data['vl_fev'] = $valorBase;
             $data['ds_ano'] = '2019';
+            $data['ds_fantasia'] = mb_strtoupper($data['ds_fantasia']);
+            $data['ds_ip'] =  $request->ip();
 
-            CalculoReajuste::create($data);
-
-            toastr()->success('Obrigado por suas informações!');
-
-            return redirect()->route('home');
+            if ($gravar == 1 ) {
+                CalculoReajuste::create($data);
+                return response()->json(['code' => 1, 'message' => 'Obrigado por suas informações']);
+            }
+            else {
+                return response()->json(['code' => 2, 'message' => 'Valores não informados nos meses após fevereiro/2019']);
+            }
         } catch (\Exception $e) {
-            toastr()->error("Não foi possível alterar o cadastro");
+            return response()->json(['code' => 0, 'message' => 'Não foi possível enviar os dados para o SinproSP. Tente novamente mais tarde']);
         }
     }
 
