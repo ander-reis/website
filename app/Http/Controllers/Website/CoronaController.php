@@ -5,6 +5,7 @@ namespace Website\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Models\CoronaDenuncia;
+use Website\Models\CoronaMotivos;
 
 class CoronaController extends Controller
 {
@@ -29,17 +30,19 @@ class CoronaController extends Controller
         try {
             $data = $request->all();
 
-            if($data['id_motivo'] === 1) {
+            if($data['id_motivo'] == '1') {
+                $descricaoMotivo['ds_descricao'] = $data['ds_descricao_motivo'];
+                $motivo = CoronaMotivos::create($descricaoMotivo);
+                $data['id_motivo'] = $motivo->id;
                 $data['ds_descricao'] = $data['ds_descricao_motivo'];
             }
 
             CoronaDenuncia::create($data);
 
             toastr()->success('Obrigado por suas informações!');
-
             return redirect()->route('corona.index');
         } catch (\Exception $e) {
-            toastr()->error("Não foi possível criar o cadastro" . $e->getMessage());
+            toastr()->error("Não foi possível criar o cadastro");
         }
     }
 }
