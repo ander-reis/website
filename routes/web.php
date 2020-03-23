@@ -108,8 +108,13 @@ Route::name('salario.index')->get('/salario', function () {
 /**
  * rota calculo reajuste
  */
-Route::resource('calculo-reajuste', 'Website\CalculoReajusteController');
+Route::resource('calculo-reajuste', 'Website\CalculoReajusteController', ['only' => ['index', 'store']]);
 Route::name('calculo.reajuste.busca')->post('calculo-reajuste/busca', 'Website\CalculoReajusteController@buscarCnpj');
+
+/**
+ * rota
+ */
+Route::resource('corona', 'Website\CoronaController', ['only' => ['index', 'store']]);
 
 /**
  * rota processos
