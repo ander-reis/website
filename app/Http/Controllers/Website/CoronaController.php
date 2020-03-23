@@ -5,7 +5,6 @@ namespace Website\Http\Controllers\Website;
 use Illuminate\Http\Request;
 use Website\Http\Controllers\Controller;
 use Website\Models\CoronaDenuncia;
-use Website\Models\CoronaMotivos;
 
 class CoronaController extends Controller
 {
