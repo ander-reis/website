@@ -328,12 +328,18 @@ class ProcessosController extends Controller
         $email1 = $request->input('pro_ema_ds_email1');
         $email2 = $request->input('pro_ema_ds_email2');
         $email3 = $request->input('pro_ema_ds_email3');
-        $modelEmail = ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3'])->toArray();
-        $arrayEmails = ['pro_ema_ds_email1' => $email1, 'pro_ema_ds_email2' => $email2, 'pro_ema_ds_email3' => $email3];
-        $diffEmail = array_diff_assoc($modelEmail, $arrayEmails);
-        $arrayKeysEmail = array_keys($diffEmail);
-        $implodeEmail = implode(';', $arrayKeysEmail);
-        $email = strtoupper($implodeEmail);
+
+        if (!is_null(ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3']))) {
+            $modelEmail = ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3'])->toArray();
+            $arrayEmails = ['pro_ema_ds_email1' => $email1, 'pro_ema_ds_email2' => $email2, 'pro_ema_ds_email3' => $email3];
+            $diffEmail = array_diff_assoc($modelEmail, $arrayEmails);
+            $arrayKeysEmail = array_keys($diffEmail);
+            $implodeEmail = implode(';', $arrayKeysEmail);
+            $email = strtoupper($implodeEmail);
+        }
+        else {
+            $email = "E-MAIL";
+        }
 
         $values = '';
         if (!empty($observacao) && !empty($email)) {
