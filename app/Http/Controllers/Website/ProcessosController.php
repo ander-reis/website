@@ -354,6 +354,7 @@ class ProcessosController extends Controller
         $hour = Carbon::now()->format('H:i:s');
         if(!empty($values)){
             $values = str_replace(';', '; ', $values);
+            $values = ';' . $values;
             // insert observacao
             ProfessorObservacoes::create(['Codigo_Professor' => $codigoProfessor, 'Data' => "{$day} 00:00:00.000", 'Observacao' => $values, 'Login' => 'SITE/PROCESSOS', 'Hora' => "1900-01-01 {$hour}"]);
         }
