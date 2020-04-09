@@ -20,6 +20,11 @@
     @endcomponent
 
     @component('website.form-components._form_col_group', ['class' => 'col-md-12'])
+        {{ Form::label('ds_meio', 'Ocorrência comunicada por', ['class' => 'control-label font-weight-bold']) }}
+        {{ Form::select('ds_meio', ['PROFESSOR' => 'Professor', 'ESCOLA' => 'Escola', 'CONTABILIDADE' => 'Contabilidade', 'OUTROS' => 'Outros'], null, ['class' => 'form-control', 'placeholder' => 'Selecione...']) }}
+    @endcomponent
+
+    @component('website.form-components._form_col_group', ['class' => 'col-md-12'])
         {{ Form::label('ds_funcionario', 'Funcionário do Sinpro que atendeu', ['class' => 'control-label font-weight-bold']) }}
         {{ Form::text('ds_funcionario', null, ['class' => 'form-control']) }}
     @endcomponent

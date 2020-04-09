@@ -21,6 +21,7 @@ class CoronaDenuncia extends Model
         'ds_escola',
         'ds_descricao',
         'ds_funcionario',
+        'ds_meio',
     ];
 
     public function motivo()

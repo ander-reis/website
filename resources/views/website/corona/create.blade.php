@@ -73,7 +73,14 @@
                                         message: 'Campo obrigatório'
                                     }
                                 }
-                            }
+                            },
+                            ds_meio: {
+                                validators: {
+                                    notEmpty: {
+                                        message: 'Ocorrência Comunicada obrigatória'
+                                    },
+                                }
+                            },
                         },
                         plugins: {
                             trigger: new FormValidation.plugins.Trigger(),
