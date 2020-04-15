@@ -43,7 +43,11 @@
                             ds_escola: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Nome obrigatório'
+                                        message: 'Nome da Instituição obrigatório'
+                                    },
+                                    stringLength: {
+                                        max: 100,
+                                        message: 'Nome da Instituição deve ter menos de 100 caracteres'
                                     },
                                 }
                             },
@@ -63,15 +67,23 @@
                             ds_descricao: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Campo obrigatório'
-                                    }
+                                        message: 'Descrição obrigatória'
+                                    },
+                                    stringLength: {
+                                        max: 500,
+                                        message: 'Descrição deve ter menos de 500 caracteres'
+                                    },
                                 }
                             },
                             ds_funcionario: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Campo obrigatório'
-                                    }
+                                        message: 'Nome do Funcionário obrigatório'
+                                    },
+                                    stringLength: {
+                                        max: 100,
+                                        message: 'Nome do Funcionário deve ter menos de 100 caracteres'
+                                    },
                                 }
                             },
                             ds_meio: {
