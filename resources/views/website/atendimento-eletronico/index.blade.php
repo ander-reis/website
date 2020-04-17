@@ -10,7 +10,7 @@
                 <p>Devido ao alto número de atendimentos a distância, pode ser que sua resposta demore um pouco mais a chegar, porém iremos responder a todos. Você também pode falar conosco no número (11) 5080-5988, das 11h às 15h.</p>
 
                 <br />
-                <!--<p><u>Os atendimentos eletrônicos voltarão a ser respondidos no dia 22/04/2020 devido o feriado de Tiradentes</u></p>-->
+                <p><u>Os atendimentos eletrônicos voltarão a ser respondidos no dia 22/04/2020 devido o feriado de Tiradentes</u></p>
             </div>
 
             {{ Form::open(['route' => 'atendimento-eletronico.store']) }}
