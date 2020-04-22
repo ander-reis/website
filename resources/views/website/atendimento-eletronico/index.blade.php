@@ -9,8 +9,11 @@
                 <p>Tranquilize-se quanto ao sigilo: ele está garantido para proteger as professoras e professores que entrarem em contato conosco.</p>
                 <p>Devido ao alto número de atendimentos a distância, pode ser que sua resposta demore um pouco mais a chegar, porém iremos responder a todos. Você também pode falar conosco no número (11) 5080-5988, das 11h às 15h.</p>
 
+                <!--
                 <br />
                 <p><u>Os atendimentos eletrônicos voltarão a ser respondidos no dia 22/04/2020 devido o feriado de Tiradentes</u></p>
+                -->
+
             </div>
 
             {{ Form::open(['route' => 'atendimento-eletronico.store']) }}
