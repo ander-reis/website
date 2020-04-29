@@ -117,6 +117,11 @@ Route::name('calculo.reajuste.busca')->post('calculo-reajuste/busca', 'Website\C
 Route::resource('corona', 'Website\CoronaController', ['only' => ['index', 'store']]);
 
 /**
+ * rota zoom
+ */
+Route::resource('zoom', 'Website\ZoomController', ['only' => ['index']]);
+
+/**
  * rota processos
  *
  */
