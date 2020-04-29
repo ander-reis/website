@@ -122,6 +122,11 @@ Route::resource('corona', 'Website\CoronaController', ['only' => ['index', 'stor
 Route::resource('zoom', 'Website\ZoomController', ['only' => ['index']]);
 
 /**
+ * rota mp936
+ */
+Route::resource('mp936', 'Website\Mp936Controller', ['only' => ['index']]);
+
+/**
  * rota processos
  *
  */
