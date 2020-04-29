@@ -10,7 +10,7 @@
                     <label for="staticEmail2">Informe o seu salário</label>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="password" class="form-control" id="ds_salario">
+                    <input type="text" class="form-control" id="ds_salario" name="ds_salario">
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">Calcular</button>
             </form>
@@ -94,7 +94,7 @@
 
         </div>
     </div>
-    @push('form-calculos-reajuste-script')
+    @push('calculos-mp936-script')
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function (e) {
 

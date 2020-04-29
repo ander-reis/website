@@ -172,5 +172,6 @@
     @stack('form-calculos-reajuste-script')
     @stack('form-corona-script')
     @stack('pagamento-script')
+    @stack('calculos-mp936-script')
 </body>
 </html>
