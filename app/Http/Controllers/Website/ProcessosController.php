@@ -77,6 +77,7 @@ class ProcessosController extends Controller
      */
     public function select($id_processo)
     {
+
         $cpf = session('cpf');
         $opcao = session('opcao');
 
@@ -88,20 +89,21 @@ class ProcessosController extends Controller
         // opcao 1 => Beneficiario
         switch ($opcao) {
             case 0:
+
                 // Inventariante
                 $model = ProcessosProfessores::where('CPF_beneficiario', $cpf)->first();
+
+                $message = ProcessoSite::getMessage($processo->nr_pasta, $cpf);
 
                 /**
                  * if model empty is insert
                  */
                 if (is_null($model)) {
                     $cadastroProfessores = $this->setFormatDataInventariante($cadastroProfessores);
-                    return view('website.processos.create', compact('cpf', 'id_processo', 'cadastroProfessores'));
+                    return view('website.processos.create', compact('cpf', 'id_processo', 'cadastroProfessores', 'processo', 'message'));
                 }
 
                 $model = $this->setFormatDataInventariante($model);
-
-                $message = ProcessoSite::getMessage($processo->nr_pasta, $cpf);
 
                 $anoPagamento = ProcessoFinanceiro::getAnoPagamentos($processo->nr_pasta, $cpf);
                 $pagamentos = ProcessoFinanceiro::getPagamentos($processo->nr_pasta, $cpf, $anoPagamento->first()->ano ?? null);
@@ -147,13 +149,15 @@ class ProcessosController extends Controller
      */
     public function store(ProcessosCreateRequest $request)
     {
+
         try {
             $data = $this->getFormatDataInventariante($request);
 
             /**
              * create tb_sinpro_processos_professores
              */
-            ProcessosProfessores::create($data);
+             ProcessosProfessores::create($data);
+
 
             /**
              * update Cadastro_Professores
@@ -182,37 +186,41 @@ class ProcessosController extends Controller
      */
     public function updateBeneficiario(ProcessosBeneficiarioUpdateRequest $request, $codigo_professor)
     {
-        $model = $this->getFormatDataBeneficiario($request);
-        $cpf = session('cpf');
+        try {
+            $model = $this->getFormatDataBeneficiario($request);
+            $cpf = session('cpf');
 
-        /**
-         * Professor_Observacoes
-         */
-        $this->createProfessorObservacao($codigo_professor, $request);
+            /**
+             * Professor_Observacoes
+             */
+            $this->createProfessorObservacao($codigo_professor, $request);
 
-        /**
-         * tb_professor_email.
-         */
-        $this->createProfessorEmail($codigo_professor, $request);
+            /**
+             * tb_professor_email.
+             */
+            $this->createProfessorEmail($codigo_professor, $request);
 
-        /**
-         * cadastrar CPF e CPF_Beneficiario em tb_sinpro_processos_professores
-         */
-        ProcessosProfessores::createOrUpdateProcessosProfessores($request, $cpf);
+            /**
+             * cadastrar CPF e CPF_Beneficiario em tb_sinpro_processos_professores
+             */
+            ProcessosProfessores::createOrUpdateProcessosProfessores($request, $cpf);
 
-        /**
-         * Cadastro_Professores
-         */
-        CadastroProfessores::where('Codigo_Professor', $codigo_professor)->update($model);
+            /**
+             * Cadastro_Professores
+             */
+            CadastroProfessores::where('Codigo_Professor', $codigo_professor)->update($model);
 
-        /**
-         * deleta session
-         */
-        $request->session()->invalidate();
+            /**
+             * deleta session
+             */
+            $request->session()->invalidate();
 
-        toastr()->success('Cadastro alterado com sucesso!');
+            toastr()->success('Cadastro alterado com sucesso!');
 
-        return redirect()->route('processos.index');
+            return redirect()->route('processos.index');
+        } catch (\Exception $exception) {
+            toastr()->error('Não foi possível criar o cadastro');
+        }
     }
 
     /**
@@ -225,26 +233,30 @@ class ProcessosController extends Controller
      */
     public function updateInventariante(ProcessosInventarianteUpdateRequest $request, $codigo_professor, $id_cadastro)
     {
-        $model = $this->getFormatDataInventariante($request);
+        try {
+            $model = $this->getFormatDataInventariante($request);
 
-        /**
-         * update tb_sinpro_processos_professores
-         */
-        ProcessosProfessores::where('id_cadastro', $id_cadastro)->update($model);
+            /**
+             * update tb_sinpro_processos_professores
+             */
+            ProcessosProfessores::where('id_cadastro', $id_cadastro)->update($model);
 
-        /**
-         * update Cadastro_Professores
-         */
-        CadastroProfessores::updateCadastroProfessores($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
+            /**
+             * update Cadastro_Professores
+             */
+            CadastroProfessores::updateCadastroProfessores($request->input('professor'), ['PIS' => $request->input('PIS'), 'Nome_Mae' => $request->input('Nome_Mae')]);
 
-        /**
-         * deleta session
-         */
-        $request->session()->invalidate();
+            /**
+             * deleta session
+             */
+            $request->session()->invalidate();
 
-        toastr()->success('Cadastro alterado com sucesso!');
+            toastr()->success('Cadastro alterado com sucesso!');
 
-        return redirect()->route('processos.index');
+            return redirect()->route('processos.index');
+        } catch (\Exception $exception) {
+            toastr()->error('Não foi possível criar o cadastro');
+        }
     }
 
     /**
@@ -292,19 +304,23 @@ class ProcessosController extends Controller
      */
     private function createProfessorEmail($id, $request)
     {
-        /**
-         * deletar todos os email cadastrado sob o Codigo_Professor
-         */
-        ProfessorEmail::where('pro_ema_cd_professor', $id)->delete();
-        /**
-         * insert data email
-         */
-        $professorEmail = new ProfessorEmail();
-        $professorEmail->pro_ema_cd_professor = $id;
-        $professorEmail->pro_ema_ds_email1 = $request->input('pro_ema_ds_email1');
-        $professorEmail->pro_ema_ds_email2 = $request->input('pro_ema_ds_email2');
-        $professorEmail->pro_ema_ds_email3 = $request->input('pro_ema_ds_email3');
-        $professorEmail->save();
+        try {
+            /**
+             * deletar todos os email cadastrado sob o Codigo_Professor
+             */
+            ProfessorEmail::where('pro_ema_cd_professor', $id)->delete();
+            /**
+             * insert data email
+             */
+            $professorEmail = new ProfessorEmail();
+            $professorEmail->pro_ema_cd_professor = $id;
+            $professorEmail->pro_ema_ds_email1 = $request->input('pro_ema_ds_email1');
+            $professorEmail->pro_ema_ds_email2 = $request->input('pro_ema_ds_email2');
+            $professorEmail->pro_ema_ds_email3 = $request->input('pro_ema_ds_email3');
+            $professorEmail->save();
+        } catch (\Exception $exception) {
+            toastr()->error('Não foi possível criar o cadastro');
+        }
     }
 
     /**
@@ -315,50 +331,54 @@ class ProcessosController extends Controller
      */
     private function createProfessorObservacao($codigoProfessor, $request = null)
     {
-        // beneficiario
-        $collection = CadastroProfessores::getCadastroProfessor($codigoProfessor);
-        $modelDatabase = $this->getFormatModel($collection);
-        $data = $this->getFormatDataBeneficiario($request);
-        $diffModel = array_diff_assoc($modelDatabase, $data);
-        $arrayKeysModel = array_keys($diffModel);
-        $implodeModel = implode(';', $arrayKeysModel);
-        $observacao = strtoupper($implodeModel);
+        try {
+            // beneficiario
+            $collection = CadastroProfessores::getCadastroProfessor($codigoProfessor);
+            $modelDatabase = $this->getFormatModel($collection);
+            $data = $this->getFormatDataBeneficiario($request);
+            $diffModel = array_diff_assoc($modelDatabase, $data);
+            $arrayKeysModel = array_keys($diffModel);
+            $implodeModel = implode(';', $arrayKeysModel);
+            $observacao = strtoupper($implodeModel);
 
-        // email
-        $email1 = $request->input('pro_ema_ds_email1');
-        $email2 = $request->input('pro_ema_ds_email2');
-        $email3 = $request->input('pro_ema_ds_email3');
+            // email
+            $email1 = $request->input('pro_ema_ds_email1');
+            $email2 = $request->input('pro_ema_ds_email2');
+            $email3 = $request->input('pro_ema_ds_email3');
 
-        if (!is_null(ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3']))) {
-            $modelEmail = ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3'])->toArray();
-            $arrayEmails = ['pro_ema_ds_email1' => $email1, 'pro_ema_ds_email2' => $email2, 'pro_ema_ds_email3' => $email3];
-            $diffEmail = array_diff_assoc($modelEmail, $arrayEmails);
-            $arrayKeysEmail = array_keys($diffEmail);
-            $implodeEmail = implode(';', $arrayKeysEmail);
-            $email = strtoupper($implodeEmail);
-        }
-        else {
-            $email = "E-MAIL";
-        }
+            if (!is_null(ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3']))) {
+                $modelEmail = ProfessorEmail::where('pro_ema_cd_professor', $codigoProfessor)->first(['pro_ema_ds_email1', 'pro_ema_ds_email2', 'pro_ema_ds_email3'])->toArray();
+                $arrayEmails = ['pro_ema_ds_email1' => $email1, 'pro_ema_ds_email2' => $email2, 'pro_ema_ds_email3' => $email3];
+                $diffEmail = array_diff_assoc($modelEmail, $arrayEmails);
+                $arrayKeysEmail = array_keys($diffEmail);
+                $implodeEmail = implode(';', $arrayKeysEmail);
+                $email = strtoupper($implodeEmail);
+            }
+            else {
+                $email = "E-MAIL";
+            }
 
-        $values = '';
-        if (!empty($observacao) && !empty($email)) {
-            $values = $observacao . ';' . $email;
-        } elseif (!empty($observacao) && empty($email)) {
-            $values = $observacao;
-        } elseif (empty($observacao) && !empty($email)) {
-            $values = $email;
-        }
+            $values = '';
+            if (!empty($observacao) && !empty($email)) {
+                $values = $observacao . ';' . $email;
+            } elseif (!empty($observacao) && empty($email)) {
+                $values = $observacao;
+            } elseif (empty($observacao) && !empty($email)) {
+                $values = $email;
+            }
 
-        $day = Carbon::now()->format('Y-m-d');
-        $hour = Carbon::now()->format('H:i:s');
-        if(!empty($values)){
-            $values = str_replace(';', '; ', $values);
-            $values = str_replace('; ', ' ;', $values);
+            $day = Carbon::now()->format('Y-m-d');
+            $hour = Carbon::now()->format('H:i:s');
+            if(!empty($values)){
+                $values = str_replace(';', '; ', $values);
+                $values = str_replace('; ', ' ;', $values);
 
-            $values = ';' . $values;
-            // insert observacao
-            ProfessorObservacoes::create(['Codigo_Professor' => $codigoProfessor, 'Data' => "{$day} 00:00:00.000", 'Observacao' => $values, 'Login' => 'SITE/PROCESSOS', 'Hora' => "1900-01-01 {$hour}"]);
+                $values = ';' . $values;
+                // insert observacao
+                ProfessorObservacoes::create(['Codigo_Professor' => $codigoProfessor, 'Data' => "{$day} 00:00:00.000", 'Observacao' => $values, 'Login' => 'SITE/PROCESSOS', 'Hora' => "1900-01-01 {$hour}"]);
+            }
+        } catch (\Exception $exception) {
+            toastr()->error('Não foi possível criar o cadastro');
         }
     }
 
@@ -370,31 +390,38 @@ class ProcessosController extends Controller
      */
     private function getFormatDataInventariante($request)
     {
-        $data = $request->all();
-        $cpf = session('cpf');
+        try {
+            $data = $request->all();
+            $cpf = session('cpf');
 
-        $data['Endereco'] = $data['endereco'];
-        $data['Bairro'] = $data['bairro'];
-        $data['Cidade'] = $data['cidade'];
-        $data['Estado'] = $data['estado'];
-        $data['num_ip'] = $request->ip();
-        $data['CPF_Beneficiario'] = $cpf;
-        $data['Conta'] = $this->getContaAgencia($data['Conta'], $data['contaDV']);
-        $data['Agencia'] = $this->getContaAgencia($data['Agencia'], $data['agenciaDV']);
+            $data['Endereco'] = $data['endereco'];
+            $data['Bairro'] = $data['bairro'];
+            $data['Cidade'] = $data['cidade'];
+            $data['Estado'] = $data['estado'];
+            $data['num_ip'] = $request->ip();
+            $data['CPF_Beneficiario'] = $cpf;
+            $data['Conta'] = $this->getContaAgencia($data['Conta'], $data['contaDV']);
+            $data['Agencia'] = $this->getContaAgencia($data['Agencia'], $data['agenciaDV']);
 
-        unset($data['_method'],
-            $data['_token'],
-            $data['endereco'],
-            $data['bairro'],
-            $data['cidade'],
-            $data['estado'],
-            $data['agenciaDV'],
-            $data['contaDV'],
-            $data['Nome_Mae'],
-            $data['PIS'],
-            $data['professor']);
 
-        return $data;
+
+            unset($data['_method'],
+                $data['_token'],
+                $data['endereco'],
+                $data['bairro'],
+                $data['cidade'],
+                $data['estado'],
+                $data['agenciaDV'],
+                $data['contaDV'],
+                $data['Nome_Mae'],
+                $data['PIS'],
+                $data['professor']);
+
+            return $data;
+
+        } catch (\Exception $exception) {
+            toastr()->error('Não foi possível criar o cadastro');
+        }
     }
 
     /**
