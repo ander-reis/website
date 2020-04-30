@@ -13,7 +13,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">R$</span>
                             </div>
-                            <input type="text" class="form-control" name="ds_salario" id="ds_salario"
+                            <input type="text" class="form-control" name="vl_salario" id="vl_salario"
                                    aria-describedby="Informe o seu salário">
                         </div>
                     </div>
@@ -37,27 +37,27 @@
                 <tbody>
                 <tr>
                     <th scope="row">Empresa</th>
-                    <td>1.125,00</td>
-                    <td>750,00</td>
-                    <td>450,00</td>
+                    <td id="red_emp_25"></td>
+                    <td id="red_emp_50"></td>
+                    <td id="red_emp_70"></td>
                 </tr>
                 <tr>
                     <th scope="row">Governo</th>
-                    <td>300,00</td>
-                    <td>600,00</td>
-                    <td>840,00</td>
+                    <td id="red_gov_25"></td>
+                    <td id="red_gov_50"></td>
+                    <td id="red_gov_70"></td>
                 </tr>
                 <tr>
                     <th scope="row">Recebe</th>
-                    <td>1.425,00</td>
-                    <td>1.350,00</td>
-                    <td>1.290,00</td>
+                    <td id="red_rec_25"></td>
+                    <td id="red_rec_50"></td>
+                    <td id="red_rec_70"></td>
                 </tr>
                 <tr>
                     <th scope="row">Perda</th>
-                    <td>-75,00</td>
-                    <td>-150,00</td>
-                    <td>-210,00</td>
+                    <td id="red_per_25"></td>
+                    <td id="red_per_50"></td>
+                    <td id="red_per_70"></td>
                 </tr>
                 </tbody>
             </table>
@@ -76,10 +76,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>0,00</td>
-                    <td>1.200,00</td>
-                    <td>1.200,00</td>
-                    <td>-300,00</td>
+                    <td id="sus_emp">0,00</td>
+                    <td id="sus_gov"></td>
+                    <td id="sus_rec"></td>
+                    <td id="sus_per"></td>
                 </tr>
                 </tbody>
             </table>
@@ -98,10 +98,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>450,00</td>
-                    <td>840,00</td>
-                    <td>1.290,00</td>
-                    <td>-210,00</td>
+                    <td id="mil_emp"></td>
+                    <td id="mil_gov"></td>
+                    <td id="mil_rec"></td>
+                    <td id="mil_per"></td>
                 </tr>
                 </tbody>
             </table>
@@ -111,10 +111,62 @@
     @push('calculos-mp936-script')
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function (e) {
+                function SemMSK(value) {
+                    return value.replace('.', '').replace(',', '.');
+                }
+
+                function ComMSK(value) {
+                    return FormatMoney(value,'','','.',',',2,2)
+                }
+
+                document.getElementById("vl_salario").focus();
+
+                $('#vl_salario').mask('00.000,00', {reverse: true});
+
+                $("#vl_salario").keyup(function () {
+                    e.preventDefault();
+                    var salario = $('#vl_salario').val().replace('.', '').replace(',', '.');
+
+                    if (salario <= 1599.61) {
+                        seguro = salario * 0.8;
+                    }
+                    else if ((salario >= 1599.62) && (salario <= 2666.29) ) {
+                        seguro = ((salario - 1599.61) * 0.5) + 1279.69;
+                    }
+                    else {
+                        seguro = 1813.03;
+                    }
+
+                    $('#red_emp_25').html(ComMSK(salario * (1 - 0.25)));
+                    $('#red_emp_50').html(ComMSK(salario * (1 - 0.50)));
+                    $('#red_emp_70').html(ComMSK(salario * (1 - 0.70)));
+
+                    $('#red_gov_25').html(ComMSK(seguro * 0.25));
+                    $('#red_gov_50').html(ComMSK(seguro * 0.50));
+                    $('#red_gov_70').html(ComMSK(seguro * 0.70));
+
+                    $('#red_rec_25').html(ComMSK(parseFloat(SemMSK($('#red_emp_25').html())) + parseFloat(SemMSK($('#red_gov_25').html()))));
+                    $('#red_rec_50').html(ComMSK(parseFloat(SemMSK($('#red_emp_50').html())) + parseFloat(SemMSK($('#red_gov_50').html()))));
+                    $('#red_rec_70').html(ComMSK(parseFloat(SemMSK($('#red_emp_70').html())) + parseFloat(SemMSK($('#red_gov_70').html()))));
+
+                    $('#red_per_25').html(ComMSK(parseFloat(SemMSK($('#red_rec_25').html())) - parseFloat(salario)));
+                    $('#red_per_50').html(ComMSK(parseFloat(SemMSK($('#red_rec_50').html())) - parseFloat(salario)));
+                    $('#red_per_70').html(ComMSK(parseFloat(SemMSK($('#red_rec_70').html())) - parseFloat(salario)));
+
+                    $('#sus_gov').html(ComMSK(seguro));
+                    $('#sus_rec').html(ComMSK(parseFloat(seguro) + parseFloat($('#sus_emp').html())));
+                    $('#sus_per').html(ComMSK(parseFloat(SemMSK($('#sus_rec').html())) - parseFloat(salario)));
+
+
+                    $('#mil_emp').html(ComMSK((SemMSK(salario) / 100) * 0.3));
+                    $('#mil_gov').html(ComMSK((seguro * 0.7)));
+
+                    $('#mil_rec').html(ComMSK(parseFloat(SemMSK($('#mil_emp').html())) + parseFloat(SemMSK($('#mil_gov').html()))));
+                    $('#mil_per').html(ComMSK(parseFloat(SemMSK($('#mil_rec').html())) - parseFloat(salario)));
+
+                });
 
                 const form = document.getElementById('calculoMpForm');
-
-                $('#ds_salario').mask('00.000,00', {reverse: true});
 
                 FormValidation.formValidation(
                     form,
@@ -139,4 +191,3 @@
         </script>
     @endpush
 @endsection
-
