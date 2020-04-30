@@ -5,15 +5,25 @@
         <div class="col-12 col-sm-12 col-md-12">
             <h2 class="mb-4">Cálculo da Redução de Salário MP936</h2>
 
-            <form class="form-inline" id="calculoMpForm">
-                <div class="form-group mb-2">
-                    <label for="staticEmail2">Informe o seu salário</label>
+            <form id="calculoMpForm">
+                <div class="row" style="height: 100px !important;">
+                    <div class="form-group col-8 col-sm-6 col-md-4">
+                        <label for="ds_salario"><span class="font-weight-bold">Informe o seu salário</span></label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">R$</span>
+                            </div>
+                            <input type="text" class="form-control" name="ds_salario" id="ds_salario"
+                                   aria-describedby="Informe o seu salário">
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-6">
+                        <button type="button" class="btn btn-primary" style="margin-top: 32px">Calcular</button>
+                    </div>
                 </div>
-                <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" class="form-control" id="ds_salario" name="ds_salario">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Calcular</button>
             </form>
+
+            <hr class="line">
 
             <table class="table">
                 <thead>
@@ -52,6 +62,8 @@
                 </tbody>
             </table>
 
+            <hr class="line">
+
             <h3>Suspensão do Contrato</h3>
             <table class="table">
                 <thead>
@@ -71,6 +83,8 @@
                 </tr>
                 </tbody>
             </table>
+
+            <hr class="line">
 
             <h3>Suspensão Empresa Receita > 4,8 milhões</h3>
             <table class="table">
@@ -99,6 +113,8 @@
             document.addEventListener('DOMContentLoaded', function (e) {
 
                 const form = document.getElementById('calculoMpForm');
+
+                $('#ds_salario').mask('00.000,00', {reverse: true});
 
                 FormValidation.formValidation(
                     form,
