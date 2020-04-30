@@ -172,10 +172,10 @@
                     form,
                     {
                         fields: {
-                            ds_salario: {
+                            vl_salario: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Campo obrigatório'
+                                        message: 'Salário obrigatório'
                                     },
                                 }
                             },
