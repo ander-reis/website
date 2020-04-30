@@ -67,7 +67,7 @@
                         <th scope="col" class="text-center">Empresa</th>
                         <th scope="col" class="text-center">Governo</th>
                         <th scope="col" class="text-center">Recebe</th>
-                        <th scope="col" class="text-center" id="titulo2">Perda</th>
+                        <th scope="col" class="text-center" id="titulo2">Ganho / Perda</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -87,7 +87,7 @@
                         <th scope="col" class="text-center">Empresa</th>
                         <th scope="col" class="text-center">Governo</th>
                         <th scope="col" class="text-center">Recebe</th>
-                        <th scope="col" class="text-center" id="titulo3">Perda</th>
+                        <th scope="col" class="text-center" id="titulo3">Ganho / Perda</th>
                     </tr>
                     </thead>
                     <tbody>
