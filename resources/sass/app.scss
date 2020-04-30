@@ -879,6 +879,25 @@ ul.timeline > li:before {
         display: block;
     }
 
+    #no-more-tables-mp td {
+        height: 55px !important;
+    }
+
+    /* mp936 */
+    /* Force table to not be like tables anymore */
+
+    #table-mp936 th , table{
+        vertical-align: center !important;
+    }
+    #table-mp936 td,
+    #table-mp936 tr {
+        padding: 5px 0 5px 0 !important;
+        vertical-align: center !important;
+        border: 1;
+        background: #eee;
+        border-right: 2px solid #dee2e6;
+    }
+
     /* Zebra striping */
     #no-more-tables-mp  tr:nth-of-type(odd) {
         background: #eee;
