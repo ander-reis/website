@@ -885,14 +885,19 @@ ul.timeline > li:before {
 
     /* mp936 */
     /* Force table to not be like tables anymore */
+    #table-mp936 th,
+    #table-mp936 td
+     {
+        vertical-align: middle !important;
+     }
+
     #table-mp936 td,
     #table-mp936 tr {
         padding: 5px 0 5px 0 !important;
-        vertical-align: center !important;
         border: 1;
         background: #eee;
         border-right: 2px solid #dee2e6;
-        font-size: 14px !important;
+        font-size: 13px !important;
     }
 
     /* Zebra striping */

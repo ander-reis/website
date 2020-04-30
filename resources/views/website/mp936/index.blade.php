@@ -49,7 +49,7 @@
                         <td id="red_rec_70" class="text-right">0,00</td>
                     </tr>
                     <tr>
-                        <th scope="row">Perda</th>
+                        <th scope="row" id="titulo1">Perda</th>
                         <td id="red_per_25" class="text-right">0,00</td>
                         <td id="red_per_50" class="text-right">0,00</td>
                         <td id="red_per_70" class="text-right">0,00
@@ -67,7 +67,7 @@
                         <th scope="col" class="text-center">Empresa</th>
                         <th scope="col" class="text-center">Governo</th>
                         <th scope="col" class="text-center">Recebe</th>
-                        <th scope="col" class="text-center">Perda</th>
+                        <th scope="col" class="text-center" id="titulo2">Perda</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -87,7 +87,7 @@
                         <th scope="col" class="text-center">Empresa</th>
                         <th scope="col" class="text-center">Governo</th>
                         <th scope="col" class="text-center">Recebe</th>
-                        <th scope="col" class="text-center">Perda</th>
+                        <th scope="col" class="text-center" id="titulo3">Perda</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -123,49 +123,56 @@
 
                     if (salario != '') {
 
+                        if (salario > 1045 ) {
+                            titulo = "Perda";
+                        }
+                        else {
+                            titulo = "Ganho";
+                        }
+                        $('#titulo1').html(titulo);
+                        $('#titulo2').html(titulo);
+                        $('#titulo3').html(titulo);
 
-                    if (salario <= 1599.61) {
-                        seguro = salario * 0.8;
-                    } else if ((salario >= 1599.62) && (salario <= 2666.29)) {
-                        seguro = ((salario - 1599.61) * 0.5) + 1279.69;
-                    } else {
-                        seguro = 1813.03;
+                        if (salario <= 1599.61) {
+                            seguro = salario * 0.8;
+                        } else if ((salario >= 1599.62) && (salario <= 2666.29)) {
+                            seguro = ((salario - 1599.61) * 0.5) + 1279.69;
+                        } else {
+                            seguro = 1813.03;
+                        }
+
+                        if (parseFloat(seguro) < 1045) {
+                            seguro = 1045;
+                        }
+
+                        $('#red_emp_25').html(ComMSK(salario * (1 - 0.25)));
+                        $('#red_emp_50').html(ComMSK(salario * (1 - 0.50)));
+                        $('#red_emp_70').html(ComMSK(salario * (1 - 0.70)));
+
+                        $('#red_gov_25').html(ComMSK(seguro * 0.25));
+                        $('#red_gov_50').html(ComMSK(seguro * 0.50));
+                        $('#red_gov_70').html(ComMSK(seguro * 0.70));
+
+                        $('#red_rec_25').html(ComMSK(parseFloat(SemMSK($('#red_emp_25').html())) + parseFloat(SemMSK($('#red_gov_25').html()))));
+                        $('#red_rec_50').html(ComMSK(parseFloat(SemMSK($('#red_emp_50').html())) + parseFloat(SemMSK($('#red_gov_50').html()))));
+                        $('#red_rec_70').html(ComMSK(parseFloat(SemMSK($('#red_emp_70').html())) + parseFloat(SemMSK($('#red_gov_70').html()))));
+
+                        $('#red_per_25').html(ComMSK(parseFloat(SemMSK($('#red_rec_25').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_25').html())) - parseFloat(salario)) / salario)*100)) + "%");
+                        $('#red_per_50').html(ComMSK(parseFloat(SemMSK($('#red_rec_50').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_50').html())) - parseFloat(salario)) / salario)*100)) + "%");
+                        $('#red_per_70').html(ComMSK(parseFloat(SemMSK($('#red_rec_70').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_70').html())) - parseFloat(salario)) / salario)*100)) + "%");
+
+                        $('#sus_gov').html(ComMSK(seguro));
+                        $('#sus_rec').html(ComMSK(parseFloat(seguro) + parseFloat($('#sus_emp').html())));
+                        $('#sus_per').html(ComMSK(parseFloat(SemMSK($('#sus_rec').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#sus_rec').html())) - parseFloat(salario)) / salario)*100)) + "%");
+
+
+                        $('#mil_emp').html(ComMSK((SemMSK(salario) / 100) * 0.3));
+                        $('#mil_gov').html(ComMSK((seguro * 0.7)));
+
+                        $('#mil_rec').html(ComMSK(parseFloat(SemMSK($('#mil_emp').html())) + parseFloat(SemMSK($('#mil_gov').html()))));
+                        $('#mil_per').html(ComMSK(parseFloat(SemMSK($('#mil_rec').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#mil_rec').html())) - parseFloat(salario)) / salario)*100)) + "%");
+
                     }
-
-                    if (parseFloat(seguro) < 1045) {
-                        seguro = 1045;
-                    }
-
-                    $('#red_emp_25').html(ComMSK(salario * (1 - 0.25)));
-                    $('#red_emp_50').html(ComMSK(salario * (1 - 0.50)));
-                    $('#red_emp_70').html(ComMSK(salario * (1 - 0.70)));
-
-                    $('#red_gov_25').html(ComMSK(seguro * 0.25));
-                    $('#red_gov_50').html(ComMSK(seguro * 0.50));
-                    $('#red_gov_70').html(ComMSK(seguro * 0.70));
-
-                    $('#red_rec_25').html(ComMSK(parseFloat(SemMSK($('#red_emp_25').html())) + parseFloat(SemMSK($('#red_gov_25').html()))));
-                    $('#red_rec_50').html(ComMSK(parseFloat(SemMSK($('#red_emp_50').html())) + parseFloat(SemMSK($('#red_gov_50').html()))));
-                    $('#red_rec_70').html(ComMSK(parseFloat(SemMSK($('#red_emp_70').html())) + parseFloat(SemMSK($('#red_gov_70').html()))));
-
-                    $('#red_per_25').html(ComMSK(parseFloat(SemMSK($('#red_rec_25').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_25').html())) - parseFloat(salario)) / salario)*100)) + "%");
-                    $('#red_per_50').html(ComMSK(parseFloat(SemMSK($('#red_rec_50').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_50').html())) - parseFloat(salario)) / salario)*100)) + "%");
-                    $('#red_per_70').html(ComMSK(parseFloat(SemMSK($('#red_rec_70').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#red_rec_70').html())) - parseFloat(salario)) / salario)*100)) + "%");
-
-                    //
-
-                    $('#sus_gov').html(ComMSK(seguro));
-                    $('#sus_rec').html(ComMSK(parseFloat(seguro) + parseFloat($('#sus_emp').html())));
-                    $('#sus_per').html(ComMSK(parseFloat(SemMSK($('#sus_rec').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#sus_rec').html())) - parseFloat(salario)) / salario)*100)) + "%");
-
-
-                    $('#mil_emp').html(ComMSK((SemMSK(salario) / 100) * 0.3));
-                    $('#mil_gov').html(ComMSK((seguro * 0.7)));
-
-                    $('#mil_rec').html(ComMSK(parseFloat(SemMSK($('#mil_emp').html())) + parseFloat(SemMSK($('#mil_gov').html()))));
-                    $('#mil_per').html(ComMSK(parseFloat(SemMSK($('#mil_rec').html())) - parseFloat(salario)) + "<br>" + (ComMSK(((parseFloat(SemMSK($('#mil_rec').html())) - parseFloat(salario)) / salario)*100)) + "%");
-
-                }
 
                 });
 
