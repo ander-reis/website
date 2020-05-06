@@ -881,6 +881,27 @@ ul.timeline > li:before {
         display: block;
     }
 
+    #no-more-tables-mp td {
+        height: 55px !important;
+    }
+
+    /* mp936 */
+    /* Force table to not be like tables anymore */
+    #table-mp936 th,
+    #table-mp936 td
+     {
+        vertical-align: middle !important;
+     }
+
+    #table-mp936 td,
+    #table-mp936 tr {
+        padding: 5px 0 5px 0 !important;
+        border: 1;
+        background: #eee;
+        border-right: 2px solid #dee2e6;
+        font-size: 13px !important;
+    }
+
     /* Zebra striping */
     #no-more-tables-mp  tr:nth-of-type(odd) {
         background: #eee;
@@ -939,7 +960,7 @@ ul.timeline > li:before {
     #no-more-tables-mp.tables-mp td:nth-of-type(1):before { content: "Empresa"; }
     #no-more-tables-mp.tables-mp td:nth-of-type(2):before { content: "Governo"; }
     #no-more-tables-mp.tables-mp td:nth-of-type(3):before { content: "Recebe"; }
-    #no-more-tables-mp.tables-mp td:nth-of-type(4):before { content: "Perda"; }
+    #no-more-tables-mp.tables-mp td:nth-of-type(4):before { content: "Ganho / Perda"; }
 }
 
 @media (max-width: 992px) {

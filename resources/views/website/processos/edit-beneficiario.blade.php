@@ -19,6 +19,8 @@
 
         {{ Form::submit('Salvar', ['class' => 'btn btn-primary']) }}
 
+        {{ Form::submit('Dados atualizados', ['class' => 'btn btn-info']) }}
+
         {{ Form::close() }}
 
         @empty(!$anoPagamento->first())
