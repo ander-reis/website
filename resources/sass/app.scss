@@ -653,6 +653,9 @@ ul.timeline > li:before {
     content: '';
 }
 
+/***** processo *****/
+#processo .row { margin-left: -5px !important; margin-right: -5px !important; }
+
 // menu level 3
 .dropdown-submenu {
     position: relative !important;
@@ -721,7 +724,6 @@ ul.timeline > li:before {
 .checkbox-container.has-success .custom-control-label {
     color: #28a745;
 }
-
 
 /***** Pagina Nova Sindicalizacao *****/
 .bemvindo_sind {

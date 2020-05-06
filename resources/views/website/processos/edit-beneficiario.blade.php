@@ -1,7 +1,7 @@
 @extends('layouts.website')
 
 @section('content')
-    <div class="col-12">
+    <div id="processo" class="col-12">
         <h1>Dados Cadastrais</h1>
         <p class="text-info">{{ $processo->ds_processo ?? null }}</p>
 
