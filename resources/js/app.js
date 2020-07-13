@@ -9,3 +9,4 @@ require('./bootstrap');
 require('./bootstrap-maxlength');
 require('./layout');
 require('../../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js');
+window.moment = require('moment');

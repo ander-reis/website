@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.Recaptcha3 = factory()));
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -109,6 +109,9 @@
       _classCallCheck(this, Recaptcha3);
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Recaptcha3).call(this, opts));
+      _this.opts = Object.assign({}, {
+        minimumScore: 0
+      }, opts);
       _this.iconPlacedHandler = _this.onIconPlaced.bind(_assertThisInitialized(_this));
       return _this;
     }
@@ -141,12 +144,14 @@
                         method: 'POST',
                         params: _defineProperty({}, Recaptcha3.CAPTCHA_FIELD, token)
                       }).then(function (response) {
-                        var isValid = "".concat(response['success']) === 'true';
+                        var isValid = "".concat(response.success) === 'true' && response.score >= _this2.opts.minimumScore;
+
                         resolve({
+                          message: response.message || _this2.opts.message,
                           meta: response,
                           valid: isValid
                         });
-                      })["catch"](function (reason) {
+                      })["catch"](function (_) {
                         reject({
                           valid: false
                         });
@@ -203,4 +208,4 @@
 
   return Recaptcha3;
 
-}));
+})));

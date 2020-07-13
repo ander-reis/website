@@ -32,7 +32,7 @@
 <h5>Endereço</h5>
 <hr class="line">
 <div class="row">
-    @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
+    @component('website.form-components._form_col_group', ['class' => 'col-12 col-md-4'])
         {{ Form::label('CEP', 'CEP', ['class' => 'control-label']) }}
         <div class="input-group">
             <div class="input-group-prepend">

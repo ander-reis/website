@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
     (global = global || self, factory(global.FormValidation = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
     function luhn(value) {
       var length = value.length;
@@ -269,15 +269,16 @@
           }
 
           var opts = Object.assign({}, {
-            inclusive: true
+            inclusive: true,
+            message: ''
           }, input.options);
           var minValue = formatValue(opts.min);
           var maxValue = formatValue(opts.max);
           return opts.inclusive ? {
-            message: input.l10n ? format(opts.message || input.l10n.between["default"], ["".concat(minValue), "".concat(maxValue)]) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.between["default"] : opts.message, ["".concat(minValue), "".concat(maxValue)]),
             valid: parseFloat(value) >= minValue && parseFloat(value) <= maxValue
           } : {
-            message: input.l10n ? format(opts.message || input.l10n.between.notInclusive, ["".concat(minValue), "".concat(maxValue)]) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.between.notInclusive : opts.message, ["".concat(minValue), "".concat(maxValue)]),
             valid: parseFloat(value) > minValue && parseFloat(value) < maxValue
           };
         }
@@ -368,9 +369,6 @@
 
             case !!max:
               msg = format(input.l10n ? input.l10n.choice.less : input.options.message, max);
-              break;
-
-            default:
               break;
           }
 
@@ -971,14 +969,15 @@
           }
 
           var opts = Object.assign({}, {
-            inclusive: true
+            inclusive: true,
+            message: ''
           }, input.options);
           var minValue = parseFloat("".concat(opts.min).replace(',', '.'));
           return opts.inclusive ? {
-            message: input.l10n ? format(opts.message || input.l10n.greaterThan["default"], "".concat(minValue)) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.greaterThan["default"] : opts.message, "".concat(minValue)),
             valid: parseFloat(input.value) >= minValue
           } : {
-            message: input.l10n ? format(opts.message || input.l10n.greaterThan.notInclusive, "".concat(minValue)) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.greaterThan.notInclusive : opts.message, "".concat(minValue)),
             valid: parseFloat(input.value) > minValue
           };
         }
@@ -1087,14 +1086,15 @@
           }
 
           var opts = Object.assign({}, {
-            inclusive: true
+            inclusive: true,
+            message: ''
           }, input.options);
           var maxValue = parseFloat("".concat(opts.max).replace(',', '.'));
           return opts.inclusive ? {
-            message: input.l10n ? format(opts.message || input.l10n.lessThan["default"], "".concat(maxValue)) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.lessThan["default"] : opts.message, "".concat(maxValue)),
             valid: parseFloat(input.value) <= maxValue
           } : {
-            message: input.l10n ? format(opts.message || input.l10n.lessThan.notInclusive, "".concat(maxValue)) : opts.message,
+            message: format(input.l10n ? opts.message || input.l10n.lessThan.notInclusive : opts.message, "".concat(maxValue)),
             valid: parseFloat(input.value) < maxValue
           };
         }
@@ -1348,6 +1348,7 @@
       return {
         validate: function validate(input) {
           var opts = Object.assign({}, {
+            message: '',
             trim: false,
             utf8Bytes: false
           }, input.options);
@@ -1371,18 +1372,15 @@
 
           switch (true) {
             case !!min && !!max:
-              msg = input.l10n ? format(opts.message || input.l10n.stringLength.between, [min, max]) : opts.message;
+              msg = format(input.l10n ? opts.message || input.l10n.stringLength.between : opts.message, [min, max]);
               break;
 
             case !!min:
-              msg = input.l10n ? format(opts.message || input.l10n.stringLength.more, parseInt(min, 10) - 1 + '') : opts.message;
+              msg = format(input.l10n ? opts.message || input.l10n.stringLength.more : opts.message, "".concat(parseInt(min, 10) - 1));
               break;
 
             case !!max:
-              msg = input.l10n ? format(opts.message || input.l10n.stringLength.less, parseInt(max, 10) + 1 + '') : opts.message;
-              break;
-
-            default:
+              msg = format(input.l10n ? opts.message || input.l10n.stringLength.less : opts.message, "".concat(parseInt(max, 10) + 1));
               break;
           }
 
@@ -1812,6 +1810,11 @@
           return this.form;
         }
       }, {
+        key: "getLocale",
+        value: function getLocale() {
+          return this.locale;
+        }
+      }, {
         key: "getPlugin",
         value: function getPlugin(name) {
           return this.plugins[name];
@@ -2049,7 +2052,7 @@
         value: function normalizeResult(field, validator, result) {
           var opts = this.fields[field].validators[validator];
           return Object.assign({}, result, {
-            message: result.message || opts.message || (this.localization && this.localization[validator] && this.localization[validator]["default"] ? this.localization[validator]["default"] : '') || "The field ".concat(field, " is not valid")
+            message: result.message || (opts ? opts.message : '') || (this.localization && this.localization[validator] && this.localization[validator]["default"] ? this.localization[validator]["default"] : '') || "The field ".concat(field, " is not valid")
           });
         }
       }, {
@@ -2442,9 +2445,6 @@
                     max: parseFloat(value)
                   }, opts['lessThan']);
                   break;
-
-                default:
-                  break;
               }
             }
 
@@ -2592,15 +2592,6 @@
     function (_Plugin) {
       _inherits(Excluded, _Plugin);
 
-      _createClass(Excluded, null, [{
-        key: "defaultIgnore",
-        value: function defaultIgnore(field, element, elements) {
-          var isVisible = !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length);
-          var disabled = element.getAttribute('disabled');
-          return disabled === '' || disabled === 'disabled' || element.getAttribute('type') === 'hidden' || !isVisible;
-        }
-      }]);
-
       function Excluded(opts) {
         var _this;
 
@@ -2628,6 +2619,13 @@
         key: "ignoreValidation",
         value: function ignoreValidation(field, element, elements) {
           return this.opts.excluded.apply(this, [field, element, elements]);
+        }
+      }], [{
+        key: "defaultIgnore",
+        value: function defaultIgnore(field, element, elements) {
+          var isVisible = !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length);
+          var disabled = element.getAttribute('disabled');
+          return disabled === '' || disabled === 'disabled' || element.getAttribute('type') === 'hidden' || !isVisible;
         }
       }]);
 
@@ -2673,12 +2671,12 @@
         key: "areFieldsValid",
         value: function areFieldsValid() {
           return Array.from(this.statuses.values()).every(function (value) {
-            return value === 'Valid';
+            return value === 'Valid' || value === 'NotValidated' || value === 'Ignored';
           });
         }
       }, {
-        key: "getStatues",
-        value: function getStatues() {
+        key: "getStatuses",
+        value: function getStatuses() {
           return this.statuses;
         }
       }, {
@@ -2722,7 +2720,7 @@
         key: "onElementIgnored",
         value: function onElementIgnored(e) {
           this.statuses.set(e.field, 'Ignored');
-          this.opts.onStatusChanged(false);
+          this.opts.onStatusChanged(this.areFieldsValid());
         }
       }]);
 
@@ -2917,6 +2915,11 @@
           this.messages.set(element, message);
         }
       }, {
+        key: "getMessage",
+        value: function getMessage(result) {
+          return typeof result.message === 'string' ? result.message : result.message[this.core.getLocale()];
+        }
+      }, {
         key: "onValidatorValidated",
         value: function onValidatorValidated(e) {
           var elements = e.elements;
@@ -2929,7 +2932,7 @@
 
             if (!messageEle && !e.result.valid) {
               var ele = document.createElement('div');
-              ele.innerHTML = e.result.message;
+              ele.innerHTML = this.getMessage(e.result);
               ele.setAttribute('data-field', e.field);
               ele.setAttribute('data-validator', e.validator);
 
@@ -2947,7 +2950,7 @@
                 validator: e.validator
               });
             } else if (messageEle && !e.result.valid) {
-              messageEle.innerHTML = e.result.message;
+              messageEle.innerHTML = this.getMessage(e.result);
               this.core.emit('plugins.message.displayed', {
                 element: e.element,
                 field: e.field,
@@ -3526,6 +3529,9 @@
           this.submitButtons = [].slice.call(form.querySelectorAll('[type="submit"]'));
           form.setAttribute('novalidate', 'novalidate');
           form.addEventListener('submit', this.submitHandler);
+          this.hiddenClickedEle = document.createElement('input');
+          this.hiddenClickedEle.setAttribute('type', 'hidden');
+          form.appendChild(this.hiddenClickedEle);
           this.submitButtons.forEach(function (button) {
             button.addEventListener('click', _this2.buttonClickHandler);
           });
@@ -3544,6 +3550,7 @@
           this.submitButtons.forEach(function (button) {
             button.removeEventListener('click', _this3.buttonClickHandler);
           });
+          this.hiddenClickedEle.parentElement.removeChild(this.hiddenClickedEle);
         }
       }, {
         key: "handleSubmitEvent",
@@ -3560,6 +3567,14 @@
               var form = this.core.getFormElement();
               form.removeEventListener('submit', this.submitHandler);
               this.clickedButton = e.target;
+              var name = this.clickedButton.getAttribute('name');
+              var value = this.clickedButton.getAttribute('value');
+
+              if (name && value) {
+                this.hiddenClickedEle.setAttribute('name', name);
+                this.hiddenClickedEle.setAttribute('value', value);
+              }
+
               this.validateForm(e);
             }
           }
@@ -3667,7 +3682,8 @@
             var elements = e.elements;
             var type = e.element.getAttribute('type');
             var ele = 'radio' === type || 'checkbox' === type ? elements[0] : e.element;
-            this.messages.set(ele, e.result.message);
+            var message = typeof e.result.message === 'string' ? e.result.message : e.result.message[this.core.getLocale()];
+            this.messages.set(ele, message);
           }
         }
       }, {
@@ -3747,8 +3763,10 @@
               break;
           }
 
-          top = top + document.body.scrollTop;
-          left = left + document.body.scrollLeft;
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+          top = top + scrollTop;
+          left = left + scrollLeft;
           this.tip.setAttribute('style', "top: ".concat(top, "px; left: ").concat(left, "px"));
         }
       }, {
@@ -3867,9 +3885,9 @@
         value: function handleEvent(e, field, ele) {
           var _this3 = this;
 
-          if (this.exceedThreshold(field, ele)) {
+          if (this.exceedThreshold(field, ele) && this.core.executeFilter('plugins-trigger-should-validate', true, [field, ele])) {
             var handler = function handler() {
-              return _this3.core.validateElement(field, ele).then(function (resolve) {
+              return _this3.core.validateElement(field, ele).then(function (_) {
                 _this3.core.emit('plugins.trigger.executed', {
                   element: ele,
                   event: e,
@@ -3979,4 +3997,4 @@
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

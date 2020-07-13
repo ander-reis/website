@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.Mailgun = factory()));
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -152,4 +152,4 @@
 
   return Mailgun;
 
-}));
+})));

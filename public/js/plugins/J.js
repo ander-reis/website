@@ -1,7 +1,7 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function ($) {

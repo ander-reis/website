@@ -127,6 +127,16 @@ Route::resource('zoom', 'Website\ZoomController', ['only' => ['index']]);
 Route::resource('mp936', 'Website\Mp936Controller', ['only' => ['index']]);
 
 /**
+ * rota previdencia
+ */
+Route::resource('previdencia', 'Website\PrevidenciaController', ['only' => ['index', 'store', 'destroy']]);
+Route::name('previdencia.insert.professor')->post('previdencia/professor/table', 'Website\PrevidenciaController@insertProfessorTable');
+Route::name('previdencia.insert.data')->post('previdencia/data/table', 'Website\PrevidenciaController@insertDataTable');
+Route::name('previdencia.cpf')->post('previdencia/cpf', 'Website\PrevidenciaController@getCpf');
+Route::name('previdencia.data')->post('previdencia/data', 'Website\PrevidenciaController@getPrevidenciaData');
+Route::name('previdencia.update.data')->post('previdencia/data/update', 'Website\PrevidenciaController@updateProfessorData');
+
+/**
  * rota processos
  *
  */

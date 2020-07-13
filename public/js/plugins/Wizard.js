@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.Wizard = factory()));
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -152,8 +152,13 @@
         this.nextButton.removeEventListener('click', this.nextStepHandler);
       }
     }, {
-      key: "onClickPrev",
-      value: function onClickPrev() {
+      key: "getCurrentStep",
+      value: function getCurrentStep() {
+        return this.currentStep;
+      }
+    }, {
+      key: "goToPrevStep",
+      value: function goToPrevStep() {
         if (this.currentStep >= 1) {
           classSet(this.steps[this.currentStep], _defineProperty({}, this.opts.activeStepClass, false));
           this.currentStep--;
@@ -162,8 +167,8 @@
         }
       }
     }, {
-      key: "onClickNext",
-      value: function onClickNext() {
+      key: "goToNextStep",
+      value: function goToNextStep() {
         var _this3 = this;
 
         this.core.validate().then(function (status) {
@@ -189,6 +194,16 @@
             _this3.onStepInvalid();
           }
         });
+      }
+    }, {
+      key: "onClickPrev",
+      value: function onClickPrev() {
+        this.goToPrevStep();
+      }
+    }, {
+      key: "onClickNext",
+      value: function onClickNext() {
+        this.goToNextStep();
       }
     }, {
       key: "onStepActive",
@@ -237,4 +252,4 @@
 
   return Wizard;
 
-}));
+})));

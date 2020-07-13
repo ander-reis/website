@@ -24,7 +24,7 @@ class BoletimStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'ds_email'      => 'email:rfc,dns'
+            'ds_email' => 'email:rfc,dns'
         ];
     }
 }

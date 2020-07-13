@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.MandatoryIcon = factory()));
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -145,7 +145,8 @@
 
         if (validators && validators['notEmpty'] && validators['notEmpty'].enabled !== false && elements.length) {
           this.icons.set(e.element, e.iconElement);
-          var type = elements[0].getAttribute('type').toLowerCase();
+          var eleType = elements[0].getAttribute('type');
+          var type = !eleType ? '' : eleType.toLowerCase();
           var elementArray = 'checkbox' === type || 'radio' === type ? [elements[0]] : elements;
           var _iteratorNormalCompletion = true;
           var _didIteratorError = false;
@@ -256,4 +257,4 @@
 
   return MandatoryIcon;
 
-}));
+})));

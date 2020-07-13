@@ -7,7 +7,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.PasswordStrength = factory()));
+  (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.InternationalTelephoneInput = factory()));
 }(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
@@ -96,99 +96,107 @@
 
   var Plugin = FormValidation.Plugin;
 
-  var PasswordStrength =
+  var InternationalTelephoneInput =
   /*#__PURE__*/
   function (_Plugin) {
-    _inherits(PasswordStrength, _Plugin);
+    _inherits(InternationalTelephoneInput, _Plugin);
 
-    function PasswordStrength(opts) {
+    function InternationalTelephoneInput(opts) {
       var _this;
 
-      _classCallCheck(this, PasswordStrength);
+      _classCallCheck(this, InternationalTelephoneInput);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(PasswordStrength).call(this, opts));
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(InternationalTelephoneInput).call(this, opts));
+      _this.intlTelInstances = new Map();
+      _this.countryChangeHandler = new Map();
+      _this.fieldElements = new Map();
       _this.opts = Object.assign({}, {
-        minimalScore: 3,
-        onValidated: function onValidated() {}
+        autoPlaceholder: 'polite',
+        utilsScript: ''
       }, opts);
-      _this.validatePassword = _this.checkPasswordStrength.bind(_assertThisInitialized(_this));
-      _this.validatorValidatedHandler = _this.onValidatorValidated.bind(_assertThisInitialized(_this));
+      _this.validatePhoneNumber = _this.checkPhoneNumber.bind(_assertThisInitialized(_this));
+      _this.fields = typeof _this.opts.field === 'string' ? _this.opts.field.split(',') : _this.opts.field;
       return _this;
     }
 
-    _createClass(PasswordStrength, [{
+    _createClass(InternationalTelephoneInput, [{
       key: "install",
       value: function install() {
-        this.core.registerValidator(PasswordStrength.PASSWORD_STRENGTH_VALIDATOR, this.validatePassword);
-        this.core.on('core.validator.validated', this.validatorValidatedHandler);
-        this.core.addField(this.opts.field, {
-          validators: _defineProperty({}, PasswordStrength.PASSWORD_STRENGTH_VALIDATOR, {
-            message: this.opts.message,
-            minimalScore: this.opts.minimalScore
-          })
+        var _this2 = this;
+
+        this.core.registerValidator(InternationalTelephoneInput.INT_TEL_VALIDATOR, this.validatePhoneNumber);
+        this.fields.forEach(function (field) {
+          _this2.core.addField(field, {
+            validators: _defineProperty({}, InternationalTelephoneInput.INT_TEL_VALIDATOR, {
+              message: _this2.opts.message
+            })
+          });
+
+          var ele = _this2.core.getElements(field)[0];
+
+          var handler = function handler() {
+            return _this2.core.revalidateField(field);
+          };
+
+          ele.addEventListener('countrychange', handler);
+
+          _this2.countryChangeHandler.set(field, handler);
+
+          _this2.fieldElements.set(field, ele);
+
+          _this2.intlTelInstances.set(field, intlTelInput(ele, _this2.opts));
         });
       }
     }, {
       key: "uninstall",
       value: function uninstall() {
-        this.core.off('core.validator.validated', this.validatorValidatedHandler);
-        this.core.disableValidator(this.opts.field, PasswordStrength.PASSWORD_STRENGTH_VALIDATOR);
+        var _this3 = this;
+
+        this.fields.forEach(function (field) {
+          var handler = _this3.countryChangeHandler.get(field);
+
+          var ele = _this3.fieldElements.get(field);
+
+          var intlTel = _this3.intlTelInstances.get(field);
+
+          if (handler && ele && intlTel) {
+            ele.removeEventListener('countrychange', handler);
+
+            _this3.core.disableValidator(field, InternationalTelephoneInput.INT_TEL_VALIDATOR);
+
+            intlTel.destroy();
+          }
+        });
       }
     }, {
-      key: "checkPasswordStrength",
-      value: function checkPasswordStrength() {
-        var _this2 = this;
+      key: "checkPhoneNumber",
+      value: function checkPhoneNumber() {
+        var _this4 = this;
 
         return {
           validate: function validate(input) {
             var value = input.value;
 
-            if (value === '') {
+            var intlTel = _this4.intlTelInstances.get(input.field);
+
+            if (value === '' || !intlTel) {
               return {
                 valid: true
               };
             }
 
-            var result = zxcvbn(value);
-            var score = result.score;
-            var message = result.feedback.warning || 'The password is weak';
-
-            if (score < _this2.opts.minimalScore) {
-              return {
-                message: message,
-                meta: {
-                  message: message,
-                  score: score
-                },
-                valid: false
-              };
-            } else {
-              return {
-                meta: {
-                  message: message,
-                  score: score
-                },
-                valid: true
-              };
-            }
+            return {
+              valid: intlTel.isValidNumber()
+            };
           }
         };
       }
-    }, {
-      key: "onValidatorValidated",
-      value: function onValidatorValidated(e) {
-        if (e.field === this.opts.field && e.validator === PasswordStrength.PASSWORD_STRENGTH_VALIDATOR && e.result.meta) {
-          var message = e.result.meta['message'];
-          var score = e.result.meta['score'];
-          this.opts.onValidated(e.result.valid, message, score);
-        }
-      }
     }]);
 
-    return PasswordStrength;
+    return InternationalTelephoneInput;
   }(Plugin);
-  PasswordStrength.PASSWORD_STRENGTH_VALIDATOR = '___PasswordStrengthValidator';
+  InternationalTelephoneInput.INT_TEL_VALIDATOR = '___InternationalTelephoneInputValidator';
 
-  return PasswordStrength;
+  return InternationalTelephoneInput;
 
 })));

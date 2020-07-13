@@ -29,6 +29,7 @@
     "@fortawesome/fontawesome-free": "^5.11.1",
     "bootstrap-submenu": "^3.0.1",
     "jquery-mask-plugin": "^1.14.16",
+    "moment": "^2.27.0",
     "owl.carousel": "^2.3.4"
   }
 }

@@ -67,7 +67,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script> --}}
+{{--     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>--}}
     <script src="{{ asset('js/FormValidation.js') }}"></script>
     <script src="{{ asset('js/plugins/Bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/pesquisacep.js') }}"></script>
@@ -169,6 +169,7 @@
     @stack('salario_calcular')
     @stack('noticias')
     @stack('form-processos-script')
+    @stack('form-previdencia-script')
     @stack('form-calculos-reajuste-script')
     @stack('form-corona-script')
     @stack('pagamento-script')

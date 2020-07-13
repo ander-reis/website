@@ -195,7 +195,7 @@ class CurriculoController extends Controller
     static function estados()
     {
         return [
-            'Seleciona um Estado',
+            'Seleciona Estado',
             'SP',
             'AC',
             'AL',

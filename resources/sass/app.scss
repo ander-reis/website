@@ -758,6 +758,64 @@ ul.timeline > li:before {
     font-size: 0.9em;
 }
 
+/** previdencia **/
+#previdenciaForm .fv-plugins-icon {
+    right: 0px;
+}
+.js-step {
+    display: none;
+}
+.js-step-active {
+    display: block;
+}
+.table-size {
+    font-size: 12px;
+}
+
+/** loading previdencia **/
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+}
+.loader {
+    margin: 60px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 1.1em solid rgba(85,99,211, 0.2);
+    border-right: 1.1em solid rgba(85,99,211, 0.2);
+    border-bottom: 1.1em solid rgba(85,99,211, 0.2);
+    border-left: 1.1em solid #5563d3;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes load8 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/** loading previdencai end **/
+
 /** media queries **/
 /* bloqueio de tela minima */
 @media only screen and (max-width: 320px) {
@@ -961,6 +1019,53 @@ ul.timeline > li:before {
     #no-more-tables-mp.tables-mp td:nth-of-type(2):before { content: "Governo"; }
     #no-more-tables-mp.tables-mp td:nth-of-type(3):before { content: "Recebe"; }
     #no-more-tables-mp.tables-mp td:nth-of-type(4):before { content: "Ganho / Perda"; }
+
+    /***** no-more-tables previdencia *****/
+    #no-more-tables-prev table,
+    #no-more-tables-prev thead,
+    #no-more-tables-prev tbody,
+    #no-more-tables-prev th,
+    #no-more-tables-prev td,
+    #no-more-tables-prev tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables-prev thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #no-more-tables-prev tr { border: 1px solid #ccc; }
+
+    #no-more-tables-prev td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align:left;
+    }
+
+    #no-more-tables-prev td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align:left;
+        font-weight: bold;
+    }
+
+    /*
+	Label the data
+	*/
+    #no-more-tables-prev td:before { content: attr(data-title); }
 }
 
 @media (max-width: 992px) {

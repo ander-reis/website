@@ -1,14 +1,14 @@
 /**
- * FormValidation (https://formvalidation.io), v1.5.0 (76e521e)
+ * FormValidation (https://formvalidation.io), v1.6.0 (4730ac5)
  * The best validation library for JavaScript
- * (c) 2013 - 2019 Nguyen Huu Phuoc <me@phuoc.ng>
+ * (c) 2013 - 2020 Nguyen Huu Phuoc <me@phuoc.ng>
  */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, (global.FormValidation = global.FormValidation || {}, global.FormValidation.plugins = global.FormValidation.plugins || {}, global.FormValidation.plugins.AutoFocus = factory()));
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -120,12 +120,12 @@
       key: "areFieldsValid",
       value: function areFieldsValid() {
         return Array.from(this.statuses.values()).every(function (value) {
-          return value === 'Valid';
+          return value === 'Valid' || value === 'NotValidated' || value === 'Ignored';
         });
       }
     }, {
-      key: "getStatues",
-      value: function getStatues() {
+      key: "getStatuses",
+      value: function getStatuses() {
         return this.statuses;
       }
     }, {
@@ -169,7 +169,7 @@
       key: "onElementIgnored",
       value: function onElementIgnored(e) {
         this.statuses.set(e.field, 'Ignored');
-        this.opts.onStatusChanged(false);
+        this.opts.onStatusChanged(this.areFieldsValid());
       }
     }]);
 
@@ -209,7 +209,7 @@
       key: "onFormInvalid",
       value: function onFormInvalid() {
         var plugin = this.core.getPlugin(this.fieldStatusPluginName);
-        var statuses = plugin.getStatues();
+        var statuses = plugin.getStatuses();
         var invalidFields = Object.keys(this.core.getFields()).filter(function (key) {
           return statuses.get(key) === 'Invalid';
         });
@@ -221,7 +221,8 @@
           if (elements.length > 0) {
             var firstElement = elements[0];
             var e = {
-              firstElement: firstElement
+              firstElement: firstElement,
+              field: firstInvalidField
             };
             this.core.emit('plugins.autofocus.prefocus', e);
             this.opts.onPrefocus(e);
@@ -236,4 +237,4 @@
 
   return AutoFocus;
 
-}));
+})));
