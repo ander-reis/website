@@ -298,11 +298,17 @@
                                 notEmpty: {
                                     message: 'CPF obrigatório'
                                 },
-                                stringLength: {
-                                    min: 14,
-                                    max: 14,
-                                    message: 'CPF inválido'
+                                callback: {
+                                    message: 'CPF inválido',
+                                    callback: function (input) {
+                                        if (input.value !== '') {
+                                            return testaCPF(input.value);
+                                        } else {
+                                            return true;
+                                        }
+                                    }
                                 },
+                                blank: {}
                             }
                         },
                         ds_nome: {
@@ -482,6 +488,7 @@
                                 id_professor: result,
                             },
                         }).then(function (response) {
+                            console.log(response)
                             loadEnd();
                             removeCells();
                             rowIndex = 0;
@@ -701,10 +708,17 @@
                         ds_cpf: {
                             validators: {
                                 notEmpty: {},
-                                stringLength: {
-                                    min: 14,
-                                    max: 14,
+                                callback: {
+                                    message: 'CPF inválido',
+                                    callback: function (input) {
+                                        if (input.value !== '') {
+                                            return testaCPF(input.value);
+                                        } else {
+                                            return true;
+                                        }
+                                    }
                                 },
+                                blank: {}
                             }
                         },
                     },

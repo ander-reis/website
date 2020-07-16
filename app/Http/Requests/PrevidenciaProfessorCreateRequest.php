@@ -26,7 +26,7 @@ class PrevidenciaProfessorCreateRequest extends FormRequest
         $this->sanitize();
 
         return [
-            'ds_cpf' => 'required|string|max:14',
+            'ds_cpf' => 'required|string|max:14|cpf',
             'ds_nome' => 'required|string|max:100',
             'dt_nascimento' => 'required|date|date_format:Y-m-d|year_invalid',
             'ds_celular' => 'required|string|max:20',

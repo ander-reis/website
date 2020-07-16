@@ -3,6 +3,15 @@
 @section('content')
     {{ Form::open(['id' => 'previdenciaForm']) }}
     @include('website.previdencia._form')
+
+    @if($errors->any())
+        <ul class="alert alert-danger my-3">
+            @foreach($errors->all() as $error)
+                <li style="list-style: none">{{$error}}</li>
+            @endforeach
+        </ul>
+    @endif
+
     {{ Form::close() }}
 
     <div class="modal fade" id="prevModal" tabindex="-1" role="dialog" aria-labelledby="Editar" aria-hidden="true">
