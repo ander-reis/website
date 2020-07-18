@@ -15,7 +15,7 @@
     <div class="row">
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_nascimento', 'Data de Nascimento', ['class' => 'control-label']) }}
-            {{ Form::date('dt_nascimento', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
+            {{ Form::text('dt_nascimento', null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('ds_celular', 'Celular', ['class' => 'control-label']) }}
@@ -69,7 +69,7 @@
 </section>
 {{ Form::button($buttonTitle, ['class' => 'btn btn-primary', 'id' => 'nextButton', 'type' => 'submit']) }}
 
-@push('form-previdencia-cadastro-script')
+@push('form-previdencia-script')
     <script type="text/javascript">
         const cpf = $('#ds_cpf');
         const nome = $('#ds_nome');
@@ -87,6 +87,7 @@
         function inputMasks() {
             cpf.mask('000.000.000-00', {reverse: true});
             celular.mask('(00) 00000-0000');
+            nascimento.mask('00/00/0000');
             cep.mask('00000-000');
             estado.mask('AA');
         }
@@ -112,10 +113,6 @@
                         ds_cpf: {
                             validators: {
                                 notEmpty: {},
-                                // stringLength: {
-                                //     min: 14,
-                                //     max: 14,
-                                // },
                                 callback: {
                                     message: 'CPF inválido',
                                     callback: function (input) {
@@ -136,7 +133,7 @@
             cpf[0].addEventListener('blur', function (event) {
                 validCpf.validate().then(function (status) {
                     if (status === 'Valid') {
-                        FormValidation.utils.fetch(`/previdencia-cadastro/professor`, {
+                        FormValidation.utils.fetch(`/previdencia/professor`, {
                             method: 'GET',
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -172,11 +169,6 @@
                                 notEmpty: {
                                     message: 'CPF obrigatório'
                                 },
-                                // stringLength: {
-                                //     min: 14,
-                                //     max: 14,
-                                //     message: 'CPF inválido'
-                                // },
                                 callback: {
                                     message: 'CPF inválido',
                                     callback: function (input) {
@@ -203,8 +195,15 @@
                             }
                         },
                         dt_nascimento: {
-                            format: 'YYYY/DD/MM',
-                            message: 'Data obrigatório',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Data obrigatório'
+                                },
+                                date: {
+                                    format: 'DD/MM/YYYY',
+                                    message: 'Data inválida',
+                                }
+                            }
                         },
                         ds_celular: {
                             validators: {
@@ -310,11 +309,6 @@
                         bootstrap: new FormValidation.plugins.Bootstrap(),
                         submitButton: new FormValidation.plugins.SubmitButton(),
                         defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-                        icon: new FormValidation.plugins.Icon({
-                            valid: 'fa fa-check',
-                            invalid: 'fa fa-times',
-                            validating: 'fa fa-refresh'
-                        }),
                     },
                 }
             );

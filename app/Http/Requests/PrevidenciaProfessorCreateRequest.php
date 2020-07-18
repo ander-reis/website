@@ -28,7 +28,7 @@ class PrevidenciaProfessorCreateRequest extends FormRequest
         return [
             'ds_cpf' => 'required|string|max:14|cpf',
             'ds_nome' => 'required|string|max:100',
-            'dt_nascimento' => 'required|date|date_format:Y-m-d|year_invalid',
+            'dt_nascimento' => 'required',
             'ds_celular' => 'required|string|max:20',
             'ds_email' => 'required|email:rfc,dns|max:120',
             'CEP' => 'required|string|max:9',

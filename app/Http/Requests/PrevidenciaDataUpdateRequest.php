@@ -28,9 +28,9 @@ class PrevidenciaDataUpdateRequest extends FormRequest
         return [
             'fl_empregador' => 'required|string|max:2',
             'ds_cnpj' => 'required|string|max:18',
+            'ds_empregador' => 'required|string|max:150',
             'fl_cargo' => 'required|string|max:2',
-            'dt_admissao' => 'required|date|date_format:Y-m-d|year_invalid',
-            'dt_demissao' => 'required|date|date_format:Y-m-d|year_invalid',
+            'dt_admissao' => 'required',
         ];
     }
 
@@ -46,6 +46,15 @@ class PrevidenciaDataUpdateRequest extends FormRequest
         $input['fl_cargo'] = trim(filter_var($input['fl_cargo'], FILTER_SANITIZE_STRING));
         $input['dt_admissao'] = trim(filter_var($input['dt_admissao'], FILTER_SANITIZE_STRING));
         $input['dt_demissao'] = trim(filter_var($input['dt_demissao'], FILTER_SANITIZE_STRING));
+
+        if($input['dt_demissao'] == null) {
+            $input['dt_demissao'] = '01/01/1900';
+        }
+
+        /**
+         * data uppercase
+         */
+        $input['ds_empregador'] = dataUpperCase($input['ds_empregador']);
 
         $this->replace($input);
     }

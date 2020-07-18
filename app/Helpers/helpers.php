@@ -11,3 +11,4 @@ include __DIR__.'/cpfFormatted.php';
 include __DIR__.'/dataInputFormatted.php';
 include __DIR__.'/moneyFormatted.php';
 include __DIR__.'/moneyTextFormatted.php';
+include __DIR__ .'/dateFormattedDatabase.php';

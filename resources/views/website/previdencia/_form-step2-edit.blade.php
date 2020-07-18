@@ -7,11 +7,11 @@
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('ds_cnpj', 'CNPJ', ['class' => 'control-label']) }}
-            {{ Form::text('ds_cnpj', null, ['class' => 'form-control']) }}
+            {{ Form::text('ds_cnpj', $model->ds_cnpj, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('ds_empregador', 'Empregador', ['class' => 'control-label']) }}
-            {{ Form::text('ds_empregador', null, ['class' => 'form-control']) }}
+            {{ Form::text('ds_empregador', $model->ds_empregador, ['class' => 'form-control']) }}
         @endcomponent
     </div>
     <div class="row">
@@ -21,17 +21,17 @@
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_admissao', 'Data admissão', ['class' => 'control-label']) }}
-            {{ Form::date('dt_admissao', (isset($model->dt_admissao) ? $model->dt_admissao : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
+            {{ Form::text('dt_admissao', $model->dt_admissao, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_demissao', 'Data saída', ['class' => 'control-label']) }}
-            {{ Form::date('dt_demissao', (isset($model->dt_demissao) ? $model->dt_demissao : \Carbon\Carbon::now()), ['class' => 'form-control']) }}
+            {{ Form::text('dt_demissao', $model->dt_demissao, ['class' => 'form-control']) }}
         @endcomponent
     </div>
     {{ Form::button('Editar Dados&nbsp;<i class="fas fa-edit"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid', 'type' => 'submit']) }}
 </section>
 
-@push('form-previdencia-dados-script')
+@push('form-previdencia-script')
     <script type="text/javascript">
         const tipo_empregador = $('#fl_empregador');
         const cnpj = $('#ds_cnpj');
@@ -42,6 +42,8 @@
 
         function inputMasks() {
             cnpj.mask('00.000.000/0000-00', {reverse: true});
+            admissao.mask('00/00/0000');
+            demissao.mask('00/00/0000');
         }
 
         function validationEmpregador() {
@@ -122,8 +124,16 @@
                             }
                         },
                         dt_admissao: {
-                            format: 'YYYY/MM/DD',
-                            message: 'Data obrigatório',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Data Admissão obrigatório'
+                                },
+                                date: {
+                                    format: 'DD/MM/YYYY',
+                                    separator: '/',
+                                    message: 'Data inválida',
+                                }
+                            }
                         },
                     },
                     plugins: {
@@ -131,11 +141,6 @@
                         bootstrap: new FormValidation.plugins.Bootstrap(),
                         submitButton: new FormValidation.plugins.SubmitButton(),
                         defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-                        icon: new FormValidation.plugins.Icon({
-                            valid: 'fa fa-check',
-                            invalid: 'fa fa-times',
-                            validating: 'fa fa-refresh'
-                        }),
                     },
                 }
             );

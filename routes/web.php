@@ -129,27 +129,20 @@ Route::resource('mp936', 'Website\Mp936Controller', ['only' => ['index']]);
 /**
  * rota previdencia
  */
-Route::resource('previdencia', 'Website\PrevidenciaController', ['only' => ['index', 'store', 'destroy']]);
-Route::name('previdencia.insert.professor')->post('previdencia/professor/table', 'Website\PrevidenciaController@insertProfessorTable');
-Route::name('previdencia.insert.data')->post('previdencia/data/table', 'Website\PrevidenciaController@insertDataTable');
-Route::name('previdencia.cpf')->post('previdencia/cpf', 'Website\PrevidenciaController@getCpf');
-Route::name('previdencia.data')->post('previdencia/data', 'Website\PrevidenciaController@getPrevidenciaData');
-Route::name('previdencia.update.data')->post('previdencia/data/update', 'Website\PrevidenciaController@updateProfessorData');
-
 // Previdencia Professor
-Route::name('previdencia-cadastro.create.professor')->get('previdencia-cadastro', 'Website\PrevidenciaCadastroController@createPrevidenciaProfessor');
-Route::name('previdencia-cadastro.get.professor')->get('previdencia-cadastro/professor', 'Website\PrevidenciaCadastroController@getPrevidenciaProfessor');
-Route::name('previdencia-cadastro.store.professor')->post('previdencia-cadastro/professor', 'Website\PrevidenciaCadastroController@storePrevidenciaProfessor');
-Route::name('previdencia-cadastro.edit.professor')->get('previdencia-cadastro/professor/{id}/edit', 'Website\PrevidenciaCadastroController@editPrevidenciaProfessor');
-Route::name('previdencia-cadastro.update.professor')->put('previdencia-cadastro/professor/{id}/update', 'Website\PrevidenciaCadastroController@updatePrevidenciaProfessor');
-Route::name('previdencia-cadastro.store')->post('previdencia-cadastro/store', 'Website\PrevidenciaCadastroController@storePrevidencia');
+Route::name('previdencia.create.professor')->get('/previdencia', 'Website\PrevidenciaController@createPrevidenciaProfessor');
+Route::name('previdencia.get.professor')->get('previdencia/professor', 'Website\PrevidenciaController@getPrevidenciaProfessor');
+Route::name('previdencia.store.professor')->post('previdencia/professor', 'Website\PrevidenciaController@storePrevidenciaProfessor');
+Route::name('previdencia.edit.professor')->get('previdencia/professor/{id}/edit', 'Website\PrevidenciaController@editPrevidenciaProfessor');
+Route::name('previdencia.update.professor')->put('previdencia/professor/{id}/update', 'Website\PrevidenciaController@updatePrevidenciaProfessor');
+Route::name('previdencia.update')->put('previdencia/update', 'Website\PrevidenciaController@updatePrevidencia');
 // Previdencia Data
-Route::name('previdencia-cadastro.create.data')->get('previdencia-cadastro/{id_professor}/data', 'Website\PrevidenciaCadastroController@createPrevidenciaData');
-Route::name('previdencia-cadastro.get.data')->get('previdencia-cadastro/data', 'Website\PrevidenciaCadastroController@getPrevidenciaData');
-Route::name('previdencia-cadastro.store.data')->post('previdencia-cadastro/data', 'Website\PrevidenciaCadastroController@storePrevidenciaData');
-Route::name('previdencia-cadastro.edit.data')->get('previdencia-cadastro/{id_professor}/data/{id}/edit', 'Website\PrevidenciaCadastroController@editPrevidenciaData');
-Route::name('previdencia-cadastro.update.data')->put('previdencia-cadastro/{id_professor}/data/{id}/update', 'Website\PrevidenciaCadastroController@updatePrevidenciaData');
-Route::name('previdencia-cadastro.delete.data')->delete('previdencia-cadastro/data/{id}/delete', 'Website\PrevidenciaCadastroController@destroyPrevidenciaData');
+Route::name('previdencia.create.data')->get('previdencia/{id_professor}/data', 'Website\PrevidenciaController@createPrevidenciaData');
+Route::name('previdencia.get.data')->get('previdencia/data', 'Website\PrevidenciaController@getPrevidenciaData');
+Route::name('previdencia.store.data')->post('previdencia/data', 'Website\PrevidenciaController@storePrevidenciaData');
+Route::name('previdencia.edit.data')->get('previdencia/{id_professor}/data/{id}/edit', 'Website\PrevidenciaController@editPrevidenciaData');
+Route::name('previdencia.update.data')->put('previdencia/{id_professor}/data/{id}/update', 'Website\PrevidenciaController@updatePrevidenciaData');
+Route::name('previdencia.delete.data')->delete('previdencia/data/{id}/delete', 'Website\PrevidenciaController@destroyPrevidenciaData');
 
 /**
  * rota processos

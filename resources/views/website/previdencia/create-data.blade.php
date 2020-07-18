@@ -15,13 +15,12 @@
                         <strong>E-mail:</strong>
                         <span>{{ $model->ds_email }}</span>
                     </div>
-                    <a href="{{ route('previdencia-cadastro.edit.professor', $model->id) }}" class="btn btn-primary">Editar</a>
+                    <a href="{{ route('previdencia.edit.professor', $model->id) }}" class="btn btn-primary">Editar</a>
                 </div>
             </div>
-
             <h2>{{ $title }} Dados Profissionais</h2>
-            {{ Form::model($model, ['route' => 'previdencia-cadastro.store', 'id' => 'previdenciaForm']) }}
-                @include('website.previdencia-cadastro._form-step2')
+            {{ Form::model($model, ['route' => 'previdencia.update', 'id' => 'previdenciaForm', 'method' => 'PUT']) }}
+                @include('website.previdencia._form-step2')
                 {{ Form::button('<i class="fas fa-check"></i>&nbsp;Enviar Informações', ['class' => 'btn btn-primary', 'id' => 'btnSendData', 'disabled', 'style' => 'display:none;', 'type' => 'submit']) }}
             {{ Form::close() }}
         </div>

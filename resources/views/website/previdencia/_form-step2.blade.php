@@ -21,11 +21,11 @@
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_admissao', 'Data admissão', ['class' => 'control-label']) }}
-            {{ Form::date('dt_admissao', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
+            {{ Form::text('dt_admissao', null, ['class' => 'form-control']) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
             {{ Form::label('dt_demissao', 'Data saída', ['class' => 'control-label']) }}
-            {{ Form::date('dt_demissao', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
+            {{ Form::text('dt_demissao', null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
     {{ Form::button('Incluir Dados&nbsp;<i class="fas fa-angle-double-down"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid']) }}
@@ -65,8 +65,8 @@
                 </a>
             </td>
             <td data-title="Deletar" class="text-center">
-                <button type="button" data-name="prev.remove"
-                        class="js-remove-button btn btn-outline-danger btn-sm">
+                <button type="button" data-name="prev.remove" class="js-remove-button btn btn-outline-danger btn-sm"
+                        data-toggle="modal" data-target="#destroyModal">
                     <i class="fas fa-eraser"></i>
                 </button>
             </td>
@@ -75,7 +75,7 @@
     </table>
 </section>
 
-@push('form-previdencia-dados-script')
+@push('form-previdencia-script')
     <script type="text/javascript">
         const id_professor = $('#id_professor');
         const tipo_empregador = $('#fl_empregador');
@@ -85,6 +85,7 @@
         const admissao = $('#dt_admissao');
         const demissao = $('#dt_demissao');
         const url = '{{ env('APP_URL') }}:3000';
+        const btnInsertData = document.getElementById('previdenciaForm').querySelector('[id="btnSendData"]');
 
         function loadStart() {
             $('.loader').show();
@@ -98,6 +99,8 @@
 
         function inputMasks() {
             cnpj.mask('00.000.000/0000-00', {reverse: true});
+            admissao.mask('00/00/0000');
+            demissao.mask('00/00/0000');
         }
 
         function validationEmpregador() {
@@ -119,7 +122,7 @@
 
         function dataPromise() {
             return promise = new Promise((resolve, reject) => {
-                FormValidation.utils.fetch('/previdencia-cadastro/data', {
+                FormValidation.utils.fetch('/previdencia/data', {
                     method: 'GET',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -137,34 +140,65 @@
         }
 
         function remove(id, index) {
-            const excluir = confirm(`Excluir Dados?`);
-            if (excluir) {
-                FormValidation.utils.fetch(`${url}/previdencia-cadastro/data/${id}/delete`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            bootbox.confirm({
+                size: "small",
+                message: "Excluir dados?",
+                buttons: {
+                    confirm: {
+                        label: 'Sim',
+                        className: 'btn-success'
                     },
-                    params: {
-                        id: id,
-                    },
-                }).then(function (response) {
-                    if (response) {
-                        $(`[data-row-index="${index}"]`).closest('tr').remove();
-                        toastr.success('Excluído com Sucesso!')
+                    cancel: {
+                        label: 'Não',
+                        className: 'btn-secondary'
                     }
-                });
+                },
+                callback: function(result){
+                    if(result) {
+                        FormValidation.utils.fetch(`${url}/previdencia/data/${id}/delete`, {
+                            method: 'DELETE',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            params: {
+                                id: id,
+                            },
+                        }).then(function (response) {
+                            if (response) {
+                                $(`[data-row-index="${index}"]`).closest('tr').remove();
+                                checkTable();
+                                toastr.success('Excluído com Sucesso!')
+                            }
+                        });
+                    }
+                }
+            })
+        }
+
+        function checkTable() {
+            const table = $('#no-more-tables-prev').find('tr').length;
+            if (table == 2) {
+                btnInsertData.setAttribute('disabled', 'disabled');
+            } else {
+                btnInsertData.removeAttribute('disabled');
             }
         }
 
         document.addEventListener('DOMContentLoaded', function (e) {
             const form = document.getElementById('previdenciaForm');
 
+            inputMasks();
+            validationEmpregador();
+
+            const btnInsertGrid = form.querySelector('[id="btnInsertGrid"]');
+
+            const template = document.getElementById('template');
+            let rowIndex = 0;
+
             dataPromise().then((response) => {
                 rowIndex = 0;
+
                 response.forEach((item, key) => {
-
-                    btnInsertData.removeAttribute('disabled');
-
                     rowIndex++;
                     const clone = template.cloneNode(true);
                     clone.removeAttribute('id');
@@ -180,7 +214,7 @@
                     clone.querySelector('[data-name="prev.admissao"]').setAttribute('id', 'prev[' + rowIndex + '].admissao');
                     clone.querySelector('[data-name="prev.demissao"]').setAttribute('id', 'prev[' + rowIndex + '].demissao');
                     clone.querySelector('[data-name="prev.remove"]').setAttribute('onclick', `remove(${item.id}, ${rowIndex})`);
-                    clone.querySelector('[data-name="prev.edit"]').setAttribute('href', `${url}/previdencia-cadastro/${id_professor.val()}/data/${item.id}/edit`);
+                    clone.querySelector('[data-name="prev.edit"]').setAttribute('href', `${url}/previdencia/${id_professor.val()}/data/${item.id}/edit`);
 
                     // data table
                     clone.querySelector('[data-name="prev.id"]').append(rowIndex);
@@ -192,16 +226,8 @@
                     clone.querySelector('[data-name="prev.demissao"]').append(response[key].dt_demissao);
                 });
                 loadEnd();
+                checkTable();
             });
-
-            inputMasks();
-            validationEmpregador();
-
-            const btnInsertData = form.querySelector('[id="btnSendData"]');
-            const btnInsertGrid = form.querySelector('[id="btnInsertGrid"]');
-
-            const template = document.getElementById('template');
-            let rowIndex = 0;
 
             const fv2 = FormValidation.formValidation(
                 form,
@@ -258,32 +284,25 @@
                             }
                         },
                         dt_admissao: {
-                            format: 'YYYY/MM/DD',
-                            message: 'Data obrigatório',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Data Admissão obrigatório'
+                                },
+                                date: {
+                                    format: 'DD/MM/YYYY',
+                                    separator: '/',
+                                    message: 'Data inválida',
+                                }
+                            }
                         },
                     },
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger(),
                         bootstrap: new FormValidation.plugins.Bootstrap(),
-                        icon: new FormValidation.plugins.Icon({
-                            valid: 'fa fa-check',
-                            invalid: 'fa fa-times',
-                            validating: 'fa fa-refresh'
-                        }),
-                        fieldStatus: new FormValidation.plugins.FieldStatus({
-                            onStatusChanged: function (areFieldsValid) {
-                                if (areFieldsValid) {
-                                    // btnInsertData.removeAttribute('disabled');
-                                } else {
-                                    btnInsertData.setAttribute('disabled', 'disabled');
-                                }
-                            }
-                        }),
                     },
                 }
             ).on('core.form.valid', function (e) {
-                btnInsertData.removeAttribute('disabled');
-                FormValidation.utils.fetch('/previdencia-cadastro/data', {
+                FormValidation.utils.fetch('/previdencia/data', {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -298,7 +317,7 @@
                         dt_demissao: demissao.val(),
                     },
                 }).then(function (response) {
-                    if(response.id) {
+                    if (response.id) {
                         rowIndex++;
                         const clone = template.cloneNode(true);
                         clone.removeAttribute('id');
@@ -314,7 +333,7 @@
                         clone.querySelector('[data-name="prev.admissao"]').setAttribute('id', 'prev[' + rowIndex + '].admissao');
                         clone.querySelector('[data-name="prev.demissao"]').setAttribute('id', 'prev[' + rowIndex + '].demissao');
                         clone.querySelector('[data-name="prev.remove"]').setAttribute('onclick', `remove(${response.id}, ${rowIndex})`);
-                        clone.querySelector('[data-name="prev.edit"]').setAttribute('href', `${url}/previdencia-cadastro/${id_professor.val()}/data/${response.id}/edit`);
+                        clone.querySelector('[data-name="prev.edit"]').setAttribute('href', `${url}/previdencia/${id_professor.val()}/data/${response.id}/edit`);
 
                         // data table
                         clone.querySelector('[data-name="prev.id"]').append(rowIndex);
@@ -324,6 +343,21 @@
                         clone.querySelector('[data-name="prev.cargo"]').append(response.fl_cargo);
                         clone.querySelector('[data-name="prev.admissao"]').append(response.dt_admissao);
                         clone.querySelector('[data-name="prev.demissao"]').append(response.dt_demissao);
+
+                        tipo_empregador.val(0);
+                        cnpj.val('');
+                        empregador.val('');
+                        cargo.val(0);
+                        admissao.val('');
+                        demissao.val('');
+
+                        fv2.resetField('fl_empregador', true);
+                        fv2.resetField('ds_cnpj', true);
+                        fv2.resetField('ds_empregador', true);
+                        fv2.resetField('fl_cargo', true);
+                        fv2.resetField('dt_admissao', true);
+
+                        checkTable();
                     } else {
                         toastr.error('Erro: dados não foram enviados!')
                     }

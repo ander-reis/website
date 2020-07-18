@@ -191,13 +191,10 @@
     @stack('salario_calcular')
     @stack('noticias')
     @stack('form-processos-script')
-    @stack('form-previdencia-script')
     @stack('form-calculos-reajuste-script')
     @stack('form-corona-script')
+    @stack('form-previdencia-script')
     @stack('pagamento-script')
     @stack('calculos-mp936-script')
-
-    @stack('form-previdencia-cadastro-script')
-    @stack('form-previdencia-dados-script')
 </body>
 </html>
