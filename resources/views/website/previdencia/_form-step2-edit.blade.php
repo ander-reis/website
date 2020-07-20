@@ -47,7 +47,13 @@
         }
 
         function validationEmpregador() {
-            $('#fl_empregador').on('change', function () {
+
+            if(tipo_empregador.val() === '5') {
+                cnpj.prop("readonly", true);
+                empregador.prop("readonly", true);
+            }
+
+            tipo_empregador.on('change', function () {
                 let $this = $(this);
                 if ($this.val() === '5') {
                     cnpj.prop("readonly", true);
@@ -69,7 +75,7 @@
             inputMasks();
             validationEmpregador();
 
-            const fv2 = FormValidation.formValidation(
+            FormValidation.formValidation(
                 form,
                 {
                     fields: {

@@ -135,6 +135,9 @@
                     resolve(response);
                 }).catch(function (error) {
                     reject(error)
+                }).finally(function () {
+                    loadEnd();
+                    checkTable();
                 });
             });
         }
@@ -153,7 +156,7 @@
                         className: 'btn-secondary'
                     }
                 },
-                callback: function(result){
+                callback: function(result) {
                     if(result) {
                         FormValidation.utils.fetch(`${url}/previdencia/data/${id}/delete`, {
                             method: 'DELETE',
@@ -166,9 +169,10 @@
                         }).then(function (response) {
                             if (response) {
                                 $(`[data-row-index="${index}"]`).closest('tr').remove();
-                                checkTable();
                                 toastr.success('Excluído com Sucesso!')
                             }
+                        }).finally(function () {
+                            checkTable();
                         });
                     }
                 }
@@ -177,7 +181,7 @@
 
         function checkTable() {
             const table = $('#no-more-tables-prev').find('tr').length;
-            if (table == 2) {
+            if (table === 2) {
                 btnInsertData.setAttribute('disabled', 'disabled');
             } else {
                 btnInsertData.removeAttribute('disabled');
@@ -225,8 +229,6 @@
                     clone.querySelector('[data-name="prev.admissao"]').append(response[key].dt_admissao);
                     clone.querySelector('[data-name="prev.demissao"]').append(response[key].dt_demissao);
                 });
-                loadEnd();
-                checkTable();
             });
 
             const fv2 = FormValidation.formValidation(
@@ -356,11 +358,11 @@
                         fv2.resetField('ds_empregador', true);
                         fv2.resetField('fl_cargo', true);
                         fv2.resetField('dt_admissao', true);
-
-                        checkTable();
                     } else {
                         toastr.error('Erro: dados não foram enviados!')
                     }
+                }).finally(function () {
+                    checkTable();
                 });
             });
 
