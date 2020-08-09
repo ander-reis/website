@@ -145,6 +145,14 @@ Route::name('previdencia.update.data')->put('previdencia/{id_professor}/data/{id
 Route::name('previdencia.delete.data')->delete('previdencia/data/{id}/delete', 'Website\PrevidenciaController@destroyPrevidenciaData');
 
 /**
+ * rota whatsapp
+ */
+Route::name('whatsapp.create')->get('whatsapp/cadastro', 'Website\WhatsappController@create');
+Route::name('whatsapp.store')->post('whatsapp/cadastro', 'Website\WhatsappController@store');
+Route::name('whatsapp.index')->get('whatsapp/pesquisa', 'Website\WhatsappController@index');
+Route::name('whatsapp.search')->get('whatsapp/search', 'Website\WhatsappController@search');
+
+/**
  * rota processos
  *
  */

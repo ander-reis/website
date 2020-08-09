@@ -758,6 +758,34 @@ ul.timeline > li:before {
     font-size: 0.9em;
 }
 
+#whatsappForm {
+    .fv-plugins-icon {
+        right: 0px !important;
+    }
+}
+
+#table-whatsapp {
+    td {
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    tbody tr:hover {
+        //font-size: 17px;
+        font-weight: bold;
+        //letter-spacing: 0.5px;
+        color: $link-red;
+        //transform: translateY(0px);
+        //transition: all 0.5s;
+        cursor: pointer;
+        transition-duration: 500ms;
+        transition-timing-function: ease-in;
+        transition-delay: initial;
+    }
+}
+
 /** previdencia **/
 .table-size {
     font-size: 12px;

@@ -194,6 +194,7 @@
     @stack('form-calculos-reajuste-script')
     @stack('form-corona-script')
     @stack('form-previdencia-script')
+    @stack('form-whatsapp-script')
     @stack('pagamento-script')
     @stack('calculos-mp936-script')
 </body>
