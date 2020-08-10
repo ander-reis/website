@@ -2,6 +2,9 @@
 
 @section('content')
     <h1>Whatsapp pesquisa</h1>
+    <div class="mb-3">
+        {{ link_to_route('whatsapp.create', $title = 'Voltar', $parameters = [], $attributes = ['class' => 'btn btn-dark']) }}
+    </div>
     @if($errors->any())
         @foreach($errors->all() as $error)
             @php
