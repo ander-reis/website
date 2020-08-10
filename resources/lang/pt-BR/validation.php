@@ -112,7 +112,7 @@ return [
     'uploaded'             => 'Falha no Upload do arquivo :attribute.',
     'url'                  => 'O formato da URL informada para o campo :attribute é inválido.',
     'uuid'                 => 'O campo :attribute deve ser um UUID válido.',
-    'year_invalid'         => 'Data de nascimento inválido',
+    'year_invalid'         => 'Data inválida',
 
     /*
     |--------------------------------------------------------------------------
@@ -210,6 +210,10 @@ return [
         'CPF_beneficiario'      => 'CPF beneficiário',
         'PIS_beneficiario'      => 'PIS beneficiário',
         'Nome_Mae_beneficiario' => 'nome da mãe beneficiário',
-        'ds_fantasia'           => 'Instituição'
+        'ds_fantasia'           => 'Instituição',
+        'ds_pergunta'           => 'pergunta',
+        'ds_resposta'           => 'resposta',
+        'dt_pergunta'           => 'data da pergunta',
+        'dt_resposta'           => 'data da resposta',
     ],
 ];

@@ -19,8 +19,15 @@ class AppServiceProvider extends ServiceProvider
          * Validator year
          */
         \Validator::extend('year_invalid', function($attribute, $value, $parameters, $validator){
-            $data = explode('-', $value);
-            $year = (int) $data[0];
+
+            if(strpos($value, '-')) {
+                $data = explode('-', $value);
+                $year = (int) $data[0];
+            } elseif (strpos($value, '/')) {
+                $data = explode('/', $value);
+                $year = (int) $data[2];
+            }
+
             return ($year < 1900) ? $validator->errors()->keys('year_invalid') : true;
         });
 
