@@ -60,7 +60,7 @@ class PrevidenciaController extends Controller
      */
     public function getPrevidenciaData(Request $request)
     {
-        $collection = PrevidenciaData::where('id_professor', $request->input('id_professor'))->get();
+        $collection = PrevidenciaData::where('id_professor', $request->input('id_professor'))->orderBy('dt_admissao', 'ASC')->get();
         $collection->map(function ($item, $key) {
             $item->fl_cargo = self::tipoCargo($item->fl_cargo);
             $item->fl_empregador = self::tipoEmpregador($item->fl_empregador);
