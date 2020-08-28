@@ -84,7 +84,7 @@
         const cargo = $('#fl_cargo');
         const admissao = $('#dt_admissao');
         const demissao = $('#dt_demissao');
-        const url = '{{ env('APP_URL') }}:3000';
+        const url = '{{ env('APP_URL') }}';
         const btnInsertData = document.getElementById('previdenciaForm').querySelector('[id="btnSendData"]');
 
         function loadStart() {
