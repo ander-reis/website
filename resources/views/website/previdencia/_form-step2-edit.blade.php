@@ -28,7 +28,7 @@
             {{ Form::text('dt_demissao', $model->dt_demissao, ['class' => 'form-control']) }}
         @endcomponent
     </div>
-    {{ Form::button('Editar Dados&nbsp;<i class="fas fa-edit"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid', 'type' => 'submit']) }}
+    {{ Form::button('Salvar Dados&nbsp;<i class="fas fa-edit"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid', 'type' => 'submit']) }}
 </section>
 
 @push('form-previdencia-script')
