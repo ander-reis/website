@@ -70,6 +70,7 @@
 {{--     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>--}}
     <script src="{{ asset('js/FormValidation.js') }}"></script>
     <script src="{{ asset('js/plugins/Bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/AutoFocus.min.js') }}"></script>
     <script src="{{ asset('js/pesquisacep.js') }}"></script>
 
     <script>
