@@ -103,7 +103,7 @@
 <div class="row">
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-2'])
         {{ Form::label('DDD_Telefone_Residencial', 'DDD', ['class' => 'control-label']) }}
-        {{ Form::text('DDD_Telefone_Residencial', null, ['class' => 'form-control', 'maxlength' => 2]) }}
+        {{ Form::text('DDD_Telefone_Residencial', '11', ['class' => 'form-control', 'maxlength' => 2]) }}
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('Telefone_Residencial', 'Residencial', ['class' => 'control-label']) }}
@@ -111,7 +111,7 @@
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-2'])
         {{ Form::label('DDD_Telefone_Celular', 'DDD', ['class' => 'control-label']) }}
-        {{ Form::text('DDD_Telefone_Celular', null, ['class' => 'form-control', 'maxlength' => 2]) }}
+        {{ Form::text('DDD_Telefone_Celular', '11', ['class' => 'form-control', 'maxlength' => 2]) }}
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('Telefone_Celular', 'Celular', ['class' => 'control-label']) }}
