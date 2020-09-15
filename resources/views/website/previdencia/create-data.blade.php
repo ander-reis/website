@@ -15,6 +15,10 @@
                         <strong>E-mail:</strong>
                         <span>{{ $model->ds_email }}</span>
                     </div>
+                    <div>
+                        <strong>Data de Nascimento:</strong>
+                        <span>{{ dataFormatted($model->dt_nascimento) }}</span>
+                    </div>
                     <a href="{{ route('previdencia.edit.professor', $model->id) }}" class="btn btn-primary">Editar</a>
                 </div>
             </div>

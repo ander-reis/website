@@ -20,6 +20,7 @@ class PrevidenciaProfessor extends Model
         'ds_cpf',
         'ds_nome',
         'dt_nascimento',
+        'fl_sexo',
         'ds_celular',
         'ds_email',
         'ds_cep',

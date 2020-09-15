@@ -172,7 +172,7 @@ class PrevidenciaController extends Controller
         try {
             PrevidenciaProfessor::where(['id' => $request->input('id_professor')])->update(['fl_analisado' => 1]);
             toastr()->success('Informações enviadas com sucesso!');
-            return redirect()->route('home');
+            return redirect()->route('previdencia.instrucoes');
         } catch (\Exception $exception) {
             return toastr()->error('Erro: Informações não foram enviadas!');
         }
@@ -229,6 +229,16 @@ class PrevidenciaController extends Controller
     public function destroyPrevidenciaData($id)
     {
         return PrevidenciaData::destroy($id);
+    }
+
+    /**
+     * página instruções
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function instrucoes()
+    {
+        return view('website.previdencia.instrucoes');
     }
 
     /**

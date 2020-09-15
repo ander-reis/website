@@ -3,13 +3,18 @@
     <h3>{{ $title }} Dados Pessoais</h3>
     <hr class="line">
     <div class="row">
-        @component('website.form-components._form_col_group', ['class' => 'col-md-4'])
+        @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
             {{ Form::label('ds_cpf', 'CPF', ['class' => 'control-label']) }}
             {{ Form::text('ds_cpf', null, ['class' => 'form-control']) }}
         @endcomponent
-        @component('website.form-components._form_col_group', ['class' => 'col-md-8'])
+        @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
             {{ Form::label('ds_nome', 'Nome', ['class' => 'control-label']) }}
             {{ Form::text('ds_nome', null, ['class' => 'form-control']) }}
+        @endcomponent
+
+        @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
+            {{ Form::label('fl_sexo', 'Sexo', ['class' => 'control-label']) }}
+            {{ Form::select('fl_sexo', [-1 => 'Selecione o Sexo', 0 => 'Feminino', 1 => 'Masculino'], null, ['class' => 'form-control']) }}
         @endcomponent
     </div>
     <div class="row">
@@ -73,6 +78,7 @@
     <script type="text/javascript">
         const cpf = $('#ds_cpf');
         const nome = $('#ds_nome');
+        const sexo = $('#fl_sexo');
         const nascimento = $('#dt_nascimento');
         const celular = $('#ds_celular');
         const email = $('#ds_email');
@@ -145,6 +151,7 @@
                             if (response.id) {
                                 nome.val(response.ds_nome);
                                 nascimento.val(response.dt_nascimento);
+                                sexo.val(response.fl_sexo);
                                 celular.val(response.ds_celular);
                                 email.val(response.ds_email);
                                 cep.val(response.ds_cep);
@@ -194,6 +201,14 @@
                                 },
                             }
                         },
+                        fl_sexo: {
+                            validators: {
+                                greaterThan: {
+                                    message: 'Selecione Sexo',
+                                    min: 0,
+                                }
+                            }
+                        },
                         dt_nascimento: {
                             validators: {
                                 notEmpty: {
@@ -202,6 +217,16 @@
                                 date: {
                                     format: 'DD/MM/YYYY',
                                     message: 'Data inválida',
+                                },
+                                callback: {
+                                    message: 'Idade inferior a 18 anos',
+                                    callback: function(input) {
+                                        const value = input.value;
+                                        const dataHoje = moment();
+                                        const dataValue = new moment(value, 'DD/MM/YYYY', true);
+                                        const anos = dataHoje.diff(dataValue, 'years');
+                                        return dataValue.isValid() && anos >= 18;
+                                    }
                                 }
                             }
                         },
@@ -305,6 +330,7 @@
                         },
                     },
                     plugins: {
+                        autoFocus: new FormValidation.plugins.AutoFocus(),
                         trigger: new FormValidation.plugins.Trigger(),
                         bootstrap: new FormValidation.plugins.Bootstrap(),
                         submitButton: new FormValidation.plugins.SubmitButton(),

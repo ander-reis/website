@@ -34,6 +34,7 @@
 @push('form-previdencia-script')
     <script type="text/javascript">
         const tipo_empregador = $('#fl_empregador');
+        const dt_nascimento = '<?php echo $model->dt_nascimento; ?>';
         const cnpj = $('#ds_cnpj');
         const empregador = $('#ds_empregador');
         const cargo = $('#fl_cargo');
@@ -138,9 +139,32 @@
                                     format: 'DD/MM/YYYY',
                                     separator: '/',
                                     message: 'Data inválida',
+                                },
+                                callback: {
+                                    message: 'Data de Admissão inferior a data de nascimento',
+                                    callback: function (input) {
+                                        const dataAdmissao = moment(input.value, 'DD/MM/YYYY');
+                                        const nascimento = moment(dt_nascimento, 'YYYY-MM-DD');
+                                        console.log(nascimento);
+                                        const diferenca = dataAdmissao.diff(nascimento, 'days');
+                                        return dataAdmissao.isValid() && diferenca >= 0;
+                                    }
                                 }
                             }
                         },
+                        dt_demissao: {
+                            validators: {
+                                callback: {
+                                    message: 'Data de demissão inferior a admissão',
+                                    callback: function(input) {
+                                        const dataAdmissao = moment(admissao.val(), 'DD/MM/YYYY');
+                                        let dataDemissao = (!input.value) ? moment() : moment(input.value, 'DD/MM/YYYY');
+                                        const diferenca = dataDemissao.diff(dataAdmissao, 'days');
+                                        return dataAdmissao.isValid() && diferenca >= 0;
+                                    }
+                                }
+                            }
+                        }
                     },
                     plugins: {
                         trigger: new FormValidation.plugins.Trigger(),

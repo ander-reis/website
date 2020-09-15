@@ -136,6 +136,7 @@ Route::name('previdencia.store.professor')->post('previdencia/professor', 'Websi
 Route::name('previdencia.edit.professor')->get('previdencia/professor/{id}/edit', 'Website\PrevidenciaController@editPrevidenciaProfessor');
 Route::name('previdencia.update.professor')->put('previdencia/professor/{id}/update', 'Website\PrevidenciaController@updatePrevidenciaProfessor');
 Route::name('previdencia.update')->put('previdencia/update', 'Website\PrevidenciaController@updatePrevidencia');
+Route::name('previdencia.instrucoes')->get('previdencia/instrucoes', 'Website\PrevidenciaController@instrucoes');
 // Previdencia Data
 Route::name('previdencia.create.data')->get('previdencia/{id_professor}/data', 'Website\PrevidenciaController@createPrevidenciaData');
 Route::name('previdencia.get.data')->get('previdencia/data', 'Website\PrevidenciaController@getPrevidenciaData');

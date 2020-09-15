@@ -11,7 +11,7 @@
     @endcomponent
     @component('website.form-components._form_col_group',['class' => 'col-12 col-md-4'])
         {{ Form::label('Sexo', 'Sexo', ['class' => 'control-label']) }}
-        {{ Form::select('Sexo', [ -1 => 'Selecione o Sexo', 0 => 'Masculino', 1 => 'Feminino'], null, ['class' => 'form-control']) }}
+        {{ Form::select('Sexo', [-1 => 'Selecione o Sexo', 0 => 'Masculino', 1 => 'Feminino'], null, ['class' => 'form-control']) }}
     @endcomponent
 </div>
 <div class="row">
