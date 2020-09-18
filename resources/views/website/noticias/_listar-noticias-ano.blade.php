@@ -8,7 +8,7 @@
                 <div class="btn-group btn-group-sm flex-wrap" role="group" aria-label="ano">
                 @foreach($anos as $ano)
 
-                    <a href="{{ route('noticias.index', ['ano' => $ano->ano]) }} "class="btn btn-secondary" id="btn_ano">
+                    <a href="{{ route('noticias.index', ['ano' => $ano->ano]) }}" class="btn btn-secondary" id="btn_ano">
                         <span class="{{(date('Y', strtotime($noticias[0]['dt_noticia'])) != $ano->ano) ? '' :  'text-warning'}}">
                             {{$ano->ano}}
                         </span>

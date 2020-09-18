@@ -30,6 +30,7 @@
     </div>
     {{ Form::button('Incluir Dados&nbsp;<i class="fas fa-angle-double-down"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid']) }}
     {{ form::hidden('id_professor', $model->id, ['id' => 'id_professor']) }}
+    {{ form::hidden('dt_nascimento', dataFormatted($model->dt_nascimento), ['id' => 'dt_nascimento']) }}
 </section>
 <section>
     <h3>Dados</h3>
@@ -77,13 +78,13 @@
 @push('form-previdencia-script')
     <script type="text/javascript">
         const id_professor = $('#id_professor');
-        const dt_nascimento = '<?php echo $model->dt_nascimento; ?>';
         const tipo_empregador = $('#fl_empregador');
         const cnpj = $('#ds_cnpj');
         const empregador = $('#ds_empregador');
         const cargo = $('#fl_cargo');
         const admissao = $('#dt_admissao');
         const demissao = $('#dt_demissao');
+        const dt_nascimento = $('#dt_nascimento').val();
         const url = '{{ env('APP_URL') }}';
         const btnInsertData = document.getElementById('previdenciaForm').querySelector('[id="btnSendData"]');
 
@@ -299,7 +300,7 @@
                                     message: 'Data de Admissão inferior a data de nascimento',
                                     callback: function (input) {
                                         const dataAdmissao = moment(input.value, 'DD/MM/YYYY');
-                                        const nascimento = moment(dt_nascimento, 'YYYY-MM-DD');
+                                        const nascimento = moment(dt_nascimento, 'DD/MM/YYYY');
                                         const diferenca = dataAdmissao.diff(nascimento, 'days');
                                         return dataAdmissao.isValid() && diferenca >= 0;
                                     }
@@ -339,6 +340,7 @@
                         fl_cargo: cargo.val(),
                         dt_admissao: admissao.val(),
                         dt_demissao: demissao.val(),
+                        dt_nascimento: dt_nascimento,
                     },
                 }).then(function (response) {
                     if (response.id) {

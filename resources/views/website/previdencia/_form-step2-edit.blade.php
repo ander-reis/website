@@ -27,14 +27,14 @@
             {{ Form::label('dt_demissao', 'Data saída', ['class' => 'control-label']) }}
             {{ Form::text('dt_demissao', $model->dt_demissao, ['class' => 'form-control']) }}
         @endcomponent
+            {{ Form::hidden('dt_nascimento', dataFormatted($model->dt_nascimento), ['class' => 'form-control col-md-3', 'id' => 'dt_nascimento']) }}
     </div>
     {{ Form::button('Salvar Dados&nbsp;<i class="fas fa-edit"></i>', ['class' => 'btn btn-secondary mb-3', 'id' => 'btnInsertGrid', 'type' => 'submit']) }}
 </section>
-
 @push('form-previdencia-script')
     <script type="text/javascript">
         const tipo_empregador = $('#fl_empregador');
-        const dt_nascimento = '<?php echo $model->dt_nascimento; ?>';
+        const dt_nascimento = $('#dt_nascimento');
         const cnpj = $('#ds_cnpj');
         const empregador = $('#ds_empregador');
         const cargo = $('#fl_cargo');
@@ -144,8 +144,7 @@
                                     message: 'Data de Admissão inferior a data de nascimento',
                                     callback: function (input) {
                                         const dataAdmissao = moment(input.value, 'DD/MM/YYYY');
-                                        const nascimento = moment(dt_nascimento, 'YYYY-MM-DD');
-                                        console.log(nascimento);
+                                        const nascimento = moment(dt_nascimento.val(), 'DD/MM/YYYY');
                                         const diferenca = dataAdmissao.diff(nascimento, 'days');
                                         return dataAdmissao.isValid() && diferenca >= 0;
                                     }

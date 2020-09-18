@@ -3,6 +3,7 @@
 namespace Website\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Website\Rules\AdmissaoRule;
 
 class PrevidenciaProfessorCreateRequest extends FormRequest
 {
@@ -28,7 +29,8 @@ class PrevidenciaProfessorCreateRequest extends FormRequest
         return [
             'ds_cpf' => 'required|string|max:14|cpf',
             'ds_nome' => 'required|string|max:100',
-            'dt_nascimento' => 'required',
+            'fl_sexo' => 'required|boolean',
+            'dt_nascimento' => 'required|date_format:d/m/Y|eighteen_year_valid',
             'ds_celular' => 'required|string|max:20',
             'ds_email' => 'required|email:rfc,dns|max:120',
             'CEP' => 'required|string|max:9',
@@ -50,6 +52,8 @@ class PrevidenciaProfessorCreateRequest extends FormRequest
          */
         $input['ds_cpf'] = trim(filter_var($input['ds_cpf'], FILTER_SANITIZE_STRING));
         $input['ds_nome'] = trim(filter_var($input['ds_nome'], FILTER_SANITIZE_STRING));
+        $input['fl_sexo'] = trim(filter_var($input['fl_sexo'], FILTER_SANITIZE_STRING));
+        $input['dt_nascimento'] = trim(filter_var($input['dt_nascimento'], FILTER_SANITIZE_STRING));
         $input['ds_celular'] = trim(filter_var($input['ds_celular'], FILTER_SANITIZE_STRING));
         $input['ds_email'] = trim(filter_var($input['ds_email'], FILTER_SANITIZE_STRING));
         $input['CEP'] = trim(filter_var($input['CEP'], FILTER_SANITIZE_STRING));

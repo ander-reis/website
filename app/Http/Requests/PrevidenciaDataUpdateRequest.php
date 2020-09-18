@@ -30,7 +30,9 @@ class PrevidenciaDataUpdateRequest extends FormRequest
             'ds_cnpj' => 'required|string|max:18',
             'ds_empregador' => 'required|string|max:150',
             'fl_cargo' => 'required|string|max:2',
-            'dt_admissao' => 'required',
+            'dt_nascimento' => 'required|date_format:d/m/Y|eighteen_year_valid',
+            'dt_admissao' => 'required|date_format:d/m/Y|before:dt_demissao|after:dt_nascimento',
+            'dt_demissao' => 'date_format:d/m/Y|after_or_equal:dt_admissao|nullable'
         ];
     }
 
@@ -46,6 +48,7 @@ class PrevidenciaDataUpdateRequest extends FormRequest
         $input['fl_cargo'] = trim(filter_var($input['fl_cargo'], FILTER_SANITIZE_STRING));
         $input['dt_admissao'] = trim(filter_var($input['dt_admissao'], FILTER_SANITIZE_STRING));
         $input['dt_demissao'] = trim(filter_var($input['dt_demissao'], FILTER_SANITIZE_STRING));
+        $input['dt_nascimento'] = trim(filter_var($input['dt_nascimento'], FILTER_SANITIZE_STRING));
 
         if($input['dt_demissao'] == null) {
             $input['dt_demissao'] = '01/01/1900';

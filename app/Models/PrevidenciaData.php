@@ -28,6 +28,6 @@ class PrevidenciaData extends Model
 
     public function professor()
     {
-        return $this->hasMany(PrevidenciaProfessor::class, 'id');
+        return $this->hasOne(PrevidenciaProfessor::class, 'id', 'id_professor');
     }
 }

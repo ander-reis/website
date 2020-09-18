@@ -46,7 +46,7 @@ class PrevidenciaController extends Controller
     public function getPrevidenciaProfessor(Request $request)
     {
         $data = PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first();
-        if(!is_null($data)) {
+        if (!is_null($data)) {
             $data->dt_nascimento = dataFormatted($data->dt_nascimento);
         }
         return response()->json($data);
@@ -82,14 +82,15 @@ class PrevidenciaController extends Controller
      */
     public function storePrevidenciaProfessor(PrevidenciaProfessorCreateRequest $request)
     {
-        $data = self::normalizeDataModel($request);
-
         try {
-            $model = PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first();
-            if (!$model) {
-                $model = PrevidenciaProfessor::updateOrCreate($data);
+            $data = self::normalizeDataModel($request);
+            $professor = PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first(['id']);
+            if (!$professor) {
+                $model = PrevidenciaProfessor::create($data);
+            } else {
+                PrevidenciaProfessor::where(['id' => $professor->id])->update($data);
             }
-            return redirect()->route('previdencia.create.data', ['id_professor' => $model->id]);
+            return redirect()->route('previdencia.create.data', ['id_professor' => ($professor) ? $professor->id : $model->id]);
         } catch (\Exception $exception) {
             return toastr()->error('Erro: Informações não foram enviadas!');
         }
@@ -108,8 +109,7 @@ class PrevidenciaController extends Controller
         $data['dt_demissao'] = self::normalizeDateInput($data['dt_demissao']);
         try {
             $model = PrevidenciaData::create($data);
-
-            if($model) {
+            if ($model) {
                 $model->fl_cargo = self::tipoCargo($model->fl_cargo);
                 $model->fl_empregador = self::tipoEmpregador($model->fl_empregador);
                 $model->dt_admissao = dataFormatted($model->dt_admissao);
@@ -157,6 +157,7 @@ class PrevidenciaController extends Controller
         $model = PrevidenciaData::findOrFail($id);
         $model->dt_admissao = dataFormatted($model->dt_admissao);
         $model->dt_demissao = self::formatDtDemissao($model->dt_demissao);
+        $model->dt_nascimento = $model->professor->dt_nascimento;
 
         return view('website.previdencia.edit-data', compact('model', 'id_professor', 'title'));
     }
@@ -188,6 +189,7 @@ class PrevidenciaController extends Controller
     public function updatePrevidenciaProfessor(PrevidenciaProfessorCreateRequest $request, $id)
     {
         $data = self::normalizeDataModel($request);
+        unset($data['ds_cpf']);
         try {
             PrevidenciaProfessor::where('id', $id)->update($data);
             toastr()->success('Informações atualizadas com sucesso!');
@@ -208,7 +210,8 @@ class PrevidenciaController extends Controller
     public function updatePrevidenciaData(PrevidenciaDataUpdateRequest $request, $id_professor, $id)
     {
         $data = $request->all();
-        unset($data['_token'], $data['_method']);
+
+        unset($data['_token'], $data['_method'], $data['dt_nascimento']);
         $data['dt_admissao'] = dateFormattedDatabase($data['dt_admissao']);
         $data['dt_demissao'] = dateFormattedDatabase($data['dt_demissao']);
         try {
@@ -310,7 +313,7 @@ class PrevidenciaController extends Controller
         $data['ds_cidade'] = $data['cidade'];
         $data['ds_uf'] = $data['estado'];
         $data['dt_nascimento'] = self::normalizeDateInput($data['dt_nascimento']);
-        unset($data['CEP'], $data['endereco'], $data['bairro'], $data['cidade'], $data['estado'], $data['_token'], $data['_method']);
+        unset($data['CEP'], $data['endereco'], $data['bairro'], $data['cidade'], $data['estado'], $data['_token'], $data['_method'], $data['id']);
         return $data;
     }
 
@@ -333,7 +336,7 @@ class PrevidenciaController extends Controller
      */
     private function formatDtDemissao($date)
     {
-        if($date == '1900-01-01') {
+        if ($date == '1900-01-01') {
             return '';
         }
         return dataFormatted($date);

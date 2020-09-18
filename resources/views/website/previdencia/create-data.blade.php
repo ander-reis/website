@@ -19,7 +19,9 @@
                         <strong>Data de Nascimento:</strong>
                         <span>{{ dataFormatted($model->dt_nascimento) }}</span>
                     </div>
-                    <a href="{{ route('previdencia.edit.professor', $model->id) }}" class="btn btn-primary">Editar</a>
+                    <div class="mt-3">
+                        <a href="{{ route('previdencia.edit.professor', $model->id) }}" class="btn btn-primary">Editar</a>
+                    </div>
                 </div>
             </div>
             <h2>{{ $title }} Dados Profissionais</h2>

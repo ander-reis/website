@@ -5,7 +5,7 @@
     <div class="row">
         @component('website.form-components._form_col_group', ['class' => 'col-md-3'])
             {{ Form::label('ds_cpf', 'CPF', ['class' => 'control-label']) }}
-            {{ Form::text('ds_cpf', null, ['class' => 'form-control']) }}
+            {{ Form::text('ds_cpf', null, ['class' => 'form-control', $readonly]) }}
         @endcomponent
         @component('website.form-components._form_col_group', ['class' => 'col-md-6'])
             {{ Form::label('ds_nome', 'Nome', ['class' => 'control-label']) }}
@@ -161,13 +161,14 @@
                                 bairro.val(response.ds_bairro);
                                 cidade.val(response.ds_cidade);
                                 estado.val(response.ds_uf);
+                                cpf.attr('readonly', true);
                             }
                         });
                     }
                 });
             });
 
-            const fv1 = FormValidation.formValidation(
+            FormValidation.formValidation(
                 form,
                 {
                     fields: {
@@ -223,7 +224,7 @@
                                     callback: function(input) {
                                         const value = input.value;
                                         const dataHoje = moment();
-                                        const dataValue = new moment(value, 'DD/MM/YYYY', true);
+                                        const dataValue = moment(value, 'DD/MM/YYYY', true);
                                         const anos = dataHoje.diff(dataValue, 'years');
                                         return dataValue.isValid() && anos >= 18;
                                     }
