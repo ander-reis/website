@@ -57,7 +57,9 @@ class NoticiasController extends Controller
      */
     public function show($id)
     {
-        $noticia = Noticias::where('fl_status', 1)->findOrFail($id);
+        $noticia = cache()->remember('noticia', 30, function() use($id) {
+           return Noticias::where('fl_status', 1)->findOrFail($id);
+        });
 
         return view('website.noticias._noticia-page', compact('noticia'));
     }

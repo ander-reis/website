@@ -45,7 +45,12 @@ class PrevidenciaController extends Controller
      */
     public function getPrevidenciaProfessor(Request $request)
     {
-        $data = PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first();
+//        $data = PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first();
+
+        $data = cache()->remember('previdencia-professor', 30, function () use($request) {
+            return PrevidenciaProfessor::where('ds_cpf', $request->input('ds_cpf'))->first();
+        });
+
         if (!is_null($data)) {
             $data->dt_nascimento = dataFormatted($data->dt_nascimento);
         }
